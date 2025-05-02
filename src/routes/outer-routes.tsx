@@ -1,6 +1,6 @@
-import Login from "@app/views/pages/outer-layout/Login";
-import Register from "@app/views/pages/outer-layout/Register";
-import ForgetPassword from "@app/views/pages/outer-layout/ForgetPassword";
+import Login from "../views/pages/outer-layout/Login";
+import Register from "../views/pages/outer-layout/Register";
+import ForgetPassword from "../views/pages/outer-layout/ForgetPassword";
 
 export const OUTER_ROUTES = {
   LOGIN: "/login",

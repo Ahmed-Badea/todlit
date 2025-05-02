@@ -1,6 +1,6 @@
-import BusinessInfo from "@app/components/BusinessInfo";
-import ProfileMenu from "@app/components/ProfileMenu";
-import LangSwitcher from "@app/components/LangSwitcher";
+import BusinessInfo from "../BusinessInfo";
+import ProfileMenu from "../ProfileMenu";
+import LangSwitcher from "../LangSwitcher";
 import styles from "./navbar.module.scss";
 
 const Navbar = () => {

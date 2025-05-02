@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@design-system';
-import FormWrapper from '@app/components/FormWrapper';
-import { createClass } from '@app/services/inner-layout/classes';
+import { Button } from '../../../../../../../design-system'
+import FormWrapper from '../../../../../../../components/FormWrapper';
+import { createClass } from '../../../../../../../services/inner-layout/classes';
 import { formConfig } from '../classConfig';
 
 const CreateStudent = () => {

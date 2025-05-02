@@ -1,5 +1,5 @@
-import StudentDetails from '@app/views/pages/inner-layout/Students/components/StudentDetails';
-import StaffDetails from '@app/views/pages/inner-layout/Staff/components/StaffDetails';
+import StudentDetails from '../views/pages/inner-layout/Students/components/StudentDetails';
+import StaffDetails from '../views/pages/inner-layout/Staff/components/StaffDetails';
 
 interface SubRoute {
   path: string;

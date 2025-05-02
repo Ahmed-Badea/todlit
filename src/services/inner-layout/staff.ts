@@ -1,4 +1,4 @@
-import { Axios } from "@app/tools/axios/axiosInstance";
+import { Axios } from "../../tools/axios/axiosInstance";
 
 interface StaffData {
   first_name: string;

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { devtools } from "zustand/middleware";
-import type { IClassesStore } from '@app/types/zustand/classes';
+import type { IClassesStore } from '../../../types/zustand/classes';
 
 export const useClassesStore = create<IClassesStore>()(
   devtools(

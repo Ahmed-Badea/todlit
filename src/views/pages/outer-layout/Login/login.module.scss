@@ -1,4 +1,4 @@
-@import "@app/styles/mixins";
+@import "@styles/mixins";
 
 .login-form {
   @include outer-layout-form-footer(__dont-have-account); 

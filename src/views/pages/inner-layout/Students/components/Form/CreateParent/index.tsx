@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@design-system";
-import {CirclePlus} from "@design-system/assets/icons";
-import FormWrapper from "@app/components/FormWrapper";
-import { createParent } from "@app/services/inner-layout/students";
+import { Button } from"../../../../../../../design-system";
+import {CirclePlus} from "../../../../../../../design-system/assets/Icons";
+import FormWrapper from "../../../../../../../components/FormWrapper";
+import { createParent } from "../../../../../../../services/inner-layout/students";
 import { formConfig } from "../parentConfig";
 
 const CreateParent: React.FC<{ type: "father" | "mother", student_id: string }> = ({ type, student_id }) => {

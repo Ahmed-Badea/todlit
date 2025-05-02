@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useMutation } from "react-query";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
-import { Loading } from "@design-system";
-import FormWrapper from "@app/components/FormWrapper";
-import { updateParent } from "@app/services/inner-layout/students";
+import { Loading } from"../../../../../../../design-system";
+import FormWrapper from "../../../../../../../components/FormWrapper";
+import { updateParent } from "../../../../../../../services/inner-layout/students";
 import { formConfig } from "../parentConfig"; // Parent-specific configuration
 
 const EditParent = ({ formData }) => {

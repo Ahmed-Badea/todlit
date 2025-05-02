@@ -3,9 +3,9 @@ import { useMutation } from "react-query";
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit, faTimes, faSave, faSpinner } from "@fortawesome/free-solid-svg-icons";
-import { Button, Popup } from "@design-system";
-import successIcon from "@app/assets/icons/successIcon.png";
-import FormWrapperProps from "@app/types/Form";
+import { Button, Popup } from "../../design-system";
+import successIcon from "../../assets/Icons/successIcon.png";
+import FormWrapperProps from "../../types/Form";
 import DynamicForm from "./DynamicForm";
 import styles from "./formWrapper.module.scss";
 

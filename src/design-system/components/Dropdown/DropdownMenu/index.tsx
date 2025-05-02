@@ -8,8 +8,8 @@ import type {
   IPhoneFieldDropdownMenu,
   ICheckboxesDropdownMenu
 } from '../../../types/Dropdown/dropdown_menu/dropdown-menu';
-import { getDir, getHorizontalPlacement, getVerticalPlacement } from '@design-system/utils/getPlacement';
-import { cloneNestedComponent } from '@design-system/utils/cloneNestedComponent';
+import { getDir, getHorizontalPlacement, getVerticalPlacement } from '../../../utils/getPlacement';
+import { cloneNestedComponent } from '../../../utils/cloneNestedComponent';
 import { DropdownMenuItem } from '../DropdownMenuItem';
 import { Input } from '../../Input';
 import { PhoneInput } from '../../PhoneInput';

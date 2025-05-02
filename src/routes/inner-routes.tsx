@@ -1,19 +1,19 @@
-import Dashboard from "@app/views/pages/inner-layout/Dashboard";
-import Students from "@app/views/pages/inner-layout/Students";
-import Classes from "@app/views/pages/inner-layout/Classes";
-import Staff from "@app/views/pages/inner-layout/Staff";
-import StudentAttendance from "@app/views/pages/inner-layout/StudentAttendance";
-import Activities from "@app/views/pages/inner-layout/Activities";
-import DailyReports from "@app/views/pages/inner-layout/DailyReports";
-import StudentPayment from "@app/views/pages/inner-layout/StudentPayment";
-import Invoice from "@app/views/pages/inner-layout/Invoice";
-import Plans from "@app/views/pages/inner-layout/Plans";
-import Discount from "@app/views/pages/inner-layout/Discount";
-import TaxRate from "@app/views/pages/inner-layout/TaxRate";
-import InvoicePdf from "@app/views/pages/inner-layout/InvoicePdf";
-import AccessControl from "@app/views/pages/inner-layout/AccessControl";
-import ActivityPosts from "@app/views/pages/inner-layout/ActivityPosts";
-import SchoolDetails from "@app/views/pages/inner-layout/SchoolDetails";
+import Dashboard from "../views/pages/inner-layout/Dashboard";
+import Students from "../views/pages/inner-layout/Students";
+import Classes from "../views/pages/inner-layout/Classes";
+import Staff from "../views/pages/inner-layout/Staff";
+import StudentAttendance from "../views/pages/inner-layout/StudentAttendance";
+import Activities from "../views/pages/inner-layout/Activities";
+import DailyReports from "../views/pages/inner-layout/DailyReports";
+import StudentPayment from "../views/pages/inner-layout/StudentPayment";
+import Invoice from "../views/pages/inner-layout/Invoice";
+import Plans from "../views/pages/inner-layout/Plans";
+import Discount from "../views/pages/inner-layout/Discount";
+import TaxRate from "../views/pages/inner-layout/TaxRate";
+import InvoicePdf from "../views/pages/inner-layout/InvoicePdf";
+import AccessControl from "../views/pages/inner-layout/AccessControl";
+import ActivityPosts from "../views/pages/inner-layout/ActivityPosts";
+import SchoolDetails from "../views/pages/inner-layout/SchoolDetails";
 
 export const INNER_ROUTES = {
   DASHBOARD: "/dashboard",

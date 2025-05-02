@@ -1,5 +1,5 @@
-import { Axios } from "@app/tools/axios/axiosInstance";
-import { formatDate } from '@app/utils/formatDate';
+import { Axios } from "../../tools/axios/axiosInstance";
+import { formatDate } from '../../utils/formatDate';
 
 interface StudentData {
   first_name: string;

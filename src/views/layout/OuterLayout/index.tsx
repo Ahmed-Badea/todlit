@@ -1,7 +1,7 @@
-import LangSwitcher from "@app/components/LangSwitcher";
-import { IOuterLayout } from "@app/types/outerLayout";
+import LangSwitcher from "../../../components/LangSwitcher";
+import { IOuterLayout } from "../../../types/outerLayout";
 import styles from "./outer-layout.module.scss";
-import TODLIT from '@app/assets/images/outerLayout/todlit-original.jpeg';
+import TODLIT from '../../../assets/images/outerLayout/todlit-original.jpeg';
 
 const OuterLayout = (
   { formLegend, formSubTitle, children }

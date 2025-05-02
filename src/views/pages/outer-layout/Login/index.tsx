@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
-import { googleTagManagerInitializer } from '@app/utils/googleTagManager';
-import OuterLayout from '@app/views/layout/outerLayout';
+import OuterLayout from '../../../../views/layout/OuterLayout';
 import LoginForm from './steps/LoginForm';
-import { OUTER_ROUTES } from '@app/routes/outer-routes';
-
+import { OUTER_ROUTES } from '../../../../routes/outer-routes';
 
 const STEPS = {
   LOGIN: 1
@@ -14,7 +12,6 @@ const STEPS = {
 const Login = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  // googleTagManagerInitializer();
 
   const [loading, setLoading] = useState(false);
   const [currentStep, setCurrentStep] = useState(STEPS.LOGIN);

@@ -1,11 +1,11 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ChevronRight } from "@design-system/assets/icons/index";
-import { Dropdown, DropdownMenu } from "@design-system";
-import { INavItem } from "@app/types/innerLayout";
-import { useNavigationStore } from "@app/store/navigation";
-import { useClickOutside } from "@app/hooks/useClickOutside";
-import { getVerticalPlacement } from "@app/utils/getPlacement";
+import { ChevronRight } from "../../design-system/assets/Icons/index";
+import { Dropdown, DropdownMenu } from"../../design-system";
+import { INavItem } from "../../types/inner-layout";
+import { useNavigationStore } from "../../store/navigation";
+import { useClickOutside } from "../../hooks/useClickOutside";
+import { getVerticalPlacement } from "../../utils/getPlacement";
 import SubItem from "./SubItem";
 import SubItemsList from "./SubItemsList";
 import styles from "./nav-item.module.scss";

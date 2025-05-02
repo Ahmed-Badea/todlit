@@ -1,4 +1,4 @@
-// import { User } from "@design-system/icons/index";
+// import { User } from "../icons/index";
 import type { IAvatar, IImgAvatar, INameAvatar } from "../../types/Avatar";
 import styles from "./avatar.module.scss";
 

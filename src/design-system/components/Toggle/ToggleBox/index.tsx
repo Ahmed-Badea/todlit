@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from './toggle-box.module.scss';
-import { Toggle } from '..';
+import { Toggle } from '../index'
 import { IToggleBox } from '../../../types/Toggle/toggle_box/toggleBox';
 
 export const ToggleBox = ({

@@ -2,12 +2,12 @@ import { useState, useRef, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
-import { Dropdown, DropdownMenu, DropdownMenuItem } from "@design-system";
-import { langLinks } from "@app/services/inner-layout/navbar";
-import { LangActions } from "@app/types/innerLayout";
-import useLangChange, { handleChangeLanguage } from "@app/hooks/useLangChange";
-import { useClickOutside } from "@app/hooks/useClickOutside";
-import { LangSwitcherProps } from "@app/types";
+import { Dropdown, DropdownMenu, DropdownMenuItem } from"../../design-system";
+import { langLinks } from "../../services/inner-layout/navbar";
+import { LangActions } from "../../types/inner-layout";
+import useLangChange, { handleChangeLanguage } from "../../hooks/useLangChange";
+import { useClickOutside } from "../../hooks/useClickOutside";
+import { LangSwitcherProps } from "../../types";
 import styles from "./lang-switcher.module.scss";
 
 const LangSwitcher = ({ layout, mobView = false }: LangSwitcherProps ) => {

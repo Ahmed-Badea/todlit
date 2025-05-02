@@ -1,5 +1,5 @@
-import { Axios } from "@app/tools/axios/axiosInstance";
-// import { getBotPoison } from "@app/utils/botPoison";
+import { Axios } from "../../tools/axios/axiosInstance";
+// import { getBotPoison } from "../../../utils/botPoison";
 
 export const login = async ({
   email,

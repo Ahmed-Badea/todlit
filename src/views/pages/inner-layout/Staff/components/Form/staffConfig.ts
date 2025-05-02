@@ -1,5 +1,5 @@
 // studentConfig.ts
-import { required } from "@app/utils/formValidations";
+import { required } from "../../../../../../utils/formValidations";
 
 export const formConfig = [
   {

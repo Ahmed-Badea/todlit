@@ -1,11 +1,11 @@
 import { useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Dropdown, DropdownMenu, DropdownMenuItem } from "@design-system";
-import { useClickOutside } from "@app/hooks/useClickOutside";
-import { accountBarLinks } from "@app/services/inner-layout/navbar";
-import { ProfileActions } from "@app/types/innerLayout";
-import { getFromLocalStorage } from "@app/utils/manageLocalStorage";
-import { UserInfo } from "@app/types/inner-layout";
+import { Dropdown, DropdownMenu, DropdownMenuItem } from"../../design-system";
+import { useClickOutside } from "../../hooks/useClickOutside";
+import { accountBarLinks } from "../../services/inner-layout/navbar";
+import { ProfileActions } from "../../types/inner-layout";
+import { getFromLocalStorage } from "../../utils/manageLocalStorage";
+import { UserInfo } from "../../types/inner-layout";
 import { logout } from "../../utils/auth/logout";
 import ProfileButton from "../ProfileMenu/ProfileButton";
 import styles from "./profile-menu.module.scss";

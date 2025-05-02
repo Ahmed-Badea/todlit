@@ -1,14 +1,13 @@
-import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { useTranslation } from "react-i18next";
-import { Tabs, Button } from "@design-system";
-import InnerLayout from "@app/views/layout/innerLayout";
+import { Tabs } from"../../../../../../design-system";
+import InnerLayout from "../../../../../../views/layout/InnerLayout";
 import Profile from "../Tabs/Profile";
 import Attendance from "../Tabs/Attendance";
 import Billing from "../Tabs/Billing";
 import Documents from "../Tabs/Documents";
-import { getStudents } from "@app/services/inner-layout/students";
+import { getStudents } from "../../../../../../services/inner-layout/students";
 
 const StudentsDetails = () => {
   const { t } = useTranslation();

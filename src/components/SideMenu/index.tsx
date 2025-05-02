@@ -1,9 +1,9 @@
 import { useTranslation } from "react-i18next";
-import { LeftToLine, RightToLine } from "@design-system/assets/icons/index";
-import TODLIT from "@app/assets/images/outerLayout/todlit.png";
-import { navLinks } from "@app/services/inner-layout/navbar";
-import { ISideMenu } from "@app/types/innerLayout";
-import { useNavigationStore } from "@app/store/navigation";
+import { LeftToLine, RightToLine } from "../../design-system/assets/icons/index";
+import TODLIT from "../../assets/images/outerLayout/todlit.png";
+import { navLinks } from "../../services/inner-layout/navbar";
+import { ISideMenu } from "../../types/inner-layout";
+import { useNavigationStore } from "../../store/navigation";
 import NavItem from "../NavItem";
 import styles from "./side-menu.module.scss";
 

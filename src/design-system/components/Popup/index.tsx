@@ -1,5 +1,5 @@
-import { PopupProps } from "@design-system/types/Popup/popup";
-import { Button } from "@design-system";
+import { PopupProps } from "../../types/Popup/popup";
+import { Button } from"../Button";
 import styles from "./popup.module.scss";
 
 export const Popup: React.FC<PopupProps> = ({

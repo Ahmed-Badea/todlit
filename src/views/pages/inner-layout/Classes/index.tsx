@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useQuery } from "react-query";
 import { useTranslation } from 'react-i18next';
-import { getClasses } from "@app/services/inner-layout/classes";
+import { getClasses } from "../../../../services/inner-layout/classes";
 import Card from "./components/Card";
-import InnerLayout from "@app/views/layout/innerLayout";
-import { IClass } from "@app/types/inner-layout/classes";
+import InnerLayout from "../../../../views/layout/InnerLayout";
+import { IClass } from "../../../../types/inner-layout/classes";
 import CreateClass from "./components/Form/CreateClass";
 import styles from "./classes.module.scss";
 

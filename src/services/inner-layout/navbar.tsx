@@ -1,7 +1,7 @@
 import {
   ArrowRightFromBracket,
   PenToSquare,
-} from "@design-system/assets/icons/index";
+} from "../../design-system/assets/Icons/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faDashboard,
@@ -28,7 +28,7 @@ import {
   faUserEdit,
   faSignOutAlt
 } from "@fortawesome/free-solid-svg-icons";
-import { EGYFlag, ENGFlag } from "@design-system/assets/icons/countries";
+import { EGYFlag, ENGFlag } from "../../design-system/assets/Icons/countries";
 import type {
   NavLinks,
   AccountBarLinks,

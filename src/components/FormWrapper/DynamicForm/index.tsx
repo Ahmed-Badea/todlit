@@ -7,10 +7,10 @@ import {
   DropdownMenu,
   DropdownMenuItem,
   ColorInput
-} from "@design-system";
-import DatePicker from "@app/components/DatePicker";
-import { isFormValid, validateField } from "@app/utils/formValidations";
-import { DynamicFormProps, FieldConfig, Fields } from "@app/types/form";
+} from"../../../design-system";
+import DatePicker from "../../../components/DatePicker";
+import { isFormValid, validateField } from "../../../utils/formValidations";
+import { DynamicFormProps, FieldConfig, Fields } from "../../../types/inner-layout/form";
 import styles from "./customForm.module.scss";
 
 const DynamicForm = forwardRef(

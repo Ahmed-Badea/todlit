@@ -1,14 +1,13 @@
 import { Dispatch, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@design-system';
-import { addToLocalStorage, deleteFromLocalStorage } from '@app/utils/manageLocalStorage';
-import { passwordsComparisonLiteral, validateField as fieldValidator } from '@app/utils/formValidations';
-import { successIcon } from "@app/assets/icons";
-import FinalStepInfo from '@app/components/FinalStepInfo';
-import type { IField } from '@app/types/outerLayout';
-import OuterLayout from '@app/views/layout/outerLayout';
-import { OUTER_ROUTES } from '@app/routes/outer-routes';
+import { addToLocalStorage, deleteFromLocalStorage } from '../../../../utils/manageLocalStorage';
+import { passwordsComparisonLiteral, validateField as fieldValidator } from '../../../../utils/formValidations';
+import { successIcon } from "../../../../assets/icons";
+import FinalStepInfo from '../../../../components/FinalStepInfo';
+import type { IField } from '../../../../types/outer-layout';
+import OuterLayout from '../../../../views/layout/OuterLayout';
+import { OUTER_ROUTES } from '../../../../routes/outer-routes';
 import RegisterForm from './steps/RegisterForm';
 
 const STEPS = {

@@ -7,7 +7,7 @@ import {
   // DropdownButton,
   // DropdownMenuItem,
   // DropdownMenu,
-} from '@design-system';
+} from '../../../../../design-system'
 import {
   required,
   emailValidation,
@@ -16,11 +16,11 @@ import {
   phoneNumberValidation,
   passwordValidations,
   passwordValidationRules
-} from '@app/utils/formValidations';
-import type { IField, IRegisterForm } from '@app/types/outerLayout';
-import { useEnterKeyPress } from '@app/hooks/useEnterKeyPress';
-import { register } from '@app/services/outer-layout/register';
-import { Spinner } from '@app/assets/icons';
+} from '../../../../../utils/formValidations';
+import type { IField, IRegisterForm } from '../../../../../types/outer-layout';
+import { useEnterKeyPress } from '../../../../../hooks/useEnterKeyPress';
+import { register } from '../../../../../services/outer-layout/register';
+import { Spinner } from '../../../../../assets/icons';
 // import {
 //   getRelatedLabel,
 //   gender

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ITableProps, IRow, IColumn } from "../../types/Table/table";
-import { Button } from "@design-system";
+import { Button } from"../Button";
 import styles from "./table.module.scss";
 
 const getNestedValue = (obj: any, path: string): any => {

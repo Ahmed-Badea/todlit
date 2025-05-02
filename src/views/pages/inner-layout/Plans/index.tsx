@@ -1,8 +1,8 @@
 import { useQuery } from "react-query";
 import { useTranslation } from "react-i18next";
-import InnerLayout from "@app/views/layout/innerLayout";
+import InnerLayout from "../../../../views/layout/InnerLayout";
 import PlanCard from "./components/Plan";
-import { getPlans } from "@app/services/inner-layout/plans";
+import { getPlans } from "../../../../services/inner-layout/plans";
 import CreatePlan from "./components/Form/CreatePlan";
 import styles from "./Plans.module.scss";
 

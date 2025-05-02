@@ -1,6 +1,6 @@
 import type { NavigateFunction } from "react-router-dom";
-import { addToLocalStorage } from "@app/utils/manageLocalStorage";
-import { INNER_ROUTES } from "@app/routes/inner-routes";
+import { addToLocalStorage } from "../../../../utils/manageLocalStorage";
+import { INNER_ROUTES } from "../../../../routes/inner-routes";
 
 export const redirectToDashboard= (navigate: NavigateFunction) => {
   const dashboardRoute = INNER_ROUTES.STUDENTS;

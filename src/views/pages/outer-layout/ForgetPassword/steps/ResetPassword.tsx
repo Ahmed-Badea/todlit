@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Button, Input } from "@design-system";
+import { Button, Input } from"../../../../../design-system";
 import {
   isFormValid,
   passwordMatchValidation,
   passwordValidationRules,
   passwordValidations,
   required
-} from "@app/utils/formValidations";
-import { Spinner } from "@app/assets/icons";
-import { useEnterKeyPress } from "@app/hooks/useEnterKeyPress";
-import { resetPassword } from "@app/services/outer-layout/forget-password";
-import { IField, IResetPassword } from "@app/types/outerLayout";
-import { OUTER_ROUTES } from "@app/routes/outer-routes";
+} from "../../../../../utils/formValidations";
+import { Spinner } from "../../../../../assets/icons";
+import { useEnterKeyPress } from "../../../../../hooks/useEnterKeyPress";
+import { resetPassword } from "../../../../../services/outer-layout/forget-password";
+import { IField, IResetPassword } from "../../../../../types/outer-layout";
+import { OUTER_ROUTES } from "../../../../../routes/outer-routes";
 
 
 const SUBMIT_BTN_ID = 'reset-password-submit-btn';

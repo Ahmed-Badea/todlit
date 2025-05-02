@@ -1,10 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import { Tabs, Button } from '@design-system';
-import InnerLayout from '@app/views/layout/innerLayout';
+import { Tabs } from '../../../../../../design-system';
+import InnerLayout from '../../../../../../views/layout/InnerLayout';
 import Profile from '../Tabs/Profile';
-import { getStaff } from '@app/services/inner-layout/staff';
-import styles from './staffDetails.module.scss';
+import { getStaff } from '../../../../../../services/inner-layout/staff';
 
 const StaffDetails = () => {
   const { id } = useParams<{ id: string }>();

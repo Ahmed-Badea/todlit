@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Label } from "@design-system"; // Adjust import path if needed
+import { Label } from "../../design-system"; // Adjust import path if needed
 import styles from "./datePicker.module.scss";
 
 interface DatePickerProps {

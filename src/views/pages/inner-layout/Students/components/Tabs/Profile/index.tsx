@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "react-query";
-import DetailsBox from "@app/components/DetailsBox";
-import { getParents } from "@app/services/inner-layout/students";
+import DetailsBox from "../../../../../../../components/DetailsBox";
+import { getParents } from "../../../../../../../services/inner-layout/students";
 import EditStudent from "../../Form/EditStudent";
 import CreateParent from "../../Form/CreateParent";
 import EditParent from "../../Form/EditParent";

@@ -1,4 +1,4 @@
-import InnerLayout from "@app/views/layout/innerLayout";
+import InnerLayout from "../../../../views/layout/InnerLayout";
 const Invoice = () => {
   return (
     <InnerLayout>

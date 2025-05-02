@@ -1,6 +1,6 @@
-import { Axios } from "@app/tools/axios/axiosInstance";
-// import { getBotPoison } from "@app/utils/botPoison";
-import { getFromLocalStorage } from "@app/utils/manageLocalStorage";
+import { Axios } from "../../tools/axios/axiosInstance";
+// import { getBotPoison } from "../../../utils/botPoison";
+import { getFromLocalStorage } from "../../utils/manageLocalStorage";
 
 const signupPhoneToken = getFromLocalStorage("signup_by_phone_token");
 

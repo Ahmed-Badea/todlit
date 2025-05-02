@@ -1,12 +1,12 @@
-import { Country, IField } from "@app/types/outerLayout";
-import { getCountryFromDomain } from "@app/utils/getCountryFromDomain";
-import OuterLayout from "@app/views/layout/outerLayout";
+import { Country, IField } from "../../../../types/outer-layout";
+import { getCountryFromDomain } from "../../../../utils/getCountryFromDomain";
+import OuterLayout from "../../../../views/layout/OuterLayout";
 import { Dispatch, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { passwordsComparisonLiteral, validateField as fieldValidator } from '@app/utils/formValidations';
+import { passwordsComparisonLiteral, validateField as fieldValidator } from '../../../../utils/formValidations';
 import UserCheck from "./steps/UserCheck";
-import { OUTER_ROUTES } from "@app/routes/outer-routes";
+import { OUTER_ROUTES } from "../../../../routes/outer-routes";
 import ResetPassword from "./steps/ResetPassword";
 import OtpStep from "./steps/OtpStep";
 

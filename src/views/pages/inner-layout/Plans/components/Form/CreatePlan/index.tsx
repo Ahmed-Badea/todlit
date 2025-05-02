@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@design-system';
-import FormWrapper from '@app/components/FormWrapper';
-import { createPlan } from '@app/services/inner-layout/plans';
+import { Button } from '../../../../../../../design-system'
+import FormWrapper from '../../../../../../../components/FormWrapper';
+import { createPlan } from '../../../../../../../services/inner-layout/plans';
 import { formConfig } from '../planConfig';
 
 const CreatePlan = () => {

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import TODLIT from "@app/assets/images/outerLayout/todlit.png";
+import TODLIT from "../../assets/images/outerLayout/todlit.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { navLinks } from "@app/services/inner-layout/navbar";
-import { IMobileNavMenu } from "@app/types/innerLayout";
-import BusinessInfo from "@app/components/BusinessInfo";
-import ProfileMenu from "@app/components/ProfileMenu";
-import LangSwitcher from "@app/components/LangSwitcher";
+import { navLinks } from "../../services/inner-layout/navbar";
+import { IMobileNavMenu } from "../../types/inner-layout";
+import BusinessInfo from "../../components/BusinessInfo";
+import ProfileMenu from "../../components/ProfileMenu";
+import LangSwitcher from "../../components/LangSwitcher";
 import NavItem from "../NavItem";
 import styles from "./mobile-nav-menu.module.scss";
 

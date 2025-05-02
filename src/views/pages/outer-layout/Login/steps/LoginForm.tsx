@@ -1,21 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
-import { Input, Button } from '@design-system';
-import { googleTagManagerInitializer } from '@app/utils/googleTagManager';
+import { Input, Button } from '../../../../../design-system'
 import {
   required,
   isFormValid,
   validateField,
   emailValidation
-} from '@app/utils/formValidations';
-import { useEnterKeyPress } from '@app/hooks/useEnterKeyPress';
-import type { IField, ILoginForm } from '@app/types/outerLayout';
-import { Spinner } from '@app/assets/icons';
-import { login } from '@app/services/outer-layout/login';
+} from '../../../../../utils/formValidations';
+import { useEnterKeyPress } from '../../../../../hooks/useEnterKeyPress';
+import type { IField, ILoginForm } from '../../../../../types/outer-layout';
+import { Spinner } from '../../../../../assets/icons';
+import { login } from '../../../../../services/outer-layout/login';
 import { handleAfterLogin } from '../utils';
 import styles from "../login.module.scss";
-import { OUTER_ROUTES } from '@app/routes/outer-routes';
+import { OUTER_ROUTES } from '../../../../../routes/outer-routes';
 
 
 const FieldNames = {

@@ -1,4 +1,4 @@
-import { Axios } from "@app/tools/axios/axiosInstance";
+import { Axios } from "../../tools/axios/axiosInstance";
 
 // Fetch all classes with optional filters
 export const getClasses = async (filters = {}) => {

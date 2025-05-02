@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@design-system';
-import FormWrapper from '@app/components/FormWrapper';
-import { createStudent } from '@app/services/inner-layout/students';
-import { useClassesStore } from '@app/store/classes';
+import { Button } from '../../../../../../../design-system'
+import FormWrapper from '../../../../../../../components/FormWrapper';
+import { createStudent } from '../../../../../../../services/inner-layout/students';
+import { useClassesStore } from '../../../../../../../store/classes';
 import { formConfig } from '../studentConfig';
 
 const CreateStudent = () => {

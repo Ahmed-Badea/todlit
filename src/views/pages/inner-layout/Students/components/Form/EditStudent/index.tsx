@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import { Loading } from '@design-system';
-import FormWrapper from '@app/components/FormWrapper';
-import { updateStudent } from '@app/services/inner-layout/students';
-import { useClassesStore } from '@app/store/classes';
+import { Loading } from '../../../../../../../design-system'
+import FormWrapper from '../../../../../../../components/FormWrapper';
+import { updateStudent } from '../../../../../../../services/inner-layout/students';
+import { useClassesStore } from '../../../../../../../store/classes';
 import { formConfig } from '../studentConfig';
 
 const EditStudent = ({ formData }) => {

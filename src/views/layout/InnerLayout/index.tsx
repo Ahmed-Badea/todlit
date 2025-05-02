@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from "react-query";
-import { IInnerLayout } from '@app/types/innerLayout';
-import { MOBILE_BREAKPOINT } from '@app/constants/break-points';
-import useScreenWidth from '@app/hooks/useScreenWidth';
-import MobileNavMenu from '@app/components/MobileNavMenu';
-import SideMenu from '@app/components/SideMenu';
-import Navbar from '@app/components/Navbar';
-import { Loading, ErrorPage } from '@design-system';
-import { getClasses } from "@app/services/inner-layout/classes";
-import { useClassesStore } from '@app/store/classes';
+import { IInnerLayout } from '../../../types/inner-layout';
+import { MOBILE_BREAKPOINT } from '../../../constants/break-points';
+import useScreenWidth from '../../../hooks/useScreenWidth';
+import MobileNavMenu from '../../../components/MobileNavMenu';
+import SideMenu from '../../../components/SideMenu';
+import Navbar from '../../../components/Navbar';
+import { Loading, ErrorPage } from '../../../design-system'
+import { getClasses } from "../../../services/inner-layout/classes";
+import { useClassesStore } from '../../../store/classes';
 import styles from './inner-layout.module.scss';
 
 const InnerLayout: React.FC<IInnerLayout> = ({ children, isLoading, error, errorMessage }) => {

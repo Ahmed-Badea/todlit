@@ -1,13 +1,13 @@
 import { useState, type Dispatch } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Input, Button } from '@design-system';
-import type { IField, IUserCheck } from '@app/types/outerLayout';
-import { COUNTRIES_INFO, isFormValid, required, emailValidation } from '@app/utils/formValidations';
-import { Spinner } from '@app/assets/icons';
-import { checkUser } from '@app/services/outer-layout/forget-password';
-import { useEnterKeyPress } from '@app/hooks/useEnterKeyPress';
-import { addToLocalStorage } from '@app/utils/manageLocalStorage';
+import { Input, Button } from '../../../../../design-system'
+import type { IField, IUserCheck } from '../../../../../types/outer-layout';
+import { COUNTRIES_INFO, isFormValid, required, emailValidation } from '../../../../../utils/formValidations';
+import { Spinner } from '../../../../../assets/icons';
+import { checkUser } from '../../../../../services/outer-layout/forget-password';
+import { useEnterKeyPress } from '../../../../../hooks/useEnterKeyPress';
+import { addToLocalStorage } from '../../../../../utils/manageLocalStorage';
 import styles from "../forget-password.module.scss";
 
 const FieldNames = {

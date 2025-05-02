@@ -1,10 +1,10 @@
 import { Dispatch, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, OTPStep } from '@design-system';
-import { useEnterKeyPress } from '@app/hooks/useEnterKeyPress';
-import { Spinner } from '@app/assets/icons';
-import { IForgetPasswordOtpStep } from '@app/types/outerLayout';
-import { forgetPasswordVerifyOtp } from '@app/services/outer-layout/forget-password';
+import { Button, OTPStep } from '../../../../../design-system'
+import { useEnterKeyPress } from '../../../../../hooks/useEnterKeyPress';
+import { Spinner } from '../../../../../assets/icons';
+import { IForgetPasswordOtpStep } from '../../../../../types/outer-layout';
+import { forgetPasswordVerifyOtp } from '../../../../../services/outer-layout/forget-password';
 import styles from "../forget-password.module.scss";
 
 

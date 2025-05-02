@@ -1,5 +1,5 @@
-import { AngelList } from "@design-system/assets/icons/digital_platforms/other";
-import { getFromLocalStorage } from "@app/utils/manageLocalStorage";
+import { AngelList } from "../../design-system/assets/Icons/digital_platforms/other";
+import { getFromLocalStorage } from "../../utils/manageLocalStorage";
 import styles from "./business-info.module.scss";
 
 const BusinessInfo = () => {

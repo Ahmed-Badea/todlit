@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getServerUrl } from "@app/utils/serverUrls";
+import { getServerUrl } from "../../utils/serverUrls";
 
 const ONE_SECOND = 1000;
 const ONE_MINUTE = 60 * ONE_SECOND;
