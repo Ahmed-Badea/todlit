@@ -29,7 +29,7 @@ const useLangChange = () => {
 
 export default useLangChange;
 
-export const handleChangeLanguage = (lang) => {
+export const handleChangeLanguage = (lang?: string) => {
   let newLanguage;
   if(lang){
     newLanguage = lang === "ar" ? "ar" : "en";

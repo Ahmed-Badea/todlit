@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useLayoutEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Blurhash } from "react-blurhash";
 
 const ImageLoader = (

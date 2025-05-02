@@ -7,40 +7,47 @@ import { Table, Dropdown, DropdownButton, DropdownMenu, DropdownMenuItem } from"
 import { getStudents } from "../../../../services/inner-layout/students";
 import InnerLayout from "../../../../views/layout/InnerLayout";
 import CreateStudent from "./components/Form/CreateStudent";
+import { IRow } from "../../../../design-system/types/Table/table";
+import { Language } from "../../../../types";
 import columns from "./studentTableStruc.json";
 import styles from "./students.module.scss";
 
 const Students = () => {
   const { t, i18n } = useTranslation();
-  const lang = i18n.language;
+  const lang = i18n.language as Language;
   const navigate = useNavigate();
   const location = useLocation();
   const queryClient = useQueryClient();
   const { classes } = useClassesStore();
 
-  const searchParams = new URLSearchParams(location.search);
   const [classFilter, setClassFilter] = useState<string>('');
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   // On first load: convert ?class=className to class ID
   useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
     const classParam = searchParams.get("class");
     if (classParam && classes.length > 0) {
-      const matchedClass = classes.find(cls => cls.name === classParam);
+      const matchedClass = classes.find((cls: { id: number; name: string }) => cls.name === classParam);
       if (matchedClass) {
         setClassFilter(String(matchedClass.id));
       } else {
         setClassFilter('');
       }
     }
-  }, [classes]);
-
+  }, [classes, location.search]);
   const {
     data: studentsData,
     error,
     isLoading,
     isFetching,
     refetch,
+  }: {
+    data: any;
+    error: { message?: string } | null;
+    isLoading: boolean;
+    isFetching: boolean;
+    refetch: () => void;
   } = useQuery(
     ["fetchStudents", classFilter],
     () => getStudents(classFilter ? { classroom_id: classFilter } : {})
@@ -53,17 +60,18 @@ const Students = () => {
   }, [classFilter, refetch]);
 
   const toggleDropdown = () => {
-    setDropdownOpen((prev) => !prev);
+    setDropdownOpen(!dropdownOpen);
   };
 
-  const handleRowClick = (row: { id: string }) => {
+  
+  const handleRowClick = (row: IRow) => {
     navigate(`/students/${row.id}`);
   };
 
   const handleClassFilterChange = (selectedId: string) => {
     setClassFilter(selectedId);
 
-    const selectedClass = classes.find(cls => String(cls.id) === selectedId);
+    const selectedClass = classes.find((cls: { id: number; name: string }) => String(cls.id) === selectedId);
     const params = new URLSearchParams(location.search);
 
     if (selectedClass) {
@@ -79,7 +87,7 @@ const Students = () => {
   // For dropdown button label
   const selectedClassName = useMemo(() => {
     if (!classFilter) return t("innerLayout.students.allClasses") || "All classes";
-    const selectedClass = classes.find(cls => String(cls.id) === classFilter);
+    const selectedClass = classes.find((cls: { id: number; name: string }) => String(cls.id) === classFilter);
     return selectedClass?.name || "Unknown class";
   }, [classFilter, classes, t]);
 
@@ -104,14 +112,14 @@ const Students = () => {
                 onClickHandler={() => handleClassFilterChange('')}
                 selected={classFilter === ''}
               />
-              {classes?.map((option) => (
+                {classes?.map((option: { id: number; name: string }) => (
                 <DropdownMenuItem
                   key={option.id}
                   text={option.name}
                   onClickHandler={() => handleClassFilterChange(String(option.id))}
                   selected={classFilter === String(option.id)}
                 />
-              ))}
+                ))}
             </DropdownMenu>
           </Dropdown>
         </div>

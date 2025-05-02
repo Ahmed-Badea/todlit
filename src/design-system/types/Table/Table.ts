@@ -2,8 +2,7 @@ export interface IColumn {
   title_en: string;
   title_ar: string;
   value: string;
-  dataType: 'text' | 'name' | 'num' | 'date' | 'boolean' | 'button' | 'array';
-  combinedName?: boolean;
+  dataType: 'string' | 'name' | 'num' | 'date' | 'boolean' | 'button' | 'array';
 }
 
 export interface IRow {

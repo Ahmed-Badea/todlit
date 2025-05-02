@@ -8,7 +8,7 @@ import { IClass } from "../../../../types/inner-layout/classes";
 import CreateClass from "./components/Form/CreateClass";
 import styles from "./classes.module.scss";
 
-const Classes = () => {
+const Classes: React.FC = () => {
   const { t } = useTranslation();
 
   const {
@@ -17,37 +17,34 @@ const Classes = () => {
     isLoading,
     isFetching,
     refetch,
-  } = useQuery("fetchClasses", getClasses);
+  } = useQuery<IClass[], Error>("fetchClasses", getClasses);
 
   useEffect(() => {
     refetch();
   }, [refetch]);
 
-  // Delete handler (you can connect it to an actual backend delete function)
   const handleDeleteClass = (id: string) => {
     console.log(`Delete classroom with id ${id}`);
-    // Example: Call a delete API here to remove the class
-    // deleteClass(id);
   };
 
   return (
     <InnerLayout isLoading={isLoading || isFetching} error={error} errorMessage={error?.message}>
       <div className={styles.header}>
-        <h3>{t("innerLayout.classes.title")}</h3> {/* Translated title */}
+        <h3>{t("innerLayout.classes.title")}</h3>
         <CreateClass />
       </div>
       <div className={styles['classroom-list']}>
-        {classesData?.map(({ id, name, capacity, min_age, max_age, staff_count, students_count }: IClass) => (
+        {classesData?.map(({ id, name, capacity, min_age, max_age, staff_count, students_count }) => (
           <Card
             key={id}
             roomName={name}
-            students={students_count || 0} // Fallback to 0 if undefined or null
-            activeStudents={students_count || 0} // Assuming all students are active
-            staff={staff_count || 0} // Fallback to 0 if undefined or null
-            activeStaff={staff_count || 0} // Assuming all staff are active
-            capacity={capacity || 0} // Fallback to 0 if undefined or null
-            minAge={min_age?.toString() || 'N/A'} // Handle undefined min_age
-            maxAge={max_age?.toString() || 'N/A'} // Handle undefined max_age
+            students={students_count ?? 0}
+            activeStudents={students_count ?? 0}
+            staff={staff_count ?? 0}
+            activeStaff={staff_count ?? 0}
+            capacity={capacity ?? 0}
+            minAge={typeof min_age === 'number' ? min_age.toString() : 'N/A'}
+            maxAge={typeof max_age === 'number' ? max_age.toString() : 'N/A'}
             onDelete={() => handleDeleteClass(id)}
           />
         ))}

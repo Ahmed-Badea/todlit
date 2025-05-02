@@ -125,16 +125,22 @@ const RegisterForm = ({
     const passwordValue = fields[FieldNames.PASSWORD].value;
     const confirmPasswordValue = fields[FieldNames.CONFIRM_PASSWORD].value;
 
-    typeof passwordValue === 'string' &&
-      (validateField(fields, setFields, FieldNames.PASSWORD, passwordValue), setShowPasswordRules(true));
+    if (typeof passwordValue === 'string') {
+      validateField(fields, setFields, FieldNames.PASSWORD, passwordValue);
+      setShowPasswordRules(true);
+    }
 
-    typeof confirmPasswordValue === 'string' && validateField(fields, setFields, FieldNames.CONFIRM_PASSWORD, confirmPasswordValue);
+    if (typeof confirmPasswordValue === 'string') {
+      validateField(fields, setFields, FieldNames.CONFIRM_PASSWORD, confirmPasswordValue);
+    }
 
   }, [fields[FieldNames.PASSWORD].value]);
 
   useEffect(() => {
     const confirmPasswordValue = fields[FieldNames.CONFIRM_PASSWORD].value;
-    typeof confirmPasswordValue === 'string' && validateField(fields, setFields, FieldNames.CONFIRM_PASSWORD, confirmPasswordValue);
+    if (typeof confirmPasswordValue === 'string') {
+      validateField(fields, setFields, FieldNames.CONFIRM_PASSWORD, confirmPasswordValue);
+    }
 
   }, [fields[FieldNames.CONFIRM_PASSWORD].value]);
 

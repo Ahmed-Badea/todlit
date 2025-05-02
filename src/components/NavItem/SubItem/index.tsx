@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ISubItem } from "../../../types/innerLayout";
+import { ISubItem } from "../../../types/inner-layout";
 import { useNavigationStore } from "../../../store/navigation";
 import styles from "../nav-item.module.scss";
 

@@ -5,6 +5,7 @@ export type ProfileActions = "edit-profile" | "logout";
 export type LangActions = "ar" | "en";
 
 export interface NavLinks {
+  hasSpecialAction: any;
   mobileOnlyLinks?: boolean;
   label: string;
   icon: any;
@@ -42,6 +43,7 @@ export interface IInnerLayout {
   children: ReactNode;
   isLoading?: boolean;
   error?: any;
+  errorMessage?: string;
 }
 
 export interface IAccountBar {

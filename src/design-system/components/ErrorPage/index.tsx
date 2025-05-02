@@ -1,5 +1,7 @@
 import React from "react";
-import { IErrorPage } from "../../types/PageLoading/errorPage";
+interface IErrorPage {
+  text?: string;
+}
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 import styles from "./error.module.scss";

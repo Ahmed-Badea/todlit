@@ -20,7 +20,7 @@ const ProfileMenu = ({ mobView = false }: { mobView?: boolean }) => {
     userShortName: "",
     role: "",
     imgUrl: "",
-    avatarType: "",
+    avatarType: "name",
   });
 
   useEffect(() => {

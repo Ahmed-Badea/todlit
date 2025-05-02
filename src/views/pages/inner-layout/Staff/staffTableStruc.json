@@ -3,31 +3,31 @@
     "title_en": "First Name",
     "title_ar": "الإسم الأول",
     "value": "first_name",
-    "dataType": "text"
+    "dataType": "string"
   },
   {
     "title_en": "Last Name",
     "title_ar": "الإسم الأخير",
     "value": "last_name",
-    "dataType": "text"
+    "dataType": "string"
   },
   {
     "title_en": "Gender",
     "title_ar": "الجنس",
     "value": "gender",
-    "dataType": "text"
+    "dataType": "string"
   },
   {
     "title_en": "Phone",
     "title_ar": "الموبايل",
     "value": "phone",
-    "dataType": "text"
+    "dataType": "string"
   },
   {
     "title_en": "Email",
     "title_ar": "البريد الإلكترونى",
     "value": "email",
-    "dataType": "text"
+    "dataType": "string"
   },
   {
     "title_en": "Classrooms",

@@ -69,7 +69,7 @@ const MobileNavMenu = ({
                       active={activeNavLink === navLink.label}
                       route={navLink.route}
                       subItems={navLink?.subLinks?.map((subLink) => ({
-                        icon: subLink.icon,
+                        icon: subLink.icon as React.ReactElement<"svg"> | undefined,
                         label: subLink.label,
                         route: subLink.route,
                         active: activeSubLink === subLink.label

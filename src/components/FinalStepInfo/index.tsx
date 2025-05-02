@@ -1,4 +1,4 @@
-import { IFinalStepInfo } from "../../../types/outerLayout";
+import { IFinalStepInfo } from "../../types/outer-layout/final-step";
 import styles from "./final-step-info.module.scss";
 
 const FinalStepInfo = ({ text, img }: IFinalStepInfo) => {

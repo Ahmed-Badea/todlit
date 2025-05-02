@@ -59,7 +59,9 @@ export const FileUploader = ({
             return;
         };
 
-        onUploadHandler && onUploadHandler(FILE);
+        if (onUploadHandler) {
+            onUploadHandler(FILE);
+        }
         setUploadedFile(FILE);
         setUploadedFileInfo({ name: FILE.name, size: FILE.size });
         setInvalid(false);
@@ -72,7 +74,9 @@ export const FileUploader = ({
 
     const handleUploadAgain = () => {
         const fileInputField: HTMLElement | null = document.getElementById("file-upload-input");
-        fileInputField && fileInputField.click();
+        if (fileInputField) {
+            fileInputField.click();
+        }
     }
 
     const handleFileDelete = () => {
@@ -80,7 +84,9 @@ export const FileUploader = ({
         setErrorMsg("");
         setUploadedFile(undefined);
         setUploadedFileInfo({ name: '' });
-        onUploadHandler && onUploadHandler(undefined);
+        if (onUploadHandler) {
+            onUploadHandler(undefined);
+        }
     };
 
     const checkFileType = (fileName: string) => {
@@ -93,7 +99,9 @@ export const FileUploader = ({
     };
 
     useEffect(() => {
-        previouslyUploadedFile && setUploadedFileInfo({ name: previouslyUploadedFile});
+        if (previouslyUploadedFile) {
+            setUploadedFileInfo({ name: previouslyUploadedFile });
+        }
     }, [previouslyUploadedFile]);
 
     return (

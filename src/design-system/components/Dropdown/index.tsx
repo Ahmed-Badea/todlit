@@ -1,4 +1,4 @@
-import { useState, useRef, forwardRef, Children, cloneElement } from 'react';
+import { useState, useRef, forwardRef, Children } from 'react';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { IDropdown } from '../../types/Dropdown/dropdown';
 import { cloneNestedComponent } from '../../utils/cloneNestedComponent';

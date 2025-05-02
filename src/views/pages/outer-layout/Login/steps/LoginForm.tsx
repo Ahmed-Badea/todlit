@@ -43,8 +43,8 @@ const LoginForm = (
   {
     loading,
     setLoading,
-    setCurrentStep,
-    STEPS,
+    // setCurrentStep,
+    // STEPS,
     redirectToRegister,
   }: ILoginForm
 ) => {

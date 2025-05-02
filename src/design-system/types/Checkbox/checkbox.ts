@@ -1,4 +1,4 @@
-import { ChangeEventHandler, FocusEventHandler, ReactNode, Ref } from 'react';
+import { ChangeEventHandler, FocusEventHandler, Ref } from 'react';
 
 export interface ICheckbox {
   id?: string;

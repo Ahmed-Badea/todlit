@@ -7,20 +7,31 @@ import CreateParent from "../../Form/CreateParent";
 import EditParent from "../../Form/EditParent";
 import "./index.scss";
 
-const Profile = ({ formData, id }) => {
+// Define or import the Parent type
+type Parent = {
+  gender: string;
+  // Add other properties of Parent if needed
+};
+
+interface ProfileProps {
+  formData: any; // Replace 'any' with the specific type if known
+  id: string | number | null; // Adjust the type based on your use case
+}
+
+const Profile = ({ formData, id }: ProfileProps) => {
   const [parents, setParents] = useState({ father: null, mother: null });
 
   const { data: ParentsData, isLoading } = useQuery(
     ["fetchParents", id],
-    () => getParents(id ? { student_id: id } : {}),
+    () => getParents(id ? { student_id: String(id) } : {}),
     { enabled: !!id } // Prevent the query from running when `id` is null or undefined
   );
 
   useEffect(() => {
     if (ParentsData?.length) {
       setParents({
-        father: ParentsData.find((parent) => parent.gender === "male") || null,
-        mother: ParentsData.find((parent) => parent.gender === "female") || null,
+        father: ParentsData.find((parent: Parent) => parent.gender === "male") || null,
+        mother: ParentsData.find((parent: Parent) => parent.gender === "female") || null,
       });
     }
   }, [ParentsData]);
@@ -38,7 +49,7 @@ const Profile = ({ formData, id }) => {
         ) : (
           <DetailsBox 
             title={"Father Details"}
-            children={<CreateParent type="father" student_id={id} />}
+            children={<CreateParent type="father" student_id={id ? String(id) : ""} />}
           />
         )}
 
@@ -47,7 +58,7 @@ const Profile = ({ formData, id }) => {
         ) : (
           <DetailsBox 
             title={"Mother Details"}
-            children={<CreateParent type="mother" student_id={id} />}
+            children={<CreateParent type="mother" student_id={id ? String(id) : ""} />}
           />
         )}
       </div>

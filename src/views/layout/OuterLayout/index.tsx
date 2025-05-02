@@ -1,5 +1,5 @@
 import LangSwitcher from "../../../components/LangSwitcher";
-import { IOuterLayout } from "../../../types/outerLayout";
+import { IOuterLayout } from "../../../types/outer-layout";
 import styles from "./outer-layout.module.scss";
 import TODLIT from '../../../assets/images/outerLayout/todlit-original.jpeg';
 

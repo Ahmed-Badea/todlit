@@ -1,19 +1,26 @@
 export interface FieldConfig {
+  [x: string]: undefined;
   name: string;
-  type: "text" | "date" | "dropdown";
+  type: "text" | "date" | "dropdown" | "multi-dropdown" | "color" | "time";
   value: string | Date;
   errorMsg: string;
   label?: { en: string; ar: string };
   validations?: ((value: string | Date) => string | undefined)[];
   options?: { label: { en: string; ar: string }; value: string }[];
+  selectedColor?: string;
 }
 
-export interface Field {
-  value: string | Date;
-  isValid: boolean | undefined;
+export interface IField {
+  value?: string | string[] | Date;
+  isValid?: boolean;
   errorMsg: string;
-  validations: ((value: string | Date) => string | undefined)[];
+  validations: {
+    pattern: RegExp;
+    error_msg: string;
+  }[];
 }
+
+
 
 export interface Fields {
   [key: string]: Field;
@@ -21,7 +28,6 @@ export interface Fields {
 
 export interface DynamicFormProps {
   fieldsConfig: FieldConfig[];
-  lang: 'en' | 'ar';
   mode: 'popup' | 'table';
   setFormValid: (valid: boolean) => void;
   isLoading: boolean;
@@ -31,13 +37,20 @@ export interface DynamicFormProps {
 }
 
 export interface FormWrapperProps {
-  lang: "en" | "ar";
   fieldsConfig: FieldConfig[];
-  submitFn: (data: any) => Promise<any>; // Function for form submission (POST/PUT)
-  successMessage: string; // Success message to display,
+  submitFn: (data: any) => Promise<any>;
+  successMessage: string;
   mode?: "popup" | "table";
-  title?: string; // Title for the popup
-  isOpen?: boolean; // Controls popup visibility
-  isEditable?: boolean; // Determines if the form is for editing
-  isFormValid?: boolean; // Pass form validity to FormWrapper
+  title?: string;
+  isOpen?: boolean;
+  onClose?: () => void;
+  canEdit?: boolean;
+  canDelete?: boolean;
+  isFormValid?: boolean;
+  params?: Record<string, any>;
+}
+
+export interface CustomFormRef {
+  // Add existing properties here
+  submitForm: () => any; // Define the return type of submitForm appropriately
 }

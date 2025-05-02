@@ -43,7 +43,7 @@ export const Checkbox = ({
 
   const handleClick = (e: any) => {
     e.preventDefault();
-    setIsChecked((prevState) => {
+    setIsChecked((prevState: any) => {
       onClickHandler?.(!prevState, text || hintText);
       return !prevState;
     });

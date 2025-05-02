@@ -1,4 +1,4 @@
-import { Dispatch, ReactElement, ReactNode } from "react";
+import { Dispatch, ReactNode } from "react";
 
 export interface IValidation {
   pattern: RegExp;
@@ -110,7 +110,6 @@ export interface IRegisterForm {
   redirectToLogin: () => void,
   setCurrentStep: Dispatch<number>,
   STEPS: { PHONE_NUMBER_VERIFICATION: number; OTP: number; REGISTER: number; SUCCESSFUL_REGISTER: number; },
-  leadToken: string
 };
 
 export interface ISubMerchantActivationOtpStep extends IOtpStep {

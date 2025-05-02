@@ -5,10 +5,17 @@ import { toast } from 'react-toastify';
 import { Loading } from '../../../../../../../design-system'
 import FormWrapper from '../../../../../../../components/FormWrapper';
 import { updateStudent } from '../../../../../../../services/inner-layout/students';
+import { Classroom } from '../../../../../../../types/inner-layout/classes';
 import { useClassesStore } from '../../../../../../../store/classes';
 import { formConfig } from '../studentConfig';
 
-const EditStudent = ({ formData }) => {
+interface FormData {
+  id: string;
+  classroom: string;
+  [key: string]: any; // Adjust this as needed to match the structure of formData
+}
+
+const EditStudent = ({ formData }: { formData: FormData }) => {
   const { t } = useTranslation();
   const { classes } = useClassesStore();
 
@@ -19,18 +26,18 @@ const EditStudent = ({ formData }) => {
     if (classes && formData) {
       const newFormConfig = formConfig.map((field) => {
         if (field.name === 'classroom') {
-          const selectedClassroom = classes.find(
-            (classroom) => classroom.name === formData.classroom
-          );
+            const selectedClassroom = classes.find(
+            (classroom: Classroom) => classroom.name === formData.classroom
+            );
 
-          return {
+            return {
             ...field,
-            options: classes.map((classroom) => ({
+            options: classes.map((classroom: Classroom) => ({
               label: { en: classroom.name, ar: classroom.name },
               value: classroom.name,
             })),
             value: selectedClassroom ? selectedClassroom.name : '',
-          };
+            };
         }
         return {
           ...field,

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit, faTimes, faSave, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { Button, Popup } from "../../design-system";
 import successIcon from "../../assets/Icons/successIcon.png";
-import FormWrapperProps from "../../types/Form";
+import { FormWrapperProps, CustomFormRef } from "../../types/inner-layout/form";
 import DynamicForm from "./DynamicForm";
 import styles from "./formWrapper.module.scss";
 
@@ -16,7 +16,7 @@ const FormWrapper: React.FC<FormWrapperProps> = ({
   mode = "popup",
   title,
   isOpen = false,
-  onClose,
+  onClose = () => {},
   canEdit = false,
   canDelete = false,
   isFormValid = false,
@@ -78,7 +78,7 @@ const FormWrapper: React.FC<FormWrapperProps> = ({
   );
 
   const renderPopup = () => (
-    <Popup isOpen={isOpen} onClose={onClose} title={title}>
+    <Popup isOpen={isOpen} onClose={onClose} title={title || "Default Title"}>
       {showSuccess ? 
         renderSuccessMessage() 
       :

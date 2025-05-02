@@ -11,8 +11,10 @@ import { OUTER_ROUTES } from '../../../../routes/outer-routes';
 import RegisterForm from './steps/RegisterForm';
 
 const STEPS = {
-  REGISTER: 1,
-  SUCCESSFUL_REGISTER: 2
+  PHONE_NUMBER_VERIFICATION: 0,
+  OTP: 1,
+  REGISTER: 2,
+  SUCCESSFUL_REGISTER: 3
 }
 
 const Register = () => {
@@ -23,23 +25,14 @@ const Register = () => {
   const [currentStep, setCurrentStep] = useState(STEPS.REGISTER);
 
   useEffect(() => {
-    const path = window.location.pathname;
-    if (path.includes('leads')) {
-      const pathSegments = path.split("/");
-      const leadToken = pathSegments[pathSegments.length - 1];
-
-      setLeadToken(leadToken);
-    }
-  }, []);
-
-  useEffect(() => {
     const searchParams = window.location.search;
     const flash = new URLSearchParams(searchParams).get("flash");
 
-    flash === "true" ?
-      addToLocalStorage("flash_redirect", "true")
-      :
+    if (flash === "true") {
+      addToLocalStorage("flash_redirect", "true");
+    } else {
       deleteFromLocalStorage("flash_redirect");
+    }
   }, []);
 
   const formSubTitles = {
@@ -70,7 +63,7 @@ const Register = () => {
   return (
     <OuterLayout
       renderUsps={true}
-      formLegend={currentStep !== STEPS.SUCCESSFUL_REGISTER && t('outerLayout.form.register.signUp')}
+      formLegend={currentStep !== STEPS.SUCCESSFUL_REGISTER ? t('outerLayout.form.register.signUp') : ''}
       formSubTitle={formSubTitles[currentStep]}
     >
       {

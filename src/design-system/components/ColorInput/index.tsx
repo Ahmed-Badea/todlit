@@ -19,13 +19,13 @@ export const ColorInput: React.FC<ColorInputProps> = ({
   disabled,
 }) => {
   const [color, setColor] = useState(initialColor);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | undefined>(undefined);
 
   const hexRegex = /^#([0-9A-F]{3}){1,2}$/i;
 
   const handleColorChange = (newColor: string) => {
     setColor(newColor);
-    setError(null); // Reset error
+    setError(undefined); // Reset error
     onChange(name, newColor, true); // Always valid for color picker
   };
 
@@ -34,7 +34,7 @@ export const ColorInput: React.FC<ColorInputProps> = ({
     const isValid = hexRegex.test(hexValue);
 
     setColor(hexValue);
-    setError(isValid ? null : "Invalid hex code. Use format #FFF or #FFFFFF.");
+    setError(isValid ? undefined : "Invalid hex code. Use format #FFF or #FFFFFF.");
     onChange(name, hexValue, isValid);
   };
 

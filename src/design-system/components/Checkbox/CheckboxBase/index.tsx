@@ -1,5 +1,5 @@
 import { useEffect, useState, type FocusEvent } from "react";
-import type { IChechboxBase, IChechboxBaseInternalProps } from "libs/design-system/src/types/checkbox/checkbox_base";
+import type { IChechboxBase, IChechboxBaseInternalProps } from "../../../types/Checkbox/checkbox_base";
 import styles from "./checkbox-base.module.scss";
 
 export const CheckboxBase = ({

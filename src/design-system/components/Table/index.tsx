@@ -26,7 +26,7 @@ const renderCellContent = (
   }
 
   switch (dataType) {
-    case "text":
+    case "string":
       return cellValue;
     case "name":
       return `${row.first_name} ${row.last_name}`;
@@ -99,7 +99,7 @@ export const Table: React.FC<ITableProps> = ({
                 >
                   {columns.map((column, colIndex) => (
                     <td key={colIndex} className={styles["table-td"]}>
-                      {renderCellContent(column.dataType, column.value, row, column.combinedName)}
+                      {renderCellContent(column.dataType, column.value, row)}
                     </td>
                   ))}
                 </tr>

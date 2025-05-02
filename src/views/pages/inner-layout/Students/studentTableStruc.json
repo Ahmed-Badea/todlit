@@ -15,7 +15,7 @@
     "title_en": "Gender",
     "title_ar": "الجنس",
     "value": "gender",
-    "dataType": "text"
+    "dataType": "string"
   },
   {
     "title_en": "Enrollment Date",
@@ -27,12 +27,12 @@
     "title_en": "Status",
     "title_ar": "الحالة",
     "value": "status",
-    "dataType": "text"
+    "dataType": "string"
   },
   {
     "title_en": "Classroom",
     "title_ar": "الفصل الدراسي",
     "value": "classroom",
-    "dataType": "text"
+    "dataType": "string"
   }
 ]

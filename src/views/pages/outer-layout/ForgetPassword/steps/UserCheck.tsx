@@ -1,5 +1,4 @@
-import { useState, type Dispatch } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Input, Button } from '../../../../../design-system'
 import type { IField, IUserCheck } from '../../../../../types/outer-layout';
@@ -37,13 +36,11 @@ const UserCheck = (
     country
   }: IUserCheck
 ) => {
-  const navigate = useNavigate();
   const { t } = useTranslation();
   useEnterKeyPress(SUBMIT_BTN_ID);
 
   const [fields, setFields] = useState<IField>(fieldsInitialState);
   const [serverErrMsg, setServerErrMsg] = useState('');
-  const [isUserOld, setIsUserOld] = useState(false);
 
   const handlePhoneChange = (number: string) => {
     setServerErrMsg("");
@@ -65,17 +62,15 @@ const UserCheck = (
     checkUser(usernameOrPhone)
       .then((response) => {
         const { data: { old_user, token, otp_sent_to } } = response;
-        setIsUserOld(old_user);
 
         addToLocalStorage("signup_by_phone_token", token);
 
-        old_user ?
-          setCurrentStep(STEPS.PHONE_NUMBER_VERIFICATION)
-          :
-          (
-            setPhoneNumber(otp_sent_to),
-            setCurrentStep(STEPS.OTP)
-          );
+        if (old_user) {
+          setCurrentStep(STEPS.PHONE_NUMBER_VERIFICATION);
+        } else {
+          setPhoneNumber(otp_sent_to);
+          setCurrentStep(STEPS.OTP);
+        }
 
       })
       .catch((error) => {

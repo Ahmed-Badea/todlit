@@ -1,17 +1,8 @@
 import React from "react";
+import { Plan } from "../../../../../../types/inner-layout/plans";
 import styles from "./plan.module.scss";
 
-interface PlanProps {
-  name: string;
-  fees: string;
-  start_shift: string;
-  end_shift: string;
-  program_color: string;
-  late_checkout_time: string;
-  late_checkout_fees: string;
-}
-
-const PlanCard: React.FC<PlanProps> = ({
+const PlanCard: React.FC<Plan> = ({
   name,
   fees,
   start_shift,

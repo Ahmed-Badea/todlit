@@ -1,5 +1,5 @@
 import styles from './custom-selector-box.module.scss';
-import { ICustomSelectorBox } from 'libs/design-system/src/types/custom_selector/custom_selector_box/customSelectorBox';
+import { ICustomSelectorBox } from '../../../types/custom_selector/custom_selector_box/customSelectorBox';
 
 export const CustomSelectorBox = ({
   title,

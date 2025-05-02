@@ -1,13 +1,13 @@
 import { create } from 'zustand';
 import { devtools } from "zustand/middleware";
-import type { IClassesStore } from '../../../types/zustand/classes';
+import type { IClassesStore } from '../types/zustand/classes';
 
 export const useClassesStore = create<IClassesStore>()(
   devtools(
     (set) => ({
       classes: [],
 
-      setClasses: (newState) => set(() => ({ classes: [ ...newState ] }),
+      setClasses: (newState: any) => set(() => ({ classes: [ ...newState ] }),
         undefined,
         'ClassesStore/setClasses'
       )

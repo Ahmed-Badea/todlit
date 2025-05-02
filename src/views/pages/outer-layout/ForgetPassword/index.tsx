@@ -11,9 +11,11 @@ import ResetPassword from "./steps/ResetPassword";
 import OtpStep from "./steps/OtpStep";
 
 const STEPS = {
-  EMAIL: 1,
-  OTP: 2,
-  RESET_PASSWORD: 3,
+  USER_NAME_OR_PHONE_NUMBER: 0,
+  PHONE_NUMBER_VERIFICATION: 1,
+  EMAIL: 2,
+  OTP: 3,
+  RESET_PASSWORD: 4,
 };
 
 const country: Country = getCountryFromDomain();

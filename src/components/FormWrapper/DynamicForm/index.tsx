@@ -27,7 +27,7 @@ const DynamicForm = forwardRef(
     ref
   ) => {
     const { t, i18n  } = useTranslation();
-    const lang = i18n.language;
+    const lang = i18n.language as 'en' | 'ar';
     const [fields, setFields] = useState<Fields>(
       fieldsConfig.reduce((acc, field) => {
         acc[field.name] = {
@@ -54,7 +54,7 @@ const DynamicForm = forwardRef(
         },
       };
       setFields(updatedFields);
-      validateField(updatedFields, setFields, fieldName, value);
+      validateField(updatedFields, setFields, fieldName, value instanceof Date ? value.toISOString() : value);
     };
 
     useImperativeHandle(ref, () => ({
@@ -71,8 +71,8 @@ const DynamicForm = forwardRef(
       <Input
         id={field.name}
         name={field.name}
-        label={mode === "table" ? undefined : field.label[lang]} // Hide label in table mode
-        value={fields[field.name]?.value || ""}
+        label={mode === "table" ? undefined : field.label?.[lang] ?? "Default Label"} // Hide label in table mode
+        value={typeof fields[field.name]?.value === "string" ? fields[field.name]?.value : fields[field.name]?.value?.toString() || ""}
         onChange={(e) => handleInputChange(field.name, e.target.value)}
         status={fields[field.name]?.isValid === false ? "error" : "default"}
         error={fields[field.name]?.errorMsg}
@@ -88,16 +88,16 @@ const DynamicForm = forwardRef(
             ? new Date(fields[field.name]?.value as string)
             : null
         }
-        onDateChange={(date) => handleInputChange(field.name, date)}
-        label={mode === "table" ? undefined : field.label[lang]} // Hide label in table mode
+        onDateChange={(date) => date && handleInputChange(field.name, date)}
+        label={mode === "table" ? undefined : field.label?.[lang] ?? "Default Label"} // Hide label in table mode
         disabled={isLoading || !isEditable}
         isEditable={isEditable}
-        type={field.type} // Pass 'date' or 'time' dynamically
+        type={field.type === "date" || field.type === "time" ? field.type : undefined} // Pass 'date' or 'time' dynamically
       />
     );
     
     const renderDropdown = (field: FieldConfig) => (
-      <Dropdown label={mode === "table" ? undefined : field.label[lang]}>
+      <Dropdown label={mode === "table" ? undefined : field.label?.[lang] ?? "Default Label"}>
         <DropdownButton
           text={
             fields[field.name]?.value
@@ -128,31 +128,36 @@ const DynamicForm = forwardRef(
       // Compute dropdown button text dynamically
       const getDropdownBtnText = () => {
         const selectedValues = fields[field.name]?.value || [];
-        if (selectedValues.length === field.options?.length) {
+        if (Array.isArray(selectedValues) && selectedValues.length === field.options?.length) {
           return t('innerLayout.all'); // All options selected
-        } else if (selectedValues.length === 0) {
+        } else if (Array.isArray(selectedValues) && selectedValues.length === 0) {
           return t('innerLayout.none'); // No options selected
-        } else if (selectedValues.length === 1) {
+        } else if (Array.isArray(selectedValues) && selectedValues.length === 1) {
           return field.options?.find((opt) => opt.value === selectedValues[0])?.label[lang] || '';
         } else {
-          const firstSelected = field.options?.find((opt) => opt.value === selectedValues[0])?.label[lang];
-          return `${firstSelected}, +${selectedValues.length - 1}`;
+          const firstSelected = Array.isArray(selectedValues)
+            ? field.options?.find((opt) => opt.value === selectedValues[0])?.label[lang]
+            : '';
+          return `${firstSelected}, +${(selectedValues as never[]).length - 1}`;
         }
       };
     
       // Unified function to handle both "Select All" and individual option changes
       const handleFieldChange = (checked: boolean, optionValue?: string) => {
         setServerErrMsg(""); // Clear any existing server error messages
-    
+      
         // Compute the new field values
+        const currentValue = fields[field.name]?.value;
         const updatedFieldValues = optionValue
           ? checked
-            ? [...(fields[field.name]?.value || []), optionValue] // Add single option
-            : fields[field.name]?.value.filter((val) => val !== optionValue) // Remove single option
+            ? [...(Array.isArray(currentValue) ? currentValue : []), optionValue] // Add single option
+            : Array.isArray(currentValue)
+              ? currentValue.filter((val) => val !== optionValue) // Remove single option
+              : []
           : checked
-          ? field.options?.map((option) => option.value) || [] // "Select All"
-          : []; // Clear all options
-    
+            ? field.options?.map((option) => option.value) || [] // "Select All"
+            : []; // Clear all options
+      
         // Create the updated fields object
         const updatedFields = {
           ...fields,
@@ -161,18 +166,17 @@ const DynamicForm = forwardRef(
             value: updatedFieldValues,
           },
         };
-    
-        // Update the fields state
+      
         setFields(updatedFields);
-    
-        // Validate the updated field
-        validateField(updatedFields, setFields, field.name, updatedFieldValues);
+      
+        validateField(updatedFields, setFields, field.name, Array.isArray(updatedFieldValues) ? updatedFieldValues.join(",") : updatedFieldValues);
       };
+      
     
       return (
         <Dropdown 
           key={`field-dropdown-${field.name}`}
-          label={mode === "table" ? undefined : field.label[lang]}
+          label={mode === "table" ? undefined : field.label?.[lang] ?? "Default Label"}
         >
           <DropdownButton
             text={getDropdownBtnText()}
@@ -195,6 +199,7 @@ const DynamicForm = forwardRef(
           >
             {/* "Select All" Option */}
             <DropdownMenuItem
+              id="all"
               key={`select-all-${field.name}`}
               type="checkbox"
               text={t('innerLayout.selectAll')}
@@ -205,6 +210,7 @@ const DynamicForm = forwardRef(
             {/* Individual Options */}
             {field.options?.map((option, index) => (
               <DropdownMenuItem
+                id={index.toString()}
                 key={`${field.name}-option-${index}`}
                 type="checkbox"
                 text={option.label[lang]}
@@ -222,9 +228,9 @@ const DynamicForm = forwardRef(
     
     const renderColorInput = (field: FieldConfig) => (
       <ColorInput
-        label={mode === "table" ? undefined : field.label[lang]}
+        label={mode === "table" ? undefined : field.label?.[lang] ?? "Default Label"}
         name={field.name}
-        selectedColor={fields[field.name]?.value || "#ffffff"}
+        // selectedColor={fields[field.name]?.value || "#ffffff"}
         onChange={handleInputChange}
         disabled={isLoading || !isEditable}
       />
@@ -263,7 +269,7 @@ const DynamicForm = forwardRef(
           >
             {mode === "table" ? (
               <>
-                <div className={styles["table-cell"]}>{field.label[lang]}</div>
+                <div className={styles["table-cell"]}>{field.label?.[lang] ?? "Default Label"}</div>
                 <div className={styles["table-cell"]}>{renderInput(field)}</div>
               </>
             ) : (

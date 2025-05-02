@@ -6,7 +6,8 @@ import LoginForm from './steps/LoginForm';
 import { OUTER_ROUTES } from '../../../../routes/outer-routes';
 
 const STEPS = {
-  LOGIN: 1
+  LOGIN: 1,
+  OTP: 2
 }
 
 const Login = () => {

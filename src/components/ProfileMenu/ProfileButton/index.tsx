@@ -1,5 +1,4 @@
-import { ArrowRightFromBracket } from "../assets/icons/index";
-import { type IAccountBar } from "../../../types/innerLayout";
+import { type IAccountBar } from "../../../types/inner-layout";
 import styles from "./profile-button.module.scss";
 
 const ProfileButton = ({

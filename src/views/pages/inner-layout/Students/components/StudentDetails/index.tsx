@@ -24,14 +24,14 @@ const StudentsDetails = () => {
   const fullName = data ? `${data.first_name} ${data.last_name}` : "";
 
   const tabs = [
-    { label: t("innerLayout.students.tabs.profile"), content: <Profile formData={data} id={id} />},
+    { label: t("innerLayout.students.tabs.profile"), content: <Profile formData={data} id={id ?? null} />},
     { label: t("innerLayout.students.tabs.attendance"), content: <Attendance /> },
     { label: t("innerLayout.students.tabs.billing"), content: <Billing /> },
     { label: t("innerLayout.students.tabs.documents"), content: <Documents /> },
   ];
 
   return (
-    <InnerLayout isLoading={isLoading || isFetching} error={error} errorMessage={error?.message}>
+    <InnerLayout isLoading={isLoading || isFetching} error={error} errorMessage={(error as Error)?.message}>
       <h3>{fullName}</h3>
       <Tabs tabs={tabs} />
     </InnerLayout>

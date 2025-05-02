@@ -6,7 +6,7 @@ import styles from "./datePicker.module.scss";
 
 interface DatePickerProps {
   selectedDate: Date | null;
-  onDateChange: (date: Date) => void;
+  onDateChange: (date: Date | null) => void;
   label?: string;
   disabled: boolean;
   isEditable?: boolean;

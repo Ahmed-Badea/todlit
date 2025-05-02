@@ -54,7 +54,7 @@ const LangSwitcher = ({ layout, mobView = false }: LangSwitcherProps ) => {
                 key={`lang-item-${i}`}
                 text={item.label}
                 icon={item.icon}
-                onClickHandler={langHandler[item.lang]}
+                onClickHandler={langHandler[item.lang as LangActions]}
               />
             );
           })}

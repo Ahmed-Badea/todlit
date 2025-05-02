@@ -9,15 +9,17 @@ import InnerLayout from "../../../../views/layout/InnerLayout";
 import CreateStaff from "./components/Form/CreateStaff";
 import columns from "./staffTableStruc.json";
 import styles from "./staff.module.scss";
+import { IRow } from "../../../../design-system/types/Table/table";
+import { Language } from "../../../../types";
 
 const Staff = () => {
   const { t, i18n } = useTranslation();
-  const lang = i18n.language;
+  const lang = i18n.language as Language;
   const navigate = useNavigate();
   const location = useLocation();
   const queryClient = useQueryClient();
 
-  const { classes } = useClassesStore();
+  const { classes }: { classes: { id: string; name: string }[] } = useClassesStore();
 
   // Parse URL parameters
   const searchParams = new URLSearchParams(location.search);
@@ -46,8 +48,8 @@ const Staff = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
-  const handleRowClick = (row: { id: string }) => {
-    navigate(`/staff/${row.id}`);
+  const handleRowClick = (row: IRow) => {
+      navigate(`/students/${row.id}`);
   };
 
   const handleClassFilterChange = (selectedName: string) => {
@@ -73,7 +75,7 @@ const Staff = () => {
   }, [classFilter, t]);
 
   return (
-    <InnerLayout isLoading={isLoading || isFetching} error={error} errorMessage={error?.message}>
+    <InnerLayout isLoading={isLoading || isFetching} error={error} errorMessage={(error as Error)?.message}>
       <div className={styles.header}>
         <h3>{t("innerLayout.staff.title")}</h3>
         <div className={styles.filters_container}>
@@ -89,7 +91,7 @@ const Staff = () => {
                 onClickHandler={() => handleClassFilterChange('')}
                 selected={classFilter === ''}
               />
-              {classes?.map((option) => (
+              {classes?.map((option: { id: string; name: string }) => (
                 <DropdownMenuItem
                   key={option.id}
                   text={option.name}

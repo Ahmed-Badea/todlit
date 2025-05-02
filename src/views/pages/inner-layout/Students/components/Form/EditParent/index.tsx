@@ -32,7 +32,7 @@ const EditParent = ({ formData }) => {
       },
       onError: (error) => {
         const errorMsg =
-          error.response?.data?.error ||
+          (error as any)?.response?.data?.error ||
           t("innerLayout.form.errors.somethingWentWrong");
         toast.error(errorMsg);
       },

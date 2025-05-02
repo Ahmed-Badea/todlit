@@ -1,5 +1,5 @@
-// import { User } from "../icons/index";
-import type { IAvatar, IImgAvatar, INameAvatar } from "../../types/Avatar";
+import { User } from "./../../assets/Icons";
+import type { IAvatar, IImgAvatar, INameAvatar } from "../../types/Avatar/avatar";
 import styles from "./avatar.module.scss";
 
 export const Avatar = (props: IAvatar) => {
@@ -17,7 +17,7 @@ export const Avatar = (props: IAvatar) => {
 
     content = <div>{shortName}</div>
   } else {
-    // content = User;
+    content = User;
   }
 
   return (

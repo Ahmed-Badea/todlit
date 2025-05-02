@@ -5,10 +5,10 @@ import { IInput } from '../../types/Input/input';
 
 import {
   CircleCheckIcon,
-  CircleExclamationIcon,
+  // CircleExclamationIcon,
   OpenedEyeIcon,
   ClosedEyeIcon,
-  LockIcon,
+  // LockIcon,
 } from '../../assets/Icons';
 import { forwardRef, useState } from 'react';
 

@@ -1,4 +1,4 @@
-import { ISubItemsList } from "../../../types/innerLayout";
+import { ISubItemsList } from "../../../types/inner-layout";
 import styles from "../nav-item.module.scss";
 import SubItem from "../SubItem";
 

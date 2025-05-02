@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { LeftToLine, RightToLine } from "../../design-system/assets/icons/index";
+import { LeftToLine, RightToLine } from "../../design-system/assets/Icons/index";
 import TODLIT from "../../assets/images/outerLayout/todlit.png";
 import { navLinks } from "../../services/inner-layout/navbar";
 import { ISideMenu } from "../../types/inner-layout";
@@ -47,7 +47,7 @@ const SideMenu = ({
               active={activeLink.nav === navLink.label}
               route={navLink.route}
               subItems={navLink?.subLinks?.map((subLink) => ({
-                icon: subLink.icon,
+                icon: subLink.icon as React.ReactElement<"svg"> | undefined,
                 label: subLink.label,
                 route: subLink.route,
                 active: activeLink.sub === subLink.label

@@ -1,4 +1,4 @@
-import { Dispatch, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button, OTPStep } from '../../../../../design-system'
 import { useEnterKeyPress } from '../../../../../hooks/useEnterKeyPress';
@@ -42,20 +42,20 @@ const OtpStep = (
     setServerSuccessMsg("");
     setLoading(true);
 
-    forgetPasswordResendOtp("forget_password")
-      .then(() => {
-        setResetOtpTimer(true);
-        setIsValid(false);
-        setServerSuccessMsg(t('outerLayout.form.otpResent'));
-      })
-      .catch((error) => {
-        const message = error.response?.data?.message;
+    // forgetPasswordResendOtp("forget_password")
+      // .then(() => {
+      //   setResetOtpTimer(true);
+      //   setIsValid(false);
+      //   setServerSuccessMsg(t('outerLayout.form.otpResent'));
+      // })
+      // .catch((error) => {
+      //   const message = error.response?.data?.message;
 
-        setServerErrMsg(message || t('outerLayout.form.errors.somethingWentWrong'));
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+      //   setServerErrMsg(message || t('outerLayout.form.errors.somethingWentWrong'));
+      // })
+      // .finally(() => {
+      //   setLoading(false);
+      // });
   };
 
   const handleOtpSubmit = () => {
