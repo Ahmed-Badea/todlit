@@ -1,0 +1,232 @@
+@import '../../styles/common.scss';
+
+/* ------------------ Generic ------------------ */
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  border-radius: 2.125rem;
+  margin: 0;
+
+  &>input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked {
+      +.toggle__slider {
+
+        &:before {
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  &__slider {
+    border-radius: 2.125rem;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: .4s;
+
+    &:before {
+      position: absolute;
+      content: "";
+      background-color: $white;
+      transition: .4s;
+      border-radius: 50%;
+      filter: drop-shadow(0rem 0.0625rem 0.125rem rgba(16, 24, 40, 0.06)) drop-shadow(0rem 0.0625rem 0.1875rem rgba(16, 24, 40, 0.10));
+    }
+  }
+
+  /* ------------------ Sizes ------------------ */
+
+  // sm
+  &:is([data-toggle-size="sm"]) {
+    width: 2.25rem;
+    height: 1.25rem;
+
+    .toggle__slider {
+      &:before {
+        width: 1rem;
+        height: 1rem;
+        top: 0.6rem;
+      }
+    }
+
+    @include en {
+
+      .toggle__slider {
+        &:before {
+          left: 0.125rem;
+          transform: translateY(-0.47rem);
+        }
+      }
+
+
+      &>input {
+        &:checked {
+          +.toggle__slider {
+            &:before {
+              transform: translate(1rem, -0.47rem);
+            }
+          }
+        }
+      }
+    }
+
+    @include ar {
+
+      .toggle__slider {
+        &:before {
+          right: 0.125rem;
+          transform: translateY(-0.47rem);
+        }
+      }
+
+      &>input {
+        &:checked {
+          +.toggle__slider {
+            &:before {
+              transform: translate(-1rem, -0.47rem);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // md
+  &:is([data-toggle-size="md"]) {
+    width: 2.75rem;
+    height: 1.5rem;
+
+    .toggle__slider {
+      &:before {
+        width: 1.25rem;
+        height: 1.25rem;
+        top: 0.7rem;
+      }
+    }
+
+
+    @include en {
+
+      .toggle__slider {
+        &:before {
+          left: 0.13rem;
+          transform: translateY(-0.58rem);
+        }
+      }
+
+      &>input {
+        &:checked {
+          +.toggle__slider {
+            &:before {
+              transform: translate(1.23rem, -0.58rem);
+            }
+          }
+        }
+      }
+    }
+
+    @include ar {
+      .toggle__slider {
+        &:before {
+          right: 0.1563rem;
+          transform: translateY(-0.58rem);
+        }
+      }
+
+      &>input {
+        &:checked {
+          +.toggle__slider {
+            &:before {
+              transform: translate(-1.23rem, -0.58rem);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* ------------------ States ------------------ */
+
+  // default 
+
+  &>input {
+    &:checked {
+      +.toggle__slider {
+        background-color: $success-500;
+      }
+    }
+  }
+
+  .toggle__slider {
+    background-color: $gray-100;
+  }
+
+  // hover 
+
+  &:is([data-toggle-is-hovered="true"]) {
+
+    &>input {
+      &:checked {
+        +.toggle__slider {
+          background-color: $success-600;
+        }
+      }
+    }
+
+    .toggle__slider {
+      background-color: $gray-200;
+    }
+  }
+
+  // focus 
+
+  &:is([data-toggle-is-focused="true"]) {
+
+    box-shadow: $shadow-ring-primary;
+
+    &:has(>input:checked) {
+      box-shadow: $shadow-ring-success;
+    }
+
+    &>input {
+      &:checked {
+
+        +.toggle__slider {
+          background-color: $success-500;
+        }
+      }
+    }
+
+    .toggle__slider {
+      background-color: $gray-50;
+    }
+  }
+
+  // disabled 
+
+  &:is([data-toggle-is-disabled="true"]) {
+
+    pointer-events: none;
+
+    &>input {
+      &:checked {
+        +.toggle__slider {
+          background-color: $success-100;
+        }
+      }
+    }
+
+    .toggle__slider {
+      background-color: $gray-100;
+    }
+  }
+}

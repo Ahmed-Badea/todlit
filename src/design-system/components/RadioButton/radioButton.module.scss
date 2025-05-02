@@ -1,0 +1,185 @@
+@import '../../styles/common.scss';
+
+.control {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  padding: $space-16;
+
+  &,
+  * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  &:has([data-radio-size='md']) {
+    padding: 1.1rem;
+  }
+
+  input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  &[data-radio-variant='outlined'] {
+    border-radius: $space-8;
+    border: 1px solid $gray-200;
+    background: $white;
+
+    &:has(input:disabled) {
+      border: 1px solid $gray-200;
+      background: $gray-50;
+    }
+
+    &:not(:has(input:disabled)) {
+      &:has(input:checked) {
+        border: 1px solid $primary-500;
+        background: $primary-25;
+
+        .control__text,
+        .control__hint {
+          color: $primary-600;
+        }
+      }
+
+      &:hover,
+      &:focus {
+        border: 1px solid $primary-300;
+      }
+
+      &:active {
+        box-shadow: $shadow-ring-primary;
+      }
+    }
+  }
+
+  &__text__wrapper {
+    @include flex(flex-start, center);
+    flex-direction: column;
+    gap: 0.5rem;
+    min-height: 1.25rem;
+  }
+
+  &__text {
+    @include flex(flex-start, center);
+    height: 1rem;
+    flex-direction: column;
+
+    @include en {
+      @include englishBodySmMedium;
+    }
+
+    @include ar {
+      @include arabicBodySmMedium;
+    }
+  }
+
+  &__hint {
+    @include en {
+      @include englishHelperTextRegular;
+    }
+
+    @include ar {
+      @include arabicHelperTextRegular;
+    }
+  }
+
+  &__text,
+  &__hint {
+    color: $gray-600;
+    margin-inline-start: 2rem;
+  }
+}
+
+.control__indicator {
+  position: absolute;
+  top: $space-16;
+  inset-inline-start: $space-16;
+
+  border: 1px solid $gray-300;
+  background: $white;
+
+  &[data-radio-size='sm'] {
+    height: 1rem;
+    width: 1rem;
+    padding: 0.125rem;
+  }
+
+  &[data-radio-size='md'] {
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: $space-2;
+  }
+
+  .control__radio & {
+    border-radius: 50%;
+  }
+
+  .control:hover input~&,
+  .control input:focus~& {
+    border: 1px solid $primary-500;
+    background: $primary-25;
+  }
+
+  .control input:checked~& {
+    background: $primary-500;
+    border: none;
+  }
+
+  .control:hover input:not([disabled]):checked~&,
+  .control input:checked:focus~& {
+    background: $primary-500;
+  }
+
+  .control input:disabled~& {
+    border: 1px solid $gray-300;
+    background: $gray-100;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    display: none;
+
+    .control input:checked~& {
+      display: block;
+    }
+
+    .control__radio & {
+      border-radius: 50%;
+      background: $white;
+    }
+
+    .control__radio input:disabled~& {
+      background: $gray-400;
+    }
+  }
+
+  &[data-radio-size='sm']:after {
+    inset-inline-start: 5px;
+    top: 5px;
+    height: 6px;
+    width: 6px;
+
+    .control__radio input:disabled~& {
+      inset-inline-start: 4px;
+      top: 4px;
+    }
+  }
+
+  &[data-radio-size='md']:after {
+    inset-inline-start: 6px;
+    top: 6px;
+    height: 8px;
+    width: 8px;
+
+    .control__radio input:disabled~& {
+      inset-inline-start: 5px;
+      top: 5px;
+    }
+  }
+}

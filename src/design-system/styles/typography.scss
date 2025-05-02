@@ -1,0 +1,909 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&display=swap');
+
+// (English utility/Helper text) styles
+
+@mixin englishHelperTextMixin {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-style: normal;
+  line-height: 1.125rem;
+  letter-spacing: 0.01rem;
+}
+
+@mixin englishHelperTextRegular {
+  @include englishHelperTextMixin;
+  font-weight: 400;
+}
+
+@mixin englishHelperTextMedium {
+  @include englishHelperTextMixin;
+  font-weight: 500;
+}
+
+@mixin englishHelperTextSemiBold {
+  @include englishHelperTextMixin;
+  font-weight: 600;
+}
+
+@mixin englishHelperTextBold {
+  @include englishHelperTextMixin;
+  font-weight: 700;
+}
+
+
+// (English utility/Label compact) styles
+
+@mixin englishLabelCompactMixin {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-style: normal;
+  line-height: 0.875rem;
+  letter-spacing: 0.01rem;
+}
+
+@mixin englishLabelCompactRegular {
+  @include englishLabelCompactMixin;
+  font-weight: 400;
+}
+
+@mixin englishLabelCompactMedium {
+  @include englishLabelCompactMixin;
+  font-weight: 500;
+}
+
+@mixin englishLabelCompactSemiBold {
+  @include englishLabelCompactMixin;
+  font-weight: 600;
+}
+
+@mixin englishLabelCompactBold {
+  @include englishLabelCompactMixin;
+  font-weight: 700;
+}
+
+
+// (English utility/Label) styles
+
+@mixin englishLabelMixin {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-style: normal;
+  line-height: 1rem;
+}
+
+@mixin englishLabelRegular {
+  @include englishLabelMixin;
+  font-weight: 400;
+}
+
+@mixin englishLabelMedium {
+  @include englishLabelMixin;
+  font-weight: 500;
+}
+
+@mixin englishLabelSemiBold {
+  @include englishLabelMixin;
+  font-weight: 600;
+}
+
+@mixin englishLabelBold {
+  @include englishLabelMixin;
+  font-weight: 700;
+}
+
+
+// (English body/Body sm) styles
+
+@mixin englishBodySmMixin {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-style: normal;
+  line-height: 1.5rem;
+  letter-spacing: 0.01rem;
+}
+
+@mixin englishBodySmRegular {
+  @include englishBodySmMixin;
+  font-weight: 400;
+}
+
+@mixin englishBodySmMedium {
+  @include englishBodySmMixin;
+  font-weight: 500;
+}
+
+@mixin englishBodySmSemiBold {
+  @include englishBodySmMixin;
+  font-weight: 600;
+}
+
+@mixin englishBodySmBold {
+  @include englishBodySmMixin;
+  font-weight: 700;
+}
+
+
+// (English body/Body md) styles
+
+@mixin englishBodyMdMixin {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  line-height: 1.75rem;
+}
+
+@mixin englishBodyMdRegular {
+  @include englishBodyMdMixin;
+  font-weight: 400;
+}
+
+@mixin englishBodyMdMedium {
+  @include englishBodyMdMixin;
+  font-weight: 500;
+}
+
+@mixin englishBodyMdSemiBold {
+  @include englishBodyMdMixin;
+  font-weight: 600;
+}
+
+@mixin englishBodyMdBold {
+  @include englishBodyMdMixin;
+  font-weight: 700;
+}
+
+
+// (English body/Body lg) styles
+
+@mixin englishBodyLgMixin {
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-style: normal;
+  line-height: 2rem;
+}
+
+@mixin englishBodyLgRegular {
+  @include englishBodyLgMixin;
+  font-weight: 400;
+}
+
+@mixin englishBodyLgMedium {
+  @include englishBodyLgMixin;
+  font-weight: 500;
+}
+
+@mixin englishBodyLgSemiBold {
+  @include englishBodyLgMixin;
+  font-weight: 600;
+}
+
+@mixin englishBodyLgBold {
+  @include englishBodyLgMixin;
+  font-weight: 700;
+}
+
+
+// (English body/Body xl) styles
+
+@mixin englishBodyXlMixin {
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  line-height: 2.25rem;
+}
+
+@mixin englishBodyXlRegular {
+  @include englishBodyXlMixin;
+  font-weight: 400;
+}
+
+@mixin englishBodyXlMedium {
+  @include englishBodyXlMixin;
+  font-weight: 500;
+}
+
+@mixin englishBodyXlSemiBold {
+  @include englishBodyXlMixin;
+  font-weight: 600;
+}
+
+@mixin englishBodyXlBold {
+  @include englishBodyXlMixin;
+  font-weight: 700;
+}
+
+
+// (English body/Body 2xl) styles
+
+@mixin englishBody2XlMixin {
+  font-family: "Inter", sans-serif;
+  font-size: 1.375rem;
+  font-style: normal;
+  line-height: 2.5rem;
+}
+
+@mixin englishBody2XlRegular {
+  @include englishBody2XlMixin;
+  font-weight: 400;
+}
+
+@mixin englishBody2XlMedium {
+  @include englishBody2XlMixin;
+  font-weight: 500;
+}
+
+@mixin englishBody2XlSemiBold {
+  @include englishBody2XlMixin;
+  font-weight: 600;
+}
+
+@mixin englishBody2XlBold {
+  @include englishBody2XlMixin;
+  font-weight: 700;
+}
+
+
+// (English heading/Heading compact) styles
+
+@mixin englishHeadingCompactMixin {
+  font-family: "Kantumruy Pro", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  line-height: 1.25rem;
+}
+
+@mixin englishHeadingCompactRegular {
+  @include englishHeadingCompactMixin;
+  font-weight: 400;
+}
+
+@mixin englishHeadingCompactMedium {
+  @include englishHeadingCompactMixin;
+  font-weight: 500;
+}
+
+@mixin englishHeadingCompactSemiBold {
+  @include englishHeadingCompactMixin;
+  font-weight: 600;
+}
+
+@mixin englishHeadingCompactBold {
+  @include englishHeadingCompactMixin;
+  font-weight: 700;
+}
+
+
+// (English heading/Heading h6) styles
+
+@mixin englishHeadingH6Mixin {
+  font-family: "Kantumruy Pro", sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  line-height: 2rem;
+}
+
+@mixin englishHeadingH6Regular {
+  @include englishHeadingH6Mixin;
+  font-weight: 400;
+}
+
+@mixin englishHeadingH6Medium {
+  @include englishHeadingH6Mixin;
+  font-weight: 500;
+}
+
+@mixin englishHeadingH6SemiBold {
+  @include englishHeadingH6Mixin;
+  font-weight: 600;
+}
+
+@mixin englishHeadingH6Bold {
+  @include englishHeadingH6Mixin;
+  font-weight: 700;
+}
+
+
+// (English heading/Heading h5) styles
+
+@mixin englishHeadingH5Mixin {
+  font-family: "Kantumruy Pro", sans-serif;
+  font-size: 2rem;
+  font-style: normal;
+  line-height: 2.5rem;
+}
+
+@mixin englishHeadingH5Regular {
+  @include englishHeadingH5Mixin;
+  font-weight: 400;
+}
+
+@mixin englishHeadingH5Medium {
+  @include englishHeadingH5Mixin;
+  font-weight: 500;
+}
+
+@mixin englishHeadingH5SemiBold {
+  @include englishHeadingH5Mixin;
+  font-weight: 600;
+}
+
+@mixin englishHeadingH5Bold {
+  @include englishHeadingH5Mixin;
+  font-weight: 700;
+}
+
+
+// (English heading/Heading h4) styles
+
+@mixin englishHeadingH4Mixin {
+  font-family: "Kantumruy Pro", sans-serif;
+  font-size: 2.25rem;
+  font-style: normal;
+  line-height: 2.75rem;
+}
+
+@mixin englishHeadingH4Regular {
+  @include englishHeadingH4Mixin;
+  font-weight: 400;
+}
+
+@mixin englishHeadingH4Medium {
+  @include englishHeadingH4Mixin;
+  font-weight: 500;
+}
+
+@mixin englishHeadingH4SemiBold {
+  @include englishHeadingH4Mixin;
+  font-weight: 600;
+}
+
+@mixin englishHeadingH4Bold {
+  @include englishHeadingH4Mixin;
+  font-weight: 700;
+}
+
+
+// (English heading/Heading h3) styles
+
+@mixin englishHeadingH3Mixin {
+  font-family: "Kantumruy Pro", sans-serif;
+  font-size: 2.5rem;
+  font-style: normal;
+  line-height: 3rem;
+}
+
+@mixin englishHeadingH3Regular {
+  @include englishHeadingH3Mixin;
+  font-weight: 400;
+}
+
+@mixin englishHeadingH3Medium {
+  @include englishHeadingH3Mixin;
+  font-weight: 500;
+}
+
+@mixin englishHeadingH3SemiBold {
+  @include englishHeadingH3Mixin;
+  font-weight: 600;
+}
+
+@mixin englishHeadingH3Bold {
+  @include englishHeadingH3Mixin;
+  font-weight: 700;
+}
+
+
+// (English heading/Heading h2) styles
+
+@mixin englishHeadingH2Mixin {
+  font-family: "Kantumruy Pro", sans-serif;
+  font-size: 2.75rem;
+  font-style: normal;
+  line-height: 3.25rem;
+}
+
+@mixin englishHeadingH2Regular {
+  @include englishHeadingH2Mixin;
+  font-weight: 400;
+}
+
+@mixin englishHeadingH2Medium {
+  @include englishHeadingH2Mixin;
+  font-weight: 500;
+}
+
+@mixin englishHeadingH2SemiBold {
+  @include englishHeadingH2Mixin;
+  font-weight: 600;
+}
+
+@mixin englishHeadingH2Bold {
+  @include englishHeadingH2Mixin;
+  font-weight: 700;
+}
+
+
+// (English heading/Heading h1) styles
+
+@mixin englishHeadingH1Mixin {
+  font-family: "Kantumruy Pro", sans-serif;
+  font-size: 3rem;
+  font-style: normal;
+  line-height: 3.5rem;
+}
+
+@mixin englishHeadingH1Regular {
+  @include englishHeadingH1Mixin;
+  font-weight: 400;
+}
+
+@mixin englishHeadingH1Medium {
+  @include englishHeadingH1Mixin;
+  font-weight: 500;
+}
+
+@mixin englishHeadingH1SemiBold {
+  @include englishHeadingH1Mixin;
+  font-weight: 600;
+}
+
+@mixin englishHeadingH1Bold {
+  @include englishHeadingH1Mixin;
+  font-weight: 700;
+}
+
+
+// (Arabic utility/Helper text) styles
+
+@mixin arabicHelperTextMixin {
+  font-family: "Cairo", sans-serif;
+  font-size: 0.875rem;
+  font-style: normal;
+  line-height: 1.125rem;
+  letter-spacing: 0.01rem;
+}
+
+@mixin arabicHelperTextRegular {
+  @include arabicHelperTextMixin;
+  font-weight: 400;
+}
+
+@mixin arabicHelperTextMedium {
+  @include arabicHelperTextMixin;
+  font-weight: 600;
+}
+
+@mixin arabicHelperTextSemiBold {
+  @include arabicHelperTextMixin;
+  font-weight: 700;
+}
+
+@mixin arabicHelperTextBold {
+  @include arabicHelperTextMixin;
+  font-weight: 900;
+}
+
+
+// (Arabic utility/Label compact) styles
+
+@mixin arabicLabelCompactMixin {
+  font-family: "Cairo", sans-serif;
+  font-size: 0.875rem;
+  font-style: normal;
+  line-height: 0.875rem;
+  letter-spacing: 0.01rem;
+}
+
+@mixin arabicLabelCompactRegular {
+  @include arabicLabelCompactMixin;
+  font-weight: 400;
+}
+
+@mixin arabicLabelCompactMedium {
+  @include arabicLabelCompactMixin;
+  font-weight: 600;
+}
+
+@mixin arabicLabelCompactSemiBold {
+  @include arabicLabelCompactMixin;
+  font-weight: 700;
+}
+
+@mixin arabicLabelCompactBold {
+  @include arabicLabelCompactMixin;
+  font-weight: 900;
+}
+
+
+// (Arabic utility/Label) styles
+
+@mixin arabicLabelMixin {
+  font-family: "Cairo", sans-serif;
+  font-size: 0.875rem;
+  font-style: normal;
+  line-height: 1rem;
+}
+
+@mixin arabicLabelRegular {
+  @include arabicLabelMixin;
+  font-weight: 400;
+}
+
+@mixin arabicLabelMedium {
+  @include arabicLabelMixin;
+  font-weight: 600;
+}
+
+@mixin arabicLabelSemiBold {
+  @include arabicLabelMixin;
+  font-weight: 700;
+}
+
+@mixin arabicLabelBold {
+  @include arabicLabelMixin;
+  font-weight: 900;
+}
+
+
+// (Arabic body/Body sm) styles
+
+@mixin arabicBodySmMixin {
+  font-family: "Cairo", sans-serif;
+  font-size: 0.875rem;
+  font-style: normal;
+  line-height: 1.5rem;
+  letter-spacing: 0.01rem;
+}
+
+@mixin arabicBodySmRegular {
+  @include arabicBodySmMixin;
+  font-weight: 400;
+}
+
+@mixin arabicBodySmMedium {
+  @include arabicBodySmMixin;
+  font-weight: 600;
+}
+
+@mixin arabicBodySmSemiBold {
+  @include arabicBodySmMixin;
+  font-weight: 700;
+}
+
+@mixin arabicBodySmBold {
+  @include arabicBodySmMixin;
+  font-weight: 900;
+}
+
+
+// (Arabic body/Body md) styles
+
+@mixin arabicBodyMdMixin {
+  font-family: "Cairo", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  line-height: 1.75rem;
+}
+
+@mixin arabicBodyMdRegular {
+  @include arabicBodyMdMixin;
+  font-weight: 400;
+}
+
+@mixin arabicBodyMdMedium {
+  @include arabicBodyMdMixin;
+  font-weight: 600;
+}
+
+@mixin arabicBodyMdSemiBold {
+  @include arabicBodyMdMixin;
+  font-weight: 700;
+}
+
+@mixin arabicBodyMdBold {
+  @include arabicBodyMdMixin;
+  font-weight: 900;
+}
+
+
+// (Arabic body/Body lg) styles
+
+@mixin arabicBodyLgMixin {
+  font-family: "Cairo", sans-serif;
+  font-size: 1.125rem;
+  font-style: normal;
+  line-height: 2rem;
+}
+
+@mixin arabicBodyLgRegular {
+  @include arabicBodyLgMixin;
+  font-weight: 400;
+}
+
+@mixin arabicBodyLgMedium {
+  @include arabicBodyLgMixin;
+  font-weight: 600;
+}
+
+@mixin arabicBodyLgSemiBold {
+  @include arabicBodyLgMixin;
+  font-weight: 700;
+}
+
+@mixin arabicBodyLgBold {
+  @include arabicBodyLgMixin;
+  font-weight: 900;
+}
+
+
+// (Arabic body/Body xl) styles
+
+@mixin arabicBodyXlMixin {
+  font-family: "Cairo", sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  line-height: 2.25rem;
+}
+
+@mixin arabicBodyXlRegular {
+  @include arabicBodyXlMixin;
+  font-weight: 400;
+}
+
+@mixin arabicBodyXlMedium {
+  @include arabicBodyXlMixin;
+  font-weight: 600;
+}
+
+@mixin arabicBodyXlSemiBold {
+  @include arabicBodyXlMixin;
+  font-weight: 700;
+}
+
+@mixin arabicBodyXlBold {
+  @include arabicBodyXlMixin;
+  font-weight: 900;
+}
+
+
+// (Arabic body/Body 2xl) styles
+
+@mixin arabicBody2XlMixin {
+  font-family: "Cairo", sans-serif;
+  font-size: 1.375rem;
+  font-style: normal;
+  line-height: 2.5rem;
+}
+
+@mixin arabicBody2XlRegular {
+  @include arabicBody2XlMixin;
+  font-weight: 400;
+}
+
+@mixin arabicBody2XlMedium {
+  @include arabicBody2XlMixin;
+  font-weight: 600;
+}
+
+@mixin arabicBody2XlSemiBold {
+  @include arabicBody2XlMixin;
+  font-weight: 700;
+}
+
+@mixin arabicBody2XlBold {
+  @include arabicBody2XlMixin;
+  font-weight: 900;
+}
+
+
+// (Arabic heading/Heading compact) styles
+
+@mixin arabicHeadingCompactMixin {
+  font-family: "Noto Sans Arabic", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  line-height: 1.25rem;
+}
+
+@mixin arabicHeadingCompactRegular {
+  @include arabicHeadingCompactMixin;
+  font-weight: 400;
+}
+
+@mixin arabicHeadingCompactMedium {
+  @include arabicHeadingCompactMixin;
+  font-weight: 500;
+}
+
+@mixin arabicHeadingCompactSemiBold {
+  @include arabicHeadingCompactMixin;
+  font-weight: 600;
+}
+
+@mixin arabicHeadingCompactBold {
+  @include arabicHeadingCompactMixin;
+  font-weight: 700;
+}
+
+
+// (Arabic heading/Heading h6) styles
+
+@mixin arabicHeadingH6Mixin {
+  font-family: "Noto Sans Arabic", sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  line-height: 2rem;
+}
+
+@mixin arabicHeadingH6Regular {
+  @include arabicHeadingH6Mixin;
+  font-weight: 400;
+}
+
+@mixin arabicHeadingH6Medium {
+  @include arabicHeadingH6Mixin;
+  font-weight: 500;
+}
+
+@mixin arabicHeadingH6SemiBold {
+  @include arabicHeadingH6Mixin;
+  font-weight: 600;
+}
+
+@mixin arabicHeadingH6Bold {
+  @include arabicHeadingH6Mixin;
+  font-weight: 700;
+}
+
+
+// (Arabic heading/Heading h5) styles
+
+@mixin arabicHeadingH5Mixin {
+  font-family: "Noto Sans Arabic", sans-serif;
+  font-size: 2rem;
+  font-style: normal;
+  line-height: 2.5rem;
+}
+
+@mixin arabicHeadingH5Regular {
+  @include arabicHeadingH5Mixin;
+  font-weight: 400;
+}
+
+@mixin arabicHeadingH5Medium {
+  @include arabicHeadingH5Mixin;
+  font-weight: 500;
+}
+
+@mixin arabicHeadingH5SemiBold {
+  @include arabicHeadingH5Mixin;
+  font-weight: 600;
+}
+
+@mixin arabicHeadingH5Bold {
+  @include arabicHeadingH5Mixin;
+  font-weight: 700;
+}
+
+
+// (Arabic heading/Heading h4) styles
+
+@mixin arabicHeadingH4Mixin {
+  font-family: "Noto Sans Arabic", sans-serif;
+  font-size: 2.25rem;
+  font-style: normal;
+  line-height: 2.75rem;
+}
+
+@mixin arabicHeadingH4Regular {
+  @include arabicHeadingH4Mixin;
+  font-weight: 400;
+}
+
+@mixin arabicHeadingH4Medium {
+  @include arabicHeadingH4Mixin;
+  font-weight: 500;
+}
+
+@mixin arabicHeadingH4SemiBold {
+  @include arabicHeadingH4Mixin;
+  font-weight: 600;
+}
+
+@mixin arabicHeadingH4Bold {
+  @include arabicHeadingH4Mixin;
+  font-weight: 700;
+}
+
+
+// (Arabic heading/Heading h3) styles
+
+@mixin arabicHeadingH3Mixin {
+  font-family: "Noto Sans Arabic", sans-serif;
+  font-size: 2.5rem;
+  font-style: normal;
+  line-height: 3rem;
+}
+
+@mixin arabicHeadingH3Regular {
+  @include arabicHeadingH3Mixin;
+  font-weight: 400;
+}
+
+@mixin arabicHeadingH3Medium {
+  @include arabicHeadingH3Mixin;
+  font-weight: 500;
+}
+
+@mixin arabicHeadingH3SemiBold {
+  @include arabicHeadingH3Mixin;
+  font-weight: 600;
+}
+
+@mixin arabicHeadingH3Bold {
+  @include arabicHeadingH3Mixin;
+  font-weight: 700;
+}
+
+
+// (Arabic heading/Heading h2) styles
+
+@mixin arabicHeadingH2Mixin {
+  font-family: "Noto Sans Arabic", sans-serif;
+  font-size: 2.75rem;
+  font-style: normal;
+  line-height: 3.25rem;
+}
+
+@mixin arabicHeadingH2Regular {
+  @include arabicHeadingH2Mixin;
+  font-weight: 400;
+}
+
+@mixin arabicHeadingH2Medium {
+  @include arabicHeadingH2Mixin;
+  font-weight: 500;
+}
+
+@mixin arabicHeadingH2SemiBold {
+  @include arabicHeadingH2Mixin;
+  font-weight: 600;
+}
+
+@mixin arabicHeadingH2Bold {
+  @include arabicHeadingH2Mixin;
+  font-weight: 700;
+}
+
+
+// (Arabic heading/Heading h1) styles
+
+@mixin arabicHeadingH1Mixin {
+  font-family: "Noto Sans Arabic", sans-serif;
+  font-size: 3rem;
+  font-style: normal;
+  line-height: 3.5rem;
+}
+
+@mixin arabicHeadingH1Regular {
+  @include arabicHeadingH1Mixin;
+  font-weight: 400;
+}
+
+@mixin arabicHeadingH1Medium {
+  @include arabicHeadingH1Mixin;
+  font-weight: 500;
+}
+
+@mixin arabicHeadingH1SemiBold {
+  @include arabicHeadingH1Mixin;
+  font-weight: 600;
+}
+
+@mixin arabicHeadingH1Bold {
+  @include arabicHeadingH1Mixin;
+  font-weight: 700;
+}

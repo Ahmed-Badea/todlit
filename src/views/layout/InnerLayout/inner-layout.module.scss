@@ -1,0 +1,28 @@
+@import "@app/styles/common.scss";
+
+.inner-layout {
+  display: flex;
+
+  @include max($mobile-break-point) {
+    flex-direction: column;
+  }
+
+  &__main-wrapper {
+    width: calc(100% - var(--side-menu-width));
+    margin-inline-start: var(--side-menu-width);
+    transition: all 0.2s;
+    main {
+      padding: $space-20;
+    }
+  }
+
+  &__mob-wrapper {
+    margin-top: $space-80;
+    padding: $space-12;
+  }
+
+  h3 {
+    color: $primary-500;
+    margin: $space-12 0;
+  }
+}

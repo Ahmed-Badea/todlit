@@ -1,0 +1,54 @@
+@import '../../../styles/common.scss';
+
+.container {
+  display: flex;
+  width: 100%;
+  column-gap: 0.625rem;
+  justify-content: center;
+
+  .otp-input {
+    @include flex(center, center);
+    width: 3rem;
+    height: 3rem;
+    padding: 0.0625rem;
+
+    border-radius: $radius-sm;
+    border: 1px solid $primary-100;
+    background: $white;
+
+    color: $black;
+    text-align: center;
+
+    &[data-input-error='true'] {
+      border: 1px solid $error-300;
+    }
+
+    @include en {
+      @include englishBodyXlSemiBold;
+    }
+
+    @include ar {
+      @include arabicBodyXlSemiBold;
+    }
+
+    &:focus {
+      border: 1px solid $primary-300;
+      outline: $primary-100 solid 0.25rem;
+    }
+  }
+
+  ::placeholder {
+    color: $primary-50;
+    font-size: 1.5625rem;
+  }
+
+  :-ms-input-placeholder {
+    color: $primary-50;
+    font-size: 1.5625rem;
+  }
+
+  ::-ms-input-placeholder {
+    color: $primary-50;
+    font-size: 1.5625rem;
+  }
+}

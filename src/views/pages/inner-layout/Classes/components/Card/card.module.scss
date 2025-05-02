@@ -1,0 +1,75 @@
+@import "@app/styles/common.scss";
+
+.card {
+  background: $white; // Use design token for white
+  border-radius: $radius-md; // Standardized border radius
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: $space-20; // Use spacing token
+  width: 100%;
+  transition: box-shadow 0.3s ease; // Add hover effect for the card
+
+  &:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); // Subtle elevation on hover
+  }
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .buttons-container {
+    display: flex;
+    gap: $space-16;
+
+    .icon {
+      cursor: pointer;
+      transition: color 0.2s ease, transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.1); // Slightly enlarge icon on hover
+      }
+    }
+  }
+}
+
+.edit-icon {
+  color: $primary-500;
+  @extend .icon;
+
+  &:hover {
+    color: $primary-600; // Darken on hover
+  }
+}
+
+.clickable{
+  cursor: pointer;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.delete-icon {
+  color: $error-500;
+  @extend .icon;
+
+  &:hover {
+    color: $error-600; // Darken on hover
+  }
+}
+
+.popup-buttons {
+  margin-top: $space-40; // Use spacing token
+  display: flex;
+  justify-content: space-between;
+  gap: $space-10;
+
+  button {
+    width: 50%;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05); // Add hover effect for buttons
+    }
+  }
+}

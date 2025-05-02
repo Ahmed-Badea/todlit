@@ -1,0 +1,166 @@
+@import "@app/styles/common.scss";
+
+.nav-item,
+.sub-item {
+  font-size: 0.25rem;
+  padding: $space-12;
+  max-width: 100%;
+  cursor: pointer;
+  gap: $space-12;
+  text-wrap: nowrap;
+
+  &[data-nav-item-active="true"],
+  &[data-sub-item-active="true"] {
+    background-color: $white;
+    color: $primary-500;
+    box-shadow: 0px -2px 1px 0px rgba(0, 0, 0, 0.05) inset, 0px 1px 1px 0px #FFF inset;
+
+    path {
+      fill: $primary-500;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $white;
+      color: $primary-500;
+    }
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.nav-item {
+  @include flex(center, space-between);
+  margin-bottom: $space-8;
+  @include englishBodyMdSemiBold;
+
+  @include ar {
+    @include arabicBodyMdSemiBold;
+  }
+
+  // selecting the last child of nav-item even if it's
+  // not the last in the parent element
+  &:nth-last-child(1 of .nav-item) {
+    margin-bottom: 0;
+  }
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  &__featured-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+
+    @include ar {
+      transform: scaleX(-1);
+    }
+  }
+
+  &__label {
+    flex-grow: 1;
+  }
+
+  &__chevron {
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: transform 0.3s;
+
+    @include en {
+      transform: rotate(0deg);
+    }
+
+    @include ar {
+      transform: rotate(180deg);
+    }
+  }
+
+  &[data-nav-item-active="false"] {
+    color: $white;
+
+    path {
+      fill: $white;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $white;
+      color: $primary-500;
+
+      path {
+        fill: $primary-500;;
+      }
+    }
+  }
+
+  &[data-nav-item-open="true"] {
+    .nav-item__chevron {
+      transform: rotate(90deg) !important;
+    }
+  }
+
+  &[data-nav-item-collapsed="true"] {
+    width: fit-content;
+  }
+}
+
+.sub-item {
+  @include flex(center, flex-start);
+  margin-inline-start: $space-32;
+
+  &:last-child{
+    margin-bottom: $space-8;
+  }
+
+  position: relative;
+  @include englishBodySmSemiBold;
+
+  @include ar {
+    @include arabicBodySmSemiBold;
+  }
+
+  &[data-sub-item-active="false"] {
+    background-color: transparent;
+    color: $white;
+
+    path {
+      fill: $white;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $white;
+      color: $primary-500;
+
+      path {
+        fill: $primary-500;
+      }
+    }
+  }
+}
+
+.sub-items-list {
+  background-color: $primary-500;
+  padding: $space-24 $space-24 $space-12 0;
+
+  &__title {
+    margin-inline-start: $space-20;
+    color: $white;
+    @include englishBodySmSemiBold;
+
+    @include ar {
+      @include arabicBodySmSemiBold;
+    }
+  }
+
+  div[class*="sub-item__"] {
+    @include englishBodySmMedium;
+
+    @include ar {
+      @include arabicBodySmMedium;
+    }
+  }
+}

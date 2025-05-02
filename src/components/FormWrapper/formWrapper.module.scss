@@ -1,0 +1,51 @@
+@import "@app/styles/common.scss";
+
+.table{
+  .table-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $space-8 0;
+    border: 1px solid $gray-300;
+    border-bottom: none;
+    background-color: $primary-100;
+    h4{
+      padding-inline-start: $space-8;
+      color: $primary-500;
+      margin: 0;
+    }
+    &__buttons-container {
+      display: flex;
+      gap: $space-8;
+    }
+  }
+}
+
+.buttons-container {
+  margin-top: 20px;
+  display: flex;
+  gap: $space-8;
+
+  button {
+    width: 50%;
+  }
+}
+
+.error {
+  color: $error-500;
+  margin-top: $space-16;
+  text-align: center;
+}
+
+.success-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: $space-16;
+
+  img {
+    width: 150px;
+  }
+}

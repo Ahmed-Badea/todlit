@@ -1,0 +1,11 @@
+@import "@app/styles/common.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $space-32;
+  .filters_container{
+    width: 20%;
+  }
+}

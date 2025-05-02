@@ -1,0 +1,129 @@
+@import '../../../styles/common.scss';
+
+/* ------------------ Generic ------------------ */
+
+.toggle-box {
+  @include flex(center, flex-start);
+  font-size: 0.875rem;
+  cursor: pointer;
+  width: 100%;
+
+  &__text-box {
+    @include flex(flex-start, center);
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 0.38rem;
+
+    &__text {
+      @include en {
+        @include englishBodySmMedium;
+      }
+
+      @include ar {
+        @include arabicBodySmMedium;
+      }
+    }
+
+    &__hint-text {
+      @include en {
+        @include englishHelperTextRegular;
+      }
+
+      @include ar {
+        @include arabicHelperTextRegular;
+      }
+    }
+  }
+
+  &__icon {
+    @include flex(center,center);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 0.0625rem solid $gray-100;
+    background-color: $primary-25;
+
+    img {
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+    }
+
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+
+      path {
+        fill: $primary-600;
+      }
+    }
+  }
+
+  /* ------------------ Types ------------------ */
+
+  &:is([data-toggle-box-type="transparent box"]) {
+    gap: $space-12;
+
+    .toggle-box__text-box__text {
+      color: $gray-600;
+    }
+
+    .toggle-box__text-box__hint-text {
+      color: $gray-500;
+    }
+  }
+
+  &:is([data-toggle-box-type="bordered box"]) {
+    gap: $space-8;
+    border-radius: $radius-sm;
+
+    .toggle-box__text-box__text {
+      color: $gray-700;
+    }
+
+    .toggle-box__text-box__hint-text {
+      color: $gray-600;
+    }
+  }
+
+  /* ------------------ Types and Sizes ------------------ */
+
+  &:is([data-toggle-box-type="transparent box"]) {
+
+    &[data-toggle-box-size="sm"],
+    &[data-toggle-box-size="md"] {
+      border: 0.0625rem solid transparent;
+    }
+  }
+
+  &:is([data-toggle-box-type="bordered box"]) {
+
+    &[data-toggle-box-size="sm"],
+    &[data-toggle-box-size="md"] {
+      border: 0.0625rem solid $gray-200;
+    }
+
+    &[data-toggle-box-size="sm"] {
+      padding: $space-12;
+    }
+
+    &[data-toggle-box-size="md"] {
+      padding: $space-16;
+    }
+  }
+
+  /* ------------------ Types and States ------------------ */
+
+  &:is([data-toggle-box-type="bordered box"]) {
+
+    &[data-toggle-box-disabled="true"] {
+      background-color: $gray-50;
+      cursor: not-allowed;
+    }
+
+    &[data-toggle-box-hovered="true"],
+    &[data-toggle-box-focused="true"] {
+      border: 0.0625rem solid $gray-300;
+    }
+  }
+}

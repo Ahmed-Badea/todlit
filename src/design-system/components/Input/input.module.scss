@@ -1,0 +1,229 @@
+@import '../../styles/common.scss';
+
+.container {
+  @include flex();
+  flex-direction: column;
+  gap: $space-8;
+  width: 100%;
+
+  * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+
+  &:is([data-input-status='default']) {
+
+    .container__wrapper__input {
+
+      &:hover,
+      &:focus {
+        border: 0.0625rem solid $primary-300;
+      }
+
+      &:focus {
+        box-shadow: $shadow-ring-primary;
+      }
+    }
+
+  }
+
+  &:is([data-input-status='success']) {
+    .container__wrapper__input {
+      border: 0.0625rem solid $success-300;
+
+      &:focus {
+        box-shadow: $shadow-ring-success;
+      }
+    }
+  }
+
+  &:is([data-input-status='warning']) {
+
+    .container__wrapper__input {
+      border: 0.0625rem solid $warning-300;
+
+      &:focus {
+        box-shadow: $shadow-ring-warning;
+      }
+    }
+  }
+
+  &:is([data-input-status='error']) {
+
+    .container__wrapper__input {
+      border: 0.0625rem solid $error-300;
+
+      &:focus {
+        box-shadow: $shadow-ring-error;
+      }
+    }
+  }
+
+  &__wrapper {
+    width: 100%;
+
+    &:has(&__leading-icon),
+    &:has(&__trailing-icon) {
+      position: relative;
+    }
+
+    &:has(.container__wrapper__leading-icon) {
+      .container__wrapper__input {
+        padding-inline-start: $space-40;
+      }
+    }
+
+    &:has(.container__wrapper__trailing-icon) {
+      .container__wrapper__input {
+        padding-inline-end: $space-40;
+      }
+    }
+
+    &__leading-icon,
+    &__trailing-icon {
+      position: absolute;
+      top: $space-14;
+
+      svg,
+      img {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+    }
+
+    &__leading-icon {
+      inset-inline-start: $space-12;
+    }
+
+    &__trailing-icon {
+      inset-inline-end: $space-12;
+      cursor: pointer;
+    }
+
+    &__input {
+      @include flex(center);
+      width: 100%;
+      align-self: stretch;
+      height: 3rem;
+      padding: $space-10 $space-12;
+      gap: $space-8;
+      border-radius: 0;
+      border: 0.0625rem solid $gray-300;
+      background: $white;
+      color: $gray-900;
+      outline: none;
+
+      &::-ms-reveal,
+      &::-ms-clear {
+        display: none;
+      }
+
+      @include en {
+        @include englishLabelRegular;
+      }
+
+      @include ar {
+        @include arabicLabelRegular;
+      }
+
+      &::placeholder {
+        color: $gray-500;
+
+        @include en {
+          @include englishLabelRegular;
+        }
+
+        @include ar {
+          @include arabicLabelRegular;
+        }
+      }
+
+      &:disabled {
+        border: 0.0625rem solid $gray-300 !important;
+        background: $gray-50;
+        cursor: not-allowed;
+        box-shadow: unset !important;
+      }
+    }
+  }
+
+  &__hintText {
+    :is([data-input-status='default']) & {
+      color: $gray-600;
+    }
+
+    :is([data-input-status='success']) & {
+      color: $success-600;
+    }
+
+    :is([data-input-status='warning']) & {
+      color: $warning-700;
+    }
+
+    :is([data-input-status='error']) & {
+      color: $error-600;
+    }
+
+    @include en {
+      @include englishHelperTextRegular;
+    }
+
+    @include ar {
+      @include arabicHelperTextRegular;
+    }
+  }
+
+  &__forget-password {
+    margin-top: $space-20;
+    margin-inline-start: auto;
+  }
+
+  &__rules {
+    @include flex();
+    flex-direction: column;
+    gap: $space-4;
+
+    &__rule {
+      @include flex(center);
+      gap: $space-8;
+      color: $gray-600;
+
+      svg path {
+        fill: $gray-500;
+      }
+
+      @include en {
+        @include englishHelperTextRegular;
+      }
+
+      @include ar {
+        @include arabicHelperTextRegular;
+      }
+
+      &[data-input-rule='success'] {
+        color: $success-600;
+
+        svg path {
+          fill: $success-500;
+        }
+      }
+
+      &[data-input-rule='error'] {
+        color: $error-600;
+
+        svg path {
+          fill: $error-600;
+        }
+      }
+    }
+  }
+
+  // Edit mode
+  .no-border {
+    border: 1px solid $white !important; // Remove border when not in edit mode
+    background-color: transparent !important;
+    cursor: default;
+  }
+}

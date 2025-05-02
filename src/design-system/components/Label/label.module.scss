@@ -1,0 +1,12 @@
+@import '../../styles/common.scss';
+
+.label {
+  @include englishLabelMedium;
+  color: $gray-700;
+
+  &__optional {
+    @include englishLabelCompactRegular;
+    color: $gray-500;
+    margin-inline-start: $space-4;
+  }
+}

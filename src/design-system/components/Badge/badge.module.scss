@@ -1,0 +1,127 @@
+@import '../../styles/common.scss';
+
+/* ------------------ Generic ------------------ */
+
+.badge {
+  width: fit-content;
+  height: fit-content;
+  @include flex(center, center);
+  border-radius: $radius-lg;
+  gap: $space-4;
+  mix-blend-mode: multiply;
+
+  svg,
+  img {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  img {
+    border-radius: 50%;
+  }
+}
+
+
+/* ------------------ Sizes ------------------ */
+
+[data-badge-size="sm"] {
+  padding: 0 $space-8;
+
+  @include en {
+    @include englishBodySmMedium;
+  }
+
+  @include ar {
+    @include arabicBodySmMedium;
+  }
+
+}
+
+[data-badge-size="md"],
+[data-badge-size="lg"] {
+  padding: 0 $space-12;
+}
+
+[data-badge-size="md"] {
+  @include en {
+    @include englishBodyMdMedium;
+  }
+
+  @include ar {
+    @include arabicBodyMdMedium;
+  }
+}
+
+[data-badge-size="lg"] {
+  @include en {
+    @include englishBodyLgMedium;
+  }
+
+  @include ar {
+    @include arabicBodyLgMedium;
+  }
+}
+
+/* ------------------ Colors ------------------ */
+
+[data-badge-color="gray"],
+[data-badge-color="grey"] {
+  color: $gray-700;
+  background-color: $gray-100;
+
+  &:not([data-badge-type="country"]):not([data-badge-type="avatar"]) {
+
+    path {
+      fill: $gray-700 !important;
+    }
+  }
+}
+
+[data-badge-color="primary"] {
+  color: $primary-500;
+  background-color: $primary-25;
+
+  &:not([data-badge-type="country"]):not([data-badge-type="avatar"]) {
+
+    path {
+      fill: $primary-500 !important;
+    }
+  }
+}
+
+[data-badge-color="green"] {
+  color: $success-600;
+  background-color: $success-25;
+
+  &:not([data-badge-type="country"]):not([data-badge-type="avatar"]) {
+
+    path {
+      fill: $success-600 !important;
+    }
+  }
+}
+
+[data-badge-color="yellow"] {
+  color: $warning-600;
+  background-color: $warning-50;
+
+  &:not([data-badge-type="country"]):not([data-badge-type="avatar"]) {
+
+    path {
+      fill: $warning-600 !important;
+    }
+  }
+}
+
+
+[data-badge-color="red"] {
+  color: $error-600;
+  background-color: $error-25;
+
+  &:not([data-badge-type="country"]):not([data-badge-type="avatar"]) {
+
+    path {
+      fill: $error-600 !important;
+    }
+  }
+}

@@ -1,0 +1,91 @@
+@import "../../styles/common.scss";
+
+$table-header-bg: $primary-500;
+$table-row-bg: $gray-50;
+$table-row-hover-bg: $gray-300;
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 2rem 0;
+  // box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid $primary-300;
+
+  &-thead {
+    background-color: $table-header-bg;
+
+    .table-th {
+      padding: $space-16;
+      border: 1px solid $primary-300;
+      text-align: center;
+      font-weight: bold;
+      color: $white;
+      transition: background-color 0.3s;
+    }
+  }
+
+  &-tbody {
+    .table-tr {
+      background-color: $table-row-bg;
+      transition: background-color 0.3s;
+      cursor: pointer;
+      
+      &:nth-child(even) {
+        background-color: $primary-100;
+      }
+
+      &:hover {
+        background-color: $table-row-hover-bg;
+      }
+    }
+
+    .table-td {
+      padding: $space-16;
+      border: 1px solid $primary-300;
+      text-align: center;
+      color: $gray-900;
+    }
+  }
+}
+
+.no-data {
+  text-align: center;
+  padding: $space-20;
+  font-size: 1.25rem;
+  color: $gray-700;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.pagination-button {
+  background-color: $primary-500;
+  color: $white;
+  border: none;
+  padding: $space-8 $space-16;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:disabled {
+    background-color: $primary-200;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: $primary-700;
+  }
+}
+
+.pagination-info {
+  color: $gray-700;
+}

@@ -1,0 +1,13 @@
+{
+    "clickToUpload": "Click to upload",
+    "dragAndDrop": "or drag and drop",
+    "maxSize": "(max. size: {{size}} MB)",
+    "uploadFailedTryAgain": "Upload failed, please try again",
+    "uploaded": "Uploaded",
+    "uploadAgain": "Upload again",
+    "errorMsgs": {
+        "notSupportedFormat": "The file format is not supported",
+        "fileSize": "The file uploaded exceeds {{size}} MB",
+        "noFileUploaded": "Please upload a file"
+    }
+}

@@ -1,0 +1,23 @@
+@import "@app/styles/common.scss";
+
+.final-step-info {
+  width: 100%;
+  height: 100%;
+  @include flex(center, center);
+  flex-direction: column;
+  gap: $space-16;
+
+  svg {
+    width: 10rem;
+  }
+
+  &__text {
+    margin: 0;
+    color: $primary-500;
+    @include englishBodyXlSemiBold;
+
+    @include ar {
+      @include arabicBodyXlSemiBold;
+    }
+  }
+}

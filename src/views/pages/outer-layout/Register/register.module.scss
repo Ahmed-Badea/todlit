@@ -1,0 +1,52 @@
+@import "@app/styles/mixins";
+
+.register-form {
+  @include outer-layout-form-footer(__already-have-account);
+}
+
+.register-form {
+  &__fields-divider {
+    @include flex (flex-start, space-between);
+    margin-top: -$space-10;
+
+    &>div[class*="input_container"] {
+      flex-basis: 48%;
+    }
+  }
+
+  &__checkbox-group {
+    width: 100%;
+    margin-bottom: $space-24;
+
+    &__checkboxes {
+      @include flex(center, space-between);
+
+      @include max(960px){
+        &>div[data-checkbox-variant]{
+          flex: 1 1 0;
+        }
+      }
+
+    }
+
+    [class*="label"] {
+      margin-bottom: $space-20;
+    }
+
+    [class*="checkbox_control--checkbox"] {
+      @include flex(center, center);
+      flex-direction: column;
+      padding: 0;
+
+      [class*="checkbox_control__indicator"] {
+        @include flex(center, center);
+        position: relative;
+        inset-inline-start: 0;
+      }
+
+      [class*="checkbox_control__text"] {
+        margin: 0;
+      }
+    }
+  }
+}

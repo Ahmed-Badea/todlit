@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+
+  div[data-is-side-menu-collapsed="true"] {
+    --side-menu-width: 4rem;
+  }
+
+  div[data-is-side-menu-collapsed="false"] {
+    --side-menu-width: 18rem;
+  }
+}
+
+// Custom scrollbar
+
+@media(min-width:calc(900px - 1px)) {
+  ::-webkit-scrollbar {
+    width: 0.625rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #D0D5DD;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #8d94a2;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6c7787;
+  }
+}

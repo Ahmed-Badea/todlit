@@ -1,0 +1,201 @@
+@import '../../styles/common.scss';
+
+.container {
+  @include flex(unset);
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  color: $gray-700;
+  gap: 0.5rem;
+
+  * {
+    box-sizing: border-box;
+  }
+
+
+  @include en {
+    @include englishLabelRegular;
+  }
+
+  @include ar {
+    @include arabicLabelRegular;
+  }
+
+  &__controller {
+    @include flex(center);
+    height: 2.5rem;
+    padding: 0.625rem 0.75rem;
+    gap: 0.5rem;
+
+    border-radius: 0.5rem;
+    border: 0.0625rem solid $gray-300;
+    background: $white;
+
+    @include ar {
+      flex-direction: row-reverse;
+    }
+
+    &:hover,
+    &:focus {
+      border: 0.0625rem solid $primary-300;
+    }
+
+    &:focus,
+    &:focus-within {
+      box-shadow: $shadow-ring-primary;
+    }
+
+    &[data-input-invalid='true'] {
+      border: 0.0625rem solid $error-300;
+
+      &:focus,
+      &:focus-within {
+        box-shadow: $shadow-ring-error;
+      }
+    }
+
+    &[data-input-disabled='true'] {
+      border: 0.0625rem solid $gray-300;
+      background: $gray-50;
+      cursor: not-allowed;
+
+      .container__controller__button {
+        background: $gray-50;
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        box-shadow: unset;
+      }
+    }
+
+    &__button {
+      border: none;
+      outline: none;
+      padding: 0;
+      background-color: #fff;
+      @include flex(center);
+      gap: 0.5rem;
+      cursor: pointer;
+
+      @include ar {
+        flex-direction: row-reverse;
+      }
+
+      &__country-icon {
+        @include flex(center);
+
+        svg {
+          width: 1.25rem;
+          height: 1.25rem;
+        }
+      }
+
+      &__chevron-icon {
+        @include flex(center);
+        transition: all 0.2s;
+
+        svg {
+          width: 0.75rem;
+          height: 0.75rem;
+        }
+
+        :has([data-btn-toggle='true']) & {
+          transform: rotate(180deg);
+        }
+      }
+
+      & label {
+        cursor: pointer;
+        direction: ltr;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+
+        & label {
+          cursor: not-allowed;
+          color: $gray-400;
+        }
+      }
+    }
+
+    &__input {
+      width: 100%;
+      border: none;
+      outline: none;
+      text-align: left;
+      flex: 1;
+
+      @include en {
+        @include englishLabelRegular;
+      }
+
+      @include ar {
+        @include arabicLabelRegular;
+      }
+
+      &::placeholder {
+        color: $gray-500;
+      }
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    background-color: #fff;
+    border: 0.0625rem solid #eaecf0;
+    border-radius: 0.5rem;
+    left: 0;
+    right: 0;
+    top: 45px;
+    z-index: 999999;
+    overflow: hidden;
+
+    &__country {
+      @include flex(center, space-between);
+      padding: 1rem;
+      padding: 0.625rem 0.75rem;
+      cursor: pointer;
+      color: #101828;
+
+      &:hover {
+        background-color: #f9fafb;
+      }
+
+      &__details {
+        @include flex();
+        gap: 0.5rem;
+
+        &__icon {
+          svg {
+            width: 1.25rem;
+            height: 1.25rem;
+          }
+        }
+
+        &__info {
+          @include flex(center);
+          gap: 0.25rem;
+        }
+      }
+
+      &[data-country-active='true'] {
+        background-color: #f9fafb;
+      }
+    }
+  }
+
+  &__error {
+    color: $error-600;
+
+    @include en {
+      @include englishHelperTextRegular;
+    }
+
+    @include ar {
+      @include arabicHelperTextRegular;
+    }
+  }
+}

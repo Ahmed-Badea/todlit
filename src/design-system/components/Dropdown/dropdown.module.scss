@@ -1,0 +1,67 @@
+@import '../../styles/common.scss';
+
+.dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+
+  &__children-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__hint-text {
+    @include englishHelperTextRegular;
+
+    @include ar {
+      @include arabicHelperTextRegular;
+    }
+
+    &:is([data-dropdown-status='default']) {
+      color: $gray-600;
+    }
+
+    &:is([data-dropdown-status='success']) {
+      color: $success-600;
+    }
+
+    &:is([data-dropdown-status='warning']) {
+      color: $warning-700;
+    }
+
+    &:is([data-dropdown-status='error']) {
+      color: $error-600;
+    }
+  }
+
+  &:has([class*="dropdown-menu__"]) {
+    [class*="dropdown-chevron_"] {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &[data-dropdown-focused="true"] {
+    &:has([class*="dropdown-menu__"]) {
+      background-color: $gray-50;
+    }
+  }
+
+  /* ------------------ Width ------------------ */
+  &[data-dropdown-width='full'] {
+    width: 100%;
+
+    &:has([class*="dropdown-btn__dropdown-chevron"]:only-child) {
+      button[class*="dropdown-button_"] {
+        padding: $space-8 $space-12;
+      }
+    }
+  }
+
+  &[data-dropdown-width='fit-content'] {
+    width: fit-content;
+  }
+}

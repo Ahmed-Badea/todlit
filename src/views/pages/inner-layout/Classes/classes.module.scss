@@ -1,0 +1,23 @@
+@import "@app/styles/common.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $space-32;
+  .filters_container{
+    width: 20%;
+  }
+}
+
+.classroom-list  {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); // Adjusted for better responsiveness
+  gap: $space-24;
+  // padding: $space-20;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; // Single-column layout on smaller screens
+  }
+}

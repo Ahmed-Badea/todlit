@@ -1,0 +1,50 @@
+@import "@app/styles/common.scss";
+
+$scrollbar-width:0.4rem;
+
+@mixin outer-layout-form-footer($className) {
+  &#{$className} {
+    @include flex(center, center);
+    gap: $space-4;
+    width: 100%;
+    text-align: center;
+    @include englishLabelSemiBold;
+
+    @include ar {
+      @include arabicLabelSemiBold;
+    }
+
+    &__text {
+      color: $gray-600;
+    }
+
+    &__action {
+      width: fit-content;
+      color: $primary-500;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@mixin rounded-scroll-bar() {
+  &::-webkit-scrollbar {
+    width: $scrollbar-width;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $gray-300;
+    border-radius: $radius-lg;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $gray-400;
+    border-radius: $radius-lg;
+  }
+}

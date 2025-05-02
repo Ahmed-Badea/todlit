@@ -1,0 +1,203 @@
+{
+  "outerLayout": {
+    "language": "en",
+    "smartPayment": "قبول الدفع الذكي للنمو الذكي",
+    "form": {
+      "dontHaveAcc": "ليس لديك حساب؟",
+      "signUp": "إنشاء حساب",
+      "next": "التالي",
+      "submit": "إرسال",
+      "textMsgSent": "تم إرسال رسالة نصية تحتوي على رمز تحقق مكون من 6 أرقام إلى {{phoneNum}}",
+      "enterTheCode": "يرجى إدخال الرمز الذي أرسلناه إلى {{phoneNum}}",
+      "resendCodeIn": "إعادة إرسال الرمز بعد",
+      "resend": "إعادة إرسال",
+      "otpResent": "تم إعادة إرسال الرمز بنجاح",
+      "errors": {
+        "required": "هذا الحقل مطلوب",
+        "somethingWentWrong": "عذرًا! حدث خطأ. إذا استمر هذا المشكلة، يرجى الاتصال بمزود الخدمة الخاص بك",
+        "invalidPhone": "يرجى إدخال رقم هاتف صالح",
+        "invalidEmail": "يرجى إدخال بريد إلكتروني صالح",
+        "atleastXCharacters": "يجب أن يتكون من {{number}} حرفًا على الأقل",
+        "atleastUpperCaseLetter": "يجب أن يحتوي على حرف كبير واحد على الأقل",
+        "atleastLowerCaseLetter": "يجب أن يحتوي على حرف صغير واحد على الأقل",
+        "atleast1Number": "يجب أن يحتوي على رقم واحد على الأقل",
+        "atleast1SpecialCharacter": "يجب أن يحتوي على حرف خاص واحد على الأقل",
+        "matchPassword": "يرجى التأكد من تطابق كلمة المرور أعلاه",
+        "tryInAnHour": "يرجى المحاولة مرة أخرى بعد ساعة واحدة.",
+        "wrongOtp": "الرمز المرسل غير صحيح",
+        "otpExpired": "انتهت صلاحية الرمز المرسل، يرجى المحاولة مرة أخرى",
+        "otpLoginError": "انتهت الجلسة، يرجى تسجيل الدخول مرة أخرى",
+        "tooManyAttempts": "عدد المحاولات أكثر من اللازم، يرجى المحاولة لاحقًا"
+      },
+      "labels": {
+        "optional": "اختياري",
+        "password": "كلمة المرور",
+        "confirmPassword": "تأكيد كلمة المرور",
+        "phoneNumber": "رقم الهاتف",
+        "username": "اسم المستخدم",
+        "enterEmail": "أدخل عنوان البريد الإلكتروني",
+        "emailAddress": "عنوان البريد الإلكتروني"
+      },
+      "login": {
+        "signIn": "تسجيل الدخول",
+        "forgotPassword": "هل نسيت كلمة المرور؟",
+        "dontHaveAcc": "ليس لديك حساب؟",
+        "signUp": "إنشاء حساب",
+        "errors": {
+          "wrongCredentials": "اسم المستخدم أو كلمة المرور غير صحيحة"
+        }
+      },
+      "register": {
+        "signUp": "إنشاء حساب",
+        "alreadyHaveAcc": "هل لديك حساب؟",
+        "signIn": "تسجيل الدخول",
+        "fillBelowFields": "املأ الحقول أدناه لإتمام إنشاء حسابك",
+        "success": "تم تسجيلك بنجاح",
+        "gender": [
+          {
+            "label": "ذكر",
+            "value": "male"
+          },
+          {
+            "label": "أنثى",
+            "value": "female"
+          }
+        ],
+        "placeholders": {
+          "selectGender": "اختر الجنس"
+        },
+        "errors": {
+          "phoneExists": "يبدو أنك مستخدم بالفعل، يرجى المحاولة {{loginLink}}"
+        },
+        "labels": {
+          "firstName": "الاسم الأول",
+          "lastName": "الاسم الأخير",
+          "gender": "الجنس",
+          "nurseryName": "اسم الحضانة",
+          "address": "العنوان",
+          "phoneNumber": "رقم الهاتف"
+        }
+      },
+      "forgetPassword": {
+        "forgotPassword": "نسيت كلمة المرور",
+        "enterEmail": "أدخل عنوان البريد الإلكتروني المرتبط بحسابك لإعادة تعيين كلمة المرور",
+        "continue": "استمرار",
+        "createNewPassword": "إنشاء كلمة مرور جديدة",
+        "submitNewPassword": "إرسال كلمة مرور جديدة",
+        "errors": {
+          "checkUserNameOrPhone": "تحقق من اسم المستخدم أو رقم الهاتف"
+        }
+      }
+    }
+  },
+  "innerLayout": {
+    "language": "العربية",
+    "create": "إنشاء",
+    "quickLink": "رابط سريع",
+    "invoice": "الفاتورة",
+    "productLink": "رابط المنتج",
+    "all": "الكل",
+    "selectAll": "اختيار الكل",
+    "select": "اختيار",
+    "none": "لا شيء",
+    "navbar": {
+      "dashboard": "لوحة القيادة",
+      "centerManagement": "إدارة المركز",
+      "students": "الطلاب",
+      "classes": "الفصول",
+      "staff": "الموظفون",
+      "attendance": "الحضور",
+      "studentAttendance": "حضور الطلاب",
+      "parentCommunication": "التواصل مع الأهل",
+      "activities": "الأنشطة",
+      "dailyReports": "التقارير اليومية",
+      "billing": "الفواتير",
+      "studentPayment": "مدفوعات الطلاب",
+      "invoice": "الفاتورة",
+      "paymentPlan": "خطة الدفع",
+      "plans": "الخطط",
+      "discount": "الخصم",
+      "taxRate": "معدل الضريبة",
+      "invoicePdf": "فاتورة PDF",
+      "settings": "الإعدادات",
+      "accessControl": "التحكم في الوصول",
+      "activityPosts": "منشورات الأنشطة",
+      "schoolDetails": "تفاصيل المدرسة",
+      "editProfile": "تعديل الملف الشخصي",
+      "logout": "تسجيل الخروج",
+      "arabic": "العربية",
+      "english": "الإنجليزية"
+    },
+    "students": {
+      "title": "الطلاب",
+      "allClasses": "جميع الفصول",
+      "tabs": {
+        "profile": "الملف الشخصي",
+        "attendance": "الحضور",
+        "billing": "الفوترة",
+        "documents": "الوثائق"
+      },
+      "editStudent": "تعديل الطالب",
+      "cancelEdit": "إلغاء التعديل"
+    },
+    "classes": {
+      "title": "الفصول",
+      "createClass": "إنشاء فصل"
+    },
+    "staff": {
+      "title": "الموظفون",
+      "allClasses": "جميع الفصول"
+    },
+    "plans": {
+      "title": "الخطط",
+      "form": {
+        "titles": {
+          "createPlan": "إنشاء خطة"
+        }
+      }
+    },
+    "form": {
+      "titles": {
+        "createStudent": "إنشاء طالب",
+        "studentDetails": "تفاصيل الطالب",
+        "createFather": "إنشاء أب",
+        "fatherDetails": "تفاصيل الأب",
+        "createMother": "إنشاء أم",
+        "motherDetails": "تفاصيل الأم",
+        "createClass": "إنشاء فصل",
+        "createStaff": "إنشاء موظف",
+        "staffDetails": "تفاصيل الموظف"
+      },
+      "labels": {
+        "firstName": "الاسم الأول",
+        "lastName": "الاسم الأخير",
+        "dateOfBirth": "تاريخ الميلاد",
+        "gender": "الجنس",
+        "status": "الحالة",
+        "classroom": "الفصل",
+        "parent": "الوالد",
+        "name": "الاسم",
+        "branch": "الفرع",
+        "minAge": "الحد الأدنى للعمر",
+        "maxAge": "الحد الأقصى للعمر",
+        "capacity": "السعة",
+        "email": "البريد الإلكتروني",
+        "phone": "الهاتف"
+      },
+      "placeholders": {
+        "selectGender": "اختر الجنس",
+        "selectStatus": "اختر الحالة"
+      },
+      "submit": "إرسال",
+      "update": "تحديث",
+      "cancel": "إلغاء",
+      "successMessage": {
+        "created": "تم الإنشاء بنجاح",
+        "updated": "تم التحديث بنجاح"
+      },
+      "errors": {
+        "somethingWentWrong": "عذرًا! حدث خطأ. يرجى المحاولة مرة أخرى."
+      }
+    }
+  }
+}

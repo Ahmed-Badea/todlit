@@ -1,0 +1,66 @@
+@import '../../styles/common.scss';
+
+.checkbox-wrapper {
+  display: flex;
+  gap: $space-8;
+  cursor: pointer;
+
+  &__text-box {
+    display: flex;
+    flex-direction: column;
+    gap: $space-8;
+
+    &__text {
+      color: $gray-700;
+    }
+
+    &__hint-text {
+      color: $gray-600;
+      @include englishHelperTextRegular;
+
+      @include ar {
+        @include arabicHelperTextRegular;
+      }
+    }
+  }
+
+
+  // Disabled
+  &[data-checkbox-disabled="true"] {
+    pointer-events: none;
+  }
+
+
+  // Size
+  &[data-checkbox-size="sm"] {
+
+    .checkbox-wrapper__text-box__text {
+      line-height: 0.8rem !important;
+      @include englishBodySmMedium;
+
+      @include ar {
+        @include arabicBodySmMedium;
+      }
+    }
+
+    &[data-checkbox-aligned-center="true"] {
+      align-items: center;
+    }
+  }
+
+  &[data-checkbox-size="md"] {
+
+    .checkbox-wrapper__text-box__text {
+      line-height: 0.82rem !important;
+      @include englishBodyMdMedium;
+
+      @include ar {
+        @include arabicBodyMdMedium;
+      }
+    }
+
+    &[data-checkbox-aligned-center="true"] {
+      align-items: center;
+    }
+  }
+}

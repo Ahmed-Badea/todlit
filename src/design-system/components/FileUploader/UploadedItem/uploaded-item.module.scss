@@ -1,0 +1,154 @@
+@import '../../../styles/common.scss';
+
+/* ------------------ Generic ------------------ */
+
+.file-uploaded-item {
+  @include flex(flex-start, flex-start);
+  gap: $space-16;
+  width: 100%;
+  padding: $space-16;
+  border-radius: $radius-sm;
+  box-sizing: border-box;
+
+  &__info-box {
+    width: 83%;
+  }
+
+  &__failed-info-box {
+    width: 100%;
+  }
+
+  &__info-box {
+    @include flex(flex-start, flex-start);
+    flex-direction: column;
+    gap: $space-4;
+
+    &__file-details {
+      width: 100%;
+      @include flex(flex-start, flex-start);
+      flex-direction: column;
+
+      &__file-name {
+        width: 100%;
+        @include flex(flex-start, space-between);
+        color: $gray-600;
+
+        &>div {
+          width: 90%;
+          word-wrap: break-word;
+        }
+
+        @include en {
+          @include englishBodySmMedium;
+        }
+
+        @include ar {
+          @include arabicBodySmMedium;
+        }
+
+        button {
+          padding: 0 !important;
+
+          path {
+            fill: $error-500;
+          }
+        }
+      }
+
+      &__file-size {
+        color: $gray-500;
+
+        @include en {
+          @include englishBodySmRegular;
+        }
+
+        @include ar {
+          @include arabicBodySmRegular;
+        }
+      }
+    }
+
+    &__progress-box {
+      display: flex;
+      align-items: center;
+      gap: $space-8;
+      justify-content: space-between;
+      width: 100%;
+
+      &__progress-track {
+        flex-grow: 1;
+        height: 0.5rem;
+        background-color: $primary-50;
+        border-radius: $radius-xs;
+
+        &__bar {
+          height: 100%;
+          border-radius: $radius-xs;
+        }
+      }
+
+      &__percentage {
+        @include englishHelperTextRegular;
+      }
+    }
+  }
+
+  &__failed-info-box {
+    @include flex(flex-start, flex-start);
+    flex-direction: column;
+    color: $error-600;
+
+    &__upload-failed {
+      margin-bottom: $space-4;
+
+      @include en {
+        @include englishBodySmMedium;
+      }
+
+      @include ar {
+        @include arabicBodySmMedium;
+      }
+    }
+
+    &__upload-info {
+      margin-bottom: $space-12;
+
+      @include en {
+        @include englishBodySmRegular;
+      }
+
+      @include ar {
+        @include arabicBodySmRegular;
+      }
+    }
+
+    button {
+      path {
+        fill: $error-600;
+      }
+    }
+  }
+
+  /* ------------------ state ------------------ */
+
+  &:is([data-file-uploaded-item-state='inprogress']) {
+    border: 0.0625rem solid $gray-200;
+
+    .file-uploaded-item__info-box__progress-box__progress-track__bar {
+      background-color: $primary-600;
+    }
+  }
+
+  &:is([data-file-uploaded-item-state='completed']) {
+    border: 0.0625rem solid $success-300;
+
+    .file-uploaded-item__info-box__progress-box__progress-track__bar {
+      background-color: $success-600;
+    }
+  }
+
+  &:is([data-file-uploaded-item-state='failed']) {
+    border: 0.0625rem solid $error-300;
+    background-color: $error-50;
+  }
+}

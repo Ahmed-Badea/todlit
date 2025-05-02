@@ -1,0 +1,31 @@
+@import "@app/styles/common.scss";
+
+.color-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+}
+
+.color-wrapper {
+  display: flex;
+  align-items: center;
+  gap: $space-12;
+}
+
+.color-picker {
+  width: 3rem;
+  height: 3rem;
+  // border-radius: $radius-sm;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.08);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

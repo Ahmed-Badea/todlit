@@ -1,0 +1,21 @@
+@import "@app/styles/common.scss";
+
+.profile-menu {
+    @include flex(center, flex-end);
+    gap: $space-24;
+
+    div[class*="toggle-box"] {
+      width: fit-content;
+    }
+
+    div[class*="dropdown-menu_"] {
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+
+        path {
+          fill: $primary-300;
+        }
+      }
+  }
+}

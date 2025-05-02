@@ -1,0 +1,67 @@
+import { required } from "@app/utils/formValidations";
+
+export const formConfig = [
+  {
+    name: "name", // Match API response key
+    label: { en: "Name", ar: "الاسم" },
+    type: "text",
+    value: "",
+    isValid: null,
+    errorMsg: "",
+    validations: [required],
+  },
+  {
+    name: "fees",
+    label: { en: "Fees", ar: "الرسوم" },
+    type: "text",
+    value: "",
+    isValid: null,
+    errorMsg: "",
+    validations: [required],
+  },
+  {
+    name: "start_shift",
+    label: { en: "Start Shift", ar: "بداية الدوام" },
+    type: "time",
+    value: "",
+    isValid: null,
+    errorMsg: "",
+    validations: [required],
+  },
+  {
+    name: "end_shift",
+    label: { en: "End Shift", ar: "نهاية الدوام" },
+    type: "time",
+    value: "",
+    isValid: null,
+    errorMsg: "",
+    validations: [required],
+  },
+  {
+    name: "program_color",
+    label: { en: "Program Color", ar: "لون البرنامج" },
+    type: "color",
+    value: "#ffffff",
+    isValid: true,
+    errorMsg: "",
+    validations: [required],
+  },
+  {
+    name: "late_checkout_time",
+    label: { en: "Late Checkout Time", ar: "وقت الخروج المتأخر" },
+    type: "time",
+    value: "",
+    isValid: null,
+    errorMsg: "",
+    validations: [required],
+  },
+  {
+    name: "late_checkout_fees",
+    label: { en: "Late Checkout Fees", ar: "رسوم الخروج المتأخر" },
+    type: "text",
+    value: "",
+    isValid: null,
+    errorMsg: "",
+    validations: [required],
+  },
+];

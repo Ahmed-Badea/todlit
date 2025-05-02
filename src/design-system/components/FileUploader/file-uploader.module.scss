@@ -1,0 +1,139 @@
+@import '../../styles/common.scss';
+
+/* ------------------ Generic ------------------ */
+
+.file-uploader {
+  @include flex(flex-start, center);
+  flex-direction: column;
+  gap: $space-8;
+  width: 100%;
+
+  &__label {
+    color: $gray-700;
+
+    @include en {
+      @include englishLabelMedium;
+    }
+
+    @include ar {
+      @include arabicLabelMedium;
+    }
+  }
+
+  &__label-hint {
+    color: $gray-500;
+
+    @include en {
+      @include englishLabelCompactRegular;
+    }
+
+    @include ar {
+      @include arabicLabelCompactRegular;
+    }
+  }
+
+  &__hint-text,
+  &__error-msg {
+    color: $gray-600;
+
+    @include en {
+      @include englishHelperTextRegular;
+    }
+
+    @include ar {
+      @include arabicHelperTextRegular;
+    }
+  }
+
+  &__hint-text {
+    color: $gray-600;
+  }
+
+  &__error-msg {
+    color: $error-600;
+  }
+
+  &__upload-container {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    @include flex(center, center);
+    flex-direction: column;
+    gap: $space-12;
+    padding: $space-16;
+    border-radius: $radius-sm;
+    border: 0.0625rem dashed $gray-300;
+
+    &>input[type='file'] {
+      position: absolute;
+      top: 0;
+      opacity: 0;
+      cursor: pointer;
+      border-radius: $radius-sm;
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover {
+      border: 0.0625rem dashed $primary-300;
+    }
+
+    &--invalid {
+      border: 0.0625rem dashed $error-400;
+
+      &:hover {
+        border: 0.0625rem dashed $error-400;
+      }
+    }
+
+    &__info-box {
+      @include flex(center, flex-start);
+      flex-direction: column;
+      gap: $space-4;
+
+      &__action-txt {
+        @include flex(center, flex-start);
+
+        &>span {
+          margin-inline-start: $space-4;
+          color: $gray-600;
+
+          @include en {
+            @include englishBodySmMedium;
+          }
+
+          @include ar {
+            @include arabicBodySmMedium;
+          }
+        }
+
+        button {
+          padding: 0;
+        }
+      }
+
+      &__supporting-txt {
+        color: $gray-500;
+
+        @include en {
+          @include englishLabelCompactRegular;
+        }
+
+        @include ar {
+          @include arabicLabelCompactRegular;
+        }
+      }
+    }
+  }
+
+  /* ------------------ Disabled ------------------ */
+
+  &:is([data-file-uploader-base-disabled="true"]) {
+    pointer-events: none;
+
+    .file-uploader__upload-container {
+      background-color: $gray-50;
+      cursor: not-allowed;
+    }
+  }
+}

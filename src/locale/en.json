@@ -1,0 +1,203 @@
+{
+  "outerLayout": {
+    "language": "عربي",
+    "smartPayment": "Smart Payment Acceptance For Smart Growth",
+    "form": {
+      "dontHaveAcc": "You don't have an account?",
+      "signUp": "Sign Up",
+      "next": "Next",
+      "submit": "Submit",
+      "textMsgSent": "A text message with a 6-digit verification code was just sent to {{phoneNum}}",
+      "enterTheCode": "Please enter the code we’ve sent to {{phoneNum}}",
+      "resendCodeIn": "Resend code in",
+      "resend": "Re-send",
+      "otpResent": "OTP re-sent successfully",
+      "errors": {
+        "required": "This field is required",
+        "somethingWentWrong": "Oops! Something went wrong. If this problem persists, please contact your service provider",
+        "invalidPhone": "Please enter a valid phone number",
+        "invalidEmail": "Please enter a valid email",
+        "atleastXCharacters": "{{number}} characters Minimum",
+        "atleastUpperCaseLetter": "At least 1 uppercase letter",
+        "atleastLowerCaseLetter": "At least 1 lowercase letter",
+        "atleast1Number": "At least 1 number",
+        "atleast1SpecialCharacter": "At least 1 special character",
+        "matchPassword": "Please match the password above",
+        "tryInAnHour": "Please try again later, after one hour.",
+        "wrongOtp": "OTP is incorrect",
+        "otpExpired": "OTP is expired, please try again",
+        "otpLoginError": "Session is end, Please login again",
+        "tooManyAttempts": "Too many attempts, try again later"
+      },
+      "labels": {
+        "optional": "optional",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "phoneNumber": "Phone number",
+        "username": "Username",
+        "enterEmail": "Enter email address",
+        "emailAddress": "Email Address"
+      },
+      "login": {
+        "signIn": "Sign in",
+        "forgotPassword": "Forgot password?",
+        "dontHaveAcc": "You don't have an account?",
+        "signUp": "Sign Up",
+        "errors": {
+          "wrongCredentials": "Username or password is wrong"
+        }
+      },
+      "register": {
+        "signUp": "Sign Up",
+        "alreadyHaveAcc": "Already have an account?",
+        "signIn": "Sign in",
+        "fillBelowFields": "Fill the below fields to complete creating your account",
+        "success": "You've been registered successfully",
+        "gender": [
+          {
+            "label": "Male",
+            "value": "male"
+          },
+          {
+            "label": "Female",
+            "value": "female"
+          }
+        ],
+        "placeholders": {
+          "selectGender": "Select gender"
+        },
+        "errors": {
+          "phoneExists": "It seems that you are already a user, please try to {{loginLink}}"
+        },
+        "labels": {
+          "firstName": "First Name",
+          "lastName": "Last Name",
+          "gender": "Gender",
+          "nurseryName": "Nursery Name",
+          "address": "Address",
+          "phoneNumber": "Phone Number"
+        }
+      },
+      "forgetPassword": {
+        "forgotPassword": "Forgot Password",
+        "enterEmail": "Enter the email address associated with your account to reset your password",
+        "continue": "Continue",
+        "createNewPassword": "Create new password",
+        "submitNewPassword": "Submit New Password",
+        "errors": {
+          "checkUserNameOrPhone": "Check your username or phone number"
+        }
+      }
+    }
+  },
+  "innerLayout": {
+    "language": "EN",
+    "create": "Create",
+    "quickLink": "Quick link",
+    "invoice": "Invoice",
+    "productLink": "Product link",
+    "all": "All",
+    "selectAll": "Select All",
+    "select": "Select",
+    "none": "None",
+    "navbar": {
+      "dashboard": "Dashboard",
+      "centerManagement": "Center Management",
+      "students": "Students",
+      "classes": "Classes",
+      "staff": "Staff",
+      "attendance": "Attendance",
+      "studentAttendance": "Student Attendance",
+      "parentCommunication": "Parent Communication",
+      "activities": "Activities",
+      "dailyReports": "Daily Reports",
+      "billing": "Billing",
+      "studentPayment": "Student Payment",
+      "invoice": "Invoice",
+      "paymentPlan": "Payment Plan",
+      "plans": "Plans",
+      "discount": "Discount",
+      "taxRate": "Tax Rate",
+      "invoicePdf": "Invoice PDF",
+      "settings": "Settings",
+      "accessControl": "Access Control",
+      "activityPosts": "Activity Posts",
+      "schoolDetails": "School Details",
+      "editProfile": "Edit Profile",
+      "logout": "Logout",
+      "arabic": "العربية",
+      "english": "English"
+    },
+    "students": {
+      "title": "Students",
+      "allClasses": "All Classes",
+      "tabs": {
+        "profile": "Profile",
+        "attendance": "Attendance",
+        "billing": "Billing",
+        "documents": "Documents"
+      },
+      "editStudent": "Edit Student",
+      "cancelEdit": "Cancel Edit"
+    },
+    "classes":{
+      "title": "Classes",
+      "createClass": "Create Class"
+    },
+    "staff":{
+      "title": "Staff",
+      "allClasses": "All Classes"
+    },
+    "plans":{
+      "title": "Plans",
+      "form":{
+        "titles":{
+          "createPlan": "Create Plan"
+        }
+      }
+    },
+    "form": {
+      "titles": {
+        "createStudent": "Create student",
+        "studentDetails": "Student Details",
+        "createFather": "Create Father",
+        "fatherDetails": "Father Details",
+        "createMother": "Create Mother",
+        "motherDetails": "Mother Details",
+        "createClass": "Create class",
+        "createStaff": "Create staff",
+        "staffDetails": "Staff Details"
+      },
+      "labels": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "dateOfBirth": "Date of Birth",
+        "gender": "Gender",
+        "status": "Status",
+        "classroom": "Classroom",
+        "parent": "Parent",
+        "name": "Name",
+        "branch": "Branch",
+        "minAge": "Min Age",
+        "maxAge": "Max Age",
+        "capacity": "capacity",
+        "email": "Email",
+        "phone": "Phone"
+      },
+      "placeholders": {
+        "selectGender": "Select gender",
+        "selectStatus": "Select status"
+      },
+      "submit": "Submit",
+      "update": "Update",
+      "cancel": "Cancel",
+      "successMessage":{
+        "created": "Created successfully",
+        "updated": "Updated successfully"
+      },
+      "errors": {
+        "somethingWentWrong": "Oops! Something went wrong. Please try again."
+      }
+    }
+  }
+}

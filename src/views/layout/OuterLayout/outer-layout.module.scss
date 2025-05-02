@@ -1,0 +1,161 @@
+@import "@app/styles/common.scss";
+
+.outer-layout {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: $primary-500;
+  padding: $space-48;
+
+  @include max($tablet) {
+    padding: $space-20;
+  }
+
+  &__form {
+    position: relative;
+    @include flex();
+    flex-direction: column;
+    gap: $space-24;
+    width: 35%;
+    height: calc(100vh - $space-96);
+    background-color: $white;
+    padding: $space-40;
+    overflow-y: auto;
+    margin: auto;
+
+    
+
+    input[class*="otp-input"][placeholder="•"] {
+
+      @include max(1350px) {
+        width: 15%;
+        aspect-ratio: 1 / 1;
+        height: auto;
+      }
+
+      @include max($mobile-break-point) {
+        @include en {
+          @include englishBodyMdSemiBold;
+        }
+
+        @include ar {
+          @include arabicBodyMdSemiBold;
+        }
+      }
+
+      @include max(768px) {
+        width: 2.5rem;
+        height: 2.5rem;
+
+        @include en {
+          @include englishBodyXlSemiBold;
+        }
+
+        @include ar {
+          @include arabicBodyXlSemiBold;
+        }
+      }
+    }
+
+    div[class*="form__submit"] {
+      width: 100%;
+
+      div[class*="form__submit__server-err"],
+      div[class*="form__submit__server-success"] {
+        @include flex(center, center);
+        flex-wrap: wrap;
+        @include englishHelperTextRegular;
+
+        @include ar {
+          @include arabicHelperTextRegular;
+        }
+      }
+
+      div[class*="form__submit__server-err"] {
+        color: $error-600;
+        margin-bottom: $space-12;
+
+        button {
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      div[class*="form__submit__server-success"] {
+        color: $success-600;
+      }
+
+      button[id*="submit-btn"] {
+        width: 100%;
+      }
+    }
+
+    @include max($tablet) {
+      width: 100%;
+      height: auto;
+      padding: $space-20;
+      transform: none;
+      border-radius: 0;
+    }
+
+    &__logo{
+      width: 75px;
+      position: absolute;
+      top: $space-44;
+      right: $space-44;
+  
+      @include ar {
+        right: auto;
+        left: $space-44;
+      }
+
+      @include max($tablet) {
+        top: $space-20;
+        right: $space-20;
+
+        @include ar {
+          right: auto;
+          left: $space-20;
+        }
+      }
+    }
+
+    legend {
+      margin-bottom: $space-8;
+      color: $primary-700;
+
+      @include englishHeadingH6SemiBold;
+
+      @include ar {
+        @include arabicHeadingH6SemiBold;
+      }
+    }
+
+    &__header {
+      width: 100%;
+      @include flex(flex-start, space-between);
+      flex-wrap: wrap;
+
+      &__desc {
+        width: 100%;
+        // margin: $space-8 0;
+        color: $gray-800;
+
+        @include englishBodySmRegular;
+
+        @include ar {
+          @include arabicBodySmRegular;
+        }
+      }
+    }
+
+    [class*="forget-password"] {
+      margin-top: 0;
+
+      button:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

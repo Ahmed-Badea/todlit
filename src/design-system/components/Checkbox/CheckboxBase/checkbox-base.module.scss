@@ -1,0 +1,191 @@
+@import '../../../styles/common.scss';
+
+// :before --> Checkbox
+// :after --> Tick
+
+.checkbox-base {
+  position: relative;
+  display: block;
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
+    &:disabled {
+      &+.checkbox-base__checkbox {
+        &:before {
+          border: 0.0625rem solid $gray-300;
+          background-color: $gray-50;
+          cursor: not-allowed;
+        }
+
+        &:after {
+          cursor: not-allowed;
+          border-color: transparent;
+        }
+      }
+    }
+
+    &:checked {
+      &+.checkbox-base__checkbox {
+        &:before {
+          border: 0.0625rem solid $primary-500;
+          background-color: $primary-500;
+        }
+
+        &:after {
+          border-color: white;
+        }
+      }
+    }
+
+    &:checked:disabled {
+      &+.checkbox-base__checkbox {
+        &:before {
+          border: 0.0625rem solid $gray-300;
+          background-color: $gray-50;
+        }
+
+        &:after {
+          background-color: transparent;
+          border-color: $gray-300;
+        }
+      }
+    }
+  }
+
+  &__checkbox {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    &:before {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 0.0625rem solid $gray-300;
+      background-color: $white;
+      transition: 200ms linear;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transition: 200ms linear;
+
+      @include en {
+        border-inline-end: solid transparent;
+        border-block-end: solid transparent;
+      }
+
+      @include ar {
+        border-inline-start: solid transparent;
+        border-block-end: solid transparent;
+      }
+    }
+
+    &:hover,
+    &[data-checkbox-base-hovered="true"] {
+      &:before {
+        border: 0.0625rem solid $primary-500;
+        background-color: $primary-25;
+      }
+    }
+
+    &:focus,
+    &[data-checkbox-base-focused="true"] {
+      &:before {
+        border: 0.0625rem solid $primary-500;
+        background-color: $white;
+      }
+    }
+  }
+
+  // Types 
+  &[data-checkbox-base-icon="tick"] {
+    .checkbox-base__checkbox:after {
+      width: 18.75%;
+      height: 43.75%;
+      transform: translate(-50%, -60%) rotate(45deg);
+    }
+  }
+
+  &[data-checkbox-base-icon="dash"] {
+    .checkbox-base__checkbox:after {
+      width: 45%;
+      height: 10%;
+      transform: translate(-50%, -65%);
+    }
+  }
+
+  // Sizes
+  &[data-checkbox-base-size="sm"] {
+    width: 1rem;
+    height: 1rem;
+
+    // .checkbox-base__checkbox:before {
+    //   border-radius: $radius-xs;
+    // }
+
+    &[data-checkbox-base-icon="tick"] {
+      .checkbox-base__checkbox:after {
+        @include en {
+          border-inline-end-width: 0.0625rem;
+          border-block-end-width: 0.0625rem;
+        }
+
+        @include ar {
+          border-inline-start-width: 0.0625rem;
+          border-block-end-width: 0.0625rem;
+        }
+      }
+    }
+
+    &[data-checkbox-base-icon="dash"] {
+      .checkbox-base__checkbox:after {
+        border-width: 0;
+        border-block-end-width: 0.0625rem;
+      }
+    }
+  }
+
+  &[data-checkbox-base-size="md"] {
+    width: 1.25rem;
+    height: 1.25rem;
+
+    // .checkbox-base__checkbox:before {
+    //   border-radius: 0.375rem;
+    // }
+
+    &[data-checkbox-base-icon="tick"] {
+      .checkbox-base__checkbox:after {
+        @include en {
+          border-inline-end-width: 0.125rem;
+          border-block-end-width: 0.125rem;
+        }
+
+        @include ar {
+          border-inline-start-width: 0.125rem;
+          border-block-end-width: 0.125rem;
+        }
+      }
+
+    }
+
+    &[data-checkbox-base-icon="dash"] {
+      .checkbox-base__checkbox:after {
+        border-width: 0;
+        border-block-end-width: 0.125rem;
+      }
+    }
+  }
+}

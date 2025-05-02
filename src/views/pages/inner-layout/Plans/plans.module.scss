@@ -1,0 +1,21 @@
+@import "@app/styles/common.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 $space-16 0;
+  border-bottom: 2px solid $primary-200;
+}
+
+.plansContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); // Adjusted for better responsiveness
+  gap: $space-24;
+  padding: $space-20;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; // Single-column layout on smaller screens
+  }
+}

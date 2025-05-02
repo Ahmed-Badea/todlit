@@ -1,0 +1,38 @@
+[
+  {
+    "title_en": "Student Name",
+    "title_ar": "اسم الطالب",
+    "value": "first_name",
+    "dataType": "name"
+  },
+  {
+    "title_en": "Date of Birth",
+    "title_ar": "تاريخ الميلاد",
+    "value": "date_of_birth",
+    "dataType": "date"
+  },
+  {
+    "title_en": "Gender",
+    "title_ar": "الجنس",
+    "value": "gender",
+    "dataType": "text"
+  },
+  {
+    "title_en": "Enrollment Date",
+    "title_ar": "تاريخ التسجيل",
+    "value": "enrollment_date",
+    "dataType": "date"
+  },
+  {
+    "title_en": "Status",
+    "title_ar": "الحالة",
+    "value": "status",
+    "dataType": "text"
+  },
+  {
+    "title_en": "Classroom",
+    "title_ar": "الفصل الدراسي",
+    "value": "classroom",
+    "dataType": "text"
+  }
+]

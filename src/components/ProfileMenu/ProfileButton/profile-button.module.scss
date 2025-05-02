@@ -1,0 +1,81 @@
+@import "@app/styles/common.scss";
+
+.account-bar {
+  width: 100%;
+  @include flex(center, center);
+  gap: $space-12;
+
+  img,
+  svg,
+  &__info,
+  &__avatar {
+    cursor: pointer;
+  }
+
+
+  &__avatar {
+    @include flex(center, center);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+
+    &[data-account-bar-avatar-type="name"] {
+      background-color: $gray-100;
+      color: $gray-500;
+      @include englishBodyMdRegular;
+
+      @include ar {
+        @include arabicBodyMdRegular;
+      }
+    }
+
+    img {
+      width: inherit;
+      height: inherit;
+      border-radius: inherit;
+    }
+  }
+
+  &__info {
+    @include flex(flex-start, space-between);
+    flex-direction: column;
+    flex-grow: 1;
+
+    &__name {
+      color: $white;
+      @include englishHeadingCompactSemiBold;
+
+      @include ar {
+        @include arabicHeadingCompactSemiBold;
+      }
+    }
+
+    &__role {
+      color: $primary-200;
+      @include englishHelperTextRegular;
+
+      @include ar {
+        @include arabicHelperTextRegular;
+      }
+    }
+  }
+
+  &__logout {
+    width: 1.5rem;
+    height: 1.5rem;
+
+    svg {
+      width: inherit;
+      height: inherit;
+
+      path {
+        fill: $white;
+      }
+
+      @include ar {
+        transform: scaleX(-1);
+      }
+    }
+  }
+
+}

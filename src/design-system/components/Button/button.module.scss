@@ -1,0 +1,390 @@
+@import '../../styles/common.scss';
+
+/* ------------------ Generic ------------------ */
+
+.btn {
+  width: fit-content;
+  @include flex(center, center);
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &__label {
+    color: $gray-500;
+
+    @include en {
+      @include englishBodySmRegular;
+    }
+
+    @include ar {
+      @include arabicLabelRegular;
+    }
+
+  }
+}
+
+/* ------------------ Sizes ------------------ */
+
+[data-btn-size='sm'],
+[data-btn-size='md'] {
+  @include en {
+    @include englishBodySmSemiBold;
+  }
+
+  @include ar {
+    @include arabicBodySmSemiBold;
+  }
+}
+
+[data-btn-size='sm'] {
+  gap: $space-8;
+  padding: $space-4 $space-12;
+
+  &:has(:only-child:is(svg)) {
+    padding: $space-8;
+  }
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+[data-btn-size='md'] {
+  gap: $space-8;
+  padding: $space-8 $space-12;
+
+  &:has(:only-child:is(svg)) {
+    padding: $space-10;
+  }
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+[data-btn-size='lg'] {
+  gap: $space-8;
+  padding: $space-10 $space-16;
+
+  @include en {
+    @include englishBodyMdSemiBold;
+  }
+
+  @include ar {
+    @include arabicBodyMdSemiBold;
+  }
+
+
+  &:has(:only-child:is(svg)) {
+    padding: $space-12;
+  }
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+[data-btn-size='xl'] {
+  gap: $space-8;
+  padding: $space-10 $space-20;
+
+  @include en {
+    @include englishBodyLgSemiBold;
+  }
+
+  @include ar {
+    @include arabicBodyLgSemiBold;
+  }
+
+
+  &:has(:only-child:is(svg)) {
+    padding: $space-12;
+  }
+
+  svg {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}
+
+[data-btn-size='2xl'],
+[data-btn-size='full'] {
+  gap: $space-8;
+  padding: $space-12 $space-24;
+
+  @include en {
+    @include englishBodyXlSemiBold;
+  }
+
+  @include ar {
+    @include arabicBodyXlSemiBold;
+  }
+
+
+  &:has(:only-child:is(svg)) {
+    padding: $space-14;
+  }
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+[data-btn-size='full'] {
+  width: 100%;
+}
+
+/* ------------------ Variants ------------------ */
+
+[data-btn-variant='link'] {
+  padding: 0;
+}
+
+/* ------------------ Types and Variants ------------------ */
+
+.btn {
+  // Combinations
+
+  &:is([data-btn-color='primary'][data-btn-variant='contained']),
+  &:is([data-btn-color='danger'][data-btn-variant='contained']) {
+    color: $white;
+
+    path {
+      fill: $white;
+    }
+  }
+
+  // Primary
+
+  &:is([data-btn-color='primary'][data-btn-variant='contained']) {
+    background-color: $primary-500;
+
+    &:hover {
+      background-color: $primary-600;
+    }
+
+    &:focus {
+      background-color: $primary-500;
+      box-shadow: $shadow-ring-primary;
+    }
+
+    &:disabled {
+      background-color: $primary-200;
+    }
+  }
+
+  &:is([data-btn-color='primary'][data-btn-variant='outlined']) {
+    &:not(&:hover) {
+      background-color: transparent;
+    }
+
+    &:not(&:disabled) {
+      color: $primary-500;
+      border: 0.0625rem solid $primary-500;
+
+      path {
+        fill: $primary-500;
+      }
+    }
+
+    &:hover {
+      background-color: $primary-25;
+    }
+
+    &:focus {
+      box-shadow: $shadow-ring-primary;
+    }
+
+    &:disabled {
+      color: $primary-200;
+      border: 0.0625rem solid $primary-200;
+      background-color: transparent;
+
+      path {
+        fill: $primary-200;
+      }
+    }
+  }
+
+  &:is([data-btn-color='primary'][data-btn-variant='link']) {
+    background-color: transparent;
+    border: none;
+
+    &:not(&:hover):not(&:disabled) {
+      color: $primary-500;
+
+      path {
+        fill: $primary-500;
+      }
+    }
+
+    &:hover {
+      color: $primary-600;
+
+      path {
+        fill: $primary-600;
+      }
+    }
+
+    &:disabled {
+      color: $primary-200;
+
+      path {
+        fill: $primary-200;
+      }
+    }
+  }
+
+  // Secondary
+
+  &:is([data-btn-color='secondary'][data-btn-variant='outlined']) {
+    &:not(&:hover) {
+      background-color: transparent;
+    }
+
+    &:not(&:disabled) {
+      color: $gray-700;
+      border: 0.0625rem solid $gray-300;
+
+      path {
+        fill: $gray-700;
+      }
+    }
+
+    &:hover {
+      background-color: $gray-100;
+    }
+
+    &:focus {
+      box-shadow: $shadow-ring-gray;
+    }
+
+    &:disabled {
+      color: $gray-300;
+      border: 0.0625rem solid $gray-200;
+      background-color: transparent;
+
+      path {
+        fill: $gray-300;
+      }
+    }
+  }
+
+  &:is([data-btn-color='secondary'][data-btn-variant='link']) {
+    background-color: transparent;
+    border: none;
+
+    &:not(&:hover):not(&:disabled) {
+      color: $gray-600;
+
+      path {
+        fill: $gray-600;
+      }
+    }
+
+    &:hover {
+      color: $gray-700;
+
+      path {
+        fill: $gray-700;
+      }
+    }
+
+    &:disabled {
+      color: $gray-400;
+
+      path {
+        fill: $gray-400;
+      }
+    }
+  }
+
+  // Danger
+
+  &:is([data-btn-color='danger'][data-btn-variant='contained']) {
+    background-color: $error-600;
+
+    &:hover {
+      background-color: $error-700;
+    }
+
+    &:focus {
+      background-color: $error-600;
+      box-shadow: $shadow-ring-error;
+    }
+
+    &:disabled {
+      background-color: $error-200;
+    }
+  }
+
+  &:is([data-btn-color='danger'][data-btn-variant='outlined']) {
+    &:not(&:hover) {
+      background-color: transparent;
+    }
+
+    &:not(&:disabled) {
+      color: $error-600;
+      border: 0.0625rem solid $error-600;
+
+      path {
+        fill: $error-600;
+      }
+    }
+
+    &:hover {
+      background-color: $error-25;
+    }
+
+    &:focus {
+      box-shadow: $shadow-ring-error;
+    }
+
+    &:disabled {
+      color: $error-200;
+      border: 0.0625rem solid $error-200;
+      background-color: transparent;
+
+      path {
+        fill: $error-200;
+      }
+    }
+  }
+
+  &:is([data-btn-color='danger'][data-btn-variant='link']) {
+    background-color: transparent;
+    border: none;
+
+    &:not(&:hover):not(&:disabled) {
+      color: $error-600;
+
+      path {
+        fill: $error-600;
+      }
+    }
+
+    &:hover {
+      color: $error-700;
+
+      path {
+        fill: $error-700;
+      }
+    }
+
+    &:disabled {
+      color: $error-200;
+
+      path {
+        fill: $error-200;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@import '../../../styles/common.scss';
+
+.container {
+  .resend-otp-msg {
+    color: $gray-600;
+
+    @include en {
+      @include englishBodySmRegular;
+    }
+
+    @include ar {
+      @include arabicBodySmRegular;
+    }
+  }
+}

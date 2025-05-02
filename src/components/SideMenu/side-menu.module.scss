@@ -1,0 +1,97 @@
+@import "@app/styles/mixins";
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  inset-inline-start: 0;
+  display: flex;
+  flex-direction: column;
+  width: var(--side-menu-width);
+  min-height: 100vh;
+  padding: $space-32 $space-4;
+  // padding-inline-end: calc($space-24 - $scrollbar-width);
+  background-color: $primary-500;
+  transition: width 0.3s;
+  z-index: 1;
+
+  &__collapse-expand-btn {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+
+    position: absolute;
+    top: $space-16;
+    inset-inline-end: $space-12;
+    @include flex(center, center);
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+
+      @include ar {
+        transform: scaleX(-1);
+      }
+
+      path {
+        fill: $white;
+      }
+    }
+  }
+
+  &__logo img {
+    display: block;
+    width: 10rem;
+    height: 6rem;
+    transition: width 0.3s;
+    margin: auto;
+    margin-bottom: $space-32;
+  }
+
+  &__nav-links {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    overflow: hidden;
+    min-height: 0;
+    scrollbar-gutter: stable;
+
+    &:hover {
+      overflow: auto;
+    }
+
+    @include rounded-scroll-bar;
+  }
+
+  &__footer {
+    padding-top: $space-16;
+    position: sticky;
+    bottom: $space-32;
+  }
+
+  &[data-side-menu-collapsed="true"] {
+    width: fit-content;
+    align-items: center;
+
+    .side-menu__logo {
+      width: 2rem;
+      height: 1.75rem;
+    }
+
+    &:has([class*="dropdown-menu--opened"]) {
+      &:has([class*="sub-items-list"]) {
+
+        .side-menu__nav-links {
+          overflow: hidden;
+          padding-inline-end: $space-192;
+          margin-inline-end: -$space-192;
+          padding-block: $space-48;
+          margin-block: -$space-48;
+
+          &:hover {
+            overflow: hidden;
+          }
+        }
+      }
+    }
+  }
+}

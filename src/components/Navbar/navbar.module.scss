@@ -1,0 +1,15 @@
+@import "@app/styles/common.scss";
+
+.navbar {
+  z-index: 1;
+  position: sticky;
+  top: 0;
+  padding: $space-8 $space-12;
+  background: $primary-500;
+  @include flex(center, space-between);
+
+  .__actions-box {
+    @include flex(center, flex-end);
+    gap: $space-24;
+  }
+}

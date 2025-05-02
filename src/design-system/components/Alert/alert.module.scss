@@ -1,0 +1,45 @@
+@import '../../styles/common.scss';
+
+/* ------------------ Generic ------------------ */
+
+.alert {
+  max-width: 80%;
+  @include englishBodyMdSemiBold;
+  padding: $space-16;
+  border: 0.0625rem solid;
+  margin: 50vh auto 0;
+  text-align: center;
+  border-radius: $radius-md;
+}
+
+/* ------------------ Types ------------------ */
+
+[data-alert-type="normal"] {
+  border-color: $gray-300;
+  background: $gray-25;
+  color: $gray-900;
+}
+
+[data-alert-type="primary"] {
+  border-color: $primary-300;
+  background: $primary-25;
+  color: $primary-700;
+}
+
+[data-alert-type="success"] {
+  border-color: $success-300;
+  background: $success-25;
+  color: $success-700;
+}
+
+[data-alert-type="warning"] {
+  border-color: $warning-300;
+  background: $warning-25;
+  color: $warning-700;
+}
+
+[data-alert-type="danger"] {
+  border-color: $error-300;
+  background: $error-25;
+  color: $error-700;
+}

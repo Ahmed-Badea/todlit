@@ -1,0 +1,32 @@
+// Language mixixs
+@mixin en {
+  html[dir="ltr"] & {
+    @content;
+  }
+}
+
+@mixin ar {
+  html[dir="rtl"] & {
+    @content;
+  }
+}
+
+// Media queries mixins
+@mixin max($width) {
+  @media(max-width:#{$width}) {
+    @content;
+  }
+}
+
+@mixin min($width) {
+  @media(min-width:#{$width}) {
+    @content;
+  }
+}
+
+// Flex-box mixin
+@mixin flex($align-items:flex-start, $justify-content:flex-start) {
+  display: flex;
+  align-items: $align-items;
+  justify-content: $justify-content;
+}

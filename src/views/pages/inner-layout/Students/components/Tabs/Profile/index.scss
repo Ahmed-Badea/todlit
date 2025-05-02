@@ -1,0 +1,11 @@
+@import "@app/styles/common.scss";
+
+.parents-container{
+  margin: $space-20 auto;
+  display: flex;
+  flex-direction: row;
+  gap: $space-20;
+  > div{
+    width: 50%;
+  }
+}

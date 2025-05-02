@@ -1,0 +1,5 @@
+@import "@app/styles/mixins";
+
+.login-form {
+  @include outer-layout-form-footer(__dont-have-account); 
+}

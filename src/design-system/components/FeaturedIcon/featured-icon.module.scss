@@ -1,0 +1,102 @@
+@import '../../styles/common.scss';
+
+.featured-icon {
+  @include flex(center, center);
+  border-radius: 50%;
+}
+
+
+/* ------------------ Size ------------------ */
+
+[data-featured-icon-size="xl"] {
+  width: 3.5rem;
+  height: 3.5rem;
+
+  svg {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}
+
+[data-featured-icon-size="lg"] {
+  width: 3rem;
+  height: 3rem;
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+[data-featured-icon-size="md"] {
+  width: 2.5rem;
+  height: 2.5rem;
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+[data-featured-icon-size="sm"] {
+  width: 2rem;
+  height: 2rem;
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+[data-featured-icon-size="xs"] {
+  width: 1.5rem;
+  height: 1.5rem;
+
+  svg {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+}
+
+
+/* ------------------ Colors ------------------ */
+
+[data-featured-icon-color="gray"] {
+  background-color: $gray-100;
+
+  path {
+    fill: $gray-600;
+  }
+}
+
+[data-featured-icon-color="primary"] {
+  background-color: $primary-25;
+
+  path {
+    fill: $primary-600;
+  }
+}
+
+[data-featured-icon-color="green"] {
+  background-color: $success-25;
+
+  path {
+    fill: $success-600;
+  }
+}
+
+[data-featured-icon-color="yellow"] {
+  background-color: $warning-50;
+
+  path {
+    fill: $warning-600;
+  }
+}
+
+[data-featured-icon-color="red"] {
+  background-color: $error-25;
+
+  path {
+    fill: $error-600;
+  }
+}

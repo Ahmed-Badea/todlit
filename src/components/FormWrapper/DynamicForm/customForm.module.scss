@@ -1,0 +1,35 @@
+.table-form {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-row {
+  display: table-row;
+}
+
+.table-cell {
+  display: table-cell;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.table-cell input,
+.table-cell select,
+.table-cell button {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputNoEdit{
+  input{
+    border: none;
+  }
+}

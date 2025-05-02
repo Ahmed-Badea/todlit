@@ -1,0 +1,159 @@
+@import '../../../styles/common.scss';
+
+$scrollbar-width: 0.4rem;
+
+.dropdown-menu {
+  position: absolute;
+  padding: $space-4 0;
+  border: 0.0625rem solid $gray-200;
+  box-shadow: $shadow-down-lg;
+  background-color: $white;
+  z-index: 2;
+
+  &:has(.dropdown-menu__apply-btn-wrapper) {
+    padding-bottom: 0;
+  }
+
+  @include min($mobile-break-point + 1px) {
+
+    &::-webkit-scrollbar {
+      width: $scrollbar-width;
+      height: $scrollbar-width*1.5;
+
+      &-track {
+        background: transparent;
+        border-radius: $radius-sm;
+      }
+
+      &-thumb {
+        background: $gray-200;
+        border-radius: $radius-sm;
+
+        &:hover {
+          background: $gray-300;
+        }
+      }
+    }
+  }
+
+  &__user-info-box {
+    padding: $space-16;
+    @include flex(center);
+    gap: $space-12;
+    border-bottom: 0.0625rem solid $gray-200;
+
+    &__user-info {
+      &__name {
+        color: $gray-900;
+        @include englishBodyLgSemiBold;
+
+        @include ar {
+          @include arabicBodyLgSemiBold;
+        }
+      }
+
+      &__role {
+        color: $gray-600;
+        @include englishLabelMedium;
+
+        @include ar {
+          @include arabicLabelMedium;
+        }
+      }
+    }
+  }
+
+  &__filter-field-box {
+    padding: $space-12 $space-16;
+    display: flex;
+    flex-direction: column;
+    gap: $space-12;
+
+    >div[class*="PhoneInput_container__"],
+    >div[class*="input_container__"] {
+      gap: $space-4;
+    }
+
+    button {
+      &:not([class*="PhoneInput_container__"]) {
+        width: 100%;
+      }
+    }
+  }
+
+  &__apply-btn-wrapper {
+    width: 100%;
+    position: sticky;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    padding: $space-4 $space-8 $space-8;
+    background-color: $white;
+    border-end-start-radius: $radius-sm;
+    border-end-end-radius: $radius-sm;
+
+    button {
+      width: 100%;
+    }
+  }
+
+
+  /* ------------------ Placements ------------------ */
+
+  // horizontal
+  &[data-dropdown-menu-horizontal='start'] {
+    inset-inline-start: 0;
+  }
+
+  &[data-dropdown-menu-horizontal='end'] {
+    inset-inline-end: 0;
+  }
+
+  &[data-dropdown-menu-horizontal='center'] {
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+  }
+
+  &[data-dropdown-menu-horizontal='inline_start'] {
+    inset-inline-start: -5%;
+    transform: translateX(-100%);
+
+    @include ar {
+      transform: translateX(100%);
+    }
+  }
+
+  &[data-dropdown-menu-horizontal='inline_end'] {
+    inset-inline-start: 105%;
+  }
+
+  // vertical
+  &[data-dropdown-menu-vertical='top'] {
+    inset-block-end: 110%;
+
+    &[data-dropdown-menu-horizontal='inline_start'],
+    &[data-dropdown-menu-horizontal='inline_end'] {
+      inset-block-end: 0%;
+    }
+  }
+
+  &[data-dropdown-menu-vertical='bottom'] {
+    inset-block-start: 110%;
+
+    &[data-dropdown-menu-horizontal='inline_start'],
+    &[data-dropdown-menu-horizontal='inline_end'] {
+      inset-block-start: 0%;
+    }
+  }
+
+
+  /* ------------------ Width ------------------ */
+
+  &[data-dropdown-menu-width='full'] {
+    width: 100%;
+  }
+
+  &[data-dropdown-menu-width='fit-content'] {
+    width: fit-content;
+    white-space: nowrap;
+  }
+}

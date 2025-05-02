@@ -1,0 +1,20 @@
+@import '../../styles/common.scss';
+
+.container {
+  @include flex(flex-start);
+  flex-direction: column;
+  gap: $space-12;
+}
+
+.error-message {
+  color: $error-600;
+  margin-top: -$space-4;
+
+  @include en {
+    @include englishHelperTextRegular;
+  }
+
+  @include ar {
+    @include arabicHelperTextRegular;
+  }
+}
