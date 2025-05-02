@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getServerUrl } from "../../utils/serverUrls";
+import { logout } from "../../utils/auth/logout";
 
 const ONE_SECOND = 1000;
 const ONE_MINUTE = 60 * ONE_SECOND;
@@ -37,6 +38,9 @@ Axios.interceptors.response.use(
     return response;
   },
   (error) => {
+    if (error.response && error.response.status === 401) {
+      logout();
+    }
     return Promise.reject(error);
   }
 );
