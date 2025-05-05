@@ -1,10 +1,12 @@
-export interface FieldConfig {
-  [x: string]: undefined;
+export type TFieldType = 'text' | 'dropdown' | 'date' | 'select'; // Adjust types as needed
+
+export interface IFieldConfig {
   name: string;
-  type: "text" | "date" | "dropdown" | "multi-dropdown" | "color" | "time";
-  value: string | Date;
+  label: { en: string; ar: string };
+  type: TFieldType;
+  value: any;
+  isValid: boolean | null;
   errorMsg: string;
-  label?: { en: string; ar: string };
   validations?: ((value: string | Date) => string | undefined)[];
   options?: { label: { en: string; ar: string }; value: string }[];
   selectedColor?: string;
@@ -20,14 +22,12 @@ export interface IField {
   }[];
 }
 
-
-
-export interface Fields {
-  [key: string]: Field;
+export interface IFields {
+  [key: string]: IField;
 }
 
 export interface DynamicFormProps {
-  fieldsConfig: FieldConfig[];
+  fieldsConfig: IFieldConfig[];
   mode: 'popup' | 'table';
   setFormValid: (valid: boolean) => void;
   isLoading: boolean;
@@ -37,7 +37,7 @@ export interface DynamicFormProps {
 }
 
 export interface FormWrapperProps {
-  fieldsConfig: FieldConfig[];
+  fieldsConfig: IFieldConfig[];
   submitFn: (data: any) => Promise<any>;
   successMessage: string;
   mode?: "popup" | "table";

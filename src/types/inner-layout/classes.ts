@@ -7,8 +7,3 @@ export interface IClass {
   staff_count: number;
   students_count: number;
 }
-
-export interface Classroom {
-  name: string;
-  [key: string]: any; // Add additional properties as needed
-}

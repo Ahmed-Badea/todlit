@@ -25,7 +25,7 @@ const StaffDetails = () => {
   ];
   
   return (
-    <InnerLayout isLoading={isLoading || isFetching} error={error} errorMessage={error?.message}>
+    <InnerLayout isLoading={isLoading || isFetching} error={error} errorMessage={(error as Error)?.message}>
       <h3>{fullName}</h3>
       <Tabs tabs={tabs} />
     </InnerLayout>

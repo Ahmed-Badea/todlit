@@ -1,8 +1,18 @@
+export enum DataType {
+  String = 'string',
+  Name = 'name',
+  Num = 'num',
+  Date = 'date',
+  Boolean = 'boolean',
+  Button = 'button',
+  Array = 'array',
+}
+
 export interface IColumn {
   title_en: string;
   title_ar: string;
   value: string;
-  dataType: 'string' | 'name' | 'num' | 'date' | 'boolean' | 'button' | 'array';
+  dataType: DataType;
 }
 
 export interface IRow {

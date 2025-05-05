@@ -7,10 +7,16 @@ import { Table, Dropdown, DropdownButton, DropdownMenu, DropdownMenuItem } from"
 import { getStudents } from "../../../../services/inner-layout/students";
 import InnerLayout from "../../../../views/layout/InnerLayout";
 import CreateStudent from "./components/Form/CreateStudent";
-import { IRow } from "../../../../design-system/types/Table/table";
+import { IColumn, IRow } from "../../../../design-system/types/Table/table";
 import { Language } from "../../../../types";
-import columns from "./studentTableStruc.json";
+import rawColumns from "./studentTableStruc.json";
 import styles from "./students.module.scss";
+
+const columns: IColumn[] = rawColumns as IColumn[];
+interface TClass {
+  id: number;
+  name: string;
+}
 
 const Students = () => {
   const { t, i18n } = useTranslation();
@@ -18,8 +24,9 @@ const Students = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const queryClient = useQueryClient();
-  const { classes } = useClassesStore();
-
+  
+  const { classes } = useClassesStore() as unknown as { classes: TClass[] };
+  
   const [classFilter, setClassFilter] = useState<string>('');
   const [dropdownOpen, setDropdownOpen] = useState(false);
 

@@ -11,6 +11,7 @@ interface StaffData {
 
 interface FilterParams {
   teacher_id?: string;
+  classroom_id?: string;
 }
 
 // Fetch all students with optional filters
