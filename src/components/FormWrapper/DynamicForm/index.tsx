@@ -10,7 +10,7 @@ import {
 } from"../../../design-system";
 import DatePicker from "../../../components/DatePicker";
 import { isFormValid, validateField } from "../../../utils/formValidations";
-import { DynamicFormProps, FieldConfig, Fields } from "../../../types/inner-layout/form";
+import { DynamicFormProps, IFieldConfig, IFields } from "../../../types/inner-layout/form";
 import styles from "./customForm.module.scss";
 
 const DynamicForm = forwardRef(
@@ -28,7 +28,7 @@ const DynamicForm = forwardRef(
   ) => {
     const { t, i18n  } = useTranslation();
     const lang = i18n.language as 'en' | 'ar';
-    const [fields, setFields] = useState<Fields>(
+    const [fields, setFields] = useState<IFields>(
       fieldsConfig.reduce((acc, field) => {
         acc[field.name] = {
           value: field.value || "",
@@ -37,7 +37,7 @@ const DynamicForm = forwardRef(
           validations: field.validations || [],
         };
         return acc;
-      }, {} as Fields)
+      }, {} as IFields)
     );
 
     useEffect(() => {
@@ -67,12 +67,12 @@ const DynamicForm = forwardRef(
       },
     }));
 
-    const renderTextInput = (field: FieldConfig) => (
+    const renderTextInput = (field: IFieldConfig) => (
       <Input
         id={field.name}
         name={field.name}
         label={mode === "table" ? undefined : field.label?.[lang] ?? "Default Label"} // Hide label in table mode
-        value={typeof fields[field.name]?.value === "string" ? fields[field.name]?.value : fields[field.name]?.value?.toString() || ""}
+        value={fields[field.name]?.value?.toString() || ""}
         onChange={(e) => handleInputChange(field.name, e.target.value)}
         status={fields[field.name]?.isValid === false ? "error" : "default"}
         error={fields[field.name]?.errorMsg}
@@ -81,7 +81,7 @@ const DynamicForm = forwardRef(
       />
     );
 
-    const renderDatePicker = (field: FieldConfig) => (
+    const renderDatePicker = (field: IFieldConfig) => (
       <DatePicker
         selectedDate={
           fields[field.name]?.value
@@ -92,11 +92,11 @@ const DynamicForm = forwardRef(
         label={mode === "table" ? undefined : field.label?.[lang] ?? "Default Label"} // Hide label in table mode
         disabled={isLoading || !isEditable}
         isEditable={isEditable}
-        type={field.type === "date" || field.type === "time" ? field.type : undefined} // Pass 'date' or 'time' dynamically
+        type={["date", "time"].includes(field.type as string) ? (field.type as "date" | "time") : undefined} // Pass 'date' or 'time' dynamically
       />
     );
     
-    const renderDropdown = (field: FieldConfig) => (
+    const renderDropdown = (field: IFieldConfig) => (
       <Dropdown label={mode === "table" ? undefined : field.label?.[lang] ?? "Default Label"}>
         <DropdownButton
           text={
@@ -124,7 +124,7 @@ const DynamicForm = forwardRef(
       </Dropdown>
     );
 
-    const renderMultiDropdown = (field: FieldConfig) => {
+    const renderMultiDropdown = (field: IFieldConfig) => {
       // Compute dropdown button text dynamically
       const getDropdownBtnText = () => {
         const selectedValues = fields[field.name]?.value || [];
@@ -226,7 +226,7 @@ const DynamicForm = forwardRef(
       );
     };
     
-    const renderColorInput = (field: FieldConfig) => (
+    const renderColorInput = (field: IFieldConfig) => (
       <ColorInput
         label={mode === "table" ? undefined : field.label?.[lang] ?? "Default Label"}
         name={field.name}
@@ -238,7 +238,7 @@ const DynamicForm = forwardRef(
     
     
     
-    const renderInput = (field: FieldConfig) => {
+    const renderInput = (field: IFieldConfig) => {
       switch (field.type) {
         case "text":
           return renderTextInput(field);

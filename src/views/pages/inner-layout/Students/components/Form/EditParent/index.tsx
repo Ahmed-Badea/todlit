@@ -58,7 +58,7 @@ const EditParent = ({ formData }) => {
       mode="table"
       title={getTitle()} // Dynamically determined title
       fieldsConfig={updatedFormConfig}
-      submitFn={updateMutation.mutate}
+      submitFn={updateMutation.mutateAsync}
       successMessage={t("innerLayout.form.successMessage.updated")}
       canEdit={true}
     />

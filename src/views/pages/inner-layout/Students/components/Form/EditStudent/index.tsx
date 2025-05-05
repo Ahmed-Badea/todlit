@@ -2,63 +2,69 @@ import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import { Loading } from '../../../../../../../design-system'
+import { Loading } from '../../../../../../../design-system';
 import FormWrapper from '../../../../../../../components/FormWrapper';
 import { updateStudent } from '../../../../../../../services/inner-layout/students';
-import { Classroom } from '../../../../../../../types/inner-layout/classes';
+import { IClass } from '../../../../../../../types/inner-layout/classes';
+import { IFieldConfig, TFieldType } from '../../../../../../../types/inner-layout/form';
 import { useClassesStore } from '../../../../../../../store/classes';
 import { formConfig } from '../studentConfig';
+
+const studentConfig: IFieldConfig[] = formConfig as IFieldConfig[];
 
 interface FormData {
   id: string;
   classroom: string;
-  [key: string]: any; // Adjust this as needed to match the structure of formData
+  [key: string]: any;
 }
 
 const EditStudent = ({ formData }: { formData: FormData }) => {
   const { t } = useTranslation();
-  const { classes } = useClassesStore();
+  const { classes } = useClassesStore() as unknown as { classes: IClass[] };
 
   const [isLoading, setIsLoading] = useState(true);
-  const [updatedFormConfig, setUpdatedFormConfig] = useState(formConfig);
+  const [updatedFormConfig, setUpdatedFormConfig] = useState<IFieldConfig[]>(studentConfig);
 
   useEffect(() => {
     if (classes && formData) {
-      const newFormConfig = formConfig.map((field) => {
+      const newFormConfig: IFieldConfig[] = studentConfig.map((field) => {
         if (field.name === 'classroom') {
-            const selectedClassroom = classes.find(
-            (classroom: Classroom) => classroom.name === formData.classroom
-            );
+          const selectedClassroom = classes.find(
+            (classroom: IClass) => classroom.name === formData.classroom
+          );
 
-            return {
+          return {
             ...field,
-            options: classes.map((classroom: Classroom) => ({
+            type: field.type as TFieldType,
+            options: classes.map((classroom: IClass) => ({
               label: { en: classroom.name, ar: classroom.name },
               value: classroom.name,
             })),
             value: selectedClassroom ? selectedClassroom.name : '',
-            };
+          };
         }
+
         return {
           ...field,
+          type: field.type as TFieldType,
           value: formData[field.name] || '',
           isValid: formData[field.name] ? true : null,
         };
       });
+
       setUpdatedFormConfig(newFormConfig);
       setIsLoading(false);
     }
   }, [classes, formData]);
 
   const updateMutation = useMutation(
-    (data: any) => updateStudent(formData.id, data),
+    (data: Record<string, any>) => updateStudent(formData.id, data),
     {
       onSuccess: () => {
-        const message = t("innerLayout.form.successMessage.updated");
-        toast.success(message);
+        toast.success(t('innerLayout.form.successMessage.updated'));
       },
       onError: (error: any) => {
-        const errorMsg = error.response?.data?.error || t("innerLayout.form.errors.somethingWentWrong");
+        const errorMsg = error.response?.data?.error || t('innerLayout.form.errors.somethingWentWrong');
         toast.error(errorMsg);
       },
     }
@@ -71,10 +77,10 @@ const EditStudent = ({ formData }: { formData: FormData }) => {
   return (
     <FormWrapper
       mode="table"
-      title={t("innerLayout.form.titles.studentDetails")}
+      title={t('innerLayout.form.titles.studentDetails')}
       fieldsConfig={updatedFormConfig}
-      submitFn={updateMutation.mutate}
-      successMessage={t("innerLayout.form.successMessage.created")}
+      submitFn={updateMutation.mutateAsync}
+      successMessage={t('innerLayout.form.successMessage.created')}
       canEdit={true}
     />
   );

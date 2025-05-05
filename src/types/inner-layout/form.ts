@@ -16,10 +16,8 @@ export interface IField {
   value?: string | string[] | Date;
   isValid?: boolean;
   errorMsg: string;
-  validations: {
-    pattern: RegExp;
-    error_msg: string;
-  }[];
+  validations?: ((value: string | Date) => string | undefined)[];
+
 }
 
 export interface IFields {

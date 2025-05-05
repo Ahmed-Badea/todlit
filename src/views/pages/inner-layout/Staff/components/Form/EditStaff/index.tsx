@@ -9,9 +9,9 @@ import { updateStaff } from '../../../../../../../services/inner-layout/staff';
 import { useClassesStore } from '../../../../../../../store/classes';
 import { formConfig } from '../staffConfig';
 
-import { Classroom } from '../../../../../../../types/inner-layout/classes';
+import { IClass } from '../../../../../../../types/inner-layout/classes';
 import { StaffMember } from '../../../../../../../types/inner-layout/staff';
-import { FieldConfig } from '../../../../../../../types/inner-layout/form';
+import { IFieldConfig } from '../../../../../../../types/inner-layout/form';
 
 // Define props type
 type EditStaffProps = {
@@ -20,22 +20,22 @@ type EditStaffProps = {
 
 const EditStaff: React.FC<EditStaffProps> = ({ formData }) => {
   const { t } = useTranslation();
-  const { classes } = useClassesStore();
+  const { classes } = useClassesStore() as unknown as { classes: IClass[] };
 
   const [isLoading, setIsLoading] = useState(true);
-  const [updatedFormConfig, setUpdatedFormConfig] = useState<FieldConfig[]>(formConfig);
+  const [updatedFormConfig, setUpdatedFormConfig] = useState(formConfig);
 
   useEffect(() => {
     if (classes && formData) {
       const newFormConfig = formConfig.map((field) => {
         if (field.name === 'classroom') {
           const selectedClassroom = classes.find(
-            (classroom: Classroom) => classroom.name === formData.classroom
+            (classroom: IClass) => Array.isArray(formData.classrooms) && formData.classrooms.includes(classroom.name)
           );
 
           return {
             ...field,
-            options: classes.map((classroom: Classroom) => ({
+            options: (classes as IClass[]).map((classroom) => ({
               label: { en: classroom.name, ar: classroom.name },
               value: classroom.name,
             })),
@@ -75,7 +75,7 @@ const EditStaff: React.FC<EditStaffProps> = ({ formData }) => {
       mode="table"
       title={t("innerLayout.form.titles.staffDetails")}
       fieldsConfig={updatedFormConfig}
-      submitFn={updateMutation.mutate}
+      submitFn={updateMutation.mutateAsync}
       successMessage={t("innerLayout.form.successMessage.created")}
       canEdit={true}
     />
