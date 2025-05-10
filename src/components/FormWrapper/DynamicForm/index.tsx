@@ -31,11 +31,11 @@ const DynamicForm = forwardRef(
     const [fields, setFields] = useState<IFields>(
       fieldsConfig.reduce((acc, field) => {
         acc[field.name] = {
-          value: field.value || "",
-          isValid: field.isValid || undefined,
-          errorMsg: field.errorMsg || "",
-          validations: field.validations || [],
-        };
+          value: field.value ?? (field.type === "date" ? new Date() : ""),
+          isValid: field.isValid ?? undefined,
+          errorMsg: field.errorMsg ?? "",
+          validations: field.validations ?? [],
+        };        
         return acc;
       }, {} as IFields)
     );
@@ -46,16 +46,27 @@ const DynamicForm = forwardRef(
 
     const handleInputChange = (fieldName: string, value: string | Date) => {
       setServerErrMsg("");
-      const updatedFields = {
-        ...fields,
+      setFields((prevFields) => ({
+        ...prevFields,
         [fieldName]: {
-          ...fields[fieldName],
-          value,
+          ...prevFields[fieldName],
+          value: typeof value === "string" ? value : value.toISOString(),
         },
-      };
-      setFields(updatedFields);
-      validateField(updatedFields, setFields, fieldName, value instanceof Date ? value.toISOString() : value);
+      }));
     };
+    
+    // const handleInputChange = (fieldName: string, value: string | Date) => {
+    //   setServerErrMsg("");
+    //   const updatedFields = {
+    //     ...fields,
+    //     [fieldName]: {
+    //       ...fields[fieldName],
+    //       value,
+    //     },
+    //   };
+    //   setFields(updatedFields);
+      // validateField(updatedFields, setFields, fieldName, value instanceof Date ? value.toISOString() : value);
+    // };
 
     useImperativeHandle(ref, () => ({
       submitForm: () => {
@@ -163,9 +174,12 @@ const DynamicForm = forwardRef(
           ...fields,
           [field.name]: {
             ...fields[field.name],
-            value: updatedFieldValues,
+            value: Array.isArray(updatedFieldValues) 
+              ? updatedFieldValues.join(",")  // Convert to comma-separated string if needed
+              : updatedFieldValues,
           },
         };
+        
       
         setFields(updatedFields);
       
@@ -203,7 +217,7 @@ const DynamicForm = forwardRef(
               key={`select-all-${field.name}`}
               type="checkbox"
               text={t('innerLayout.selectAll')}
-              checked={fields[field.name]?.value?.length === field.options?.length}
+              checked={fields[field.name]?.value === field.options?.values}
               onCheckboxItemClickHandler={(checked) => handleFieldChange(checked)}
               closeOnItemClick={false}
             />
@@ -214,7 +228,7 @@ const DynamicForm = forwardRef(
                 key={`${field.name}-option-${index}`}
                 type="checkbox"
                 text={option.label[lang]}
-                checked={!!fields[field.name]?.value?.includes(option.value)}
+                checked={(fields[field.name]?.value as string[])?.includes(option.value)}
                 onCheckboxItemClickHandler={(checked) =>
                   handleFieldChange(checked, option.value)
                 }
@@ -235,8 +249,6 @@ const DynamicForm = forwardRef(
         disabled={isLoading || !isEditable}
       />
     );
-    
-    
     
     const renderInput = (field: IFieldConfig) => {
       switch (field.type) {

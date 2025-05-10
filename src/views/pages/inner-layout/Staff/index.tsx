@@ -19,7 +19,7 @@ const Staff = () => {
   const location = useLocation();
   const queryClient = useQueryClient();
 
-  const { classes }: { classes: { id: string; name: string }[] } = useClassesStore();
+  const { classes }= useClassesStore();
 
   // Parse URL parameters
   const searchParams = new URLSearchParams(location.search);

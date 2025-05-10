@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { getClasses } from "../../../../services/inner-layout/classes";
 import Card from "./components/Card";
 import InnerLayout from "../../../../views/layout/InnerLayout";
-import { IClass } from "../../../../types/inner-layout/classes";
+import { IClass } from "../../../../types/inner-layout/classes/classes";
 import CreateClass from "./components/Form/CreateClass";
 import styles from "./classes.module.scss";
 

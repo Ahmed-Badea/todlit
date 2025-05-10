@@ -49,8 +49,8 @@ export interface IInnerLayout {
 export interface IAccountBar {
   collapsed?: boolean;
   handlers: {
-    logout: () => void;
-    editProfile: () => void;
+    // logout: () => void;
+    // editProfile: () => void;
     toggleAccountBox?: () => void;
   };
   userInfo?: {
@@ -126,11 +126,6 @@ export interface ISubItem {
   }[];
   index: number;
   navItemLabel: string;
-  subLinkClickHandler: (
-    label: string,
-    route: string,
-    navLinkLabel: string
-  ) => void;
   closeDropdown?: () => void;
 }
 

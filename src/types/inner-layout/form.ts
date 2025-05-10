@@ -1,4 +1,4 @@
-export type TFieldType = 'text' | 'dropdown' | 'date' | 'select'; // Adjust types as needed
+export type TFieldType = 'text' | 'dropdown' | 'multi-dropdown' |'date' | 'time' | 'color'; // Adjust types as needed
 
 export interface IFieldConfig {
   name: string;
@@ -17,8 +17,8 @@ export interface IField {
   isValid?: boolean;
   errorMsg: string;
   validations?: ((value: string | Date) => string | undefined)[];
-
 }
+
 
 export interface IFields {
   [key: string]: IField;

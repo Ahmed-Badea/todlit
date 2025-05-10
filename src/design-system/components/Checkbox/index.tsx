@@ -1,5 +1,5 @@
 import { useState, useEffect, cloneElement, type FocusEvent } from "react";
-import type { ICheckbox } from "../../types/checkbox";
+import type { ICheckbox } from "../../types/Checkbox";
 import { CheckboxBase } from "./CheckboxBase";
 import styles from "./checkbox.module.scss";
 

@@ -1,4 +1,6 @@
 export type TClass = { 
+  id: string,
+  name: string,
   label: { en: string, ar: string },
   value: string
 };

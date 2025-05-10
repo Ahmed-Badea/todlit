@@ -5,12 +5,12 @@ import { toast } from 'react-toastify';
 import { Loading } from '../../../../../../../design-system';
 import FormWrapper from '../../../../../../../components/FormWrapper';
 import { updateStudent } from '../../../../../../../services/inner-layout/students';
-import { IClass } from '../../../../../../../types/inner-layout/classes';
+import { IClass } from '../../../../../../../types/inner-layout/classes/classes';
 import { IFieldConfig, TFieldType } from '../../../../../../../types/inner-layout/form';
 import { useClassesStore } from '../../../../../../../store/classes';
 import { formConfig } from '../studentConfig';
 
-const studentConfig: IFieldConfig[] = formConfig as IFieldConfig[];
+const studentConfig: IFieldConfig[] = formConfig as unknown as IFieldConfig[];
 
 interface FormData {
   id: string;

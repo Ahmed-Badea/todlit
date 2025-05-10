@@ -9,8 +9,8 @@ import { updateStaff } from '../../../../../../../services/inner-layout/staff';
 import { useClassesStore } from '../../../../../../../store/classes';
 import { formConfig } from '../staffConfig';
 
-import { IClass } from '../../../../../../../types/inner-layout/classes';
-import { StaffMember } from '../../../../../../../types/inner-layout/staff';
+import { IClass } from '../../../../../../../types/inner-layout/classes/classes';
+import { StaffMember } from '../../../../../../../types/inner-layout/staff/staff';
 import { IFieldConfig } from '../../../../../../../types/inner-layout/form';
 
 // Define props type
