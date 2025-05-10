@@ -6,7 +6,7 @@ export const useGlobalStore = create<IGlobalStore>()(
   devtools(
     (set) => ({
       isAuthenticated: 'pending',
-      setIsAuthenticated: (isAuthenticated: any) => set(() => ({ isAuthenticated }),
+      setIsAuthenticated: (isAuthenticated) => set(() => ({ isAuthenticated }),
         undefined,
         'GlobalStore/setIsAuthenticated'
       ),

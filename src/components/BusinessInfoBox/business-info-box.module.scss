@@ -1,16 +1,11 @@
-@import "@/styles/common.scss";
+@import "../../styles/common.scss";
 
 .business-info {
   @include flex(center);
-
-  svg {
-    width: 2.5rem;
-    height: 2.5rem;
-    margin-inline-end: $space-8;
-  }
-
+  
   span {
-    color: $white;
+    margin-inline-start: $space-8;
+    color: $gray-700;
     @include englishBodyMdSemiBold;
 
     @include ar {

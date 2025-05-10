@@ -1,4 +1,4 @@
-import { type IAccountBar } from "../../../types/inner-layout";
+import type { IAccountBar } from "../../../types/inner-layout";
 import styles from "./profile-button.module.scss";
 
 const ProfileButton = ({

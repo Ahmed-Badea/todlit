@@ -1,8 +1,7 @@
-@import "@/styles/common.scss";
+@import "../../styles/mixins";
 
 .nav-item,
 .sub-item {
-  font-size: 0.25rem;
   padding: $space-12;
   max-width: 100%;
   cursor: pointer;
@@ -38,6 +37,10 @@
 
   @include ar {
     @include arabicBodyMdSemiBold;
+  }
+
+  +div[class*="dropdown-menu__"] {
+    @include sub-items-menu();
   }
 
   // selecting the last child of nav-item even if it's
@@ -110,11 +113,6 @@
 .sub-item {
   @include flex(center, flex-start);
   margin-inline-start: $space-32;
-
-  &:last-child{
-    margin-bottom: $space-8;
-  }
-
   position: relative;
   @include englishBodySmSemiBold;
 
@@ -140,6 +138,40 @@
       }
     }
   }
+
+  &:before {
+    position: absolute;
+    top: 0;
+    inset-inline-start: -2.2rem;
+    content: "";
+    background-image: url('@app/dashboard/assets/icons/tree.svg');
+    background-position: 100%;
+    background-repeat: no-repeat;
+    width: 2.25rem;
+    height: 100%;
+
+    @include ar {
+      transform: scaleX(-1);
+    }
+  }
+
+  &--last {
+    &:before {
+      position: absolute;
+      top: 0;
+      inset-inline-start: -2.2rem;
+      content: "";
+      background-image: url('@app/dashboard/assets/icons/tree-end.svg');
+      background-position: 100%;
+      background-repeat: no-repeat;
+      width: 2.25rem;
+      height: 100%;
+
+      @include ar {
+        transform: scaleX(-1);
+      }
+    }
+  }
 }
 
 .sub-items-list {
@@ -148,19 +180,20 @@
 
   &__title {
     margin-inline-start: $space-20;
+    margin-bottom: $space-16;
     color: $white;
-    @include englishBodySmSemiBold;
-
-    @include ar {
-      @include arabicBodySmSemiBold;
-    }
-  }
-
-  div[class*="sub-item__"] {
     @include englishBodySmMedium;
 
     @include ar {
       @include arabicBodySmMedium;
+    }
+  }
+
+  div[class*="sub-item__"] {
+    @include englishBodySmSemiBold;
+
+    @include ar {
+      @include arabicBodySmSemiBold;
     }
   }
 }

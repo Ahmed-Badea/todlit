@@ -1,23 +1,28 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Bars, Xmark } from "../../design-system/assets/Icons/index";
 import TODLIT from "../../assets/images/outerLayout/todlit.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import type { IMobileNavMenu } from "../../types/inner-layout/mobile-nav-menu";
+import type { ISubLink } from "../../types/inner-layout/nav-links";
+import { useNavigationStore } from "../../store/navigation";
+import { useUserInfoStore } from "../../store/userInfo";
+import { INNER_ROUTES } from "../../routes/inner-routes";
 import { navLinks } from "../../services/inner-layout/navbar";
-import { IMobileNavMenu } from "../../types/inner-layout";
-import BusinessInfo from "../../components/BusinessInfo";
-import ProfileMenu from "../../components/ProfileMenu";
+
 import LangSwitcher from "../../components/LangSwitcher";
+import BusinessInfoBox from "../BusinessInfoBox";
 import NavItem from "../NavItem";
+import { AccountBar } from "../AccountBar";
 import styles from "./mobile-nav-menu.module.scss";
 
-const MobileNavMenu = ({
-  activeNavLink,
-  activeSubLink,
-  handleNavLinkClick,
-  handleSubLinkClick
-}: IMobileNavMenu) => {
+const MobileNavMenu = () => {
   const { t } = useTranslation();
+  const { activeLink } = useNavigationStore();
+  const navigate = useNavigate();
+
+  const { userInfo } = useUserInfoStore();
+  const { logo, firstName, shortName, profileType } = userInfo;
 
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
 
@@ -25,72 +30,93 @@ const MobileNavMenu = ({
     setIsMenuExpanded(!isMenuExpanded);
   };
 
+  const logoClickHandler = () => {
+    navigate(INNER_ROUTES.DASHBOARD);
+  };
+
   return (
     <>
-      <nav
-        className={styles["mobile-nav-container"]}
-        data-mobile-nav-expanded={isMenuExpanded}
-      >
+      <nav className={styles["mobile-nav-container"]} data-mobile-nav-expanded={isMenuExpanded}>
         <div className={styles["mobile-nav-container__mobile-nav-menu"]}>
-          <div className={styles["mobile-nav-container__mobile-nav-menu__logo"]}>
+          <div className={styles["mobile-nav-container__mobile-nav-menu__logo"]} onClick={logoClickHandler}>
             <img src={TODLIT} alt="TODLIT" />
           </div>
 
-          {!isMenuExpanded && (
+          {
+            !isMenuExpanded &&
             <div className={styles["mobile-nav-container__mobile-nav-menu__current-page"]}>
-              {activeSubLink || activeNavLink}
+              {activeLink.sub || activeLink.nav}
             </div>
-          )}
+          }
 
           <div className={styles["mobile-nav-container__mobile-nav-menu__collapse-btn"]} onClick={expandBtnHandler}>
-            {isMenuExpanded ? (
-              <FontAwesomeIcon icon={faTimes} />
-            ) : (
-              <FontAwesomeIcon icon={faBars} />
-            )}
+            {isMenuExpanded ? Xmark : Bars}
           </div>
         </div>
 
-        {isMenuExpanded && (
+        {
+          isMenuExpanded &&
           <>
             <div className={styles["mobile-nav-container__business-box"]}>
-              <BusinessInfo />
+              <BusinessInfoBox />
             </div>
 
             <div className={styles["mobile-nav-container__nav-links"]}>
-              {navLinks(t)
-                .filter((navLink) => !navLink.hasSpecialAction)
-                .map((navLink, i: number) => {
-                  return (
-                    <NavItem
-                      key={`nav-link-${i}`}
-                      icon={navLink.icon}
-                      label={navLink.label}
-                      active={activeNavLink === navLink.label}
-                      route={navLink.route}
-                      subItems={navLink?.subLinks?.map((subLink) => ({
-                        icon: subLink.icon as React.ReactElement<"svg"> | undefined,
-                        label: subLink.label,
-                        route: subLink.route,
-                        active: activeSubLink === subLink.label
-                      }))}
-                      hasSubLinks={!!navLink?.subLinks}
-                      navLinkClickHandler={handleNavLinkClick}
-                      subLinkClickHandler={handleSubLinkClick}
-                    />
-                  );
-                })}
+              {
+                navLinks(t)
+                  .filter(navLink => !navLink.hasSpecialAction)
+                  .map((navLink, i: number) => {
+                    return (
+                      <NavItem
+                        key={`nav-link-${i}`}
+                        icon={navLink.icon}
+                        label={navLink.label}
+                        active={activeLink.nav === navLink.label}
+                        route={navLink.route}
+                        subItems={
+                          navLink?.subLinks?.map((subLink: ISubLink) => ({
+                            icon: subLink.icon,
+                            label: subLink.label,
+                            route: subLink.route,
+                            active: activeLink.sub === subLink.label
+                          }))
+                        }
+                        hasSubLinks={!!navLink?.subLinks}
+                      />
+                    )
+                  })
+              }
             </div>
 
             <div className={styles["mobile-nav-container__actions-box"]}>
-              <ProfileMenu mobView={true} />
+
+              <AccountBar
+                handlers={{ logout: logoutHandler, editProfile: editProfileHandler }}
+                role={profileType}
+                userName={firstName}
+                {
+                ...(
+                  logo ?
+                    {
+                      type: 'img',
+                      imgUrl: logo
+                    }
+                    :
+                    {
+                      type: 'text',
+                      userShortName: shortName
+                    }
+                )
+                }
+              />
               <LangSwitcher layout="inner" mobView={true} />
+
             </div>
           </>
-        )}
+        }
       </nav>
     </>
-  );
-};
+  )
+}
 
 export default MobileNavMenu;

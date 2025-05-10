@@ -33,7 +33,7 @@ import type {
   NavLinks,
   AccountBarLinks,
   LangLinks,
-} from "../../types/inner-layout";
+} from "../../types/inner-layout/nav-links";
 
 export const navLinks: (t: any) => NavLinks[] = (t) => [
   // {

@@ -1,17 +1,17 @@
-// Language mixixs
 @mixin en {
-  html[dir="ltr"] & {
+  html[dir="ltr"] &,
+  html[lang="en"] & {
     @content;
   }
 }
 
 @mixin ar {
-  html[dir="rtl"] & {
+  html[dir="rtl"] &,
+  html[lang="ar"] & {
     @content;
   }
 }
 
-// Media queries mixins
 @mixin max($width) {
   @media(max-width:#{$width}) {
     @content;
@@ -24,9 +24,29 @@
   }
 }
 
-// Flex-box mixin
 @mixin flex($align-items:flex-start, $justify-content:flex-start) {
   display: flex;
   align-items: $align-items;
   justify-content: $justify-content;
+}
+
+@mixin rounded-scroll-bar($scrollbar-width:0.4rem) {
+  &::-webkit-scrollbar {
+    width: $scrollbar-width;
+    height: $scrollbar-width;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $gray-300;
+    border-radius: $radius-lg;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $gray-400;
+    border-radius: $radius-lg;
+  }
 }

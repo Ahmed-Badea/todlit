@@ -1,11 +1,10 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronRight } from "../../design-system/assets/Icons/index";
-import { Dropdown, DropdownMenu } from"../../design-system";
-import { INavItem } from "../../types/inner-layout";
+import { Dropdown, DropdownMenu } from "../../design-system";
+import type { INavItem } from "../../types/inner-layout/nav-item";
 import { useNavigationStore } from "../../store/navigation";
 import { useClickOutside } from "../../hooks/useClickOutside";
-import { getVerticalPlacement } from "../../utils/getPlacement";
 import SubItem from "./SubItem";
 import SubItemsList from "./SubItemsList";
 import styles from "./nav-item.module.scss";
@@ -34,14 +33,18 @@ const NavItem = ({
   };
 
   const handleNavItemClick = (label: string, hasSubLinks: boolean, route?: string) => {
-    !hasSubLinks && setActiveLink({ nav: label, sub: "" });
-
-    route && !hasSubLinks && navigate(route);
+    if (!hasSubLinks) {
+      setActiveLink({ nav: label, sub: "" });
+    }
+    if (route && !hasSubLinks) {
+      navigate(route);
+    }
+    
     dropdownToggle();
   };
 
-  const NavItemInstance = () => <div className={styles["nav-item"]}
-    data-nav-item-active={active}
+  const NavItemInstance = <div className={styles["nav-item"]}
+    data-nav-item-active={!hasSubLinks ? active : (isOpen ? false : active)}
     data-nav-item-open={isOpen}
     data-nav-item-collapsed={collapsed}
     tabIndex={0}
@@ -68,13 +71,13 @@ const NavItem = ({
         collapsed ?
           (
             subItems ?
-              <Dropdown width="fit-content" closeOnClickOutside={false} ref={navItemRef} id={`navitem-dropdown-${label}`}>
-                <NavItemInstance />
+              <Dropdown closeOnClickOutside={false} width="fit-content" ref={navItemRef}>
+                {NavItemInstance}
                 <DropdownMenu
                   open={isOpen}
                   width="fit-content"
                   horizontalPlacement="start"
-                  verticalPlacement={getVerticalPlacement(`navitem-dropdown-${label}`)}
+                  verticalPlacement='auto'
                 >
                   <SubItemsList
                     title={label}
@@ -84,17 +87,17 @@ const NavItem = ({
                 </DropdownMenu>
               </Dropdown>
               :
-              <NavItemInstance />
+              NavItemInstance
           )
           :
-          <NavItemInstance />
+          NavItemInstance
       }
 
       {
         isOpen && !collapsed && subItems?.map((_, index: number) => {
           return (
             <SubItem
-              key={`sub-item-${index}`}
+              key={`subitem-${index}`}
               subItems={subItems}
               index={index}
               navItemLabel={label}

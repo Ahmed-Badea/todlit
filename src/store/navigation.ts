@@ -13,6 +13,6 @@ export const useNavigationStore = create<INavigationStore>()(
       )
 
     } as INavigationStore),
-    { name: 'NavigationStore' }
+    { name: 'NavigationStore' }
   ),
 );

@@ -1,7 +1,7 @@
-@import "@/styles/common.scss";
+@import "../../styles/common.scss";
 
 .navbar {
-  z-index: 1;
+  height: var(--navbar-height);
   position: sticky;
   top: 0;
   padding: $space-8 $space-12;
@@ -11,5 +11,24 @@
   .__actions-box {
     @include flex(center, flex-end);
     gap: $space-24;
+
+    div[class*="toggle-box"] {
+      width: fit-content;
+    }
+
+    &__action-icon {
+      width: 2rem;
+      height: 2rem;
+      cursor: pointer;
+
+      svg {
+        width: 100%;
+        height: 100%;
+
+        path {
+          fill: $gray-500;
+        }
+      }
+    }
   }
 }

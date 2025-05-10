@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 
 export const useClickOutside = (
   refs: React.RefObject<HTMLElement> | React.RefObject<HTMLElement>[],

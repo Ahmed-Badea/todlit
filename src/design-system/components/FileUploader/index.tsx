@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState, useEffect } from 'react';
 import styles from './file-uploader.module.scss';
 import { IFileUploader } from '../../types/file_uploader/fileUploader';
@@ -21,7 +22,8 @@ export const FileUploader = ({
     const [invalid, setInvalid] = useState(false);
     const [errorMsg, setErrorMsg] = useState("");
     const [serverError, setServerError] = useState<boolean>(isServerError);
-    const [uploadedFile, setUploadedFile] = useState<File | undefined>();
+    // unused uploadedFile state
+    // const [uploadedFile, setUploadedFile] = useState<File | undefined>();
     const [UploadedFileInfo, setUploadedFileInfo] = useState<{ name: string, size?: number }>({ name: '' });
 
     useEffect(() => {
@@ -62,7 +64,7 @@ export const FileUploader = ({
         if (onUploadHandler) {
             onUploadHandler(FILE);
         }
-        setUploadedFile(FILE);
+        // setUploadedFile(FILE); // removed unused uploadedFile state
         setUploadedFileInfo({ name: FILE.name, size: FILE.size });
         setInvalid(false);
         setServerError(false);
@@ -82,7 +84,7 @@ export const FileUploader = ({
     const handleFileDelete = () => {
         setInvalid(false);
         setErrorMsg("");
-        setUploadedFile(undefined);
+        // setUploadedFile(undefined); // removed unused uploadedFile state
         setUploadedFileInfo({ name: '' });
         if (onUploadHandler) {
             onUploadHandler(undefined);

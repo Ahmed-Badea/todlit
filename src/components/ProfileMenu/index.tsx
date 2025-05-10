@@ -79,7 +79,7 @@ const ProfileMenu = ({ mobView = false }: { mobView?: boolean }) => {
               <DropdownMenuItem
                 text={item.label}
                 icon={item.icon}
-                onClickHandler={profileHandler[item.action]}
+                onClickHandler={profileHandler[item.action as keyof typeof profileHandler]}
                 key={`profile-item-${i}`}
               />
             ))}

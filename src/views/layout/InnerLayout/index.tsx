@@ -9,12 +9,20 @@ import Navbar from '../../../components/Navbar';
 import { Loading, ErrorPage } from '../../../design-system'
 import { getClasses } from "../../../services/inner-layout/classes";
 import { useClassesStore } from '../../../store/classes';
+import { useUserInfoStore } from '../../../store/userInfo';
+import { userInfo as userData } from "../../../utils/auth/userInfo";
 import styles from './inner-layout.module.scss';
 
 const InnerLayout: React.FC<IInnerLayout> = ({ children, isLoading, error, errorMessage }) => {
   const screenWidth = useScreenWidth();
   const isMobile = screenWidth < MOBILE_BREAKPOINT;
   const [isSideMenuCollpased, setIsSideMenuCollpased] = useState(false);
+
+  const { setUserInfo } = useUserInfoStore();
+
+  useEffect(() => {
+    setUserInfo({ ...userData() });
+  }, [setUserInfo]);
 
   const { data: classrooms, isLoading: isLoadingClassrooms } = useQuery('classrooms', getClasses);
   
@@ -25,6 +33,8 @@ const InnerLayout: React.FC<IInnerLayout> = ({ children, isLoading, error, error
       setClasses(classrooms);
     }
   }, [classrooms, setClasses]);
+
+  
 
   const renderContent = () => {
     if (isLoadingClassrooms || isLoading) {

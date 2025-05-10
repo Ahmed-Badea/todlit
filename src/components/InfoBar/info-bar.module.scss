@@ -1,0 +1,20 @@
+@import "../../styles/common.scss";
+
+.info-bar {
+  position: sticky;
+  top: var(--navbar-height);
+  width: 100%;
+  padding: $space-12 $space-32;
+  text-align: center;
+  z-index: 2;
+  @include englishBodySmMedium;
+  
+  @include ar {
+    @include arabicBodySmMedium;
+  }
+
+  &[data-info-bar='warning'] {
+    background-color: $warning-50;
+    color: $warning-600;
+  }
+}
