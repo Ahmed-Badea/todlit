@@ -6,7 +6,7 @@ interface StaffData {
   email: string;
   phone: string;
   gender: string;
-  classroom: string;
+  classroom?: string;
 }
 
 interface FilterParams {

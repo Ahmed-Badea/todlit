@@ -17,7 +17,7 @@ const Plans: React.FC = () => {
   });
 
   return (
-    <InnerLayout isLoading={isLoading || isFetching} error={error} errorMessage={(error as Error)?.message}>
+    <InnerLayout isLoading={isLoading || isFetching} error={!!error} errorMessage={(error as Error)?.message}>
       <div className={styles.header}>
         <h3>{t("innerLayout.plans.title")}</h3>
         <CreatePlan />

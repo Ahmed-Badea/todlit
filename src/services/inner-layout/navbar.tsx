@@ -30,12 +30,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { EGYFlag, ENGFlag } from "../../design-system/assets/Icons/countries";
 import type {
-  NavLinks,
-  AccountBarLinks,
-  LangLinks,
+  INavLinks,
+  IAccountBarLinks,
+  ILangLinks,
 } from "../../types/inner-layout/nav-links";
 
-export const navLinks: (t: any) => NavLinks[] = (t) => [
+export const navLinks: (t: any) => INavLinks[] = (t) => [
   // {
   //   label: t("innerLayout.navbar.dashboard"),
   //   icon: <FontAwesomeIcon icon={faDashboard} />,
@@ -154,7 +154,7 @@ export const navLinks: (t: any) => NavLinks[] = (t) => [
   // },
 ];
 
-export const accountBarLinks: (t: any) => AccountBarLinks[] = (t) => [
+export const accountBarLinks: (t: any) => IAccountBarLinks[] = (t) => [
   {
     label: t("innerLayout.navbar.editProfile"),
     icon: <FontAwesomeIcon icon={faUserEdit} />,
@@ -167,7 +167,7 @@ export const accountBarLinks: (t: any) => AccountBarLinks[] = (t) => [
   },
 ];
 
-export const langLinks: (t: any) => LangLinks[] = (t) => [
+export const langLinks: (t: any) => ILangLinks[] = (t) => [
   {
     label: t("innerLayout.navbar.arabic"),
     icon: EGYFlag,

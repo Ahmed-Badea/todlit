@@ -106,7 +106,10 @@ const Staff = () => {
       </div>
       <Table
         language={lang}
-        columns={columns}
+        columns={columns.map(col => ({
+          ...col,
+          dataType: (col.dataType as any) // Replace 'any' with your DataType enum if available, e.g. DataType[col.dataType as keyof typeof DataType]
+        }))}
         data={staffData}
         rowClickHandler={handleRowClick}
       />

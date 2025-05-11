@@ -1,4 +1,4 @@
-import type { ReactElement } from "react";
+import type { ReactElement, ReactNode } from "react";
 
 
 export type TAccountBarActions = 'edit-profile' | 'logout';
@@ -39,3 +39,8 @@ export interface ICreateBtnLinks {
   icon: ReactElement<'svg'>,
   route: string
 };
+export interface ILangLinks {
+  label: string;
+  icon: ReactNode; // For SVG components or any React element
+  lang: "ar" | "en"; // Assuming these are your supported languages
+}

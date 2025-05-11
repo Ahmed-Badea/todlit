@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Button, Popup } from"../../../../../../design-system";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import styles from "./Card.module.scss";

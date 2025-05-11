@@ -28,7 +28,7 @@ const Classes: React.FC = () => {
   };
 
   return (
-    <InnerLayout isLoading={isLoading || isFetching} error={error} errorMessage={error?.message}>
+    <InnerLayout isLoading={isLoading || isFetching} error={!!error} errorMessage={error?.message}>
       <div className={styles.header}>
         <h3>{t("innerLayout.classes.title")}</h3>
         <CreateClass />

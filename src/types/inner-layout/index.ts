@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
-
 export interface IInnerLayout {
   children: React.ReactNode;
   isLoading?: boolean;
