@@ -11,7 +11,7 @@ import { formConfig } from '../staffConfig';
 
 import { IClass } from '../../../../../../../types/inner-layout/classes/classes';
 import { StaffMember } from '../../../../../../../types/inner-layout/staff/staff';
-import { IFieldConfig } from '../../../../../../../types/inner-layout/form';
+// import { IFieldConfig } from '../../../../../../../types/inner-layout/form';
 
 // Define props type
 type EditStaffProps = {

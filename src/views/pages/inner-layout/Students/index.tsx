@@ -101,7 +101,7 @@ const Students = () => {
   return (
     <InnerLayout
       isLoading={isLoading || isFetching}
-      error={error}
+      error={!!error}
       errorMessage={error?.message}
     >
       <div className={styles.header}>

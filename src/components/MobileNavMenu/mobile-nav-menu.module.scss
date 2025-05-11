@@ -28,13 +28,13 @@
     }
 
     &__logo img {
-      width: 5rem;
+      width: 3.5rem;
       // height: 1.75rem;
       cursor: pointer;
     }
 
     &__current-page {
-      color: $gray-700;
+      color: $white;
       flex-grow: 1;
       text-align: end;
       @include englishBodyMdSemiBold;
@@ -50,7 +50,7 @@
       cursor: pointer;
 
       path {
-        fill: $gray-700
+        fill: $white
       }
     }
   }

@@ -75,7 +75,7 @@ const Staff = () => {
   }, [classFilter, t]);
 
   return (
-    <InnerLayout isLoading={isLoading || isFetching} error={error} errorMessage={(error as Error)?.message}>
+    <InnerLayout isLoading={isLoading || isFetching} error={!!error} errorMessage={(error as Error)?.message}>
       <div className={styles.header}>
         <h3>{t("innerLayout.staff.title")}</h3>
         <div className={styles.filters_container}>

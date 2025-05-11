@@ -3,26 +3,24 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Bars, Xmark } from "../../design-system/assets/Icons/index";
 import TODLIT from "../../assets/images/outerLayout/todlit.png";
-import type { IMobileNavMenu } from "../../types/inner-layout/mobile-nav-menu";
 import type { ISubLink } from "../../types/inner-layout/nav-links";
 import { useNavigationStore } from "../../store/navigation";
-import { useUserInfoStore } from "../../store/userInfo";
+// import { useUserInfoStore } from "../../store/userInfo";
 import { INNER_ROUTES } from "../../routes/inner-routes";
 import { navLinks } from "../../services/inner-layout/navbar";
-
 import LangSwitcher from "../../components/LangSwitcher";
 import BusinessInfoBox from "../BusinessInfoBox";
 import NavItem from "../NavItem";
-import { AccountBar } from "../AccountBar";
 import styles from "./mobile-nav-menu.module.scss";
+import ProfileMenu from "../ProfileMenu";
 
 const MobileNavMenu = () => {
   const { t } = useTranslation();
   const { activeLink } = useNavigationStore();
   const navigate = useNavigate();
 
-  const { userInfo } = useUserInfoStore();
-  const { logo, firstName, shortName, profileType } = userInfo;
+  // const { userInfo } = useUserInfoStore();
+  // const { logo, firstName, shortName, profileType } = userInfo;
 
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
 
@@ -90,25 +88,7 @@ const MobileNavMenu = () => {
 
             <div className={styles["mobile-nav-container__actions-box"]}>
 
-              <AccountBar
-                handlers={{ logout: logoutHandler, editProfile: editProfileHandler }}
-                role={profileType}
-                userName={firstName}
-                {
-                ...(
-                  logo ?
-                    {
-                      type: 'img',
-                      imgUrl: logo
-                    }
-                    :
-                    {
-                      type: 'text',
-                      userShortName: shortName
-                    }
-                )
-                }
-              />
+              <ProfileMenu mobView={true} />
               <LangSwitcher layout="inner" mobView={true} />
 
             </div>

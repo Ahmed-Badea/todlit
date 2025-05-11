@@ -16,6 +16,13 @@ html {
 }
 
 :root {
+  @media (min-width: calc(900px + 1px)) {
+    --navbar-height: 4rem;
+  }
+
+  @media (max-width: calc(900px)) {
+    --navbar-height: 4.5rem;
+  }
 
   div[data-is-side-menu-collapsed="true"] {
     --side-menu-width: 6rem;
@@ -28,13 +35,13 @@ html {
 
 // Custom scrollbar
 
-@media(min-width:calc(900px - 1px)) {
+@media (min-width: calc(900px - 1px)) {
   ::-webkit-scrollbar {
     width: 0.625rem;
   }
 
   ::-webkit-scrollbar-track {
-    background: #D0D5DD;
+    background: #d0d5dd;
   }
 
   ::-webkit-scrollbar-thumb {
