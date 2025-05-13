@@ -26,7 +26,7 @@ const EditParent = ({ formData }: { formData: FormData }) => {
       const newFormConfig: IFieldConfig[] = parentConfig.map((field) => ({
         ...field,
         value: formData[field.name] || "",
-        isValid: formData[field.name] ? true : null,
+        isValid: formData[field.name] ? true : undefined,
       }));
 
       setUpdatedFormConfig(newFormConfig);

@@ -11,7 +11,10 @@ import { formConfig } from '../staffConfig';
 
 import { IClass } from '../../../../../../../types/inner-layout/classes/classes';
 import { StaffMember } from '../../../../../../../types/inner-layout/staff/staff';
-// import { IFieldConfig } from '../../../../../../../types/inner-layout/form';
+import { IFieldConfig } from '../../../../../../../types/inner-layout/form';
+
+const staffConfig: IFieldConfig[] = formConfig as unknown as IFieldConfig[];
+
 
 // Define props type
 type EditStaffProps = {
@@ -23,11 +26,12 @@ const EditStaff: React.FC<EditStaffProps> = ({ formData }) => {
   const { classes } = useClassesStore() as unknown as { classes: IClass[] };
 
   const [isLoading, setIsLoading] = useState(true);
-  const [updatedFormConfig, setUpdatedFormConfig] = useState(formConfig);
+  const [updatedFormConfig, setUpdatedFormConfig] = useState<IFieldConfig[]>(staffConfig);
+  
 
   useEffect(() => {
     if (classes && formData) {
-      const newFormConfig = formConfig.map((field) => {
+      const newFormConfig = staffConfig.map((field) => {
         if (field.name === 'classroom') {
           const selectedClassroom = classes.find(
             (classroom: IClass) => Array.isArray(formData.classrooms) && formData.classrooms.includes(classroom.name)
@@ -46,7 +50,7 @@ const EditStaff: React.FC<EditStaffProps> = ({ formData }) => {
         return {
           ...field,
           value: formData[field.name as keyof StaffMember] || '',
-          isValid: formData[field.name as keyof StaffMember] ? true : null,
+          isValid: formData[field.name as keyof StaffMember] ? true : undefined,
         };
       });
 

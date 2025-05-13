@@ -6,7 +6,7 @@ import { Loading } from '../../../../../../../design-system';
 import FormWrapper from '../../../../../../../components/FormWrapper';
 import { updateStudent } from '../../../../../../../services/inner-layout/students';
 import { IClass } from '../../../../../../../types/inner-layout/classes/classes';
-import { IFieldConfig, TFieldType } from '../../../../../../../types/inner-layout/form';
+import { IFieldConfig } from '../../../../../../../types/inner-layout/form';
 import { useClassesStore } from '../../../../../../../store/classes';
 import { formConfig } from '../studentConfig';
 
@@ -35,7 +35,7 @@ const EditStudent = ({ formData }: { formData: FormData }) => {
 
           return {
             ...field,
-            type: field.type as TFieldType,
+            type: field.type,
             options: classes.map((classroom: IClass) => ({
               label: { en: classroom.name, ar: classroom.name },
               value: classroom.name,
@@ -46,9 +46,9 @@ const EditStudent = ({ formData }: { formData: FormData }) => {
 
         return {
           ...field,
-          type: field.type as TFieldType,
+          type: field.type,
           value: formData[field.name] || '',
-          isValid: formData[field.name] ? true : null,
+          isValid: formData[field.name] ? true : undefined,
         };
       });
 

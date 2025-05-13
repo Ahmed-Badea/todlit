@@ -1,22 +1,20 @@
-export type TFieldType = 'text' | 'dropdown' | 'multi-dropdown' |'date' | 'time' | 'color'; // Adjust types as needed
-
 export interface IFieldConfig {
   name: string;
   label: { en: string; ar: string };
-  type: TFieldType;
+  type: string;
   value: any;
-  isValid: boolean | null;
+  isValid: boolean | undefined;
   errorMsg: string;
-  validations?: ((value: string | Date) => string | undefined)[];
+  validations: { pattern: RegExp; error_msg: string; }[];
   options?: { label: { en: string; ar: string }; value: string }[];
   selectedColor?: string;
 }
 
 export interface IField {
-  value?: string | string[] | Date;
+  value?: string | string[] ;
   isValid?: boolean;
   errorMsg: string;
-  validations?: ((value: string | Date) => string | undefined)[];
+  validations: { pattern: RegExp; error_msg: string; }[];
 }
 
 

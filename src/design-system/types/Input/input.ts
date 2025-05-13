@@ -3,7 +3,7 @@ import { ChangeEventHandler, FocusEventHandler, MouseEventHandler, ReactNode, Re
 export interface IInput {
   id?: string;
   name: string;
-  value?: string;
+  value?: string | string[];
   label?: string;
   labelText?: string;
   hintText?: string;

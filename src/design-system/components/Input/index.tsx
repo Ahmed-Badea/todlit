@@ -16,9 +16,9 @@ const isMatch = ({
   value = '',
   pattern,
 }: {
-  value?: string;
+  value?: string | string[];
   pattern?: RegExp;
-}) => pattern?.test(value);
+}) => pattern?.test(Array.isArray(value) ? value.join('') : value ?? '');
 
 export const Input = forwardRef<HTMLInputElement, IInput>(
   (

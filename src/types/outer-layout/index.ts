@@ -7,7 +7,7 @@ export interface IValidation {
 
 export interface IField {
   [x: string]: {
-    value?: string;
+    value?: string | string[];
     isValid?: boolean;
     errorMsg: string;
     validations: { pattern: RegExp; error_msg: string; }[];

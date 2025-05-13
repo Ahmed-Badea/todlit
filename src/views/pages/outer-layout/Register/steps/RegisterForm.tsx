@@ -86,7 +86,7 @@ const RegisterForm = ({
       value: '',
       isValid: undefined,
       errorMsg: '',
-      validations: [required, phoneNumberValidation]
+      validations: [required, phoneNumberValidation("EGY")]
     },
     [FieldNames.NURSERY_NAME]: {
       value: '',

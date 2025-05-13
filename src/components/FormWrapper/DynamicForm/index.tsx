@@ -43,30 +43,19 @@ const DynamicForm = forwardRef(
     useEffect(() => {
       setFormValid(isFormValid(fields));
     }, [fields, setFormValid]);
-
-    const handleInputChange = (fieldName: string, value: string | Date) => {
-      setServerErrMsg("");
-      setFields((prevFields) => ({
-        ...prevFields,
-        [fieldName]: {
-          ...prevFields[fieldName],
-          value: typeof value === "string" ? value : value.toISOString(),
-        },
-      }));
-    };
     
-    // const handleInputChange = (fieldName: string, value: string | Date) => {
-    //   setServerErrMsg("");
-    //   const updatedFields = {
-    //     ...fields,
-    //     [fieldName]: {
-    //       ...fields[fieldName],
-    //       value,
-    //     },
-    //   };
-    //   setFields(updatedFields);
-      // validateField(updatedFields, setFields, fieldName, value instanceof Date ? value.toISOString() : value);
-    // };
+    const handleInputChange = (fieldName: string, value: string) => {
+      setServerErrMsg("");
+      const updatedFields = {
+        ...fields,
+        [fieldName]: {
+          ...fields[fieldName],
+          value,
+        },
+      };
+      setFields(updatedFields);
+      validateField(updatedFields, setFields, fieldName, value);
+    };
 
     useImperativeHandle(ref, () => ({
       submitForm: () => {
@@ -99,7 +88,7 @@ const DynamicForm = forwardRef(
             ? new Date(fields[field.name]?.value as string)
             : null
         }
-        onDateChange={(date) => date && handleInputChange(field.name, date)}
+        onDateChange={(date) => date && handleInputChange(field.name, date.toISOString())}
         label={mode === "table" ? undefined : field.label?.[lang] ?? "Default Label"} // Hide label in table mode
         disabled={isLoading || !isEditable}
         isEditable={isEditable}
@@ -168,22 +157,21 @@ const DynamicForm = forwardRef(
           : checked
             ? field.options?.map((option) => option.value) || [] // "Select All"
             : []; // Clear all options
-      
+        
+        const normalizedValue = Array.isArray(updatedFieldValues) ? updatedFieldValues.join(",") : updatedFieldValues;
+
         // Create the updated fields object
         const updatedFields = {
           ...fields,
           [field.name]: {
             ...fields[field.name],
-            value: Array.isArray(updatedFieldValues) 
-              ? updatedFieldValues.join(",")  // Convert to comma-separated string if needed
-              : updatedFieldValues,
+            value: normalizedValue
           },
         };
         
-      
         setFields(updatedFields);
       
-        validateField(updatedFields, setFields, field.name, Array.isArray(updatedFieldValues) ? updatedFieldValues.join(",") : updatedFieldValues);
+        validateField(updatedFields, setFields, field.name, normalizedValue);
       };
       
     
