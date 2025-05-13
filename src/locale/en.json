@@ -198,6 +198,7 @@
       "errors": {
         "somethingWentWrong": "Oops! Something went wrong. Please try again."
       }
-    }
+    },
+    "noData": "No data found"
   }
 }

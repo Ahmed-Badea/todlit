@@ -1,0 +1,21 @@
+@import "@/styles/common.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+  padding: 20px;
+}
+
+.icon {
+  width: 20rem;
+  opacity: 0.8;
+}
+
+.emptyMessage {
+  font-size: 1.2rem;
+  color: $primary-500;
+}

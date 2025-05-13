@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ITableProps, IRow, IColumn } from "../../types/Table/table";
 import { Button } from"../Button";
+import NoData from "../NoData";
 import styles from "./table.module.scss";
 
 const getNestedValue = (obj: any, path: string): any => {
@@ -77,7 +78,7 @@ export const Table: React.FC<ITableProps> = ({
   return (
     <div className={styles["table-container"]}>
       {data.length === 0 ? (
-        <div className={styles["no-data"]}>No data available</div>
+        <NoData />
       ) : (
         <>
           <table className={styles["table"]}>

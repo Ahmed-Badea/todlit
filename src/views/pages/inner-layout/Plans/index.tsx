@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import { useTranslation } from "react-i18next";
+import NoData from "../../../../design-system/components/NoData";
 import InnerLayout from "../../../../views/layout/InnerLayout";
 import PlanCard from "./components/Plan";
 import { getPlans } from "../../../../services/inner-layout/plans";
@@ -23,9 +24,11 @@ const Plans: React.FC = () => {
         <CreatePlan />
       </div>
       <div className={styles.plansContainer}>
-        {plans?.map((plan: Plan) => (
-          <PlanCard key={plan.name} {...plan} />
-        ))}
+        {plans && plans.length > 0 ? (
+          plans.map((plan: Plan) => <PlanCard key={plan.name} {...plan} />)
+        ) : (
+          <NoData />
+        )}
       </div>
     </InnerLayout>
   );
