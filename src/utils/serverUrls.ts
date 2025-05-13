@@ -1,9 +1,9 @@
-const hostName = window.location.hostname;
+// const hostName = window.location.hostname;
 
 export const getServerUrl = () => {
-  if(hostName === "localhost"){
-    return "https://todlit.com";
-  }else{
-    return hostName;
-  }
+  // if(hostName === "localhost"){
+    return "https://api.todlit.com";
+  // }else{
+    // return hostName;
+  // }
 };
