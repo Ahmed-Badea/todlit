@@ -7,6 +7,7 @@ import FormWrapper from "../../../../../../../components/FormWrapper";
 import { updateParent } from "../../../../../../../services/inner-layout/students";
 import { IFieldConfig } from "../../../../../../../types/inner-layout/form";
 import { formConfig } from "../parentConfig";
+import { IParent } from "../../../../../../../types/inner-layout/students/parent";
 
 const parentConfig: IFieldConfig[] = formConfig as unknown as IFieldConfig[];
 
@@ -35,7 +36,19 @@ const EditParent = ({ formData }: { formData: FormData }) => {
   }, [formData]);
 
   const updateMutation = useMutation(
-    (data: Record<string, any>) => updateParent(formData.id, data),
+    (data: Partial<IParent>) => {
+      // Ensure all required fields are present and not undefined
+      const parentData = {
+        ...formData,
+        ...data,
+        first_name: data.first_name ?? formData.first_name,
+        last_name: data.last_name ?? formData.last_name,
+        email: data.email ?? formData.email,
+        phone: data.phone ?? formData.phone,
+        gender: data.gender ?? formData.gender,
+      };
+      return updateParent(formData.id, parentData);
+    },
     {
       onSuccess: () => {
         toast.success(t("innerLayout.form.successMessage.updated"));

@@ -9,6 +9,7 @@ import { IClass } from '../../../../../../../types/inner-layout/classes/classes'
 import { IFieldConfig } from '../../../../../../../types/inner-layout/form';
 import { useClassesStore } from '../../../../../../../store/classes';
 import { formConfig } from '../studentConfig';
+import { IStudent } from '../../../../../../../types/inner-layout/students/student';
 
 const studentConfig: IFieldConfig[] = formConfig as unknown as IFieldConfig[];
 
@@ -58,7 +59,20 @@ const EditStudent = ({ formData }: { formData: FormData }) => {
   }, [classes, formData]);
 
   const updateMutation = useMutation(
-    (data: Record<string, any>) => updateStudent(formData.id, data),
+    (data: Partial<IStudent>) => {
+      // Ensure all required fields are present and not undefined
+      const studentData = {
+        ...formData,
+        ...data,
+        first_name: data.first_name ?? formData.first_name,
+        last_name: data.last_name ?? formData.last_name,
+        date_of_birth: data.date_of_birth ?? formData.date_of_birth,
+        gender: data.gender ?? formData.gender,
+        status: data.status ?? formData.status,
+        classroom: data.classroom ?? formData.classroom,
+      };
+      return updateStudent(formData.id, studentData);
+    },
     {
       onSuccess: () => {
         toast.success(t('innerLayout.form.successMessage.updated'));

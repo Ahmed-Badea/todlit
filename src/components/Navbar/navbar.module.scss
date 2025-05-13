@@ -1,6 +1,7 @@
 @import "../../styles/common.scss";
 
 .navbar {
+  z-index: 1;
   height: var(--navbar-height);
   position: sticky;
   top: 0;

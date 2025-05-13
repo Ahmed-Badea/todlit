@@ -60,7 +60,20 @@ const EditStaff: React.FC<EditStaffProps> = ({ formData }) => {
   }, [classes, formData]);
 
   const updateMutation = useMutation(
-    (data: Partial<StaffMember>) => updateStaff(formData.id, data),
+    (data: Partial<StaffMember>) => {
+      // Ensure all required fields are present and not undefined
+      const staffData = {
+        ...formData,
+        ...data,
+        first_name: data.first_name ?? formData.first_name,
+        last_name: data.last_name ?? formData.last_name,
+        email: data.email ?? formData.email,
+        phone: data.phone ?? formData.phone,
+        gender: data.gender ?? formData.gender,
+        classroom: data.classrooms ?? formData.classrooms,
+      };
+      return updateStaff(formData.id, staffData);
+    },
     {
       onSuccess: () => {
         toast.success(t("innerLayout.form.successMessage.updated"));

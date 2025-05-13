@@ -1,23 +1,7 @@
 import { Axios } from "../../tools/axios/axiosInstance";
 import { formatDate } from '../../utils/formatDate';
-
-interface StudentData {
-  first_name: string;
-  last_name: string;
-  date_of_birth: string;
-  gender: string;
-  status: string;
-  classroom: string;
-}
-
-interface ParentData {
-  first_name: string,
-  last_name: string,
-  gender: string,
-  phone: string,
-  email: string,
-  student_id: string
-}
+import type { IParent } from "../../types/inner-layout/students/parent";
+import type { IStudent } from "../../types/inner-layout/students/student";
 
 interface FilterParams {
   student_id?: string;
@@ -34,7 +18,7 @@ export const getStudents = async (filters: FilterParams = {}) => {
 };
 
 // Create a new student
-export const createStudent = async (student: StudentData) => {
+export const createStudent = async (student: IStudent) => {
   const formattedDateOfBirth = formatDate(student.date_of_birth);
 
   const reqBody = {
@@ -50,7 +34,7 @@ export const createStudent = async (student: StudentData) => {
 };
 
 // Update an existing student
-export const updateStudent = async (id: string, student: StudentData) => {
+export const updateStudent = async (id: string, student: IStudent) => {
   const formattedDateOfBirth = formatDate(student.date_of_birth);
       
   const reqBody = {
@@ -73,7 +57,7 @@ export const getParents = async (filters: FilterParams = {}) => {
   return response.data;
 };
 
-export const createParent = async (parent: ParentData) => {
+export const createParent = async (parent: IParent) => {
   const reqBody = {
     first_name: parent.first_name,
     last_name: parent.last_name,
@@ -86,7 +70,7 @@ export const createParent = async (parent: ParentData) => {
   return Axios.post(`/dashboard/parent/`, reqBody);
 };
 
-export const updateParent = async (id: string, parent: ParentData) => {
+export const updateParent = async (id: string, parent: IParent) => {
   const reqBody = {
     first_name: parent.first_name,
     last_name: parent.last_name,

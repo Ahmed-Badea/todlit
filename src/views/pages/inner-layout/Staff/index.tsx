@@ -49,7 +49,7 @@ const Staff = () => {
   };
 
   const handleRowClick = (row: IRow) => {
-      navigate(`/students/${row.id}`);
+      navigate(`/staff/${row.id}`);
   };
 
   const handleClassFilterChange = (selectedName: string) => {

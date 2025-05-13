@@ -5,8 +5,8 @@ interface StaffData {
   last_name: string;
   email: string;
   phone: string;
-  gender: string;
-  classroom?: string;
+  gender: string | null;
+  classroom?: string | string[];
 }
 
 interface FilterParams {
