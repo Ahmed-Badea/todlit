@@ -1,0 +1,29 @@
+@import "@/styles/common.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  // align-items: center;
+  margin-bottom: 1rem;
+  // h3{
+  //   margin: 0;
+  // }
+  .filters_container{
+    display: flex;
+    gap: $space-16;
+    justify-content: space-between;
+    width: 40%;
+  }
+}
+.stat_cards_container {
+  display: flex;
+  justify-content: space-between;
+  gap: $space-12;
+  width: 100%;
+  margin: $space-40 0;
+}
+
+.actions_container {
+  display: flex;
+  gap: $space-16;
+}

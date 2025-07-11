@@ -4,9 +4,9 @@
 // } from "../../design-system/assets/Icons/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  // faDashboard,
+  faDashboard,
   faUsers,
-  // faCalendarCheck,
+  faCalendarCheck,
   // faFileAlt,
   // faMoneyBill,
   faCreditCard,
@@ -23,7 +23,7 @@ import {
   // faPercentage,
   // faCalculator,
   // faFilePdf,
-  // faUserCheck,
+  faUserCheck,
   faListOl,
   faUserEdit,
   faSignOutAlt
@@ -36,11 +36,11 @@ import type {
 } from "../../types/inner-layout/nav-links";
 
 export const navLinks: (t: any) => INavLinks[] = (t) => [
-  // {
-  //   label: t("innerLayout.navbar.dashboard"),
-  //   icon: <FontAwesomeIcon icon={faDashboard} />,
-  //   route: "/dashboard",
-  // },
+  {
+    label: t("innerLayout.navbar.dashboard"),
+    icon: <FontAwesomeIcon icon={faDashboard} />,
+    route: "/dashboard",
+  },
   {
     label: t("innerLayout.navbar.centerManagement"),
     icon: <FontAwesomeIcon icon={faUsers} />,
@@ -62,17 +62,17 @@ export const navLinks: (t: any) => INavLinks[] = (t) => [
       },
     ],
   },
-  // {
-  //   label: t("innerLayout.navbar.attendance"),
-  //   icon: <FontAwesomeIcon icon={faCalendarCheck} />,
-  //   subLinks: [
-  //     {
-  //       label: t("innerLayout.navbar.studentAttendance"),
-  //       route: "/student-attendance",
-  //       icon: <FontAwesomeIcon icon={faUserCheck} />,
-  //     },
-  //   ],
-  // },
+  {
+    label: t("innerLayout.navbar.attendance"),
+    icon: <FontAwesomeIcon icon={faCalendarCheck} />,
+    subLinks: [
+      {
+        label: t("innerLayout.navbar.studentAttendance"),
+        route: "/student-attendance",
+        icon: <FontAwesomeIcon icon={faUserCheck} />,
+      },
+    ],
+  },
   // {
   //   label: t("innerLayout.navbar.parentCommunication"),
   //   icon: <FontAwesomeIcon icon={faFileAlt} />,

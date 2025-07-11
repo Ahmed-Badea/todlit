@@ -45,6 +45,18 @@
     background-color: transparent !important; // Optional: Make background transparent
     cursor: default !important;
   }
+  
+  .range-wrapper {
+    display: flex;
+    gap: $space-12;
+    align-items: center;
+  
+    .date-picker {
+      width: 100%;
+      flex: 1;
+    }
+  }
+  
 
   .react-datepicker {
     &__input-container {

@@ -1,16 +1,22 @@
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useQuery, useQueryClient } from "react-query";
-import { useTranslation } from 'react-i18next';
-import { useClassesStore } from '../../../../store/classes';
-import { Table, Dropdown, DropdownButton, DropdownMenu, DropdownMenuItem } from"../../../../design-system";
+import { useTranslation } from "react-i18next";
+import { useClassesStore } from "../../../../store/classes";
+import {
+  Table,
+  Dropdown,
+  DropdownButton,
+  DropdownMenu,
+  DropdownMenuItem,
+} from "../../../../design-system";
 import { getStaff } from "../../../../services/inner-layout/staff";
 import InnerLayout from "../../../../views/layout/InnerLayout";
 import CreateStaff from "./components/Form/CreateStaff";
 import columns from "./staffTableStruc.json";
-import styles from "./staff.module.scss";
-import { IRow } from "../../../../design-system/types/Table/table";
+import { IRow } from "../../../../design-system/types/Table";
 import { Language } from "../../../../types";
+import styles from "./staff.module.scss";
 
 const Staff = () => {
   const { t, i18n } = useTranslation();
@@ -19,11 +25,11 @@ const Staff = () => {
   const location = useLocation();
   const queryClient = useQueryClient();
 
-  const { classes }= useClassesStore();
+  const { classes } = useClassesStore();
 
   // Parse URL parameters
   const searchParams = new URLSearchParams(location.search);
-  const initialClassFilter = searchParams.get('class') || '';
+  const initialClassFilter = searchParams.get("class") || "";
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [classFilter, setClassFilter] = useState(initialClassFilter);
@@ -36,7 +42,7 @@ const Staff = () => {
     refetch,
   } = useQuery(["fetchStaff", classFilter], () => {
     // Find class ID from the class name and send it to the backend
-    const selectedClass = classes.find(cls => cls.name === classFilter);
+    const selectedClass = classes.find((cls) => cls.name === classFilter);
     return getStaff(selectedClass ? { classroom_id: selectedClass.id } : {});
   });
 
@@ -49,7 +55,7 @@ const Staff = () => {
   };
 
   const handleRowClick = (row: IRow) => {
-      navigate(`/staff/${row.id}`);
+    navigate(`/staff/${row.id}`);
   };
 
   const handleClassFilterChange = (selectedName: string) => {
@@ -59,9 +65,9 @@ const Staff = () => {
 
     // Update the URL with the class name
     if (selectedName) {
-      params.set('class', selectedName);
+      params.set("class", selectedName);
     } else {
-      params.delete('class');
+      params.delete("class");
     }
 
     navigate(`${location.pathname}?${params.toString()}`);
@@ -75,7 +81,11 @@ const Staff = () => {
   }, [classFilter, t]);
 
   return (
-    <InnerLayout isLoading={isLoading || isFetching} error={!!error} errorMessage={(error as Error)?.message}>
+    <InnerLayout
+      isLoading={isLoading || isFetching}
+      error={!!error}
+      errorMessage={(error as Error)?.message}
+    >
       <div className={styles.header}>
         <h3>{t("innerLayout.staff.title")}</h3>
         <div className={styles.filters_container}>
@@ -88,8 +98,8 @@ const Staff = () => {
               <DropdownMenuItem
                 key="all"
                 text={t("innerLayout.staff.allClasses")}
-                onClickHandler={() => handleClassFilterChange('')}
-                selected={classFilter === ''}
+                onClickHandler={() => handleClassFilterChange("")}
+                selected={classFilter === ""}
               />
               {classes?.map((option: { id: string; name: string }) => (
                 <DropdownMenuItem
@@ -106,9 +116,9 @@ const Staff = () => {
       </div>
       <Table
         language={lang}
-        columns={columns.map(col => ({
+        columns={columns.map((col) => ({
           ...col,
-          dataType: (col.dataType as any) // Replace 'any' with your DataType enum if available, e.g. DataType[col.dataType as keyof typeof DataType]
+          dataType: col.dataType as any, // Replace 'any' with your DataType enum if available, e.g. DataType[col.dataType as keyof typeof DataType]
         }))}
         data={staffData}
         rowClickHandler={handleRowClick}

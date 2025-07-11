@@ -19,7 +19,7 @@ export const Router = () => {
       {outerLayoutRoutes.map((route) => (
         <Route
           path={route.path}
-          element={isAuthenticated ? <Navigate to={INNER_ROUTES.STUDENTS} /> : route.element}
+          element={isAuthenticated ? <Navigate to={INNER_ROUTES.DASHBOARD} /> : route.element}
           key={route.name}
         />
       ))}
@@ -37,7 +37,7 @@ export const Router = () => {
           element={isAuthenticated || !isProtected ? element : <Navigate to={OUTER_ROUTES.LOGIN} />}
         />
       ))}
-      <Route path="*" element={isAuthenticated ? <Navigate to={INNER_ROUTES.STUDENTS} /> : <Navigate to={OUTER_ROUTES.LOGIN} />} key="*" />
+      <Route path="*" element={isAuthenticated ? <Navigate to={INNER_ROUTES.DASHBOARD} /> : <Navigate to={OUTER_ROUTES.LOGIN} />} key="*" />
     </Routes>
   );
 };

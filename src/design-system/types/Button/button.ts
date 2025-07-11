@@ -13,4 +13,5 @@ export interface IButton {
   disabled?: boolean | undefined;
   onClickHandler?: MouseEventHandler;
   onBlurHandler?: FocusEventHandler<HTMLButtonElement>;
+  loading?: boolean;
 }

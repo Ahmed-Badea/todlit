@@ -1,0 +1,31 @@
+@import "../../../styles/common.scss";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.pagination-button {
+  background-color: $primary-500;
+  color: $white;
+  border: none;
+  padding: $space-8 $space-16;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:disabled {
+    background-color: $primary-200;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: $primary-700;
+  }
+}
+
+.pagination-info {
+  color: $gray-700;
+}

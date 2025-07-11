@@ -21,7 +21,7 @@ export const getDisabledDates = (startDate?: Date, endDate?: Date, minDate?: Dat
   )
 };
 
-export function formatDateRange(date: Date, lang: 'en' | 'ar' = 'en') {
+export function fullDateFormatRange(date: Date, lang: 'en' | 'ar' = 'en') {
   const options: any = { month: 'short', day: 'numeric', year: 'numeric' };
 
   const parsedDate = new Date(date);

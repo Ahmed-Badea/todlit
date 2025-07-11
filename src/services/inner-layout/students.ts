@@ -1,5 +1,5 @@
 import { Axios } from "../../tools/axios/axiosInstance";
-import { formatDate } from '../../utils/formatDate';
+import { fullDateFormat } from '../../utils/dateFormats';
 import type { IParent } from "../../types/inner-layout/students/parent";
 import type { IStudent } from "../../types/inner-layout/students/student";
 
@@ -19,7 +19,7 @@ export const getStudents = async (filters: FilterParams = {}) => {
 
 // Create a new student
 export const createStudent = async (student: IStudent) => {
-  const formattedDateOfBirth = formatDate(student.date_of_birth);
+  const formattedDateOfBirth = fullDateFormat(student.date_of_birth);
 
   const reqBody = {
     first_name: student.first_name,
@@ -35,7 +35,7 @@ export const createStudent = async (student: IStudent) => {
 
 // Update an existing student
 export const updateStudent = async (id: string, student: IStudent) => {
-  const formattedDateOfBirth = formatDate(student.date_of_birth);
+  const formattedDateOfBirth = fullDateFormat(student.date_of_birth);
       
   const reqBody = {
     first_name: student.first_name,

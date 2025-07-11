@@ -156,6 +156,15 @@
         }
       }
     },
+    "attendance": {
+      "title": "Attendance",
+      "checkIn": "Check In",
+      "checkOut": "Check Out",
+      "total": "Total",
+      "absent": "Absent",
+      "pending": "Pending"
+
+    },
     "form": {
       "titles": {
         "createStudent": "Create student",
