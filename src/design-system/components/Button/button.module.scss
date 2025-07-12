@@ -5,7 +5,7 @@
 .btn {
   width: fit-content;
   @include flex(center, center);
-  border-radius: 0;
+  border-radius: $radius-md;
   border: none;
   cursor: pointer;
 

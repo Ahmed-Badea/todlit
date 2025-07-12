@@ -6,6 +6,7 @@ $scrollbar-width: 0.4rem;
   position: absolute;
   padding: $space-4 0;
   border: 0.0625rem solid $gray-200;
+  border-radius: $radius-md;
   box-shadow: $shadow-down-lg;
   background-color: $white;
   z-index: 2;

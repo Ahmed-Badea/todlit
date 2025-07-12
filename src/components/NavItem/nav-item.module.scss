@@ -31,6 +31,7 @@
 }
 
 .nav-item {
+  border-radius: $radius-md;
   @include flex(center, space-between);
   margin-bottom: $space-8;
   @include englishBodyMdSemiBold;
@@ -111,6 +112,7 @@
 }
 
 .sub-item {
+  border-radius: $radius-md;
   @include flex(center, flex-start);
   margin-inline-start: $space-32;
   position: relative;

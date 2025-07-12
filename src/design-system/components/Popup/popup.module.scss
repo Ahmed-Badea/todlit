@@ -16,7 +16,7 @@
 .popup-content {
   background-color: #fff;
   padding: 2rem;
-  border-radius: 8px;
+  border-radius: $radius-md;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 90%;
   max-width: 500px;
@@ -27,16 +27,17 @@
   /* Webkit browsers */
   &::-webkit-scrollbar {
     width: 12px; /* Width of the scrollbar */
+    border-radius: $radius-md;
   }
 
   &::-webkit-scrollbar-track {
     background: #f1f1f1; /* Track color */
-    border-radius: 10px;
+    border-radius: $radius-md;
   }
 
   &::-webkit-scrollbar-thumb {
     background: #888; /* Handle color */
-    border-radius: 10px;
+    border-radius: $radius-md;
   }
 
   &::-webkit-scrollbar-thumb:hover {

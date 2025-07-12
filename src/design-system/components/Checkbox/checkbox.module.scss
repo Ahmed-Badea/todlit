@@ -3,6 +3,7 @@
 .checkbox-wrapper {
   display: flex;
   gap: $space-8;
+  border-radius: $radius-md;
   cursor: pointer;
 
   &__text-box {
