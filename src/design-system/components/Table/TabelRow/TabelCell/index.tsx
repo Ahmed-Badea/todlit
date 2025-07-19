@@ -1,5 +1,5 @@
 import React from "react";
-import { IRow, IColumn } from "../../../types/Table";
+import { IRow, IColumn } from "../../../../types/Table";
 
 // Helper to get nested values from dot-path strings (e.g., "check_in_details.time")
 const getNestedValue = (obj: any, path: string): any => {

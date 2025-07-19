@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { ITableProps } from "../../types/Table";
-import NoData from "../NoData";
-import { TableCell } from "./TabelCell";
-import { Pagination } from "./Pagination";
 import { Checkbox } from "../Checkbox";
+import { TableRow } from "./TabelRow";
+import { Pagination } from "./Pagination";
+import NoData from "../NoData";
 import styles from "./table.module.scss";
 
 export const Table: React.FC<ITableProps> = ({
@@ -14,6 +14,7 @@ export const Table: React.FC<ITableProps> = ({
   rowsPerPage = 10,
   enableMultiSelect = false,
   onSelectChange,
+  actionHandlers = {}, // ✅ Safe default
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
@@ -43,15 +44,12 @@ export const Table: React.FC<ITableProps> = ({
     const currentIds = currentRows.map((row) => row.student_id);
     const allSelected = currentIds.every((id) => selectedRows.includes(id));
 
-    if (allSelected) {
-      const newSelected = selectedRows.filter((id) => !currentIds.includes(id));
-      setSelectedRows(newSelected);
-      onSelectChange?.(newSelected);
-    } else {
-      const newSelected = [...new Set([...selectedRows, ...currentIds])];
-      setSelectedRows(newSelected);
-      onSelectChange?.(newSelected);
-    }
+    const newSelected = allSelected
+      ? selectedRows.filter((id) => !currentIds.includes(id))
+      : [...new Set([...selectedRows, ...currentIds])];
+
+    setSelectedRows(newSelected);
+    onSelectChange?.(newSelected);
   };
 
   const isAllSelected =
@@ -84,42 +82,19 @@ export const Table: React.FC<ITableProps> = ({
               </tr>
             </thead>
             <tbody className={styles["table-tbody"]}>
-              {currentRows.map((row, rowIndex) => {
-                const isSelected = selectedRows.includes(row.student_id);
-                return (
-                  <tr
-                    key={rowIndex}
-                    className={`${styles["table-tr"]} ${
-                      enableMultiSelect && isSelected
-                        ? styles["selected-row"]
-                        : ""
-                    }`}
-                    onClick={() => rowClickHandler(row)}
-                  >
-                    {enableMultiSelect && (
-                      <td className={styles["checkbox-cell"]}>
-                        <Checkbox
-                          id={`row-${row.student_id}`}
-                          checked={isSelected}
-                          onClickHandler={() =>
-                            handleCheckboxChange(row.student_id)
-                          }
-                        />
-                      </td>
-                    )}
-                    {columns.map((column, colIndex) => (
-                      <td key={colIndex} className={styles["table-td"]}>
-                        <TableCell
-                          row={row}
-                          column={column}
-                          keyPath={column.value}
-                          type={column.dataType}
-                        />
-                      </td>
-                    ))}
-                  </tr>
-                );
-              })}
+              {currentRows.map((row, rowIndex) => (
+                <TableRow
+                  key={rowIndex}
+                  row={row}
+                  columns={columns}
+                  language={language}
+                  isSelected={selectedRows.includes(row.student_id)}
+                  enableMultiSelect={enableMultiSelect}
+                  onCheckboxChange={handleCheckboxChange}
+                  onRowClick={rowClickHandler}
+                  actionHandlers={actionHandlers}
+                />
+              ))}
             </tbody>
           </table>
 

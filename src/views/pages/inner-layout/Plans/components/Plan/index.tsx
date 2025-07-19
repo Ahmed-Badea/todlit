@@ -1,4 +1,5 @@
 import React from "react";
+import { formatTime } from "../../../../../../utils/dateFormats";
 import { Plan } from "../../../../../../types/inner-layout/plans";
 import styles from "./plan.module.scss";
 
@@ -12,14 +13,17 @@ const PlanCard: React.FC<Plan> = ({
   late_checkout_fees,
 }) => {
   return (
-    <div className={styles["plan-card"]} style={{ borderLeftColor: program_color }}>
+    <div
+      className={styles["plan-card"]}
+      style={{ borderLeftColor: program_color }}
+    >
       <h3 className={styles["plan-name"]}>{name}</h3>
       <p className={styles["plan-fees"]}>Fees: EGP {fees}</p>
       <p className={styles["plan-shift"]}>
-        Shift: {start_shift} - {end_shift}
+        Shift: {formatTime(start_shift)} - {formatTime(end_shift)}
       </p>
       <p className={styles["plan-late-checkout"]}>
-        Late Checkout: {late_checkout_time} (EGP {late_checkout_fees})
+        Late Checkout: {formatTime(late_checkout_time)} (EGP {late_checkout_fees})
       </p>
     </div>
   );

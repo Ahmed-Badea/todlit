@@ -28,4 +28,16 @@ export const dateOnlyFormat = (date: Date | string): string => {
   return ""; // fallback for invalid dates
 };
 
+export const formatTime = (timeStr: string): string => {
+  const [hours, minutes] = timeStr.split(":").map(Number);
+  const date = new Date();
+  date.setHours(hours);
+  date.setMinutes(minutes);
+
+  return date.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
+};
 

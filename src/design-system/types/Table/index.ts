@@ -1,3 +1,4 @@
+// Extend the allowed data types
 export type DataType =
   | "string"
   | "name"
@@ -6,19 +7,37 @@ export type DataType =
   | "boolean"
   | "button"
   | "array"
-  | "multi_field";
+  | "multi_field"
+  | "actions";
 
+// Define the structure of a single button action
+export interface ButtonAction {
+  label: string;
+  action: string;
+  color?: string;
+  variant?: string;
+  size?: "sm" | "md" | "lg";
+  leadingIcon?: React.ReactNode;
+  trailingIcon?: React.ReactNode;
+}
+
+// Column type definition
 export interface IColumn {
   title_en: string;
   title_ar: string;
   value: string; // dot-path key like "check_in_details"
   dataType: DataType;
+
   fields?: {
-    key: string;                // nested key inside value object
-    label?: string;             // optional prefix label
-    format?: string;   // optional formatter
-  }[]; // only used if dataType === 'multi_field'
+    key: string;         // nested key inside value object
+    label?: string;      // optional prefix label
+    format?: string;     // optional formatter (e.g., date/time)
+  }[];
+
+  // Used only if dataType === 'actions'
+  buttons?: ButtonAction[];
 }
+
 
 
 export interface IRow {
@@ -33,5 +52,7 @@ export interface ITableProps {
   rowsPerPage?: number;
   enableMultiSelect?: boolean;
   onSelectChange?: (selectedIds: number[]) => void;
+  actionHandlers?: {
+    [action: string]: (row: IRow) => void;
+  };
 }
-

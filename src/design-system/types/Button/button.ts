@@ -1,16 +1,12 @@
-import { MouseEventHandler, FocusEventHandler, ReactElement } from 'react';
+import { MouseEventHandler, FocusEventHandler } from "react";
+import { IButtonStyleProps } from './common';
 
-export interface IButton {
+export interface IButton extends IButtonStyleProps {
   id?: string;
-  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
-  leadingIcon?: ReactElement<'img'> | ReactElement<'svg'>;
-  trailingIcon?: ReactElement<'img'> | ReactElement<'svg'>;
-  color?: 'primary' | 'secondary' | 'danger';
   type?: 'button' | 'submit' | 'reset';
-  variant?: 'contained' | 'outlined' | 'link';
   text?: string;
   label?: string;
-  disabled?: boolean | undefined;
+  disabled?: boolean;
   onClickHandler?: MouseEventHandler;
   onBlurHandler?: FocusEventHandler<HTMLButtonElement>;
   loading?: boolean;

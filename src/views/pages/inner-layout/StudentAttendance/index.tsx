@@ -2,6 +2,9 @@ import { useState, useEffect, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useQuery, useQueryClient, useMutation } from "react-query";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
+import { faSignInAlt, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useClassesStore } from "../../../../store/classes";
 import {
   Table,
@@ -20,7 +23,7 @@ import {
 import InnerLayout from "../../../../views/layout/InnerLayout";
 import DatePicker from "../../../../components/DatePicker";
 import StatCard from "../../../../components/StatCard";
-import rawColumns from "./attendanceTableStruc.json";
+import rawColumns from "./attendanceTableStruc";
 import { Language } from "../../../../types";
 import { IColumn, DataType } from "../../../../design-system/types/Table";
 
@@ -112,10 +115,18 @@ const StudentAttendance = () => {
 
   const checkInMutation = useMutation(checkInAttendance, {
     onSuccess: () => refetch(),
+    onError: (error) => {
+      const errorMsg = error?.response?.data?.error || t("innerLayout.form.errors.somethingWentWrong");
+      toast.error(errorMsg);
+    }
   });
 
   const checkOutMutation = useMutation(checkOutAttendance, {
     onSuccess: () => refetch(),
+    onError: (error) => {
+      const errorMsg = error?.response?.data?.error || t("innerLayout.form.errors.somethingWentWrong");
+      toast.error(errorMsg);
+    },
   });
 
   const submitCheckIn = () => {
@@ -165,6 +176,16 @@ const StudentAttendance = () => {
   const selectedClassName = useMemo(() => {
     return classFilter || t("innerLayout.staff.allClasses");
   }, [classFilter, t]);
+
+  const tableActionHandlers = {
+    checkIn: async (row) => {
+      await checkInMutation.mutateAsync({ student_ids: [row.student_id] });
+    },
+    checkIOut: async (row) => {
+      await checkOutMutation.mutateAsync({ student_ids: [row.student_id] });
+    }
+  };
+  
 
   return (
     <InnerLayout
@@ -220,6 +241,7 @@ const StudentAttendance = () => {
         <Button
           id="check-in"
           text={t("innerLayout.attendance.checkIn")}
+          leadingIcon= {<FontAwesomeIcon icon={faSignInAlt} />}
           onClickHandler={submitCheckIn}
           disabled={
             isLoading ||
@@ -232,6 +254,7 @@ const StudentAttendance = () => {
         <Button
           id="check-out"
           text={t("innerLayout.attendance.checkOut")}
+          leadingIcon= {<FontAwesomeIcon icon={faSignOutAlt} />}
           onClickHandler={submitCheckOut}
           disabled={
             isLoading ||
@@ -251,6 +274,7 @@ const StudentAttendance = () => {
         onSelectChange={(selectedIds: number[]) =>
           setStudentsIds(selectedIds.map(String))
         }
+        actionHandlers={tableActionHandlers}
       />
     </InnerLayout>
   );

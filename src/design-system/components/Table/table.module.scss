@@ -54,6 +54,12 @@ $table-row-hover-bg: $primary-100;
       text-align: center;
       color: $gray-900;
     }
+    .action-buttons-row {
+      display: flex;
+      gap: $space-4; // space between buttons
+      // flex-wrap: wrap; // optional, allows wrapping on small screens
+    }
+    
   }
 }
 .checkbox-cell{
