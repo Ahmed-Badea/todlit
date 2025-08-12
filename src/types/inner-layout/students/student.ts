@@ -5,4 +5,5 @@ export interface IStudent {
   gender: string;
   status: string;
   classroom: string;
+  plan_id?: string;
 }

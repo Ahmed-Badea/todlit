@@ -21,7 +21,6 @@ interface TableRowProps {
 export const TableRow: React.FC<TableRowProps> = ({
   row,
   columns,
-  language,
   isSelected,
   enableMultiSelect,
   onCheckboxChange,
@@ -56,11 +55,11 @@ export const TableRow: React.FC<TableRowProps> = ({
                     row={row}
                     label={btn.label}
                     actionKey={btn.action}
-                    color={btn.color}
+                    color={btn.color as "primary" | "secondary" | "danger" | undefined}
                     size={btn.size}
-                    variant={btn.variant}
-                    leadingIcon={btn.leadingIcon}
-                    trailingIcon={btn.trailingIcon}
+                    variant={btn.variant as "link" | "contained" | "outlined" | undefined}
+                    leadingIcon={btn.leadingIcon as any}
+                    trailingIcon={btn.trailingIcon as any}
                     actionHandlers={actionHandlers}
                   />
                 ))}

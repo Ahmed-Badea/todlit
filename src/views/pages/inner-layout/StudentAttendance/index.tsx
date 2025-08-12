@@ -79,66 +79,111 @@ const StudentAttendance = () => {
     { keepPreviousData: true }
   );
 
-  const stats = [
-    {
-      key: "total",
-      label: t("innerLayout.attendance.total"),
-      count: staffData.length,
-      color: "#007bff", // Blue
-    },
-    {
-      key: "pending",
-      label: t("innerLayout.attendance.pending"),
-      count: 12, // TODO: replace with actual logic if needed
-      color: "#ffc107", // Amber
-    },
-    {
-      key: "checkin",
-      label: t("innerLayout.attendance.checkIn"),
-      count: 24, // TODO: replace with actual logic if needed
-      color: "#28a745", // Green
-    },
-    {
-      key: "checkout",
-      label: t("innerLayout.attendance.checkOut"),
-      count: 18, // TODO: replace with actual logic if needed
-      color: "#17a2b8", // Teal
-    },
-    {
-      key: "absent",
-      label: t("innerLayout.attendance.absent"),
-      count: 6, // TODO: replace with actual logic if needed
-      color: "#dc3545", // Red
-    },
-  ];
+  const stats = useMemo(() => {
+    const checkedIn = staffData.filter((student: any) => student.check_in_details?.time).length;
+    const checkedOut = staffData.filter((student: any) => student.check_out_details?.time).length;
+    const pending = staffData.filter((student: any) => !student.check_in_details?.time).length;
+    const absent = staffData.filter((student: any) => !student.check_in_details?.time && !student.check_out_details?.time).length;
+
+    return [
+      {
+        key: "total",
+        label: t("innerLayout.attendance.total"),
+        count: staffData.length,
+        color: "#007bff",
+      },
+      {
+        key: "pending",
+        label: t("innerLayout.attendance.pending"),
+        count: pending,
+        color: "#ffc107",
+      },
+      {
+        key: "checkin",
+        label: t("innerLayout.attendance.checkIn"),
+        count: checkedIn,
+        color: "#28a745",
+      },
+      {
+        key: "checkout",
+        label: t("innerLayout.attendance.checkOut"),
+        count: checkedOut,
+        color: "#17a2b8",
+      },
+      {
+        key: "absent",
+        label: t("innerLayout.attendance.absent"),
+        count: absent,
+        color: "#dc3545",
+      },
+    ];
+  }, [staffData, t]);
   
 
   const checkInMutation = useMutation(checkInAttendance, {
-    onSuccess: () => refetch(),
-    onError: (error) => {
+    onSuccess: (_, variables) => {
+      refetch();
+      const count = Array.isArray(variables) ? variables.length : 1;
+      toast.success(t("innerLayout.attendance.checkInSuccess", { count }));
+      setStudentsIds([]);
+    },
+    onError: (error: any) => {
       const errorMsg = error?.response?.data?.error || t("innerLayout.form.errors.somethingWentWrong");
       toast.error(errorMsg);
     }
   });
 
   const checkOutMutation = useMutation(checkOutAttendance, {
-    onSuccess: () => refetch(),
-    onError: (error) => {
+    onSuccess: (_, variables) => {
+      refetch();
+      const count = Array.isArray(variables) ? variables.length : 1;
+      toast.success(t("innerLayout.attendance.checkOutSuccess", { count }));
+      setStudentsIds([]);
+    },
+    onError: (error: any) => {
       const errorMsg = error?.response?.data?.error || t("innerLayout.form.errors.somethingWentWrong");
       toast.error(errorMsg);
     },
   });
 
   const submitCheckIn = () => {
-    if (studentsIds.length > 0) {
-      checkInMutation.mutate({ student_ids: studentsIds });
+    if (studentsIds.length === 0) {
+      toast.warning(t("innerLayout.attendance.selectStudents"));
+      return;
     }
+    
+    const teacherId = localStorage.getItem("teacher_id");
+    if (!teacherId) {
+      toast.error(t("innerLayout.attendance.teacherNotFound"));
+      return;
+    }
+
+    const payload = studentsIds.map(studentId => ({
+      student: studentId,
+      parent: teacherId,
+      checkin_time: new Date().toISOString()
+    }));
+    checkInMutation.mutate(payload);
   };
 
   const submitCheckOut = () => {
-    if (studentsIds.length > 0) {
-      checkOutMutation.mutate({ student_ids: studentsIds });
+    if (studentsIds.length === 0) {
+      toast.warning(t("innerLayout.attendance.selectStudents"));
+      return;
     }
+    
+    const teacherId = localStorage.getItem("teacher_id");
+    if (!teacherId) {
+      toast.error(t("innerLayout.attendance.teacherNotFound"));
+      return;
+    }
+
+    const payload = studentsIds.map(studentId => ({
+      student: studentId,
+      parent: teacherId,
+      checkout_time: new Date().toISOString()
+    }));
+    checkOutMutation.mutate(payload);
   };
 
   useEffect(() => {
@@ -178,11 +223,46 @@ const StudentAttendance = () => {
   }, [classFilter, t]);
 
   const tableActionHandlers = {
-    checkIn: async (row) => {
-      await checkInMutation.mutateAsync({ student_ids: [row.student_id] });
+    check_in: async (row: any) => {
+      const teacherId = localStorage.getItem("teacher_id");
+      if (!teacherId) {
+        toast.error(t("innerLayout.attendance.teacherNotFound"));
+        return;
+      }
+      
+      if (row.check_in_details?.time) {
+        toast.info(t("innerLayout.attendance.alreadyCheckedIn"));
+        return;
+      }
+
+      const payload = {
+        student: row.student_id,
+        teacher: teacherId
+      };
+      await checkInMutation.mutateAsync(payload);
     },
-    checkIOut: async (row) => {
-      await checkOutMutation.mutateAsync({ student_ids: [row.student_id] });
+    check_out: async (row: any) => {
+      const teacherId = localStorage.getItem("teacher_id");
+      if (!teacherId) {
+        toast.error(t("innerLayout.attendance.teacherNotFound"));
+        return;
+      }
+      
+      if (!row.check_in_details?.time) {
+        toast.warning(t("innerLayout.attendance.mustCheckInFirst"));
+        return;
+      }
+      
+      if (row.check_out_details?.time) {
+        toast.info(t("innerLayout.attendance.alreadyCheckedOut"));
+        return;
+      }
+
+      const payload = {
+        student: row.student_id,
+        teacher: teacherId
+      };
+      await checkOutMutation.mutateAsync(payload);
     }
   };
   
@@ -240,8 +320,10 @@ const StudentAttendance = () => {
       <div className={styles.actions_container}>
         <Button
           id="check-in"
-          text={t("innerLayout.attendance.checkIn")}
-          leadingIcon= {<FontAwesomeIcon icon={faSignInAlt} />}
+          text={`${t("innerLayout.attendance.checkIn")} ${
+            studentsIds.length > 0 ? `(${studentsIds.length})` : ""
+          }`}
+          leadingIcon={<FontAwesomeIcon icon={faSignInAlt} />}
           onClickHandler={submitCheckIn}
           disabled={
             isLoading ||
@@ -253,8 +335,10 @@ const StudentAttendance = () => {
         />
         <Button
           id="check-out"
-          text={t("innerLayout.attendance.checkOut")}
-          leadingIcon= {<FontAwesomeIcon icon={faSignOutAlt} />}
+          text={`${t("innerLayout.attendance.checkOut")} ${
+            studentsIds.length > 0 ? `(${studentsIds.length})` : ""
+          }`}
+          leadingIcon={<FontAwesomeIcon icon={faSignOutAlt} />}
           onClickHandler={submitCheckOut}
           disabled={
             isLoading ||

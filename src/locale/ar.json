@@ -162,7 +162,23 @@
       "checkOut": "تسجيل الخروج",
       "total": "المجموع",
       "absent": "غائب",
-      "pending": "انتظار"
+      "pending": "انتظار",
+      "checkInSuccess": "تم تسجيل دخول {{count}} طالب بنجاح",
+      "checkOutSuccess": "تم تسجيل خروج {{count}} طالب بنجاح",
+      "selectStudents": "يرجى اختيار الطلاب أولاً",
+      "teacherNotFound": "لم يتم العثور على معرف المعلم. يرجى تسجيل الدخول مرة أخرى",
+      "alreadyCheckedIn": "الطالب مسجل دخول بالفعل",
+      "alreadyCheckedOut": "الطالب مسجل خروج بالفعل",
+      "mustCheckInFirst": "يجب تسجيل دخول الطالب أولاً"
+    },
+    "billing": {
+      "paymentPlan": "خطة الدفع",
+      "selectPlan": "اختر خطة",
+      "currentPlan": "الخطة الحالية",
+      "fees": "الرسوم",
+      "removePlan": "إزالة الخطة",
+      "planUpdated": "تم تحديث خطة الدفع بنجاح",
+      "planRemoved": "تم إزالة خطة الدفع بنجاح"
     },
     "form": {
       "titles": {

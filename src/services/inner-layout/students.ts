@@ -28,6 +28,7 @@ export const createStudent = async (student: IStudent) => {
     gender: student.gender,
     status: student.status,
     classroom: student.classroom,
+    plan_id: student.plan_id,
   };
 
   return Axios.post(`/dashboard/student/`, reqBody);
@@ -44,6 +45,7 @@ export const updateStudent = async (id: string, student: IStudent) => {
     gender: student.gender,
     status: student.status,
     classroom: student.classroom,
+    plan_id: student.plan_id,
   };
 
   return Axios.put(`/dashboard/student_update/${id}`, reqBody);

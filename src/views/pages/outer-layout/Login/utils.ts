@@ -18,6 +18,7 @@ const setDataToLocalStorage = (response: any) => {
   addToLocalStorage("last_name", user.last_name);
   addToLocalStorage("nursery_name", user.tenant.en_name);
   addToLocalStorage("X-Tenant-ID", user.tenant.en_name);
+  addToLocalStorage("teacher_id", user.id);
 };
 
 export const handleAfterLogin = async (response: any, navigate: NavigateFunction) => {

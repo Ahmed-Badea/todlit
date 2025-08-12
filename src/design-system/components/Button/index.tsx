@@ -1,5 +1,7 @@
 import styles from "./button.module.scss";
 import { IButton } from "../../types/Button/button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 export const Button = ({
   id,
@@ -28,19 +30,12 @@ export const Button = ({
       onBlur={onBlurHandler}
       type={type}
     >
-      {loading ? (
-        <span className={styles["btn__loading"]}>
-          <span className={styles["spinner"]} />
-          Loading...
-        </span>
-      ) : (
-        <>
-          {leadingIcon && leadingIcon}
-          {label && <span className={styles["btn__label"]}>{label}</span>}
-          {text && <span>{text}</span>}
-          {trailingIcon && trailingIcon}
-        </>
-      )}
+      <>
+        {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : leadingIcon}
+        {label && <span className={styles["btn__label"]}>{label}</span>}
+        {text && <span>{text}</span>}
+        {!loading && trailingIcon && trailingIcon}
+      </>
     </button>
   );
 };

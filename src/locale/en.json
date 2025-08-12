@@ -162,8 +162,23 @@
       "checkOut": "Check Out",
       "total": "Total",
       "absent": "Absent",
-      "pending": "Pending"
-
+      "pending": "Pending",
+      "checkInSuccess": "{{count}} student(s) checked in successfully",
+      "checkOutSuccess": "{{count}} student(s) checked out successfully",
+      "selectStudents": "Please select students first",
+      "teacherNotFound": "Teacher ID not found. Please login again",
+      "alreadyCheckedIn": "Student is already checked in",
+      "alreadyCheckedOut": "Student is already checked out",
+      "mustCheckInFirst": "Student must be checked in first"
+    },
+    "billing": {
+      "paymentPlan": "Payment Plan",
+      "selectPlan": "Select Plan",
+      "currentPlan": "Current Plan",
+      "fees": "Fees",
+      "removePlan": "Remove Plan",
+      "planUpdated": "Payment plan updated successfully",
+      "planRemoved": "Payment plan removed successfully"
     },
     "form": {
       "titles": {

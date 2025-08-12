@@ -73,7 +73,8 @@ const DatePicker: React.FC<DatePickerProps> = ({
             startDate={startDate}
             endDate={endDate}
             minDate={startDate ?? undefined}
-            maxDate={maxDate} // Prevent selecting future dates            dateFormat={type === "time" ? "HH:mm" : "yyyy-MM-dd"}
+            maxDate={maxDate} // Prevent selecting future dates
+            dateFormat={type === "time" ? "HH:mm" : "yyyy-MM-dd"}
             timeFormat="HH:mm"
             timeIntervals={15}
             showTimeSelect={type === "time"}

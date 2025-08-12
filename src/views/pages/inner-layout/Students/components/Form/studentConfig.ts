@@ -65,4 +65,14 @@ export const formConfig = [
     validations: [required],
     options: [], // Populated dynamically
   },
+  {
+    name: "plan_id",
+    label: { en: "Payment Plan (Optional)", ar: "خطة الدفع (اختيارية)" },
+    type: "dropdown",
+    value: "",
+    isValid: true, // Always valid since it's optional
+    errorMsg: "",
+    validations: [], // No validations - optional field
+    options: [], // Populated dynamically from API
+  },
 ];

@@ -9,9 +9,24 @@ interface FilterParams {
 }
 
 interface AttendanceActionPayload {
-  student_ids: string[];
-  date?: string; // optional, ISO string
+  student: string;
+  teacher: string;
 }
+
+interface BulkCheckInItem {
+  student: string;
+  parent: string;
+  checkin_time: string;
+}
+
+interface BulkCheckOutItem {
+  student: string;
+  parent: string;
+  checkout_time: string;
+}
+
+type CheckInPayload = AttendanceActionPayload | BulkCheckInItem[];
+type CheckOutPayload = AttendanceActionPayload | BulkCheckOutItem[];
 
 // Fetch attendance
 export const getAttendance = async (filters: FilterParams = {}) => {
@@ -21,14 +36,14 @@ export const getAttendance = async (filters: FilterParams = {}) => {
   return response.data;
 };
 
-// Check In students
-export const checkInAttendance = async (payload: AttendanceActionPayload) => {
-  const response = await Axios.post("/dashboard/checkin", payload);
+// Check In students (single or bulk)
+export const checkInAttendance = async (payload: CheckInPayload) => {
+  const response = await Axios.post("/dashboard/checkin/", payload);
   return response.data;
 };
 
-// Check Out students
-export const checkOutAttendance = async (payload: AttendanceActionPayload) => {
-  const response = await Axios.post("/dashboard/checkout", payload);
+// Check Out students (single or bulk)
+export const checkOutAttendance = async (payload: CheckOutPayload) => {
+  const response = await Axios.post("/dashboard/checkout/", payload);
   return response.data;
 };
