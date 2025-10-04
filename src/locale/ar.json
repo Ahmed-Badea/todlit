@@ -90,6 +90,9 @@
       }
     }
   },
+  "common": {
+    "save": "حفظ"
+  },
   "innerLayout": {
     "language": "العربية",
     "create": "إنشاء",
@@ -180,6 +183,49 @@
       "planUpdated": "تم تحديث خطة الدفع بنجاح",
       "planRemoved": "تم إزالة خطة الدفع بنجاح"
     },
+    "activities": {
+      "title": "الأنشطة",
+      "activityDetails": "تفاصيل النشاط",
+      "selectActivity": "اختر نشاطاً لعرض التفاصيل",
+      "description": "الوصف",
+      "icon": "الأيقونة",
+      "customFields": "الحقول المخصصة",
+      "noDescription": "لا يوجد وصف",
+      "noIcon": "لا توجد أيقونة",
+      "activityStatus": "حالة النشاط",
+      "notifyParents": "إشعار الأهل",
+      "enableStatus": "حالة التفعيل",
+      "enableFileUpload": "تفعيل رفع الملفات",
+      "enablePhotoVideo": "تفعيل رفع الصور/الفيديو",
+      "enableDraftMode": "تفعيل وضع المسودة",
+      "enableComments": "تفعيل التعليقات",
+      "doesntRequireApproval": "لا يتطلب موافقة",
+      "mealSettings": "إعدادات الوجبة",
+      "mealType": "نوع الوجبة",
+      "mealValue": "قيمة الوجبة",
+      "enterMealType": "أدخل نوع الوجبة",
+      "enterMealValue": "أدخل قيمة الوجبة",
+      "formFields": "حقول النموذج",
+      "defaultFieldsMessage": "كل نشاط سيحتوي على حقول الوصف ورفع الملفات كإعداد افتراضي",
+      "addCustomField": "إضافة حقل مخصص",
+      "customFields": "الحقول المخصصة",
+      "fieldName": "اسم الحقل",
+      "fieldType": "نوع الحقل",
+      "fieldValue": "قيمة الحقل",
+      "enterFieldName": "أدخل اسم الحقل",
+      "enterFieldValue": "أدخل قيمة الحقل",
+      "selectType": "اختر النوع",
+      "checkboxValue": "قيمة مربع الاختيار",
+      "toggleValue": "قيمة المفتاح",
+      "enterDropdownOptions": "أدخل خيارات القائمة المنسدلة",
+      "fieldNameRequired": "اسم الحقل مطلوب",
+      "fieldTypes": {
+        "input": "إدخال",
+        "checkbox": "مربع اختيار",
+        "toggle": "مفتاح",
+        "dropdown": "قائمة منسدلة"
+      }
+    },
     "form": {
       "titles": {
         "createStudent": "إنشاء طالب",
@@ -224,5 +270,10 @@
       }
     },
     "noData": "لا يوجد بيانات"
+  },
+  "common": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "add": "إضافة"
   }
 }

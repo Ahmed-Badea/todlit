@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import { Tabs } from '../../../../../../design-system';
+import { TabsGroup } from '../../../../../../design-system/components/Tabs/TabsGroup';
 import InnerLayout from '../../../../../../views/layout/InnerLayout';
 import Profile from '../Tabs/Profile';
 import { getStaff } from '../../../../../../services/inner-layout/staff';
@@ -19,15 +19,23 @@ const StaffDetails = () => {
 
   const fullName = data ? `${data.first_name} ${data.last_name}` : '';
 
-
-  const tabs = [
-    { label: 'Profile', content: <Profile formData={data} /> },
+  const tabsProps = [
+    { tabLabel: 'Profile', active: true },
   ];
   
   return (
     <InnerLayout isLoading={isLoading || isFetching} error={!!error} errorMessage={(error as Error)?.message}>
       <h3>{fullName}</h3>
-      <Tabs tabs={tabs} />
+      
+      <TabsGroup 
+        type="line"
+        orientation="horizontal"
+        tabsProps={tabsProps}
+      />
+      
+      <div style={{ marginTop: '20px' }}>
+        <Profile formData={data} />
+      </div>
     </InnerLayout>
   );
 };

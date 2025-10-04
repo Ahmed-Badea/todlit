@@ -1,0 +1,97 @@
+@use '../../styles/common.scss' as *;
+
+/* ------------------ Generic ------------------ */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-4;
+  border-radius: $radius-sm;
+  border: 0.0625rem solid $gray-200;
+  background-color: $white;
+  transition: all 0.2s ease-in-out;
+  cursor: default;
+  -webkit-user-select: none;
+  user-select: none;
+  max-width: 100%;
+
+  &__prefix {
+    @include flex(center, center);
+  }
+
+  &__close {
+    @include flex(center, center);
+    cursor: pointer;
+    
+    path {
+      fill: $gray-400;
+    }
+  }
+
+  img {
+    border-radius: 50%;
+  }
+
+  /* ------------------ Sizes ------------------ */
+
+  &[data-tag-size='sm'] {
+    padding: 0.375rem $space-8;
+    @include englishBodySmRegular;
+
+    @include ar {
+      @include arabicBodySmRegular;
+    }
+
+    svg,
+    img {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .tag__close {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  &[data-tag-size='md'] {
+    padding: 0.375rem $space-8;
+    @include englishBodyMdRegular;
+
+    @include ar {
+      @include arabicBodyMdRegular;
+    }
+
+    svg,
+    img {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .tag__close {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+
+  &[data-tag-size='lg'] {
+    padding: 0.375rem $space-12;
+    @include englishBodyLgRegular;
+
+    @include ar {
+      @include arabicBodyLgRegular;
+    }
+
+    svg,
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    .tag__close {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}

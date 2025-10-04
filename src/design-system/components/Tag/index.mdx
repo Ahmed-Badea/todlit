@@ -1,0 +1,122 @@
+import { Meta } from '@storybook/addon-docs';
+import { Tag } from './index';
+
+<Meta title="Components/Tag" component={Tag} />
+
+# Tag
+
+This is a custom documentation page for the Tag component.  
+Below is a manually filled list describing the component's props, mimicking the structure of Storybook's default props in bullet points.
+
+## Shared Props
+
+- **type**
+
+  - **Description**: Determines the tag style and behavior. Can be one of `'text'`, `'checkbox'`, `'country'`, or `'user'`.
+  - **Type**: `'text' | 'checkbox' | 'country' | 'user'`
+  - **Default**: `'text'`
+  - **Required**: No
+
+- **text**
+
+  - **Description**: Defines the main label displayed inside the tag.
+  - **Type**: `string`
+  - **Default**: `''`
+  - **Required**: Yes
+
+- **size**
+
+  - **Description**: Sets the overall size of the tag.
+  - **Type**: `'sm' | 'md' | 'lg'`
+  - **Default**: `'sm'`
+  - **Required**: No
+
+- **onClose**
+
+  - **Description**: Function that is called when the tag is closed (e.g., when the "X" button is clicked).
+  - **Type**: `() => void`
+  - **Default**: `undefined`
+  - **Required**: No
+
+## If `type` is `'checkbox'`
+
+- **id**
+
+  - **Description**: Provides a unique identifier for the checkbox input element.
+  - **Type**: `string`
+  - **Required**: Yes
+
+- **size**
+
+  - **Description**: Sets the size of the checkbox tag.
+  - **Type**: `'sm' | 'md' | 'lg'`
+  - **Required**: No
+
+- **checkboxIcon**
+
+  - **Description**: Custom icon used to represent the checkbox state.
+  - **Type**: `ReactElement`
+  - **Required**: No
+
+- **text**
+
+  - **Description**: Text label displayed next to the checkbox.
+  - **Type**: `string`
+  - **Required**: No
+
+- **hintText**
+
+  - **Description**: Optional helper text displayed below or beside the checkbox.
+  - **Type**: `string`
+  - **Required**: No
+
+- **disabled**
+
+  - **Description**: Disables the checkbox when set to `true`.
+  - **Type**: `boolean`
+  - **Default**: `false`
+  - **Required**: No
+
+- **checked**
+
+  - **Description**: Indicates whether the checkbox is currently selected.
+  - **Type**: `boolean`
+  - **Default**: `false`
+  - **Required**: No
+
+- **onChangeHandler**
+
+  - **Description**: Callback that is triggered when the checkbox state changes.
+  - **Type**: `(checked: boolean) => void`
+  - **Required**: No
+
+- **onClickHandler**
+  - **Description**: Callback that is triggered when the checkbox tag is clicked.
+  - **Type**: `(checked: boolean, value?: string) => void`
+  - **Required**: No
+
+## If `type` is `'country'`
+
+- **country**
+
+  - **Description**: Represents the country visually, using a flag as an SVG or string value.
+  - **Type**: `string | ReactElement<'svg'>`
+  - **Required**: Yes
+
+- **name**
+  - **Description**: Optional text displaying the country's name.
+  - **Type**: `string`
+  - **Required**: No
+
+## If `type` is `'user'`
+
+- **img**
+
+  - **Description**: URL of the user's avatar image.
+  - **Type**: `string`
+  - **Required**: Yes
+
+- **name**
+  - **Description**: Optional name of the user to display next to the avatar.
+  - **Type**: `string`
+  - **Required**: No

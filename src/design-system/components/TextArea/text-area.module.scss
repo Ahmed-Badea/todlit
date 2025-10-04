@@ -1,0 +1,104 @@
+@use '../../styles/common.scss'as *;
+
+.textarea-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: $space-4;
+
+  &__textarea-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    textarea {
+      width: 100%;
+      min-height: $space-128;
+      outline: none;
+      border: 0.0625rem solid $gray-300;
+      border-radius: $space-8;
+      padding: $space-12;
+      background-color: $white;
+      transition: all 0.2s ease-in-out;
+      color: $gray-900;
+
+      @include englishBodyMdRegular;
+
+      @include ar {
+        @include arabicBodyMdRegular;
+      }
+
+      &::placeholder {
+        color: $gray-500;
+      }
+
+      &:disabled,
+      &:read-only {
+        cursor: not-allowed;
+        border-color: $gray-300;
+        background-color: $gray-50;
+        color: $gray-500;
+      }
+    }
+  }
+
+  &__bottom-text {
+    display: flex;
+    justify-content: space-between;
+    margin-top: $space-4;
+    color: $gray-600;
+
+    @include englishHelperTextRegular;
+
+    @include ar {
+      @include arabicHelperTextRegular;
+    }
+
+    &--error {
+      color: $error-600;
+    }
+
+    &--fixed-end {
+      margin-inline-start: auto;
+    }
+  }
+}
+
+[data-textarea-variant="default"] {
+  textarea:focus {
+    border-color: $primary-500;
+    box-shadow: $shadow-ring-primary
+  }
+}
+
+[data-textarea-variant="success"] {
+  textarea {
+    border-color: $success-300;
+
+    &:focus {
+      border-color: $success-500;
+      box-shadow: $shadow-ring-success
+    }
+  }
+}
+
+[data-textarea-variant="warning"] {
+  textarea {
+    border-color: $warning-300;
+
+    &:focus {
+      border-color: $warning-500;
+      box-shadow: $shadow-ring-warning
+    }
+  }
+}
+
+[data-textarea-variant="error"] {
+  textarea {
+    border-color: $error-300;
+
+    &:focus {
+      border-color: $error-500;
+      box-shadow: $shadow-ring-error
+    }
+  }
+}

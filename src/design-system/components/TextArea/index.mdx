@@ -1,0 +1,143 @@
+import { Meta } from '@storybook/addon-docs';
+import TextArea from '../TextArea';
+
+<Meta title="Components/TextArea" component={TextArea} />
+
+# TextArea
+
+This is a custom documentation page for the TextArea component.  
+Below is a manually filled list describing the component's props, mimicking the structure of Storybook's default props in bullet points.
+
+## Props
+
+- **name**
+
+  - **Description**: Name attribute of the textarea element.
+  - **Type**: `string | undefined`
+  - **Default**: `undefined`
+  - **Required**: No
+
+- **lang**
+
+  - **Description**: Language direction of the textarea, used for setting LTR or RTL context.
+  - **Type**: `'en' | 'ar' | undefined`
+  - **Default**: `'en'`
+  - **Required**: No
+
+- **variant**
+
+  - **Description**: Visual state indicator (e.g., success, error).
+  - **Type**: `'default' | 'success' | 'warning' | 'error' | undefined`
+  - **Default**: `'default'`
+  - **Required**: No
+
+- **maxLength**
+
+  - **Description**: Maximum number of characters allowed.
+  - **Type**: `number | undefined`
+  - **Default**: `500`
+  - **Required**: No
+
+- **minLength**
+
+  - **Description**: Minimum number of characters required.
+  - **Type**: `number | undefined`
+  - **Default**: `undefined`
+  - **Required**: No
+
+- **disabled**
+
+  - **Description**: Disables the textarea input if true.
+  - **Type**: `boolean | undefined`
+  - **Default**: `false`
+  - **Required**: No
+
+- **readOnly**
+
+  - **Description**: If true, makes the textarea content read-only.
+  - **Type**: `boolean | undefined`
+  - **Default**: `false`
+  - **Required**: No
+
+- **required**
+
+  - **Description**: Marks the textarea as required in form validation.
+  - **Type**: `boolean | undefined`
+  - **Default**: `false`
+  - **Required**: No
+
+- **autoFocus**
+
+  - **Description**: Automatically focuses the textarea on mount if true.
+  - **Type**: `boolean | undefined`
+  - **Default**: `false`
+  - **Required**: No
+
+- **resize**
+
+  - **Description**: Controls whether and how the textarea is resizable.
+  - **Type**: `'none' | 'both' | 'horizontal' | 'vertical' | undefined`
+  - **Default**: `'none'`
+  - **Required**: No
+
+- **label**
+
+  - **Description**: Text label associated with the textarea.
+  - **Type**: `string | undefined`
+  - **Default**: `undefined`
+  - **Required**: No
+
+- **optionalText**
+
+  - **Description**: Text to indicate the field is optional or any other info (beside the label).
+  - **Type**: `string | undefined`
+  - **Default**: `undefined`
+  - **Required**: No
+
+- **placeholder**
+
+  - **Description**: Placeholder text for the textarea.
+  - **Type**: `string | undefined`
+  - **Default**: `undefined`
+  - **Required**: No
+
+- **defaultValue**
+
+  - **Description**: Initial value of the textarea when uncontrolled.
+  - **Type**: `string | undefined`
+  - **Default**: `undefined`
+  - **Required**: No
+
+- **value**
+
+  - **Description**: Controlled value of the textarea.
+  - **Type**: `string | undefined`
+  - **Default**: `undefined`
+  - **Required**: No
+
+- **helperText**
+
+  - **Description**: Additional text displayed below the textarea for guidance.
+  - **Type**: `string | undefined`
+  - **Default**: `undefined`
+  - **Required**: No
+
+- **errorMessage**
+
+  - **Description**: Error message shown when the input is invalid.
+  - **Type**: `string | undefined`
+  - **Default**: `undefined`
+  - **Required**: No
+
+- **showCharactersCount**
+
+  - **Description**: If true, shows a character counter below the textarea.
+  - **Type**: `boolean | undefined`
+  - **Default**: `false`
+  - **Required**: No
+
+- **onChange**
+  - **Description**: Callback function triggered when the textarea value changes.
+  - **Type**: `(event: ChangeEvent<HTMLTextAreaElement>) => void | undefined`
+  - **Default**: `undefined`
+  - **Required**: No

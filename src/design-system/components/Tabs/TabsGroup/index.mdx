@@ -1,0 +1,83 @@
+import { Meta } from '@storybook/addon-docs';
+import { TabsGroup } from '../TabsGroup';
+
+<Meta title="Components/Tabs/TabsGroup" component={TabsGroup} />
+
+# TabsGroup
+
+This is a custom documentation page for the TabsGroup component.  
+Below is a manually filled list describing the component's props, mimicking the structure of Storybook's default props in bullet points.
+
+## Props
+
+- **type**
+
+  - **Description**: Visual style of the tab group, determines whether the tabs appear as underlined or filled.
+  - **Type**: `'line' | 'contained' | undefined`
+  - **Default**: `'line'`
+  - **Required**: No
+
+- **orientation**
+
+  - **Description**: Layout direction of the tabs. `horizontal` displays tabs in a row, while `vertical` stacks them in a column.
+  - **Type**: `'horizontal' | 'vertical' | undefined`
+  - **Default**: `'horizontal'`
+  - **Required**: No
+
+- **tabsProps**
+  - **Description**: Array of props for each individual tab, excluding the `type` (which is inherited from the group). Each item follows the `Omit<ITabBase, 'type'>` shape.
+  - **Type**: `Omit<ITabBase, 'type'>[] | undefined`
+  - **Default**: `[]`
+  - **Required**: No
+
+---
+
+Each object inside the `tabsProps` array supports the following fields, based on `ITabBase`:
+
+- **active**
+
+  - **Description**: Marks the tab as currently active/selected.
+  - **Type**: `boolean | undefined`
+  - **Default**: `false`
+  - **Required**: No
+
+- **disabled**
+
+  - **Description**: Disables the tab, making it non-interactive.
+  - **Type**: `boolean | undefined`
+  - **Default**: `false`
+  - **Required**: No
+
+- **leadingIcon**
+
+  - **Description**: An SVG icon element rendered before the tab label.
+  - **Type**: `ReactElement<'svg'> | undefined`
+  - **Default**: `undefined`
+  - **Required**: No
+
+- **tabName**
+
+  - **Description**: A unique name/identifier for the tab, useful for programmatic handling.
+  - **Type**: `string | undefined`
+  - **Default**: `undefined`
+  - **Required**: No
+
+- **tabLabel**
+
+  - **Description**: The visible label text of the tab.
+  - **Type**: `string | undefined`
+  - **Default**: `undefined`
+  - **Required**: No
+
+- **counter**
+
+  - **Description**: A numeric indicator, typically used to show item counts.
+  - **Type**: `number | undefined`
+  - **Default**: `undefined`
+  - **Required**: No
+
+- **onClickHandler**
+  - **Description**: Callback function triggered when the tab is clicked. Receives the `tabLabel` and `tabName` as optional parameters.
+  - **Type**: `(tabLabel?: string, tabName?: string) => void | undefined`
+  - **Default**: `undefined`
+  - **Required**: No

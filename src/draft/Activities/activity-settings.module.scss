@@ -1,0 +1,120 @@
+.container {
+  margin-top: 20px;
+}
+
+.section {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e0e0e0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.toggle-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.label {
+  font-weight: 500;
+  color: #333;
+}
+
+.section-title {
+  margin: 0 0 16px 0;
+  font-weight: 600;
+  color: #333;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tag-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tag-input-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tag-label {
+  font-weight: 500;
+  color: #333;
+  font-size: 14px;
+}
+
+.tag-input-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.meal-inputs {
+  display: flex;
+  gap: 12px;
+  align-items: end;
+  margin-bottom: 16px;
+}
+
+.meals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meal-item {
+  padding: 8px 12px;
+  background-color: #f0f9ff;
+  border: 1px solid #e0f2fe;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.custom-field-item {
+  display: flex;
+  gap: 16px;
+  align-items: end;
+  margin-bottom: 16px;
+
+  > * {
+    flex: 1;
+  }
+}
+
+.file-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+  }
+
+  input[type="file"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+}
+
+.button-section {
+  display: flex;
+  justify-content: flex-end;
+}

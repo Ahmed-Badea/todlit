@@ -24,7 +24,7 @@ export interface IFields {
 
 export interface DynamicFormProps {
   fieldsConfig: IFieldConfig[];
-  mode: 'popup' | 'table';
+  mode: 'popup' | 'table' | 'normal';
   setFormValid: (valid: boolean) => void;
   isLoading: boolean;
   setServerErrMsg: (msg: string) => void;
@@ -36,7 +36,7 @@ export interface FormWrapperProps {
   fieldsConfig: IFieldConfig[];
   submitFn: (data: any) => Promise<any>;
   successMessage: string;
-  mode?: "popup" | "table";
+  mode?: "popup" | "table" | "normal";
   title?: string;
   isOpen?: boolean;
   onClose?: () => void;

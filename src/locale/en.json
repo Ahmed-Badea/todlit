@@ -90,6 +90,9 @@
       }
     }
   },
+  "common": {
+    "save": "Save"
+  },
   "innerLayout": {
     "language": "EN",
     "create": "Create",
@@ -180,6 +183,55 @@
       "planUpdated": "Payment plan updated successfully",
       "planRemoved": "Payment plan removed successfully"
     },
+    "activities": {
+      "title": "Activities",
+      "activityDetails": "Activity Details",
+      "selectActivity": "Select an activity to view details",
+      "description": "Description",
+      "icon": "Icon",
+      "customFields": "Custom Fields",
+      "noDescription": "No description",
+      "noIcon": "No icon",
+      "activityStatus": "Activity Status",
+      "notifyParents": "Notify Parents",
+      "enableStatus": "Enable Status",
+      "enableFileUpload": "Enable file upload",
+      "enablePhotoVideo": "Enable photo/video upload",
+      "enableDraftMode": "Enable draft mode",
+      "enableComments": "Enable comments",
+      "doesntRequireApproval": "Doesn't require approval",
+      "mealSettings": "Meal Settings",
+      "mealType": "Meal Type",
+      "mealValue": "Meal Value",
+      "enterMealType": "Enter meal type",
+      "enterMealValue": "Enter meal value",
+      "mealSettings": "Meal Settings",
+      "mealType": "Meal Type",
+      "mealValue": "Meal Value",
+      "enterMealType": "Enter meal type",
+      "enterMealValue": "Enter meal value",
+      "addMeal": "Add Meal",
+      "formFields": "Form Fields",
+      "defaultFieldsMessage": "Each activity will contain description and file upload fields as default",
+      "addCustomField": "Add Custom Field",
+      "customFields": "Custom Fields",
+      "fieldName": "Field Name",
+      "fieldType": "Field Type",
+      "fieldValue": "Field Value",
+      "enterFieldName": "Enter field name",
+      "enterFieldValue": "Enter field value",
+      "selectType": "Select Type",
+      "checkboxValue": "Checkbox Value",
+      "toggleValue": "Toggle Value",
+      "enterDropdownOptions": "Enter dropdown options",
+      "fieldNameRequired": "Field name is required",
+      "fieldTypes": {
+        "input": "Input",
+        "checkbox": "Checkbox",
+        "toggle": "Toggle",
+        "dropdown": "Dropdown"
+      }
+    },
     "form": {
       "titles": {
         "createStudent": "Create student",
@@ -224,5 +276,10 @@
       }
     },
     "noData": "No data found"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "add": "Add"
   }
 }

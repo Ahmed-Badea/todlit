@@ -1,0 +1,66 @@
+import { Meta } from '@storybook/addon-docs';
+import { TabBase } from '../TabBase';
+
+<Meta title="Components/Tabs/TabBase" component={TabBase} />
+
+# TabBase
+
+This is a custom documentation page for the TabBase component.  
+Below is a manually filled list describing the component's props, mimicking the structure of Storybook's default props in bullet points.
+
+## Props
+
+- **type**
+
+  - **Description**: Visual style of the tab, either a line-based tab or a contained (filled) one.
+  - **Type**: `'line' | 'contained'`
+  - **Default**: `'line'`
+  - **Required**: No
+
+- **active**
+
+  - **Description**: Marks the tab as currently active/selected.
+  - **Type**: `boolean | undefined`
+  - **Default**: `false`
+  - **Required**: No
+
+- **disabled**
+
+  - **Description**: Disables the tab, making it non-interactive.
+  - **Type**: `boolean | undefined`
+  - **Default**: `false`
+  - **Required**: No
+
+- **leadingIcon**
+
+  - **Description**: An SVG icon element rendered before the tab label.
+  - **Type**: `ReactElement<'svg'> | undefined`
+  - **Default**: `undefined`
+  - **Required**: No
+
+- **tabName**
+
+  - **Description**: A unique name/identifier for the tab, useful for programmatic handling.
+  - **Type**: `string | undefined`
+  - **Default**: `undefined`
+  - **Required**: No
+
+- **tabLabel**
+
+  - **Description**: The visible label text of the tab.
+  - **Type**: `string | undefined`
+  - **Default**: `undefined`
+  - **Required**: No
+
+- **counter**
+
+  - **Description**: A numeric indicator, typically used to show item counts.
+  - **Type**: `number | undefined`
+  - **Default**: `undefined`
+  - **Required**: No
+
+- **onClickHandler**
+  - **Description**: Callback function triggered when the tab is clicked. Receives the `tabLabel` and `tabName` as optional parameters.
+  - **Type**: `(tabLabel?: string, tabName?: string) => void | undefined`
+  - **Default**: `undefined`
+  - **Required**: No

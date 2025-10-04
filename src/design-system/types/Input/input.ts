@@ -1,5 +1,21 @@
 import { ChangeEventHandler, FocusEventHandler, MouseEventHandler, ReactNode, Ref } from 'react';
 
+export interface ITagsInput {
+  tags?: string[];
+  onTagAdd?: (tag: string) => void;
+  onTagRemove?: (tag: string) => void;
+  tagValidator?: (tag: string) => boolean;
+  maxTags?: number;
+  allowDuplicates?: boolean;
+  tagDelimiters?: string[];
+  placeholder?: string;
+  disabled?: boolean;
+  showAddButton?: boolean;
+  addButtonIcon?: ReactNode;
+  value?: string;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+}
+
 export interface IInput {
   id?: string;
   name: string;

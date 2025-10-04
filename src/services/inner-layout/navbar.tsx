@@ -7,14 +7,14 @@ import {
   faDashboard,
   faUsers,
   faCalendarCheck,
-  // faFileAlt,
+  faFileAlt,
   // faMoneyBill,
   faCreditCard,
   // faCog,
   faUserGraduate,
   faBookOpen,
   faChalkboardTeacher,
-  // faListAlt,
+  faListAlt,
   // faChartLine,
   // faLock,
   // faNewspaper,
@@ -73,22 +73,22 @@ export const navLinks: (t: any) => INavLinks[] = (t) => [
       },
     ],
   },
-  // {
-  //   label: t("innerLayout.navbar.parentCommunication"),
-  //   icon: <FontAwesomeIcon icon={faFileAlt} />,
-  //   subLinks: [
-  //     {
-  //       label: t("innerLayout.navbar.activities"),
-  //       route: "/activities",
-  //       icon: <FontAwesomeIcon icon={faListAlt} />,
-  //     },
-  //     {
-  //       label: t("innerLayout.navbar.dailyReports"),
-  //       route: "/daily-reports",
-  //       icon: <FontAwesomeIcon icon={faChartLine} />,
-  //     },
-  //   ],
-  // },
+  {
+    label: t("innerLayout.navbar.parentCommunication"),
+    icon: <FontAwesomeIcon icon={faFileAlt} />,
+    subLinks: [
+      {
+        label: t("innerLayout.navbar.activities"),
+        route: "/activities",
+        icon: <FontAwesomeIcon icon={faListAlt} />,
+      },
+      // {
+      //   label: t("innerLayout.navbar.dailyReports"),
+      //   route: "/daily-reports",
+      //   icon: <FontAwesomeIcon icon={faChartLine} />,
+      // },
+    ],
+  },
   // {
   //   label: t("innerLayout.navbar.billing"),
   //   icon: <FontAwesomeIcon icon={faMoneyBill} />,

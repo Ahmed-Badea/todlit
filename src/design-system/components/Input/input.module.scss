@@ -102,6 +102,62 @@
       cursor: pointer;
     }
 
+    &__leading-text {
+      width: fit-content;
+      height: 2.5rem;
+      padding: $space-12;
+      border: 0.0625rem solid $gray-300;
+      border-inline-end-color: transparent;
+      border-radius: $radius-sm 0 0 $radius-sm;
+      color: $gray-500;
+      @include englishLabelRegular;
+
+      @include ar {
+        @include arabicLabelRegular;
+      }
+    }
+
+    &__tags {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: $space-8;
+      min-height: 2.5rem;
+      width: 100%;
+      padding: $space-8 $space-12;
+      border-radius: $radius-sm;
+      border: 0.0625rem solid $gray-300;
+      background: $white;
+
+      &__input {
+        flex: 1;
+        min-width: 3.75rem;
+        border: none;
+        outline: none;
+        padding: 0;
+        height: 1.5rem;
+        background: transparent;
+        color: $gray-900;
+
+        @include en {
+          @include englishLabelRegular;
+        }
+
+        @include ar {
+          @include arabicLabelRegular;
+        }
+
+        &::placeholder {
+          color: $gray-500;
+        }
+
+        &:disabled {
+          background: transparent;
+          cursor: not-allowed;
+        }
+      }
+    }
+
     &__input {
       @include flex(center);
       width: 100%;

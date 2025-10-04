@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useMutation } from "react-query";
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,8 +26,10 @@ const FormWrapper: React.FC<FormWrapperProps> = ({
   const formRef = useRef<CustomFormRef>(null);
   const [serverErrMsg, setServerErrMsg] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
-  const [formValid, setFormValid] = useState(isFormValid);
+  const [formFieldsValid, setFormFieldsValid] = useState(false);
   const [isEditable, setIsEditable] = useState(false);
+
+  const formValid = formFieldsValid && isFormValid;
 
   const toggleEdit = () => {
     setIsEditable(!isEditable);
@@ -69,7 +71,7 @@ const FormWrapper: React.FC<FormWrapperProps> = ({
       ref={formRef}
       mode={mode}
       fieldsConfig={fieldsConfig}
-      setFormValid={setFormValid}
+      setFormValid={setFormFieldsValid}
       isLoading={mutation.isLoading}
       setServerErrMsg={setServerErrMsg} // Ensure error message reset on field change
       isEditable={canEdit ? isEditable : true}
@@ -151,10 +153,42 @@ const FormWrapper: React.FC<FormWrapperProps> = ({
     </div>
   )
 
+  const renderNormal = () => (
+    <div className={styles["normal"]}>
+      {showSuccess ? 
+        renderSuccessMessage() 
+      :
+        <>
+          {renderFormContent()}
+          <div className={styles["buttons-container"]}>
+            <Button
+              size="lg"
+              color="primary"
+              variant="contained"
+              text={mutation.isLoading ? "Loading..." : t("innerLayout.form.submit")}
+              onClickHandler={handleFormSubmit}
+              disabled={mutation.isLoading || !formValid}
+            />
+            <Button
+              size="lg"
+              color="secondary"
+              variant="contained"
+              text={t("innerLayout.form.cancel")}
+              onClickHandler={onClose}
+              disabled={mutation.isLoading}
+            />
+          </div>
+          {serverErrMsg && <p className={styles["error"]}>{serverErrMsg}</p>}
+        </>
+      }
+    </div>
+  )
+
   return (
     <>
       {mode === "popup" && renderPopup()}
       {mode === "table" && renderTable()}
+      {mode === "normal" && renderNormal()}
     </>
   );
 };

@@ -1,0 +1,36 @@
+@use '../../../styles/common.scss' as *;
+
+.tabs-group {
+  width: fit-content;
+
+  &[data-tabs-group-full-width="true"] {
+    width: 100%;
+  }
+
+  /* ------------------ Orientation ------------------ */
+
+  &:is([data-tabs-group-orientation="horizontal"]) {
+    @include flex(center, flex-start);
+    gap: $space-8;
+  }
+
+  &:is([data-tabs-group-orientation="vertical"]) {
+    @include flex(flex-start, center);
+    flex-direction: column;
+  }
+
+
+  /* ------------------ Types and Orientation ------------------ */
+
+  &:is([data-tabs-group-orientation="horizontal"][data-tabs-group-type="line"]) {
+    border-bottom: 0.0625rem solid $gray-200;
+  }
+
+  &:is([data-tabs-group-orientation="vertical"][data-tabs-group-type="line"]) {
+    gap: $space-16;
+  }
+
+  &:is([data-tabs-group-orientation="vertical"][data-tabs-group-type="contained"]) {
+    gap: $space-8;
+  }
+}
