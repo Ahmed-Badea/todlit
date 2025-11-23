@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { useTranslation } from "react-i18next";
 import { TabsGroup } from "../../../../../../design-system/components/Tabs/TabsGroup";
@@ -15,7 +15,7 @@ import { Button } from "../../../../../../design-system";
 const StudentsDetails = () => {
   const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
+
   const [activeTab, setActiveTab] = useState(0);
 
   const { data, isLoading, isFetching, error } = useQuery(

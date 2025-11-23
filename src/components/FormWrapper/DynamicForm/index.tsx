@@ -255,9 +255,9 @@ const DynamicForm = forwardRef(
     const renderFileInput = (field: IFieldConfig) => (
       <FileUploader
         label={mode === "table" ? undefined : field.label?.[lang] ?? "Default Label"}
-        onFileSelect={(files) => {
-          if (files && files.length > 0) {
-            handleInputChange(field.name, files[0].name);
+        onUploadHandler={(file) => {
+          if (file) {
+            handleInputChange(field.name, file.name);
           }
         }}
         disabled={isLoading || !isEditable}
