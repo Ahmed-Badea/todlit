@@ -17,7 +17,7 @@ interface DatePickerProps {
   label?: string;
   disabled: boolean;
   isEditable?: boolean;
-  type?: "date" | "time";
+  type?: "date" | "time" | "month";
 }
 
 const DatePicker: React.FC<DatePickerProps> = ({
@@ -55,11 +55,12 @@ const DatePicker: React.FC<DatePickerProps> = ({
             startDate={startDate}
             endDate={endDate}
             maxDate={maxDate} // Prevent selecting future dates
-            dateFormat={type === "time" ? "HH:mm" : "yyyy-MM-dd"}
+            dateFormat={type === "time" ? "HH:mm" : type === "month" ? "yyyy-MM" : "yyyy-MM-dd"}
             timeFormat="HH:mm"
             timeIntervals={15}
             showTimeSelect={type === "time"}
             showTimeSelectOnly={type === "time"}
+            showMonthYearPicker={type === "month"}
             className={`${styles["date-picker"]} ${
               !isEditable ? styles["no-border"] : ""
             }`}
@@ -74,11 +75,12 @@ const DatePicker: React.FC<DatePickerProps> = ({
             endDate={endDate}
             minDate={startDate ?? undefined}
             maxDate={maxDate} // Prevent selecting future dates
-            dateFormat={type === "time" ? "HH:mm" : "yyyy-MM-dd"}
+            dateFormat={type === "time" ? "HH:mm" : type === "month" ? "yyyy-MM" : "yyyy-MM-dd"}
             timeFormat="HH:mm"
             timeIntervals={15}
             showTimeSelect={type === "time"}
             showTimeSelectOnly={type === "time"}
+            showMonthYearPicker={type === "month"}
             className={`${styles["date-picker"]} ${
               !isEditable ? styles["no-border"] : ""
             }`}
@@ -93,7 +95,8 @@ const DatePicker: React.FC<DatePickerProps> = ({
           maxDate={maxDate} // Prevent selecting future dates
           showTimeSelect={type === "time"}
           showTimeSelectOnly={type === "time"}
-          dateFormat={type === "time" ? "HH:mm" : "yyyy-MM-dd"}
+          showMonthYearPicker={type === "month"}
+          dateFormat={type === "time" ? "HH:mm" : type === "month" ? "yyyy-MM" : "yyyy-MM-dd"}
           timeIntervals={15}
           timeFormat="HH:mm"
           className={`${styles["date-picker"]} ${

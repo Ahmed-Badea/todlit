@@ -306,7 +306,7 @@ const StudentAttendance = () => {
             onRangeChange={handleDateRangeChange}
             label="Date Range"
             disabled={isLoading}
-            type="date"
+            type="month"
           />
         </div>
       </div>

@@ -25,7 +25,7 @@ export const Tag = (props: ITagProps) => {
 
     if (type === 'checkbox') {
 
-      const { text, ...checkboxProps } = props as ICheckboxTag;
+      const { ...checkboxProps } = props as ICheckboxTag;
       content = <Checkbox {...checkboxProps} size='sm' />;
 
     } else if (type === 'country') {

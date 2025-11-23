@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 import { useTranslation } from "react-i18next";
 import { TabsGroup } from "../../../../../../design-system/components/Tabs/TabsGroup";
@@ -10,10 +10,12 @@ import Billing from "../Tabs/Billing";
 import Documents from "../Tabs/Documents";
 import { getStudents } from "../../../../../../services/inner-layout/students";
 import styles from "./student-details.module.scss";
+import { Button } from "../../../../../../design-system";
 
 const StudentsDetails = () => {
   const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState(0);
 
   const { data, isLoading, isFetching, error } = useQuery(
@@ -49,18 +51,24 @@ const StudentsDetails = () => {
   };
 
   return (
-    <InnerLayout isLoading={isLoading || isFetching} error={!!error} errorMessage={(error as Error)?.message}>
-      <h3>{fullName}</h3>
-      
-      <TabsGroup 
-        type="line"
-        orientation="horizontal"
-        tabsProps={tabsProps}
-      />
-      
-      <div className={styles["tab-content"]}>
-        {renderTabContent()}
+    <InnerLayout
+      isLoading={isLoading || isFetching}
+      error={!!error}
+      errorMessage={(error as Error)?.message}
+    >
+      <div className={styles["header"]}>
+        <Button
+          variant="link"
+          text={t("innerLayout.students.title")}
+          onClickHandler={() => window.location.assign('/students')}
+        />
+        <span>/</span>
+        <h4>{fullName}</h4>
       </div>
+
+      <TabsGroup type="line" orientation="horizontal" tabsProps={tabsProps} />
+
+      <div className={styles["tab-content"]}>{renderTabContent()}</div>
     </InnerLayout>
   );
 };

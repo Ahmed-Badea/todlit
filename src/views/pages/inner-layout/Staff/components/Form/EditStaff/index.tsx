@@ -61,6 +61,7 @@ const EditStaff: React.FC<EditStaffProps> = ({ formData }) => {
 
   const updateMutation = useMutation(
     (data: Partial<StaffMember>) => {
+      console.log(data)
       // Ensure all required fields are present and not undefined
       const staffData = {
         ...formData,

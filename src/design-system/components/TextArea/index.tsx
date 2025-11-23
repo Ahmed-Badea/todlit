@@ -14,7 +14,7 @@ const localeMessages = {
   },
 };
 
-const TextArea = ({
+export const TextArea = ({
   name,
   lang = 'en',
   variant = 'default',
@@ -116,5 +116,3 @@ const TextArea = ({
     </div>
   );
 };
-
-export default TextArea;

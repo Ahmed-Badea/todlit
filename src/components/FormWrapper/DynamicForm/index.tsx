@@ -6,7 +6,9 @@ import {
   DropdownButton,
   DropdownMenu,
   DropdownMenuItem,
-  ColorInput
+  ColorInput,
+  TextArea,
+  FileUploader
 } from"../../../design-system";
 import DatePicker from "../../../components/DatePicker";
 import { isFormValid, validateField } from "../../../utils/formValidations";
@@ -127,18 +129,17 @@ const DynamicForm = forwardRef(
     const renderMultiDropdown = (field: IFieldConfig) => {
       // Compute dropdown button text dynamically
       const getDropdownBtnText = () => {
-        const selectedValues = fields[field.name]?.value || [];
-        if (Array.isArray(selectedValues) && selectedValues.length === field.options?.length) {
+        const rawValue = fields[field.name]?.value || '';
+        const selectedValues = typeof rawValue === 'string' ? rawValue.split(',').filter(v => v) : [];
+        if (selectedValues.length === field.options?.length) {
           return t('innerLayout.all'); // All options selected
-        } else if (Array.isArray(selectedValues) && selectedValues.length === 0) {
+        } else if (selectedValues.length === 0) {
           return t('innerLayout.none'); // No options selected
-        } else if (Array.isArray(selectedValues) && selectedValues.length === 1) {
+        } else if (selectedValues.length === 1) {
           return field.options?.find((opt) => opt.value === selectedValues[0])?.label[lang] || '';
         } else {
-          const firstSelected = Array.isArray(selectedValues)
-            ? field.options?.find((opt) => opt.value === selectedValues[0])?.label[lang]
-            : '';
-          return `${firstSelected}, +${(selectedValues as never[]).length - 1}`;
+          const firstSelected = field.options?.find((opt) => opt.value === selectedValues[0])?.label[lang] || '';
+          return `${firstSelected}, +${selectedValues.length - 1}`;
         }
       };
     
@@ -146,19 +147,19 @@ const DynamicForm = forwardRef(
       const handleFieldChange = (checked: boolean, optionValue?: string) => {
         setServerErrMsg(""); // Clear any existing server error messages
       
-        // Compute the new field values
-        const currentValue = fields[field.name]?.value;
+        // Get current selected values as array
+        const currentValue = fields[field.name]?.value || '';
+        const currentArray = typeof currentValue === 'string' ? currentValue.split(',').filter(v => v) : [];
+        
         const updatedFieldValues = optionValue
           ? checked
-            ? [...(Array.isArray(currentValue) ? currentValue : []), optionValue] // Add single option
-            : Array.isArray(currentValue)
-              ? currentValue.filter((val) => val !== optionValue) // Remove single option
-              : []
+            ? [...currentArray, optionValue] // Add single option
+            : currentArray.filter((val) => val !== optionValue) // Remove single option
           : checked
             ? field.options?.map((option) => option.value) || [] // "Select All"
             : []; // Clear all options
         
-        const normalizedValue = Array.isArray(updatedFieldValues) ? updatedFieldValues.join(",") : updatedFieldValues;
+        const normalizedValue = updatedFieldValues.join(",");
 
         // Create the updated fields object
         const updatedFields = {
@@ -174,6 +175,8 @@ const DynamicForm = forwardRef(
         validateField(updatedFields, setFields, field.name, normalizedValue);
       };
       
+      const rawValue = fields[field.name]?.value || '';
+      const selectedValues = typeof rawValue === 'string' ? rawValue.split(',').filter(v => v) : [];
     
       return (
         <Dropdown 
@@ -187,7 +190,7 @@ const DynamicForm = forwardRef(
                 ...prevFields,
                 [field.name]: {
                   ...prevFields[field.name],
-                  value: [],
+                  value: "",
                 },
               }))
             }
@@ -205,7 +208,7 @@ const DynamicForm = forwardRef(
               key={`select-all-${field.name}`}
               type="checkbox"
               text={t('innerLayout.selectAll')}
-              checked={fields[field.name]?.value === field.options?.values}
+              checked={selectedValues.length === field.options?.length}
               onCheckboxItemClickHandler={(checked) => handleFieldChange(checked)}
               closeOnItemClick={false}
             />
@@ -216,7 +219,7 @@ const DynamicForm = forwardRef(
                 key={`${field.name}-option-${index}`}
                 type="checkbox"
                 text={option.label[lang]}
-                checked={(fields[field.name]?.value as string[])?.includes(option.value)}
+                checked={selectedValues.includes(option.value)}
                 onCheckboxItemClickHandler={(checked) =>
                   handleFieldChange(checked, option.value)
                 }
@@ -237,11 +240,38 @@ const DynamicForm = forwardRef(
         disabled={isLoading || !isEditable}
       />
     );
+
+    const renderTextArea = (field: IFieldConfig) => (
+      <TextArea
+        name={field.name}
+        label={mode === "table" ? undefined : field.label?.[lang] ?? "Default Label"}
+        value={fields[field.name]?.value?.toString() || ""}
+        onChange={(e) => handleInputChange(field.name, e.target.value)}
+        disabled={isLoading || !isEditable}
+        placeholder={field.label?.[lang] ?? ""}
+      />
+    );
+
+    const renderFileInput = (field: IFieldConfig) => (
+      <FileUploader
+        label={mode === "table" ? undefined : field.label?.[lang] ?? "Default Label"}
+        onFileSelect={(files) => {
+          if (files && files.length > 0) {
+            handleInputChange(field.name, files[0].name);
+          }
+        }}
+        disabled={isLoading || !isEditable}
+      />
+    );
     
     const renderInput = (field: IFieldConfig) => {
       switch (field.type) {
         case "text":
           return renderTextInput(field);
+        case "textarea":
+          return renderTextArea(field);
+        case "file":
+          return renderFileInput(field);
         case "date":
         case "time":
           return renderDatePicker(field);

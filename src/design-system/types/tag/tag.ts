@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import type { ICheckboxVariant } from '../checkbox';
+import type { ICheckboxVariant } from '../Checkbox';
 
 export type TTagSize = 'sm' | 'md' | 'lg';
 export type TTagType = 'text' | 'checkbox' | 'country' | 'user';

@@ -42,8 +42,6 @@ export const ActivityForm = ({ template, students, onBack }: ActivityFormProps) 
     return await submitStudentActivity(payload);
   };
 
-
-
   return (
     <div className={styles["form-container"]}>
       <FormWrapper
@@ -62,7 +60,25 @@ export const ActivityForm = ({ template, students, onBack }: ActivityFormProps) 
               label: { en: v.value, ar: v.value },
               value: v.value
             })) || []
-          }))
+          })),
+          {
+            name: "notes",
+            label: { en: "Notes", ar: "ملاحظات" },
+            type: "textarea",
+            value: "",
+            isValid: true,
+            errorMsg: "",
+            validations: []
+          },
+          {
+            name: "media",
+            label: { en: "Media", ar: "الوسائط" },
+            type: "file",
+            value: "",
+            isValid: true,
+            errorMsg: "",
+            validations: []
+          }
         ]}
         isFormValid={students.length > 0}
         submitFn={handleSubmit}

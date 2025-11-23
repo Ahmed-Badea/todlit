@@ -90,9 +90,6 @@
       }
     }
   },
-  "common": {
-    "save": "Save"
-  },
   "innerLayout": {
     "language": "EN",
     "create": "Create",

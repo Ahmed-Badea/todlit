@@ -44,7 +44,10 @@ export const Checkbox = ({
   const handleClick = (e: any) => {
     e.preventDefault();
     setIsChecked((prevState: any) => {
-      onClickHandler?.(!prevState, text || hintText);
+      const textValue = typeof text === 'string' ? text : undefined;
+      const hintValue = typeof hintText === 'string' ? hintText : undefined;
+      const value = textValue || hintValue;
+      onClickHandler?.(!prevState, value);
       return !prevState;
     });
   };
@@ -70,7 +73,12 @@ export const Checkbox = ({
             icon={checkboxIcon}
             checked={isChecked}
             disabled={disabled}
-            onChangeHandler={(checked) => onChangeHandler?.(checked, text || hintText)}
+            onChangeHandler={(checked) => {
+              const textValue = typeof text === 'string' ? text : undefined;
+              const hintValue = typeof hintText === 'string' ? hintText : undefined;
+              const value = textValue || hintValue;
+              onChangeHandler?.(checked, value);
+            }}
           />, { hovered: isHovered, focused: isFocused }
         )
       }

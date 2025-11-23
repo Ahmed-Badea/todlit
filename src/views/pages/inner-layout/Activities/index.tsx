@@ -1,14 +1,13 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useQuery } from "react-query";
 import { useTranslation } from "react-i18next";
 import InnerLayout from "../../../../views/layout/InnerLayout";
 import { getActivityTemplates, ActivityTemplate } from "../../../../services/inner-layout/activityTemplates";
 import { getStudents } from "../../../../services/inner-layout/students";
 import { useClassesStore } from "../../../../store/classes";
-import { Dropdown, DropdownButton, DropdownMenu, DropdownMenuItem } from "../../../../design-system";
+import { Dropdown, DropdownButton, DropdownMenu, DropdownMenuItem, Button } from "../../../../design-system";
 import { Checkbox } from "../../../../design-system/components/Checkbox";
 import { Loading } from "../../../../design-system";
-import { Button } from "../../../../design-system/components/Button";
 import { ActivityForm } from "./ActivityForm";
 import styles from "./activities.module.scss";
 
@@ -73,14 +72,31 @@ const Activities = () => {
 
   return (
     <InnerLayout isLoading={isLoading}>
-      <h3>{t("innerLayout.navbar.activities")}</h3>
-      
+      <div className={styles["header"]}>
+        {" "}
+        {selectedTemplate ? (
+          <>
+            <Button
+              variant="link"
+              text={t("innerLayout.navbar.activities")}
+              onClickHandler={handleBackToTemplates}
+            />
+            <h4>{` / ${selectedTemplate.name}`}</h4>
+          </>
+        ) : (
+          <h4>{t("innerLayout.navbar.activities")}</h4>
+        )}
+      </div>
+
       <div className={styles.container}>
         <div className={styles.sidebar}>
           {showForm && selectedTemplate ? (
-            <ActivityForm 
+            <ActivityForm
               template={selectedTemplate}
-              students={students?.filter((s: any) => selectedStudents.includes(s.id)) || []}
+              students={
+                students?.filter((s: any) => selectedStudents.includes(s.id)) ||
+                []
+              }
               onBack={handleBackToTemplates}
             />
           ) : (
@@ -90,7 +106,7 @@ const Activities = () => {
               </div>
               <div className={styles["template-grid"]}>
                 {templates?.map((template) => (
-                  <div 
+                  <div
                     key={template.id}
                     className={styles["template-card"]}
                     onClick={() => handleTemplateClick(template)}
@@ -124,14 +140,16 @@ const Activities = () => {
                       <DropdownMenuItem
                         key={cls.id}
                         text={cls.name}
-                        onClickHandler={() => handleClassFilterChange(String(cls.id))}
+                        onClickHandler={() =>
+                          handleClassFilterChange(String(cls.id))
+                        }
                         selected={selectedClassId === String(cls.id)}
                       />
                     ))}
                   </DropdownMenu>
                 </Dropdown>
               </div>
-              
+
               <div className={styles["students-list"]}>
                 <div className={styles["students-header"]}>
                   <h4>Students</h4>
@@ -139,7 +157,10 @@ const Activities = () => {
                     <Checkbox
                       id="select-all"
                       text="Select All"
-                      checked={selectedStudents.length === students.length && students.length > 0}
+                      checked={
+                        selectedStudents.length === students.length &&
+                        students.length > 0
+                      }
                       onClickHandler={(checked) => handleSelectAll(checked)}
                     />
                   )}
@@ -156,7 +177,9 @@ const Activities = () => {
                         text={`${student.first_name} ${student.last_name}`}
                         hintText={student.classroom}
                         checked={selectedStudents.includes(student.id)}
-                        onClickHandler={(checked) => handleStudentToggle(checked, student.id)}
+                        onClickHandler={(checked) =>
+                          handleStudentToggle(checked, student.id)
+                        }
                       />
                     </div>
                   ))

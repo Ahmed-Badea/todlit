@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { useMutation } from "react-query";
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,7 +19,7 @@ const FormWrapper: React.FC<FormWrapperProps> = ({
   onClose = () => {},
   canEdit = false,
   canDelete = false,
-  isFormValid = false,
+  isFormValid,
   params
 }) => {
   const { t } = useTranslation();
@@ -29,7 +29,7 @@ const FormWrapper: React.FC<FormWrapperProps> = ({
   const [formFieldsValid, setFormFieldsValid] = useState(false);
   const [isEditable, setIsEditable] = useState(false);
 
-  const formValid = formFieldsValid && isFormValid;
+  const formValid = isFormValid !== undefined ? formFieldsValid && isFormValid : formFieldsValid;
 
   const toggleEdit = () => {
     setIsEditable(!isEditable);
