@@ -1,12 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@100..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&display=swap');
 
+// Font family variables
+$font-inter: "Inter", sans-serif;
+$font-ubuntu: "Ubuntu", sans-serif;
+$font-kantumruy: "Kantumruy Pro", sans-serif;
+$font-cairo: "Cairo", sans-serif;
+$font-noto-arabic: "Noto Sans Arabic", sans-serif;
+
+$font-main: $font-ubuntu;
+
 // (English utility/Helper text) styles
 
 @mixin englishHelperTextMixin {
-  font-family: "Inter", sans-serif;
+  font-family: $font-main;
   font-size: 0.875rem;
   font-style: normal;
   line-height: 1.125rem;
@@ -37,7 +46,7 @@
 // (English utility/Label compact) styles
 
 @mixin englishLabelCompactMixin {
-  font-family: "Inter", sans-serif;
+  font-family: $font-main;
   font-size: 0.875rem;
   font-style: normal;
   line-height: 0.875rem;
@@ -68,7 +77,7 @@
 // (English utility/Label) styles
 
 @mixin englishLabelMixin {
-  font-family: "Inter", sans-serif;
+  font-family: $font-main;
   font-size: 0.875rem;
   font-style: normal;
   line-height: 1rem;
@@ -98,7 +107,7 @@
 // (English body/Body sm) styles
 
 @mixin englishBodySmMixin {
-  font-family: "Inter", sans-serif;
+  font-family: $font-main;
   font-size: 0.875rem;
   font-style: normal;
   line-height: 1.5rem;
@@ -129,7 +138,7 @@
 // (English body/Body md) styles
 
 @mixin englishBodyMdMixin {
-  font-family: "Inter", sans-serif;
+  font-family: $font-main;
   font-size: 1rem;
   font-style: normal;
   line-height: 1.75rem;
@@ -159,7 +168,7 @@
 // (English body/Body lg) styles
 
 @mixin englishBodyLgMixin {
-  font-family: "Inter", sans-serif;
+  font-family: $font-main;
   font-size: 1.125rem;
   font-style: normal;
   line-height: 2rem;
@@ -189,7 +198,7 @@
 // (English body/Body xl) styles
 
 @mixin englishBodyXlMixin {
-  font-family: "Inter", sans-serif;
+  font-family: $font-main;
   font-size: 1.25rem;
   font-style: normal;
   line-height: 2.25rem;
@@ -219,7 +228,7 @@
 // (English body/Body 2xl) styles
 
 @mixin englishBody2XlMixin {
-  font-family: "Inter", sans-serif;
+  font-family: $font-main;
   font-size: 1.375rem;
   font-style: normal;
   line-height: 2.5rem;
@@ -249,7 +258,7 @@
 // (English heading/Heading compact) styles
 
 @mixin englishHeadingCompactMixin {
-  font-family: "Kantumruy Pro", sans-serif;
+  font-family: $font-main;
   font-size: 1rem;
   font-style: normal;
   line-height: 1.25rem;
@@ -279,7 +288,7 @@
 // (English heading/Heading h6) styles
 
 @mixin englishHeadingH6Mixin {
-  font-family: "Kantumruy Pro", sans-serif;
+  font-family: $font-main;
   font-size: 1.5rem;
   font-style: normal;
   line-height: 2rem;
@@ -309,7 +318,7 @@
 // (English heading/Heading h5) styles
 
 @mixin englishHeadingH5Mixin {
-  font-family: "Kantumruy Pro", sans-serif;
+  font-family: $font-main;
   font-size: 2rem;
   font-style: normal;
   line-height: 2.5rem;
@@ -339,7 +348,7 @@
 // (English heading/Heading h4) styles
 
 @mixin englishHeadingH4Mixin {
-  font-family: "Kantumruy Pro", sans-serif;
+  font-family: $font-main;
   font-size: 2.25rem;
   font-style: normal;
   line-height: 2.75rem;
@@ -369,7 +378,7 @@
 // (English heading/Heading h3) styles
 
 @mixin englishHeadingH3Mixin {
-  font-family: "Kantumruy Pro", sans-serif;
+  font-family: $font-main;
   font-size: 2.5rem;
   font-style: normal;
   line-height: 3rem;
@@ -399,7 +408,7 @@
 // (English heading/Heading h2) styles
 
 @mixin englishHeadingH2Mixin {
-  font-family: "Kantumruy Pro", sans-serif;
+  font-family: $font-main;
   font-size: 2.75rem;
   font-style: normal;
   line-height: 3.25rem;
@@ -429,7 +438,7 @@
 // (English heading/Heading h1) styles
 
 @mixin englishHeadingH1Mixin {
-  font-family: "Kantumruy Pro", sans-serif;
+  font-family: $font-main;
   font-size: 3rem;
   font-style: normal;
   line-height: 3.5rem;
@@ -459,7 +468,7 @@
 // (Arabic utility/Helper text) styles
 
 @mixin arabicHelperTextMixin {
-  font-family: "Cairo", sans-serif;
+  font-family: $font-main;
   font-size: 0.875rem;
   font-style: normal;
   line-height: 1.125rem;
@@ -490,7 +499,7 @@
 // (Arabic utility/Label compact) styles
 
 @mixin arabicLabelCompactMixin {
-  font-family: "Cairo", sans-serif;
+  font-family: $font-main;
   font-size: 0.875rem;
   font-style: normal;
   line-height: 0.875rem;
@@ -521,7 +530,7 @@
 // (Arabic utility/Label) styles
 
 @mixin arabicLabelMixin {
-  font-family: "Cairo", sans-serif;
+  font-family: $font-main;
   font-size: 0.875rem;
   font-style: normal;
   line-height: 1rem;
@@ -551,7 +560,7 @@
 // (Arabic body/Body sm) styles
 
 @mixin arabicBodySmMixin {
-  font-family: "Cairo", sans-serif;
+  font-family: $font-main;
   font-size: 0.875rem;
   font-style: normal;
   line-height: 1.5rem;
@@ -582,7 +591,7 @@
 // (Arabic body/Body md) styles
 
 @mixin arabicBodyMdMixin {
-  font-family: "Cairo", sans-serif;
+  font-family: $font-main;
   font-size: 1rem;
   font-style: normal;
   line-height: 1.75rem;
@@ -612,7 +621,7 @@
 // (Arabic body/Body lg) styles
 
 @mixin arabicBodyLgMixin {
-  font-family: "Cairo", sans-serif;
+  font-family: $font-main;
   font-size: 1.125rem;
   font-style: normal;
   line-height: 2rem;
@@ -642,7 +651,7 @@
 // (Arabic body/Body xl) styles
 
 @mixin arabicBodyXlMixin {
-  font-family: "Cairo", sans-serif;
+  font-family: $font-main;
   font-size: 1.25rem;
   font-style: normal;
   line-height: 2.25rem;
@@ -672,7 +681,7 @@
 // (Arabic body/Body 2xl) styles
 
 @mixin arabicBody2XlMixin {
-  font-family: "Cairo", sans-serif;
+  font-family: $font-main;
   font-size: 1.375rem;
   font-style: normal;
   line-height: 2.5rem;
@@ -702,7 +711,7 @@
 // (Arabic heading/Heading compact) styles
 
 @mixin arabicHeadingCompactMixin {
-  font-family: "Noto Sans Arabic", sans-serif;
+  font-family: $font-main;
   font-size: 1rem;
   font-style: normal;
   line-height: 1.25rem;
@@ -732,7 +741,7 @@
 // (Arabic heading/Heading h6) styles
 
 @mixin arabicHeadingH6Mixin {
-  font-family: "Noto Sans Arabic", sans-serif;
+  font-family: $font-main;
   font-size: 1.5rem;
   font-style: normal;
   line-height: 2rem;
@@ -762,7 +771,7 @@
 // (Arabic heading/Heading h5) styles
 
 @mixin arabicHeadingH5Mixin {
-  font-family: "Noto Sans Arabic", sans-serif;
+  font-family: $font-main;
   font-size: 2rem;
   font-style: normal;
   line-height: 2.5rem;
@@ -792,7 +801,7 @@
 // (Arabic heading/Heading h4) styles
 
 @mixin arabicHeadingH4Mixin {
-  font-family: "Noto Sans Arabic", sans-serif;
+  font-family: $font-main;
   font-size: 2.25rem;
   font-style: normal;
   line-height: 2.75rem;
@@ -822,7 +831,7 @@
 // (Arabic heading/Heading h3) styles
 
 @mixin arabicHeadingH3Mixin {
-  font-family: "Noto Sans Arabic", sans-serif;
+  font-family: $font-main;
   font-size: 2.5rem;
   font-style: normal;
   line-height: 3rem;
@@ -852,7 +861,7 @@
 // (Arabic heading/Heading h2) styles
 
 @mixin arabicHeadingH2Mixin {
-  font-family: "Noto Sans Arabic", sans-serif;
+  font-family: $font-main;
   font-size: 2.75rem;
   font-style: normal;
   line-height: 3.25rem;
@@ -882,7 +891,7 @@
 // (Arabic heading/Heading h1) styles
 
 @mixin arabicHeadingH1Mixin {
-  font-family: "Noto Sans Arabic", sans-serif;
+  font-family: $font-main;
   font-size: 3rem;
   font-style: normal;
   line-height: 3.5rem;
