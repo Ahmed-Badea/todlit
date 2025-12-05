@@ -1,12 +1,13 @@
 @import "../../styles/common.scss";
+@import "../../design-system/styles/theme.scss";
 
 .mobile-nav-container {
   height: var(--navbar-height);
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: $primary-500;
-  border-bottom: 0.0625rem solid $gray-200;
+  background-color: var(--side-nav-bg);
+  border-bottom: 0.0625rem solid var(--side-nav-border);
   display: flex;
   flex-direction: column;
   gap: $space-32;
@@ -34,7 +35,7 @@
     }
 
     &__current-page {
-      color: $white;
+      color: var(--side-nav-text);
       flex-grow: 1;
       text-align: end;
       @include englishBodyMdSemiBold;
@@ -50,7 +51,7 @@
       cursor: pointer;
 
       path {
-        fill: $white
+        fill: var(--side-nav-icon);
       }
     }
   }
@@ -78,6 +79,6 @@
     display: flex;
     flex-direction: column;
     gap: $space-32;
-    border-top: 0.0625rem solid $gray-200;
+    border-top: 0.0625rem solid var(--side-nav-border);
   }
 }

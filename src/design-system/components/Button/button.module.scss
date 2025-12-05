@@ -1,4 +1,5 @@
 @import '../../styles/common.scss';
+@import '../../styles/theme.scss';
 
 /* ------------------ Generic ------------------ */
 
@@ -165,14 +166,14 @@
   // Primary
 
   &:is([data-btn-color='primary'][data-btn-variant='contained']) {
-    background-color: $primary-500;
+    background-color: var(--btn-primary-bg);
 
     &:hover {
-      background-color: $primary-600;
+      background-color: var(--btn-primary-bg-hover);
     }
 
     &:focus {
-      background-color: $primary-500;
+      background-color: var(--btn-primary-bg);
       box-shadow: $shadow-ring-primary;
     }
 
@@ -251,16 +252,16 @@
     }
 
     &:not(&:disabled) {
-      color: $gray-700;
-      border: 0.0625rem solid $gray-300;
+      color: var(--btn-secondary-text);
+      border: 0.0625rem solid var(--btn-secondary-border);
 
       path {
-        fill: $gray-700;
+        fill: var(--btn-secondary-text);
       }
     }
 
     &:hover {
-      background-color: $gray-100;
+      background-color: var(--btn-secondary-bg-hover);
     }
 
     &:focus {

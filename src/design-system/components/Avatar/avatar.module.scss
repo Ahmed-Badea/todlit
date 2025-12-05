@@ -1,8 +1,9 @@
 @import '../../styles/common.scss';
+@import '../../../design-system/styles/theme.scss';
 
 .avatar {
   border-radius: 50%;
-  background-color: $gray-100;
+  background-color: var(--avatar-bg);
   @include flex(center, center);
   overflow: hidden;
 
@@ -40,7 +41,7 @@
 }
 
 [data-avatar-type="text"] {
-  color: $gray-500;
+  color: var(--avatar-text);
   @include englishBodyXlRegular;
 
   @include ar {
@@ -50,7 +51,7 @@
 
 [data-avatar-type="placeholder"] {
   path {
-    fill: $gray-500;
+    fill: var(--avatar-text);
   }
 }
 

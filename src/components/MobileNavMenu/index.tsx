@@ -11,6 +11,7 @@ import { navLinks } from "../../services/inner-layout/navbar";
 import LangSwitcher from "../../components/LangSwitcher";
 import BusinessInfoBox from "../BusinessInfoBox";
 import NavItem from "../NavItem";
+import ThemeToggle from "../ThemeToggle";
 import styles from "./mobile-nav-menu.module.scss";
 import ProfileMenu from "../ProfileMenu";
 
@@ -87,10 +88,9 @@ const MobileNavMenu = () => {
             </div>
 
             <div className={styles["mobile-nav-container__actions-box"]}>
-
+              <ThemeToggle />
               <ProfileMenu mobView={true} />
               <LangSwitcher layout="inner" mobView={true} />
-
             </div>
           </>
         }

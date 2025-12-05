@@ -1,4 +1,5 @@
 @import "../../styles/mixins";
+@import "../../design-system/styles/theme.scss";
 
 .nav-item,
 .sub-item {
@@ -11,18 +12,18 @@
 
   &[data-nav-item-active="true"],
   &[data-sub-item-active="true"] {
-    background-color: $white;
-    color: $primary-500;
-    box-shadow: 0px -2px 1px 0px rgba(0, 0, 0, 0.05) inset, 0px 1px 1px 0px #FFF inset;
+    background-color: var(--side-nav-item-bg-active);
+    color: var(--side-nav-text-active);
+    // box-shadow: 0px -2px 1px 0px rgba(0, 0, 0, 0.05) inset, 0px 1px 1px 0px #FFF inset;
 
     path {
-      fill: $primary-500;
+      fill: var(--side-nav-icon-active);
     }
 
     &:hover,
     &:focus {
-      background-color: $white;
-      color: $primary-500;
+      background-color: var(--side-nav-item-bg-active);
+      color: var(--side-nav-text-active);
     }
   }
 
@@ -84,19 +85,19 @@
   }
 
   &[data-nav-item-active="false"] {
-    color: $white;
+    color: var(--side-nav-text);
 
     path {
-      fill: $white;
+      fill: var(--side-nav-icon);
     }
 
     &:hover,
     &:focus {
-      background-color: $white;
-      color: $primary-500;
+      background-color: var(--side-nav-item-bg-hover);
+      color: var(--side-nav-text-hover);
 
       path {
-        fill: $primary-500;;
+        fill: var(--side-nav-icon-hover);
       }
     }
   }
@@ -125,19 +126,19 @@
 
   &[data-sub-item-active="false"] {
     background-color: transparent;
-    color: $white;
+    color: var(--side-nav-text);
 
     path {
-      fill: $white;
+      fill: var(--side-nav-icon);
     }
 
     &:hover,
     &:focus {
-      background-color: $white;
-      color: $primary-500;
+      background-color: var(--side-nav-item-bg-hover);
+      color: var(--side-nav-text-hover);
 
       path {
-        fill: $primary-500;
+        fill: var(--side-nav-icon-hover);
       }
     }
   }
@@ -178,13 +179,13 @@
 }
 
 .sub-items-list {
-  background-color: $primary-500;
+  background-color: var(--side-nav-bg);
   padding: $space-24 $space-24 $space-12 0;
 
   &__title {
     margin-inline-start: $space-20;
     margin-bottom: $space-16;
-    color: $white;
+    color: var(--side-nav-text);
     @include englishBodySmMedium;
 
     @include ar {

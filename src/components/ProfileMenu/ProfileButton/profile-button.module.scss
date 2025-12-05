@@ -1,4 +1,5 @@
 @import "@/styles/common.scss";
+@import "../../../design-system/styles/theme.scss";
 
 .account-bar {
   width: 100%;
@@ -20,8 +21,8 @@
     border-radius: 50%;
 
     &[data-account-bar-avatar-type="name"] {
-      background-color: $gray-100;
-      color: $gray-500;
+      background-color: var(--avatar-bg);
+      color: var(--avatar-text);
       @include englishBodyMdRegular;
 
       @include ar {
@@ -42,7 +43,7 @@
     flex-grow: 1;
 
     &__name {
-      color: $white;
+      color: var(--side-nav-text);
       @include englishHeadingCompactSemiBold;
 
       @include ar {
@@ -51,7 +52,7 @@
     }
 
     &__role {
-      color: $primary-200;
+      color: var(--side-nav-text-secondary);
       @include englishHelperTextRegular;
 
       @include ar {
@@ -69,7 +70,7 @@
       height: inherit;
 
       path {
-        fill: $white;
+        fill: var(--side-nav-icon);
       }
 
       @include ar {
