@@ -4,7 +4,7 @@
   width: 100%;
   height: 100vh;
   overflow-y: auto;
-  background-color: $primary-500;
+  background-color: $violet-900;
   padding: $space-48;
 
   @include max($tablet) {
@@ -123,7 +123,7 @@
 
     legend {
       margin-bottom: $space-8;
-      color: $primary-700;
+      color: $violet-700;
 
       @include englishHeadingH6SemiBold;
 
@@ -140,7 +140,7 @@
       &__desc {
         width: 100%;
         // margin: $space-8 0;
-        color: $gray-800;
+        color: $violet-600;
 
         @include englishBodySmRegular;
 
