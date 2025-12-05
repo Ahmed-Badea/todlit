@@ -8,6 +8,9 @@ export interface IFieldConfig {
   validations: { pattern: RegExp; error_msg: string; }[];
   options?: { label: { en: string; ar: string }; value: string }[];
   selectedColor?: string;
+  allowedFormats?: string[];
+  allowedSize?: number;
+  optional?: boolean;
 }
 
 export interface IField {

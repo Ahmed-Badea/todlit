@@ -38,7 +38,7 @@ export const createPlan = async ({
     start_shift: formatTime(start_shift),
     end_shift: formatTime(end_shift),
     program_color,
-    late_checkout_time: formatTime(late_checkout_time),
+    late_checkout_time: late_checkout_time ? formatTime(late_checkout_time) : null,
     late_checkout_fees,
   };
 

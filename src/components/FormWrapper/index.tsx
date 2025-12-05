@@ -38,6 +38,7 @@ const FormWrapper: React.FC<FormWrapperProps> = ({
   // Use React Query's useMutation to handle form submission
   const mutation = useMutation(submitFn, {
     onSuccess: () => {
+      console.log("success")
       setShowSuccess(true);
       setTimeout(() => {
         if (mode === "popup") {
@@ -47,6 +48,7 @@ const FormWrapper: React.FC<FormWrapperProps> = ({
       }, 3000);
     },
     onError: (error: any) => {
+      console.log("error")
       const errorMsg = error.response?.data?.error || "Something went wrong. Please try again.";
       setServerErrMsg(errorMsg);
     },
@@ -55,6 +57,7 @@ const FormWrapper: React.FC<FormWrapperProps> = ({
   const handleFormSubmit = () => {
     const formData = formRef.current?.submitForm();
     if (formData && formValid) {
+      console.log("Submitting form data:", formData);
       mutation.mutate(formData); // Trigger the mutation
     }
   };

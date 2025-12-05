@@ -77,7 +77,8 @@ export const ActivityForm = ({ template, students, onBack }: ActivityFormProps) 
             value: "",
             isValid: true,
             errorMsg: "",
-            validations: []
+            validations: [],
+            allowedFormats: ["jpeg", "jpg", "png", "webp", "heic", "mp4", "mov", "avi", "webm"]
           }
         ]}
         isFormValid={students.length > 0}

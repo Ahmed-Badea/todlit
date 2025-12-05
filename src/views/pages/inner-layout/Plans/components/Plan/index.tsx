@@ -22,9 +22,11 @@ const PlanCard: React.FC<Plan> = ({
       <p className={styles["plan-shift"]}>
         Shift: {formatTime(start_shift)} - {formatTime(end_shift)}
       </p>
-      <p className={styles["plan-late-checkout"]}>
-        Late Checkout: {formatTime(late_checkout_time)} (EGP {late_checkout_fees})
-      </p>
+      {late_checkout_time && late_checkout_fees && (
+        <p className={styles["plan-late-checkout"]}>
+          Late Checkout: {formatTime(late_checkout_time)} (EGP {late_checkout_fees})
+        </p>
+      )}
     </div>
   );
 };

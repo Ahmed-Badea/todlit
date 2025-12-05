@@ -41,21 +41,28 @@ export const FileUploader = ({
         setInvalid(false);
         setErrorMsg('');
         const FILE = ((e?.target?.files && e?.target?.files[0]) || file);
-        const MAX_SIZE: any = allowedSize && (allowedSize * 1024 * 1024);
-
+        
         if (!FILE) {
             setInvalid(true);
             setErrorMsg(TEXT.errorMsgs.noFileUploaded);
             return;
         };
 
+        const fileExtension = FILE.type.split('/')[1];
+        const isVideo = ['mp4', 'mov', 'avi', 'webm'].includes(fileExtension);
+        const isImage = ['jpeg', 'jpg', 'png', 'webp', 'heic'].includes(fileExtension);
+        
+        // Different size limits: 10MB for images, 100MB for videos
+        const MAX_SIZE = isImage ? (10 * 1024 * 1024) : isVideo ? (100 * 1024 * 1024) : (allowedSize && (allowedSize * 1024 * 1024));
+        const sizeLimit = isImage ? '10MB' : isVideo ? '100MB' : `${allowedSize}MB`;
+
         if (FILE.size > MAX_SIZE) {
             setInvalid(true);
-            setErrorMsg(TEXT.errorMsgs.fileSize.replace('{{size}}', String(allowedSize)));
+            setErrorMsg(TEXT.errorMsgs.fileSize.replace('{{size}}', sizeLimit));
             return;
         };
 
-        if (!allowedFormats?.includes(`${FILE.type.split('/')[1]}`)) {
+        if (!allowedFormats?.includes(fileExtension)) {
             setInvalid(true);
             setErrorMsg(TEXT.errorMsgs.notSupportedFormat);
             return;
@@ -147,7 +154,9 @@ export const FileUploader = ({
                                 </div>
                                 <div className={styles['file-uploader__upload-container__info-box__supporting-txt']}>
                                     {displayAllowedFormats(allowedFormats)}
-                                    {` ${TEXT.maxSize.replace('{{size}}', String(allowedSize))}`}
+                                    {allowedFormats?.some(f => ['jpeg', 'jpg', 'png', 'webp', 'heic'].includes(f)) && allowedFormats?.some(f => ['mp4', 'mov', 'avi', 'webm'].includes(f)) 
+                                        ? ` (Images: max 10MB, Videos: max 100MB)` 
+                                        : ` ${TEXT.maxSize.replace('{{size}}', String(allowedSize))}`}
                                 </div>
                             </div>
                             <input type="file" accept={allowedFormats?.join()} title='' onChange={fileUploadHandler} />

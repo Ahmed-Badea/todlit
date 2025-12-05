@@ -33,9 +33,9 @@ const EditStaff: React.FC<EditStaffProps> = ({ formData }) => {
     if (classes && formData) {
       const newFormConfig = staffConfig.map((field) => {
         if (field.name === 'classroom') {
-          const selectedClassroom = classes.find(
-            (classroom: IClass) => Array.isArray(formData.classrooms) && formData.classrooms.includes(classroom.name)
-          );
+          const selectedClassrooms = Array.isArray(formData.classrooms) 
+            ? formData.classrooms.join(',') 
+            : '';
 
           return {
             ...field,
@@ -43,7 +43,7 @@ const EditStaff: React.FC<EditStaffProps> = ({ formData }) => {
               label: { en: classroom.name, ar: classroom.name },
               value: classroom.name,
             })),
-            value: selectedClassroom ? selectedClassroom.name : '',
+            value: selectedClassrooms,
           };
         }
 
@@ -60,7 +60,7 @@ const EditStaff: React.FC<EditStaffProps> = ({ formData }) => {
   }, [classes, formData]);
 
   const updateMutation = useMutation(
-    (data: Partial<StaffMember>) => {
+    (data: any) => {
       console.log(data)
       // Ensure all required fields are present and not undefined
       const staffData = {
@@ -71,7 +71,7 @@ const EditStaff: React.FC<EditStaffProps> = ({ formData }) => {
         email: data.email ?? formData.email,
         phone: data.phone ?? formData.phone,
         gender: data.gender ?? formData.gender,
-        classroom: data.classrooms ?? formData.classrooms,
+        classroom: data.classroom ? data.classroom.split(',').filter(v => v) : formData.classrooms,
       };
       return updateStaff(formData.id, staffData);
     },

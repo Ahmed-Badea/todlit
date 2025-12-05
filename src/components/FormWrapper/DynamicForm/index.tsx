@@ -69,11 +69,17 @@ const DynamicForm = forwardRef(
       },
     }));
 
+    const getFieldLabel = (field: IFieldConfig) => {
+      if (mode === "table") return undefined;
+      const baseLabel = field.label?.[lang] ?? "Default Label";
+      return field.optional ? `${baseLabel} (${t('outerLayout.form.labels.optional')})` : baseLabel;
+    };
+
     const renderTextInput = (field: IFieldConfig) => (
       <Input
         id={field.name}
         name={field.name}
-        label={mode === "table" ? undefined : field.label?.[lang] ?? "Default Label"} // Hide label in table mode
+        label={getFieldLabel(field)}
         value={fields[field.name]?.value?.toString() || ""}
         onChange={(e) => handleInputChange(field.name, e.target.value)}
         status={fields[field.name]?.isValid === false ? "error" : "default"}
@@ -91,7 +97,7 @@ const DynamicForm = forwardRef(
             : null
         }
         onDateChange={(date) => date && handleInputChange(field.name, date.toISOString())}
-        label={mode === "table" ? undefined : field.label?.[lang] ?? "Default Label"} // Hide label in table mode
+        label={getFieldLabel(field)}
         disabled={isLoading || !isEditable}
         isEditable={isEditable}
         type={["date", "time"].includes(field.type as string) ? (field.type as "date" | "time") : undefined} // Pass 'date' or 'time' dynamically
@@ -99,7 +105,7 @@ const DynamicForm = forwardRef(
     );
     
     const renderDropdown = (field: IFieldConfig) => (
-      <Dropdown label={mode === "table" ? undefined : field.label?.[lang] ?? "Default Label"}>
+      <Dropdown label={getFieldLabel(field)}>
         <DropdownButton
           text={
             fields[field.name]?.value
@@ -181,7 +187,7 @@ const DynamicForm = forwardRef(
       return (
         <Dropdown 
           key={`field-dropdown-${field.name}`}
-          label={mode === "table" ? undefined : field.label?.[lang] ?? "Default Label"}
+          label={getFieldLabel(field)}
         >
           <DropdownButton
             text={getDropdownBtnText()}
@@ -233,7 +239,7 @@ const DynamicForm = forwardRef(
     
     const renderColorInput = (field: IFieldConfig) => (
       <ColorInput
-        label={mode === "table" ? undefined : field.label?.[lang] ?? "Default Label"}
+        label={getFieldLabel(field)}
         name={field.name}
         // selectedColor={fields[field.name]?.value || "#ffffff"}
         onChange={handleInputChange}
@@ -244,7 +250,7 @@ const DynamicForm = forwardRef(
     const renderTextArea = (field: IFieldConfig) => (
       <TextArea
         name={field.name}
-        label={mode === "table" ? undefined : field.label?.[lang] ?? "Default Label"}
+        label={getFieldLabel(field)}
         value={fields[field.name]?.value?.toString() || ""}
         onChange={(e) => handleInputChange(field.name, e.target.value)}
         disabled={isLoading || !isEditable}
@@ -254,13 +260,15 @@ const DynamicForm = forwardRef(
 
     const renderFileInput = (field: IFieldConfig) => (
       <FileUploader
-        label={mode === "table" ? undefined : field.label?.[lang] ?? "Default Label"}
+        label={getFieldLabel(field)}
         onUploadHandler={(file) => {
           if (file) {
             handleInputChange(field.name, file.name);
           }
         }}
         disabled={isLoading || !isEditable}
+        allowedFormats={field.allowedFormats}
+        allowedSize={field.allowedSize}
       />
     );
     

@@ -15,9 +15,10 @@ export const formConfig = [
     label: { en: "Branch", ar: "الفرع" },
     type: "text",
     value: "",
-    isValid: undefined,
+    isValid: true,
     errorMsg: "",
-    validations: [required],
+    validations: [],
+    optional: true,
   },
   {
     name: "min_age",
