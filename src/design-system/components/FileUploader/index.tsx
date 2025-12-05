@@ -53,8 +53,8 @@ export const FileUploader = ({
         const isImage = ['jpeg', 'jpg', 'png', 'webp', 'heic'].includes(fileExtension);
         
         // Different size limits: 10MB for images, 100MB for videos
-        const MAX_SIZE = isImage ? (10 * 1024 * 1024) : isVideo ? (100 * 1024 * 1024) : (allowedSize && (allowedSize * 1024 * 1024));
-        const sizeLimit = isImage ? '10MB' : isVideo ? '100MB' : `${allowedSize}MB`;
+        const MAX_SIZE = isImage ? (10 * 1024 * 1024) : isVideo ? (100 * 1024 * 1024) : (allowedSize ? (allowedSize * 1024 * 1024) : 10 * 1024 * 1024);
+        const sizeLimit = isImage ? '10MB' : isVideo ? '100MB' : `${allowedSize || 10}MB`;
 
         if (FILE.size > MAX_SIZE) {
             setInvalid(true);

@@ -71,7 +71,7 @@ const EditStaff: React.FC<EditStaffProps> = ({ formData }) => {
         email: data.email ?? formData.email,
         phone: data.phone ?? formData.phone,
         gender: data.gender ?? formData.gender,
-        classroom: data.classroom ? data.classroom.split(',').filter(v => v) : formData.classrooms,
+        classroom: data.classroom ? data.classroom.split(',').filter((v: string) => v) : formData.classrooms,
       };
       return updateStaff(formData.id, staffData);
     },
