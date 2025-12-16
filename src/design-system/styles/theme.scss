@@ -1,78 +1,7 @@
 @import './colors.scss';
 
-// Theme Variables - Dark Theme (Default)
+// Theme Variables - Light Theme (Default)
 :root {
-  // Primary Theme Color
-  --theme-primary: #{$primary-500};
-  --theme-primary-hover: #{$primary-400};
-  --theme-primary-light: #{$primary-900};
-  --theme-primary-dark: #{$primary-300};
-
-  // Side Navigation
-  --side-nav-bg: #{$violet-900};
-  --side-nav-border: #{$violet-800};
-  --side-nav-text: #{$violet-300};
-  --side-nav-text-hover: #{$violet-200};
-  --side-nav-text-active: #{$white};
-  --side-nav-item-bg-hover: #{$violet-800};
-  --side-nav-item-bg-active: #{$violet-700};
-  --side-nav-icon: #{$violet-400};
-  --side-nav-icon-hover: #{$violet-200};
-  --side-nav-icon-active: #{$white};
-  --side-nav-text-secondary: #{$violet-500};
-
-  // Top Bar / Header
-  --top-bar-bg: #{$violet-900};
-  --top-bar-border: #{$violet-800};
-  --top-bar-text: #{$violet-200};
-  --top-bar-text-hover: #{$violet-100};
-  --top-bar-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
-
-  // Main Content Area
-  --content-bg: #{$violet-900};
-  --content-text: #{$violet-50};
-
-  // Cards
-  --card-bg: #{$violet-800};
-  --card-border: #{$violet-700};
-  --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
-
-  // Buttons
-  --btn-primary-bg: #{$violet-600};
-  --btn-primary-bg-hover: #{$violet-700};
-  --btn-primary-text: #{$white};
-
-  // Forms
-  --input-bg: #{$gray-800};
-  --input-border: #{$gray-600};
-  --input-border-focus: var(--theme-primary);
-  --input-text: #{$gray-100};
-  --input-placeholder: #{$gray-400};
-
-  // Status Colors
-  --status-success: #{$success-500};
-  --status-warning: #{$warning-500};
-  --status-error: #{$error-500};
-  --status-info: var(--theme-primary);
-
-  // Text Colors
-  --text-primary: #{$gray-100};
-  --text-secondary: #{$gray-300};
-  --text-tertiary: #{$gray-400};
-  --text-disabled: #{$gray-500};
-
-  // Border Colors
-  --border-primary: #{$gray-600};
-  --border-secondary: #{$gray-700};
-  --border-light: #{$gray-800};
-
-  // Avatar Colors
-  --avatar-bg: #{$violet-700};
-  --avatar-text: #{$violet-200};
-}
-
-// Light Theme (Reversed Purple)
-[data-theme="light"] {
   // Primary Theme Color
   --theme-primary: #{$primary-600};
   --theme-primary-hover: #{$primary-700};
@@ -80,37 +9,37 @@
   --theme-primary-dark: #{$primary-800};
 
   // Side Navigation
-  --side-nav-bg: #{$violet-50};
-  --side-nav-border: #{$violet-200};
-  --side-nav-text: #{$violet-700};
-  --side-nav-text-hover: #{$violet-800};
-  --side-nav-text-active: #{$violet-900};
-  --side-nav-item-bg-hover: #{$violet-200};
-  --side-nav-item-bg-active: #{$violet-300};
-  --side-nav-icon: #{$violet-600};
-  --side-nav-icon-hover: #{$violet-800};
-  --side-nav-icon-active: #{$violet-900};
-  --side-nav-text-secondary: #{$violet-500};
+  --side-nav-bg: #{$primary-50};
+  --side-nav-border: #{$primary-200};
+  --side-nav-text: #{$primary-500};
+  --side-nav-text-hover: #{$primary-800};
+  --side-nav-text-active: #{$primary-50};
+  --side-nav-item-bg-hover: #{$primary-200};
+  --side-nav-item-bg-active: #{$primary-300};
+  --side-nav-icon: #{$primary-500};
+  --side-nav-icon-hover: #{$primary-800};
+  --side-nav-icon-active: #{$primary-50};
+  --side-nav-text-secondary: #{$primary-500};
 
   // Top Bar / Header
-  --top-bar-bg: #{$violet-50};
-  --top-bar-border: #{$violet-200};
-  --top-bar-text: #{$violet-800};
-  --top-bar-text-hover: #{$violet-900};
+  --top-bar-bg: #{$primary-50};
+  --top-bar-border: #{$primary-200};
+  --top-bar-text: #{$primary-500};
+  --top-bar-text-hover: #{$primary-800};
   --top-bar-shadow: 0 1px 3px 0 rgba(16, 24, 40, 0.1);
 
   // Main Content Area
-  --content-bg: #{$violet-50};
-  --content-text: #{$violet-900};
+  --content-bg: #{$white};
+  --content-text: #{$primary-900};
 
   // Cards
-  --card-bg: #{$violet-200};
-  --card-border: #{$violet-300};
+  --card-bg: #{$primary-200};
+  --card-border: #{$primary-300};
   --card-shadow: 0 1px 3px 0 rgba(16, 24, 40, 0.1);
 
   // Buttons
-  --btn-primary-bg: #{$violet-600};
-  --btn-primary-bg-hover: #{$violet-700};
+  --btn-primary-bg: #{$primary-500};
+  --btn-primary-bg-hover: #{$primary-300};
   --btn-primary-text: #{$white};
 
   // Forms
@@ -138,7 +67,77 @@
   --border-light: #{$gray-100};
 
   // Avatar Colors
-  --avatar-bg: #{$violet-800};
-  --avatar-text: #{$violet-100};
+  --avatar-bg: #{$primary-500};
+  --avatar-text: #{$primary-100};
 }
 
+// Dark Theme
+[data-theme="dark"] {
+  // Primary Theme Color
+  --theme-primary: #{$primary-500};
+  --theme-primary-hover: #{$primary-400};
+  --theme-primary-light: #{$primary-900};
+  --theme-primary-dark: #{$primary-300};
+
+  // Side Navigation
+  --side-nav-bg: #{$primary-500};
+  --side-nav-border: #{$primary-100};
+  --side-nav-text: #{$primary-200};
+  --side-nav-text-hover: #{$primary-200};
+  --side-nav-text-active: #{$white};
+  --side-nav-item-bg-hover: #{$primary-800};
+  --side-nav-item-bg-active: #{$primary-800};
+  --side-nav-icon: #{$primary-200};
+  --side-nav-icon-hover: #{$primary-200};
+  --side-nav-icon-active: #{$white};
+  --side-nav-text-secondary: #{$primary-500};
+
+  // Top Bar / Header
+  --top-bar-bg: #{$primary-500};
+  --top-bar-border: #{$primary-100};
+  --top-bar-text: #{$primary-200};
+  --top-bar-text-hover: #{$primary-100};
+  --top-bar-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+
+  // Main Content Area
+  --content-bg: #{$white};
+  --content-text: #{$primary-50};
+
+  // Cards
+  --card-bg: #{$primary-800};
+  --card-border: #{$primary-700};
+  --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+
+  // Buttons
+  --btn-primary-bg: #{$primary-500};
+  --btn-primary-bg-hover: #{$primary-300};
+  --btn-primary-text: #{$white};
+
+  // Forms
+  --input-bg: #{$gray-800};
+  --input-border: #{$gray-600};
+  --input-border-focus: var(--theme-primary);
+  --input-text: #{$gray-100};
+  --input-placeholder: #{$gray-400};
+
+  // Status Colors
+  --status-success: #{$success-500};
+  --status-warning: #{$warning-500};
+  --status-error: #{$error-500};
+  --status-info: var(--theme-primary);
+
+// Text Colors
+  --text-primary: #{$gray-900};
+  --text-secondary: #{$gray-600};
+  --text-tertiary: #{$gray-500};
+  --text-disabled: #{$gray-400};
+
+  // Border Colors
+  --border-primary: #{$gray-300};
+  --border-secondary: #{$gray-200};
+  --border-light: #{$gray-100};
+
+  // Avatar Colors
+  --avatar-bg: #{$primary-100};
+  --avatar-text: #{$primary-500};
+}

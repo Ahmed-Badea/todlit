@@ -11,8 +11,8 @@ export const formConfig = [
     validations: [required],
   },
   {
-    name: "fees",
-    label: { en: "Fees", ar: "الرسوم" },
+    name: "monthly_fee",
+    label: { en: "Monthly Fee", ar: "الرسوم الشهرية" },
     type: "text",
     value: "",
     isValid: undefined,

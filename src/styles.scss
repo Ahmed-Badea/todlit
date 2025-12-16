@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import './design-system/styles/theme.scss';
 
 * {
   box-sizing: border-box;
@@ -13,6 +14,40 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--content-bg);
+  color: var(--text-primary);
+}
+
+// Global element styles using theme variables
+input, textarea, select {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--input-text);
+  
+  &::placeholder {
+    color: var(--input-placeholder);
+  }
+  
+  &:focus {
+    border-color: var(--input-border-focus);
+    outline: none;
+  }
+}
+
+// Text color utilities
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+small, .text-small {
+  color: var(--text-tertiary);
 }
 
 :root {
@@ -41,14 +76,14 @@ html {
   }
 
   ::-webkit-scrollbar-track {
-    background: #d0d5dd;
+    background: var(--border-secondary);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #8d94a2;
+    background: var(--text-tertiary);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #6c7787;
+    background: var(--text-secondary);
   }
 }

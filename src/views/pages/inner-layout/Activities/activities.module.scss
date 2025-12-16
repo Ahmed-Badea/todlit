@@ -129,27 +129,27 @@
 
 .template-card {
   padding: 16px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--card-border);
   border-radius: 8px;
-  background: white;
+  background: var(--card-bg);
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover {
-    border-color: #007bff;
-    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.1);
+    border-color: var(--theme-primary);
+    box-shadow: var(--card-shadow);
   }
 
   h5 {
     margin: 0 0 8px 0;
-    color: #333;
+    color: var(--text-primary);
     font-size: 14px;
     font-weight: 600;
   }
 
   p {
     margin: 0;
-    color: #666;
+    color: var(--text-secondary);
     font-size: 12px;
   }
 }

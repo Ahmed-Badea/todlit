@@ -6,8 +6,7 @@ const ThemeToggle: React.FC = () => {
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    const theme = savedTheme || 'light';
     
     setIsDark(theme === 'dark');
     document.documentElement.setAttribute('data-theme', theme);

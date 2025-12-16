@@ -16,7 +16,7 @@ export const getPlans = async () => {
 // Create a new plan
 export const createPlan = async ({
   name,
-  fees,
+  monthly_fee,
   start_shift,
   end_shift,
   program_color,
@@ -24,7 +24,7 @@ export const createPlan = async ({
   late_checkout_fees,
 }: {
   name: string;
-  fees: string;
+  monthly_fee: string;
   start_shift: string;
   end_shift: string;
   program_color: string;
@@ -34,7 +34,7 @@ export const createPlan = async ({
   // Format time fields before sending the request
   const reqBody = {
     name,
-    fees,
+    monthly_fee,
     start_shift: formatTime(start_shift),
     end_shift: formatTime(end_shift),
     program_color,

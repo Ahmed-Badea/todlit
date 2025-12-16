@@ -16,6 +16,15 @@ export interface StudentActivityPayload {
   field_responses: FieldResponse[];
 }
 
+export const uploadActivityMedia = async (file: File) => {
+  const formData = new FormData();
+  formData.append('file', file);
+  const response = await Axios.post("/settings/activity/media/", formData, {
+    headers: { 'Content-Type': 'multipart/form-data' }
+  });
+  return response.data.id;
+};
+
 export const submitStudentActivity = async (payload: StudentActivityPayload) => {
   const response = await Axios.post("/settings/student_activities/", payload);
   return response.data;
