@@ -26,7 +26,7 @@ export const FileUploader = ({
     // unused uploadedFile state
     // const [uploadedFile, setUploadedFile] = useState<File | undefined>();
     const [UploadedFileInfo, setUploadedFileInfo] = useState<{ name: string, size?: number }>({ name: '' });
-    const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+
 
     useEffect(() => {
         setServerError(isServerError);
@@ -70,7 +70,6 @@ export const FileUploader = ({
             }
             
             if (validFiles.length > 0) {
-                setUploadedFiles(prev => [...prev, ...validFiles]);
                 if (onUploadHandler) {
                     onUploadHandler(validFiles);
                 }

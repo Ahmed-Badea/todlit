@@ -12,7 +12,7 @@ import styles from "./billing.module.scss";
 interface Plan {
   id: string;
   name: string;
-  fees: string;
+  monthly_fee: string;
   start_shift: string;
   end_shift: string;
   program_color: string;
