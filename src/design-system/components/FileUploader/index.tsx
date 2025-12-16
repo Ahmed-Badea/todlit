@@ -17,7 +17,8 @@ export const FileUploader = ({
     previouslyUploadedFile,
     isServerError = false,
     onClickHandler,
-    onUploadHandler
+    onUploadHandler,
+    multiple = false
 }: IFileUploader) => {
     const [invalid, setInvalid] = useState(false);
     const [errorMsg, setErrorMsg] = useState("");
@@ -25,6 +26,7 @@ export const FileUploader = ({
     // unused uploadedFile state
     // const [uploadedFile, setUploadedFile] = useState<File | undefined>();
     const [UploadedFileInfo, setUploadedFileInfo] = useState<{ name: string, size?: number }>({ name: '' });
+    const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
 
     useEffect(() => {
         setServerError(isServerError);
@@ -40,6 +42,45 @@ export const FileUploader = ({
     const fileUploadHandler = (e: any, file?: File) => {
         setInvalid(false);
         setErrorMsg('');
+        
+        if (multiple && e?.target?.files) {
+            const files = Array.from(e.target.files) as File[];
+            const validFiles: File[] = [];
+            
+            for (const file of files) {
+                const fileExtension = file.type.split('/')[1];
+                const isVideo = ['mp4', 'mov', 'avi', 'webm'].includes(fileExtension);
+                const isImage = ['jpeg', 'jpg', 'png', 'webp', 'heic'].includes(fileExtension);
+                const MAX_SIZE = isImage ? (10 * 1024 * 1024) : isVideo ? (100 * 1024 * 1024) : (allowedSize ? (allowedSize * 1024 * 1024) : 10 * 1024 * 1024);
+                
+                if (file.size > MAX_SIZE) {
+                    const sizeLimit = isImage ? '10MB' : isVideo ? '100MB' : `${allowedSize || 10}MB`;
+                    setInvalid(true);
+                    setErrorMsg(`${file.name}: ${TEXT.errorMsgs.fileSize.replace('{{size}}', sizeLimit)}`);
+                    continue;
+                }
+                
+                if (!allowedFormats?.includes(fileExtension)) {
+                    setInvalid(true);
+                    setErrorMsg(`${file.name}: ${TEXT.errorMsgs.notSupportedFormat}`);
+                    continue;
+                }
+                
+                validFiles.push(file);
+            }
+            
+            if (validFiles.length > 0) {
+                setUploadedFiles(prev => [...prev, ...validFiles]);
+                if (onUploadHandler) {
+                    onUploadHandler(validFiles);
+                }
+                setUploadedFileInfo({ name: `${validFiles.length} file(s) uploaded` });
+            }
+            
+            if (e.target) e.target.value = null;
+            return;
+        }
+        
         const FILE = ((e?.target?.files && e?.target?.files[0]) || file);
         
         if (!FILE) {
@@ -159,7 +200,7 @@ export const FileUploader = ({
                                         : ` ${TEXT.maxSize.replace('{{size}}', String(allowedSize))}`}
                                 </div>
                             </div>
-                            <input type="file" accept={allowedFormats?.join()} title='' onChange={fileUploadHandler} />
+                            <input type="file" accept={allowedFormats?.join()} title='' onChange={fileUploadHandler} multiple={multiple} />
                         </div>
                         {
                             (hintText || errorMsg) &&

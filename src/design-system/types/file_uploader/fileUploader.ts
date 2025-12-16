@@ -9,6 +9,7 @@ export interface IFileUploader {
     allowedSize?: number,
     previouslyUploadedFile?: string,
     onClickHandler?: MouseEventHandler,
-    onUploadHandler?: (file?: File) => void,
+    onUploadHandler?: (file?: File | File[]) => void,
     isServerError?: boolean,
+    multiple?: boolean,
 }

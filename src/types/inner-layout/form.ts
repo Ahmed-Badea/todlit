@@ -11,6 +11,7 @@ export interface IFieldConfig {
   allowedFormats?: string[];
   allowedSize?: number;
   optional?: boolean;
+  multiple?: boolean;
 }
 
 export interface IField {

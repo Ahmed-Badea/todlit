@@ -32,9 +32,12 @@ const DynamicForm = forwardRef(
     const lang = i18n.language as 'en' | 'ar';
     const [fields, setFields] = useState<IFields>(
       fieldsConfig.reduce((acc, field) => {
+        const hasValidations = field.validations && field.validations.length > 0;
+        const initialValue = field.value ?? (field.type === "date" ? new Date() : field.type === "file" ? [] : "");
+        
         acc[field.name] = {
-          value: field.value ?? (field.type === "date" ? new Date() : ""),
-          isValid: field.isValid ?? undefined,
+          value: initialValue,
+          isValid: field.isValid ?? (hasValidations ? undefined : true),
           errorMsg: field.errorMsg ?? "",
           validations: field.validations ?? [],
         };        
@@ -43,20 +46,35 @@ const DynamicForm = forwardRef(
     );
 
     useEffect(() => {
-      setFormValid(isFormValid(fields));
+      const valid = isFormValid(fields);
+      setFormValid(valid);
     }, [fields, setFormValid]);
     
-    const handleInputChange = (fieldName: string, value: string) => {
+    const handleInputChange = (fieldName: string, value: any) => {
       setServerErrMsg("");
+      
+      const fieldConfig = fieldsConfig.find(f => f.name === fieldName);
+      let isValid: boolean | undefined = undefined;
+      
+      if (fieldConfig?.type === 'file') {
+        const hasFiles = Array.isArray(value) ? value.length > 0 : !!value;
+        const hasValidations = fieldConfig.validations && fieldConfig.validations.length > 0;
+        isValid = hasValidations ? hasFiles : true;
+      }
+      
       const updatedFields = {
         ...fields,
         [fieldName]: {
           ...fields[fieldName],
           value,
+          ...(isValid !== undefined && { isValid })
         },
       };
       setFields(updatedFields);
-      validateField(updatedFields, setFields, fieldName, value);
+      
+      if (fieldConfig?.type !== 'file' && typeof value === 'string') {
+        validateField(updatedFields, setFields, fieldName, value);
+      }
     };
 
     useImperativeHandle(ref, () => ({
@@ -263,12 +281,13 @@ const DynamicForm = forwardRef(
         label={getFieldLabel(field)}
         onUploadHandler={(file) => {
           if (file) {
-            handleInputChange(field.name, file.name);
+            handleInputChange(field.name, file);
           }
         }}
         disabled={isLoading || !isEditable}
         allowedFormats={field.allowedFormats}
         allowedSize={field.allowedSize}
+        multiple={field.multiple}
       />
     );
     
