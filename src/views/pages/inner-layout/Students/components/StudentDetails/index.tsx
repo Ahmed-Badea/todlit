@@ -32,7 +32,7 @@ const StudentsDetails = () => {
     { tabLabel: t("innerLayout.students.tabs.profile"), active: activeTab === 0, onClickHandler: () => setActiveTab(0) },
     { tabLabel: t("innerLayout.students.tabs.attendance"), active: activeTab === 1, onClickHandler: () => setActiveTab(1) },
     { tabLabel: t("innerLayout.students.tabs.billing"), active: activeTab === 2, onClickHandler: () => setActiveTab(2) },
-    { tabLabel: t("innerLayout.students.tabs.documents"), active: activeTab === 3, onClickHandler: () => setActiveTab(3) },
+    // { tabLabel: t("innerLayout.students.tabs.documents"), active: activeTab === 3, onClickHandler: () => setActiveTab(3) },
   ];
 
   const renderTabContent = () => {
@@ -43,8 +43,8 @@ const StudentsDetails = () => {
         return <Attendance />;
       case 2:
         return <Billing />;
-      case 3:
-        return <Documents />;
+      // case 3:
+      //   return <Documents />;
       default:
         return <Profile formData={data} id={id ?? null} />;
     }

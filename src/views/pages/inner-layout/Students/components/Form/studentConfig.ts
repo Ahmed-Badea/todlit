@@ -1,5 +1,5 @@
 // studentConfig.ts
-import { required } from "../../../../../../utils/formValidations";
+import { required, requiredDropdown } from "../../../../../../utils/formValidations";
 
 export const formConfig = [
   {
@@ -62,17 +62,17 @@ export const formConfig = [
     value: "",
     isValid: undefined,
     errorMsg: "",
-    validations: [required],
+    validations: [requiredDropdown],
     options: [], // Populated dynamically
   },
   {
     name: "plan_id",
-    label: { en: "Payment Plan (Optional)", ar: "خطة الدفع (اختيارية)" },
+    label: { en: "Payment Plan", ar: "خطة الدفع" },
     type: "dropdown",
     value: "",
-    isValid: true, // Always valid since it's optional
+    isValid: undefined,
     errorMsg: "",
-    validations: [], // No validations - optional field
+    validations: [requiredDropdown],
     options: [], // Populated dynamically from API
   },
 ];

@@ -59,11 +59,13 @@ export const getParents = async (filters: FilterParams = {}) => {
   return response.data;
 };
 
-export const createParent = async (parent: IParent) => {
+export const createParent = async (parent: IParent, parentType: 'father' | 'mother') => {
+  const gender = parentType === 'father' ? 'male' : 'female';
+  
   const reqBody = {
     first_name: parent.first_name,
     last_name: parent.last_name,
-    gender: parent.gender,
+    gender: gender,
     phone: parent.phone,
     email: parent.email,
     student_id: parent.student_id
@@ -72,15 +74,17 @@ export const createParent = async (parent: IParent) => {
   return Axios.post(`/dashboard/parent/`, reqBody);
 };
 
-export const updateParent = async (id: string, parent: IParent) => {
+export const updateParent = async (id: string, parent: IParent, parentType: 'father' | 'mother') => {
+  const gender = parentType === 'father' ? 'male' : 'female';
+  
   const reqBody = {
     first_name: parent.first_name,
     last_name: parent.last_name,
-    gender: parent.gender,
+    gender: gender,
     phone: parent.phone,
     email: parent.email,
     student_id: parent.student_id
   };
 
-  return Axios.put(`/dashboard/student_update/${id}`, reqBody);
+  return Axios.put(`/dashboard/parent_update/${id}`, reqBody);
 };

@@ -60,6 +60,10 @@ const DynamicForm = forwardRef(
         const hasFiles = Array.isArray(value) ? value.length > 0 : !!value;
         const hasValidations = fieldConfig.validations && fieldConfig.validations.length > 0;
         isValid = hasValidations ? hasFiles : true;
+      } else if (fieldConfig?.type === 'dropdown') {
+        // For dropdowns, check if value exists and is not empty
+        const hasValidations = fieldConfig.validations && fieldConfig.validations.length > 0;
+        isValid = hasValidations ? (value !== "" && value !== null && value !== undefined) : true;
       }
       
       const updatedFields = {
@@ -72,7 +76,7 @@ const DynamicForm = forwardRef(
       };
       setFields(updatedFields);
       
-      if (fieldConfig?.type !== 'file' && typeof value === 'string') {
+      if (fieldConfig?.type !== 'file' && fieldConfig?.type !== 'dropdown' && typeof value === 'string') {
         validateField(updatedFields, setFields, fieldName, value);
       }
     };

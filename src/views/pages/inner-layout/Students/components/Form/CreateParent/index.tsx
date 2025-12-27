@@ -15,6 +15,10 @@ const CreateParent: React.FC<{ type: "father" | "mother", student_id: string }> 
 
   const titleKey = type === "father" ? "innerLayout.form.titles.createFather" : "innerLayout.form.titles.createMother";
 
+  const submitParent = (parentData: any) => {
+    return createParent(parentData, type);
+  };
+
   return (
     <div>
       <Button
@@ -29,7 +33,7 @@ const CreateParent: React.FC<{ type: "father" | "mother", student_id: string }> 
         mode="popup"
         title={t(titleKey)}
         fieldsConfig={formConfig}
-        submitFn={createParent}
+        submitFn={submitParent}
         successMessage={t("innerLayout.form.successMessage.created")}
         onClose={handlePopupClose}
         isOpen={isPopupOpen}

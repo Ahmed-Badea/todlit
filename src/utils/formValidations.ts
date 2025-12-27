@@ -155,6 +155,11 @@ export const required: IValidation = {
   error_msg: t("outerLayout.form.errors.required"),
 };
 
+export const requiredDropdown: IValidation = {
+  pattern: /^.+$/,
+  error_msg: t("outerLayout.form.errors.required"),
+};
+
 export const emailValidation: IValidation = {
   pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
   error_msg: t("outerLayout.form.errors.invalidEmail"),

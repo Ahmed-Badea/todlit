@@ -32,7 +32,7 @@
   {
     "title_en": "Classrooms",
     "title_ar": "الفصول الدراسية",
-    "value": "classrooms.name",
+    "value": "classrooms",
     "dataType": "array"
   }
 ]

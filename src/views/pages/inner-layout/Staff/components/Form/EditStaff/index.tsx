@@ -34,7 +34,7 @@ const EditStaff: React.FC<EditStaffProps> = ({ formData }) => {
       const newFormConfig = staffConfig.map((field) => {
         if (field.name === 'classroom') {
           const selectedClassrooms = Array.isArray(formData.classrooms) 
-            ? formData.classrooms.join(',') 
+            ? formData.classrooms.map(classroom => classroom.name).join(',')
             : '';
 
           return {
@@ -71,7 +71,7 @@ const EditStaff: React.FC<EditStaffProps> = ({ formData }) => {
         email: data.email ?? formData.email,
         phone: data.phone ?? formData.phone,
         gender: data.gender ?? formData.gender,
-        classroom: data.classroom ? data.classroom.split(',').filter((v: string) => v) : formData.classrooms,
+        classroom: data.classroom ? data.classroom.split(',').filter((v: string) => v) : [],
       };
       return updateStaff(formData.id, staffData);
     },

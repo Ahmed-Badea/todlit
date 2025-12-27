@@ -8,7 +8,8 @@ export type DataType =
   | "button"
   | "array"
   | "multi_field"
-  | "actions";
+  | "actions"
+  | "badge";
 
 // Define the structure of a single button action
 export interface ButtonAction {
@@ -36,6 +37,12 @@ export interface IColumn {
 
   // Used only if dataType === 'actions'
   buttons?: ButtonAction[];
+
+  // Used only if dataType === 'badge'
+  badgeConfig?: {
+    textField: string;    // field name for display text
+    colorField: string;   // field name for background color
+  };
 }
 
 

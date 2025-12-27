@@ -34,23 +34,20 @@ const EditStudent = ({ formData }: { formData: FormData }) => {
         const fieldValue = formData[field.name] || '';
         
         if (field.name === 'classroom') {
-          const selectedClassroom = classes.find(
-            (classroom: IClass) => classroom.name === formData.classroom
-          );
-
           return {
             ...field,
             type: field.type,
             options: classes.map((classroom: IClass) => ({
               label: { en: classroom.name, ar: classroom.name },
-              value: classroom.name,
+              value: classroom.id,
             })),
-            value: selectedClassroom ? selectedClassroom.name : '',
-            isValid: selectedClassroom ? true : undefined,
+            value: formData.classroom,
+            isValid: formData.classroom ? true : undefined,
           };
         }
 
         if (field.name === 'plan_id') {
+          const planId = formData.plan?.id || formData.plan_id || '';
           return {
             ...field,
             type: field.type,
@@ -58,9 +55,9 @@ const EditStudent = ({ formData }: { formData: FormData }) => {
               label: { en: plan.name, ar: plan.name },
               value: plan.id,
             })),
-            value: fieldValue,
-            isValid: true, // Always valid since it's optional
-            validations: [], // Ensure no validations
+            value: planId,
+            isValid: planId ? true : undefined,
+            validations: field.validations,
           };
         }
 
@@ -89,7 +86,7 @@ const EditStudent = ({ formData }: { formData: FormData }) => {
         gender: data.gender ?? formData.gender,
         status: data.status ?? formData.status,
         classroom: data.classroom ?? formData.classroom,
-        plan_id: data.plan_id ?? formData.plan_id ?? null,
+        plan_id: data.plan_id ?? formData.plan?.id ?? formData.plan_id ?? null,
       };
       return updateStudent(formData.id, studentData);
     },

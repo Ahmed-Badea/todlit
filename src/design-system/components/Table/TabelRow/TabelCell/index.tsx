@@ -1,5 +1,6 @@
 import React from "react";
 import { IRow, IColumn } from "../../../../types/Table";
+import styles from "../../table.module.scss";
 
 // Helper to get nested values from dot-path strings (e.g., "check_in_details.time")
 const getNestedValue = (obj: any, path: string): any => {
@@ -55,6 +56,11 @@ export const TableCell: React.FC<TableCellProps> = ({
 
     case "array":
       if (Array.isArray(cellValue)) {
+        // Handle array of objects (extract name property)
+        if (cellValue.length > 0 && typeof cellValue[0] === 'object' && cellValue[0].name) {
+          return <>{cellValue.map(item => item.name).join(", ")}</>;
+        }
+        // Handle array of strings
         return <>{cellValue.join(", ")}</>;
       }
       return <>{cellValue}</>;
@@ -97,6 +103,29 @@ export const TableCell: React.FC<TableCellProps> = ({
             );
           })}
         </div>
+      );
+    }
+
+    case "badge": {
+      if (!cellValue || typeof cellValue !== "object") return <>-</>;
+      
+      const textField = column.badgeConfig?.textField || "name";
+      const colorField = column.badgeConfig?.colorField || "color";
+      
+      const badgeText = cellValue[textField] || "-";
+      const badgeColor = cellValue[colorField] || "gray";
+      
+      return (
+        <span 
+          className={styles["plan-badge"]} 
+          style={{ 
+            backgroundColor: badgeColor,
+            padding: "4px 12px",
+            borderRadius: "8px"
+          }}
+        >
+          {badgeText}
+        </span>
       );
     }
 

@@ -66,15 +66,19 @@ const Attendance = () => {
   const lang = i18n.language as Language;
   const { id } = useParams<{ id: string }>();
   
-  const [startDate, setStartDate] = useState<Date | null>(new Date());
-  const [endDate, setEndDate] = useState<Date | null>(new Date());
+  const [selectedMonth, setSelectedMonth] = useState<Date | null>(new Date());
 
   const { data: attendanceData = [], isLoading, refetch } = useQuery(
-    ["fetchStudentAttendance", id, startDate, endDate],
+    ["fetchStudentAttendance", id, selectedMonth],
     () => {
       const payload: any = { student_id: id };
-      if (startDate) payload.start_date = dateOnlyFormat(startDate);
-      if (endDate) payload.end_date = dateOnlyFormat(endDate);
+      if (selectedMonth) {
+        const year = selectedMonth.getFullYear();
+        const month = String(selectedMonth.getMonth() + 1).padStart(2, '0');
+        const monthValue = `${year}-${month}`;
+        payload.start_date = monthValue;
+        payload.end_date = monthValue;
+      }
       return getAttendance(payload);
     },
     { enabled: !!id }
@@ -156,20 +160,17 @@ const Attendance = () => {
     }
   };
 
-  const handleDateRangeChange = (start: Date | null, end: Date | null) => {
-    setStartDate(start);
-    setEndDate(end);
+  const handleMonthChange = (date: Date | null) => {
+    setSelectedMonth(date);
   };
 
   return (
     <div>
       <div style={{ marginBottom: '20px' }}>
         <DatePicker
-          range
-          startDate={startDate}
-          endDate={endDate}
-          onRangeChange={handleDateRangeChange}
-          label="Date Range"
+          selectedDate={selectedMonth}
+          onDateChange={handleMonthChange}
+          label="Select Month"
           disabled={isLoading}
           type="month"
         />

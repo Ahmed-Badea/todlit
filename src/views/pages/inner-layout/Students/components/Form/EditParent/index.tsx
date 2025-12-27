@@ -37,6 +37,8 @@ const EditParent = ({ formData }: { formData: FormData }) => {
 
   const updateMutation = useMutation(
     (data: Partial<IParent>) => {
+      const parentType = formData.gender === 'male' ? 'father' : 'mother';
+      
       // Ensure all required fields are present and not undefined
       const parentData = {
         ...formData,
@@ -47,7 +49,7 @@ const EditParent = ({ formData }: { formData: FormData }) => {
         phone: data.phone ?? formData.phone,
         gender: data.gender ?? formData.gender,
       };
-      return updateParent(formData.id, parentData);
+      return updateParent(formData.id, parentData, parentType);
     },
     {
       onSuccess: () => {

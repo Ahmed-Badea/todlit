@@ -37,18 +37,5 @@ export const formConfig = [
     isValid: undefined,
     errorMsg: "",
     validations: [required],
-  },
-  {
-    name: "gender",
-    label: { en: "Gender", ar: "الجنس" },
-    type: "dropdown",
-    value: "",
-    isValid: undefined,
-    validations: [required],
-    errorMsg: "",
-    options: [
-      { label: { en: "Male", ar: "ذكر" }, value: "male" },
-      { label: { en: "Female", ar: "أنثى" }, value: "female" },
-    ],
   }
 ];
