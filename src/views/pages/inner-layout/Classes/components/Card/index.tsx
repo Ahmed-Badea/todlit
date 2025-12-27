@@ -1,43 +1,63 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { Button, Popup } from"../../../../../../design-system";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
+import FormWrapper from "../../../../../../components/FormWrapper";
+import { updateClass } from "../../../../../../services/inner-layout/classes";
+import { formConfig } from "../Form/classConfig";
+import { useNavigate } from "react-router-dom";
 import styles from "./Card.module.scss";
 
 interface CardProps {
+  id: string;
   roomName: string;
   students: number;
-  activeStudents: number;
   staff: number;
-  activeStaff: number;
   capacity?: number;
   minAge?: string;
   maxAge?: string;
-  onDelete: () => void;
+  branch?: string;
+  status?: string;
 }
 
 const Card: React.FC<CardProps> = ({
+  id,
   roomName,
   students,
-  activeStudents,
   staff,
-  activeStaff,
   capacity,
   minAge,
   maxAge,
-  onDelete,
+  branch,
+  status,
 }) => {
-  const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const { t } = useTranslation();
+  const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const handleDeletePopupOpen = () => {
-    setIsDeletePopupOpen(true);
+  const handleEditPopupOpen = () => {
+    setIsEditPopupOpen(true);
   };
 
-  const handleDeletePopupClose = () => {
-    setIsDeletePopupOpen(false);
+  const handleEditPopupClose = () => {
+    setIsEditPopupOpen(false);
   };
+
+  const formData = {
+    id,
+    name: roomName,
+    capacity: capacity?.toString() || '',
+    min_age: minAge || '',
+    max_age: maxAge || '',
+    branch: branch || '',
+    status: status || '',
+  };
+
+  const updatedFormConfig = formConfig.map((field) => ({
+    ...field,
+    value: formData[field.name as keyof typeof formData] || '',
+    isValid: formData[field.name as keyof typeof formData] ? true : undefined,
+  }));
 
   // Navigate to students page with class filter
   const handleNavigateToStudents = () => {
@@ -55,48 +75,32 @@ const Card: React.FC<CardProps> = ({
         <h3>{roomName}</h3>
         <div className={styles["buttons-container"]}>
           <FontAwesomeIcon
-            icon={faTrash}
-            className={styles["delete-icon"]}
-            onClick={handleDeletePopupOpen}
+            icon={faEdit}
+            className={styles["edit-icon"]}
+            onClick={handleEditPopupOpen}
           />
         </div>
       </div>
       <p onClick={handleNavigateToStudents} className={styles["clickable"]}>
-        {students} Students | {activeStudents} Active
+        {t("innerLayout.classes.students")}: {students}
       </p>
       <p onClick={handleNavigateToStaff} className={styles["clickable"]}>
-        {staff} Staff | {activeStaff} Active
+        {t("innerLayout.classes.staff")}: {staff}
       </p>
-      <p>Capacity: {capacity}</p>
-      <p>Min Age: {minAge}</p>
-      <p>Max Age: {maxAge}</p>
+      <p>{t("innerLayout.classes.capacity")}: {capacity}</p>
+      <p>{t("innerLayout.classes.minAge")}: {minAge}</p>
+      <p>{t("innerLayout.classes.maxAge")}: {maxAge}</p>
+      <p>{t("innerLayout.classes.status")}: {status}</p>
 
-      <Popup
-        isOpen={isDeletePopupOpen}
-        onClose={handleDeletePopupClose}
-        title="Confirm Delete"
-      >
-        <p>Are you sure you want to delete {roomName}?</p>
-        <div className={styles["popup-buttons"]}>
-          <Button
-            size="md"
-            color="primary"
-            variant="contained"
-            text="Yes, Delete"
-            onClickHandler={() => {
-              onDelete();
-              handleDeletePopupClose();
-            }}
-          />
-          <Button
-            size="md"
-            color="secondary"
-            variant="outlined"
-            text="Cancel"
-            onClickHandler={handleDeletePopupClose}
-          />
-        </div>
-      </Popup>
+      <FormWrapper
+        mode="popup"
+        title="Update Class"
+        fieldsConfig={updatedFormConfig}
+        submitFn={(data) => updateClass(id, data)}
+        successMessage="Class updated successfully"
+        onClose={handleEditPopupClose}
+        isOpen={isEditPopupOpen}
+      />
     </div>
   );
 };

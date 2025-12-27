@@ -47,4 +47,17 @@ export const formConfig = [
     errorMsg: "",
     validations: [required],
   },
+  {
+    name: "status",
+    label: { en: "Status", ar: "الحالة" },
+    type: "dropdown",
+    value: "",
+    isValid: undefined,
+    errorMsg: "",
+    validations: [required],
+    options: [
+      { label: { en: "Active", ar: "نشط" }, value: "active" },
+      { label: { en: "Inactive", ar: "غير نشط" }, value: "inactive" },
+    ],
+  },
 ];

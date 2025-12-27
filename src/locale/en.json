@@ -142,7 +142,13 @@
     },
     "classes":{
       "title": "Classes",
-      "createClass": "Create Class"
+      "createClass": "Create Class",
+      "students": "Students",
+      "staff": "Staff",
+      "capacity": "Capacity",
+      "minAge": "Min Age",
+      "maxAge": "Max Age",
+      "status": "Status"
     },
     "staff":{
       "title": "Staff",

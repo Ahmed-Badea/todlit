@@ -24,10 +24,6 @@ const Classes: React.FC = () => {
     refetch();
   }, [refetch]);
 
-  const handleDeleteClass = (id: string) => {
-    console.log(`Delete classroom with id ${id}`);
-  };
-
   return (
     <InnerLayout isLoading={isLoading || isFetching} error={!!error} errorMessage={error?.message}>
       <div className={styles.header}>
@@ -36,18 +32,18 @@ const Classes: React.FC = () => {
       </div>
       <div className={styles['classroom-list']}>
         {classesData && classesData.length > 0 ? (
-          classesData.map(({ id, name, capacity, min_age, max_age, staff_count, students_count }) => (
+          classesData.map(({ id, name, capacity, min_age, max_age, staff_count, students_count, branch, status }) => (
             <Card
               key={id}
+              id={id}
               roomName={name}
               students={students_count ?? 0}
-              activeStudents={students_count ?? 0}
               staff={staff_count ?? 0}
-              activeStaff={staff_count ?? 0}
               capacity={capacity ?? 0}
               minAge={typeof min_age === 'number' ? min_age.toString() : 'N/A'}
               maxAge={typeof max_age === 'number' ? max_age.toString() : 'N/A'}
-              onDelete={() => handleDeleteClass(id)}
+              branch={branch}
+              status={status}
             />
           ))
         ) : (

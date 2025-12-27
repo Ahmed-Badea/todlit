@@ -25,7 +25,7 @@ const Plans: React.FC = () => {
       </div>
       <div className={styles.plansContainer}>
         {plans && plans.length > 0 ? (
-          plans.map((plan: Plan) => <PlanCard key={plan.name} {...plan} />)
+          plans.map((plan: Plan) => <PlanCard key={plan.id} {...plan} />)
         ) : (
           <NoData />
         )}

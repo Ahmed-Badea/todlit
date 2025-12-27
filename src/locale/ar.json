@@ -145,7 +145,13 @@
     },
     "classes": {
       "title": "الفصول",
-      "createClass": "إنشاء فصل"
+      "createClass": "إنشاء فصل",
+      "students": "الطلاب",
+      "staff": "الموظفون",
+      "capacity": "السعة",
+      "minAge": "الحد الأدنى للعمر",
+      "maxAge": "الحد الأقصى للعمر",
+      "status": "الحالة"
     },
     "staff": {
       "title": "الموظفون",

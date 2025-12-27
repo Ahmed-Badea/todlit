@@ -32,3 +32,16 @@ export const createClass = async ({
 
   return Axios.post(`/dashboard/classroom/`, reqBody);
 };
+
+export const updateClass = async (id: string, data: any) => {
+  const reqBody = {
+    name: data.name,
+    branch: data.branch,
+    min_age: data.min_age,
+    max_age: data.max_age,
+    capacity: data.capacity,
+    status: data.status
+  };
+
+  return Axios.put(`/dashboard/classroom_update/${id}`, reqBody);
+};
