@@ -17,6 +17,7 @@ export const Button = ({
   onClickHandler,
   onBlurHandler,
   loading = false,
+  style,
 }: IButton) => {
   return (
     <button
@@ -29,6 +30,7 @@ export const Button = ({
       onClick={onClickHandler}
       onBlur={onBlurHandler}
       type={type}
+      style={style}
     >
       <>
         {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : leadingIcon}

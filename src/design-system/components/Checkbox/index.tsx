@@ -1,4 +1,4 @@
-import { useState, useEffect, cloneElement, type FocusEvent } from "react";
+import { useState, useEffect, cloneElement, type FocusEvent, isValidElement } from "react";
 import type { ICheckbox } from "../../types/Checkbox";
 import { CheckboxBase } from "./CheckboxBase";
 import styles from "./checkbox.module.scss";
@@ -15,13 +15,15 @@ export const Checkbox = ({
   onClickHandler
 }: ICheckbox) => {
 
+  const safeChecked = typeof checked === 'boolean' ? checked : false;
+
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
-  const [isChecked, setIsChecked] = useState(checked);
+  const [isChecked, setIsChecked] = useState(safeChecked);
 
   useEffect(() => {
-    setIsChecked(checked);
-  }, [checked]);
+    setIsChecked(safeChecked);
+  }, [safeChecked]);
 
   const onMouseOverHandler = () => {
     setIsHovered(true);
@@ -89,13 +91,13 @@ export const Checkbox = ({
           {
             text &&
             <div className={styles["checkbox-wrapper__text-box__text"]}>
-              {text}
+              {typeof text === 'string' ? text : ''}
             </div>
           }
           {
             hintText &&
             <div className={styles["checkbox-wrapper__text-box__hint-text"]}>
-              {hintText}
+              {typeof hintText === 'string' || isValidElement(hintText) ? hintText : ''}
             </div>
           }
         </div>

@@ -121,7 +121,8 @@ export const TableCell: React.FC<TableCellProps> = ({
           style={{ 
             backgroundColor: badgeColor,
             padding: "4px 12px",
-            borderRadius: "8px"
+            borderRadius: "8px",
+            border: "1px solid #00000033",
           }}
         >
           {badgeText}
@@ -130,6 +131,9 @@ export const TableCell: React.FC<TableCellProps> = ({
     }
 
     default:
+      if (typeof cellValue === 'object' && cellValue !== null) {
+        return <>-</>;
+      }
       return <>{cellValue}</>;
   }
 };

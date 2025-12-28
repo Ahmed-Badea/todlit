@@ -7,7 +7,6 @@ import InnerLayout from "../../../../../../views/layout/InnerLayout";
 import Profile from "../Tabs/Profile";
 import Attendance from "../Tabs/Attendance";
 import Billing from "../Tabs/Billing";
-import Documents from "../Tabs/Documents";
 import { getStudents } from "../../../../../../services/inner-layout/students";
 import styles from "./student-details.module.scss";
 import { Button } from "../../../../../../design-system";

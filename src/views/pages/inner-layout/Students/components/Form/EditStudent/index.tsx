@@ -16,7 +16,7 @@ const studentConfig: IFieldConfig[] = formConfig as unknown as IFieldConfig[];
 
 interface FormData {
   id: string;
-  classroom: string;
+  classroom: string | { id: string; name: string };
   [key: string]: any;
 }
 
@@ -41,8 +41,8 @@ const EditStudent = ({ formData }: { formData: FormData }) => {
               label: { en: classroom.name, ar: classroom.name },
               value: classroom.id,
             })),
-            value: formData.classroom,
-            isValid: formData.classroom ? true : undefined,
+            value: typeof formData.classroom === 'object' ? formData.classroom?.id : formData.classroom,
+            isValid: (typeof formData.classroom === 'object' ? formData.classroom?.id : formData.classroom) ? true : undefined,
           };
         }
 
@@ -85,7 +85,7 @@ const EditStudent = ({ formData }: { formData: FormData }) => {
         date_of_birth: data.date_of_birth ?? formData.date_of_birth,
         gender: data.gender ?? formData.gender,
         status: data.status ?? formData.status,
-        classroom: data.classroom ?? formData.classroom,
+        classroom_id: data.classroom_id ?? (typeof formData.classroom === 'object' ? formData.classroom?.id : formData.classroom),
         plan_id: data.plan_id ?? formData.plan?.id ?? formData.plan_id ?? null,
       };
       return updateStudent(formData.id, studentData);

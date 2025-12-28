@@ -22,8 +22,7 @@ const columns: IColumn[] = [
     dataType: "multi_field",
     fields: [
       { key: "time", label: "", format: "time" },
-      { key: "name", label: "By" },
-      { key: "temperature", label: "" },
+      { key: "name", label: "By" }
     ],
   },
   {
@@ -33,8 +32,7 @@ const columns: IColumn[] = [
     dataType: "multi_field",
     fields: [
       { key: "time", label: "", format: "time" },
-      { key: "name", label: "By" },
-      { key: "temperature", label: "" },
+      { key: "name", label: "By" }
     ],
   },
   {

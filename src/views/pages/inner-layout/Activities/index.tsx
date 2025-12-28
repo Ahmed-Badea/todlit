@@ -81,6 +81,17 @@ const Activities = () => {
               text={t("innerLayout.navbar.activities")}
               onClickHandler={handleBackToTemplates}
             />
+            {selectedTemplate.icon && (
+              <img
+                src={selectedTemplate.icon.replace('http://api.todlit.com', '')}
+                alt={`${selectedTemplate.name} icon`}
+                className={styles["breadcrumb-icon"]}
+                crossOrigin="anonymous"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = 'none';
+                }}
+              />
+            )}
             <h4>{` / ${selectedTemplate.name}`}</h4>
           </>
         ) : (
@@ -111,7 +122,20 @@ const Activities = () => {
                     className={styles["template-card"]}
                     onClick={() => handleTemplateClick(template)}
                   >
-                    <h5>{template.name}</h5>
+                    <div className={styles["icon-and-title"]}>
+                      {template.icon && (
+                        <img
+                          src={template.icon.replace('http://api.todlit.com', '')}
+                          alt={`${template.name} icon`}
+                          className={styles["template-icon"]}
+                          crossOrigin="anonymous"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).style.display = 'none';
+                          }}
+                        />
+                      )}
+                      <h5>{template.name}</h5>
+                    </div>
                     {template.description && <p>{template.description}</p>}
                   </div>
                 ))}

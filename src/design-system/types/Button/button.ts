@@ -10,4 +10,5 @@ export interface IButton extends IButtonStyleProps {
   onClickHandler?: MouseEventHandler;
   onBlurHandler?: FocusEventHandler<HTMLButtonElement>;
   loading?: boolean;
+  style?: React.CSSProperties;
 }

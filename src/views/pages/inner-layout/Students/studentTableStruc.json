@@ -26,7 +26,7 @@
   {
     "title_en": "Classroom",
     "title_ar": "الفصل الدراسي",
-    "value": "classroom",
+    "value": "classroom.name",
     "dataType": "text"
   },
   {

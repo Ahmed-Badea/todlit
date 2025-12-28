@@ -4,6 +4,6 @@ export interface IStudent {
   date_of_birth: string;
   gender: string;
   status: string;
-  classroom: string;
+  classroom_id: string;
   plan_id?: string;
 }

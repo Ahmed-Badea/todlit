@@ -1,4 +1,5 @@
 export interface Plan {
+  id: string;
   name: string;
   monthly_fee: string;
   start_shift: string;

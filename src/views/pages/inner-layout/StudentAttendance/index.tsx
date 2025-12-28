@@ -13,6 +13,7 @@ import {
   DropdownMenu,
   DropdownMenuItem,
   Button,
+  Popup,
 } from "../../../../design-system";
 import { dateOnlyFormat } from "../../../../utils/dateFormats";
 import {
@@ -20,6 +21,7 @@ import {
   checkInAttendance,
   checkOutAttendance,
 } from "../../../../services/inner-layout/attendance";
+import { useAttendanceTimeSelection } from "../../../../hooks/useAttendanceTimeSelection";
 import InnerLayout from "../../../../views/layout/InnerLayout";
 import DatePicker from "../../../../components/DatePicker";
 import StatCard from "../../../../components/StatCard";
@@ -79,6 +81,17 @@ const StudentAttendance = () => {
     { keepPreviousData: true }
   );
 
+  const {
+    isTimePopupOpen,
+    selectedTime,
+    currentAction,
+    currentRow,
+    setSelectedTime,
+    handleTimeSelection,
+    openTimePopup,
+    closeTimePopup,
+  } = useAttendanceTimeSelection(refetch);
+
   const stats = useMemo(() => {
     const checkedIn = staffData.filter((student: any) => student.check_in_details?.time).length;
     const checkedOut = staffData.filter((student: any) => student.check_out_details?.time).length;
@@ -118,9 +131,8 @@ const StudentAttendance = () => {
       },
     ];
   }, [staffData, t]);
-  
 
-  const checkInMutation = useMutation(checkInAttendance, {
+  const bulkCheckInMutation = useMutation(checkInAttendance, {
     onSuccess: (_, variables) => {
       refetch();
       const count = Array.isArray(variables) ? variables.length : 1;
@@ -133,7 +145,7 @@ const StudentAttendance = () => {
     }
   });
 
-  const checkOutMutation = useMutation(checkOutAttendance, {
+  const bulkCheckOutMutation = useMutation(checkOutAttendance, {
     onSuccess: (_, variables) => {
       refetch();
       const count = Array.isArray(variables) ? variables.length : 1;
@@ -163,7 +175,7 @@ const StudentAttendance = () => {
       parent: teacherId,
       checkin_time: new Date().toISOString()
     }));
-    checkInMutation.mutate(payload);
+    bulkCheckInMutation.mutate(payload);
   };
 
   const submitCheckOut = () => {
@@ -183,7 +195,7 @@ const StudentAttendance = () => {
       parent: teacherId,
       checkout_time: new Date().toISOString()
     }));
-    checkOutMutation.mutate(payload);
+    bulkCheckOutMutation.mutate(payload);
   };
 
   useEffect(() => {
@@ -235,11 +247,7 @@ const StudentAttendance = () => {
         return;
       }
 
-      const payload = {
-        student: row.student_id,
-        teacher: teacherId
-      };
-      await checkInMutation.mutateAsync(payload);
+      openTimePopup('check_in', row);
     },
     check_out: async (row: any) => {
       const teacherId = localStorage.getItem("teacher_id");
@@ -258,11 +266,7 @@ const StudentAttendance = () => {
         return;
       }
 
-      const payload = {
-        student: row.student_id,
-        teacher: teacherId
-      };
-      await checkOutMutation.mutateAsync(payload);
+      openTimePopup('check_out', row);
     }
   };
   
@@ -328,10 +332,10 @@ const StudentAttendance = () => {
           disabled={
             isLoading ||
             isFetching ||
-            checkInMutation.isLoading ||
+            bulkCheckInMutation.isLoading ||
             studentsIds.length < 1
           }
-          loading={checkInMutation.isLoading}
+          loading={bulkCheckInMutation.isLoading}
         />
         <Button
           id="check-out"
@@ -343,10 +347,10 @@ const StudentAttendance = () => {
           disabled={
             isLoading ||
             isFetching ||
-            checkOutMutation.isLoading ||
+            bulkCheckOutMutation.isLoading ||
             studentsIds.length < 1
           }
-          loading={checkOutMutation.isLoading}
+          loading={bulkCheckOutMutation.isLoading}
         />
       </div>
 
@@ -360,6 +364,40 @@ const StudentAttendance = () => {
         }
         actionHandlers={tableActionHandlers}
       />
+
+      <Popup
+        isOpen={isTimePopupOpen}
+        onClose={closeTimePopup}
+        title={`Select ${currentAction === 'check_in' ? 'Check In' : 'Check Out'} Time`}
+      >
+        <div style={{ padding: '20px' }}>
+          <DatePicker
+            selectedDate={selectedTime}
+            onDateChange={setSelectedTime}
+            label="Select Time"
+            type="time"
+            disabled={false}
+          />
+          <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <Button
+              size="md"
+              color="primary"
+              variant="contained"
+              text="Confirm"
+              onClickHandler={() => handleTimeSelection(currentRow?.student_id)}
+              style={{ width: '100%' }}
+            />
+            <Button
+              size="md"
+              color="secondary"
+              variant="outlined"
+              text="Cancel"
+              onClickHandler={closeTimePopup}
+              style={{ width: '100%' }}
+            />
+          </div>
+        </div>
+      </Popup>
     </InnerLayout>
   );
 };

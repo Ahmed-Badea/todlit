@@ -17,6 +17,7 @@ export interface ActivityTemplate {
   name: string;
   description: string;
   custom_fields: ActivityTemplateField[];
+  icon?: string;
 }
 
 export const getActivityTemplates = async (): Promise<ActivityTemplate[]> => {

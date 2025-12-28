@@ -6,4 +6,6 @@ export interface IClass {
   max_age: number;
   staff_count: number;
   students_count: number;
+  branch?: string;
+  status?: string;
 }

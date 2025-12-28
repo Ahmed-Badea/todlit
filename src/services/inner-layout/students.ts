@@ -27,7 +27,7 @@ export const createStudent = async (student: IStudent) => {
     date_of_birth: formattedDateOfBirth,
     gender: student.gender,
     status: student.status,
-    classroom: student.classroom,
+    classroom_id: student.classroom_id,
     plan_id: student.plan_id,
   };
 
@@ -44,7 +44,7 @@ export const updateStudent = async (id: string, student: IStudent) => {
     date_of_birth: formattedDateOfBirth,
     gender: student.gender,
     status: student.status,
-    classroom: student.classroom,
+    classroom_id: student.classroom_id,
     plan_id: student.plan_id,
   };
 
