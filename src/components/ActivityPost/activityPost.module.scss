@@ -1,0 +1,86 @@
+.activityPost {
+  background: #fff;
+  border: 1px solid #e1e5e9;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  .header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+
+    .avatarSection {
+      margin-right: 12px;
+    }
+
+    .userInfo {
+      flex: 1;
+
+      .names {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-bottom: 4px;
+        flex-wrap: wrap;
+
+        .teacherName {
+          font-weight: 600;
+          color: #1a1a1a;
+        }
+
+        .activityType {
+          color: #666;
+          font-size: 14px;
+        }
+
+        .studentName {
+          font-weight: 600;
+          color: #007bff;
+        }
+      }
+
+      .date {
+        font-size: 12px;
+        color: #888;
+      }
+    }
+  }
+
+  .content {
+    .activityDetails {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+
+      .detailItem {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        .label {
+          font-size: 12px;
+          font-weight: 500;
+          color: #666;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .value {
+          font-size: 14px;
+          font-weight: 500;
+          color: #1a1a1a;
+          padding: 4px 8px;
+          background: #f8f9fa;
+          border-radius: 6px;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-color: #007bff;
+  }
+}

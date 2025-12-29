@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 import FormWrapper from "../../../../../../components/FormWrapper";
 import { updatePlan } from "../../../../../../services/inner-layout/plans";
 import { formConfig } from "../Form/planConfig";
@@ -18,6 +19,7 @@ const PlanCard: React.FC<Plan> = ({
   late_checkout_time,
   late_checkout_fees,
 }) => {
+  const { t } = useTranslation();
   const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
 
   const handleEditPopupOpen = () => {
@@ -68,24 +70,23 @@ const PlanCard: React.FC<Plan> = ({
             onClick={handleEditPopupOpen}
           />
         </div>
-        <p className={styles["plan-fees"]}>Fees: EGP {monthly_fee || "-"}</p>
+        <p className={styles["plan-fees"]}>{t('innerLayout.plans.fees')}: {monthly_fee || "-"} EGP</p>
         <p className={styles["plan-shift"]}>
-          Shift: {formatTime(start_shift)} - {formatTime(end_shift)}
+          {t('innerLayout.plans.shift')}: {formatTime(start_shift)} - {formatTime(end_shift)}
         </p>
         {late_checkout_time && late_checkout_fees && (
           <p className={styles["plan-late-checkout"]}>
-            Late Checkout: {formatTime(late_checkout_time)} (EGP{" "}
-            {late_checkout_fees})
+            {t('innerLayout.plans.lateCheckout')}: {formatTime(late_checkout_time)} ({late_checkout_fees} EGP)
           </p>
         )}
       </div>
 
       <FormWrapper
         mode="popup"
-        title="Update Plan"
+        title={t('innerLayout.plans.updatePlan')}
         fieldsConfig={updatedFormConfig}
         submitFn={(data) => updatePlan(id!, data)}
-        successMessage="Plan updated successfully"
+        successMessage={t('innerLayout.plans.planUpdated')}
         onClose={handleEditPopupClose}
         isOpen={isEditPopupOpen}
       />

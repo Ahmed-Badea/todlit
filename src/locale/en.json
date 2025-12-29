@@ -92,6 +92,8 @@
   },
   "innerLayout": {
     "language": "EN",
+    "overview": "Overview",
+    "recentActivities": "Recent Activities",
     "create": "Create",
     "quickLink": "Quick link",
     "invoice": "Invoice",
@@ -156,6 +158,11 @@
     },
     "plans":{
       "title": "Plans",
+      "fees": "Fees",
+      "shift": "Shift",
+      "lateCheckout": "Late Checkout",
+      "updatePlan": "Update Plan",
+      "planUpdated": "Plan updated successfully",
       "form":{
         "titles":{
           "createPlan": "Create Plan"

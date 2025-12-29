@@ -56,7 +56,7 @@ export const formConfig = [
     ],
   },
   {
-    name: "classroom",
+    name: "classroom_id",
     label: { en: "Classroom", ar: "الفصل" },
     type: "dropdown",
     value: "",

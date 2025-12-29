@@ -2,10 +2,19 @@ import { useState, useMemo } from "react";
 import { useQuery } from "react-query";
 import { useTranslation } from "react-i18next";
 import InnerLayout from "../../../../views/layout/InnerLayout";
-import { getActivityTemplates, ActivityTemplate } from "../../../../services/inner-layout/activityTemplates";
+import {
+  getActivityTemplates,
+  ActivityTemplate,
+} from "../../../../services/inner-layout/activityTemplates";
 import { getStudents } from "../../../../services/inner-layout/students";
 import { useClassesStore } from "../../../../store/classes";
-import { Dropdown, DropdownButton, DropdownMenu, DropdownMenuItem, Button } from "../../../../design-system";
+import {
+  Dropdown,
+  DropdownButton,
+  DropdownMenu,
+  DropdownMenuItem,
+  Button,
+} from "../../../../design-system";
 import { Checkbox } from "../../../../design-system/components/Checkbox";
 import { Loading } from "../../../../design-system";
 import { ActivityForm } from "./ActivityForm";
@@ -13,7 +22,8 @@ import styles from "./activities.module.scss";
 
 const Activities = () => {
   const { t } = useTranslation();
-  const [selectedTemplate, setSelectedTemplate] = useState<ActivityTemplate | null>(null);
+  const [selectedTemplate, setSelectedTemplate] =
+    useState<ActivityTemplate | null>(null);
   const [selectedClassId, setSelectedClassId] = useState<string>("");
   const [selectedStudents, setSelectedStudents] = useState<number[]>([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -50,9 +60,9 @@ const Activities = () => {
 
   const handleStudentToggle = (checked: boolean, studentId: number) => {
     if (checked) {
-      setSelectedStudents(prev => [...prev, studentId]);
+      setSelectedStudents((prev) => [...prev, studentId]);
     } else {
-      setSelectedStudents(prev => prev.filter(id => id !== studentId));
+      setSelectedStudents((prev) => prev.filter((id) => id !== studentId));
     }
   };
 
@@ -66,7 +76,9 @@ const Activities = () => {
 
   const selectedClassName = useMemo(() => {
     if (!selectedClassId) return "All Classes";
-    const selectedClass = classes.find((cls: any) => String(cls.id) === selectedClassId);
+    const selectedClass = classes.find(
+      (cls: any) => String(cls.id) === selectedClassId
+    );
     return selectedClass?.name || "Unknown class";
   }, [selectedClassId, classes]);
 
@@ -83,12 +95,15 @@ const Activities = () => {
             />
             {selectedTemplate.icon && (
               <img
-                src={selectedTemplate.icon.replace('http://api.todlit.com', '')}
+                src={selectedTemplate.icon.replace(
+                  "http://api.todlit.com",
+                  "https://api.todlit.com"
+                )}
                 alt={`${selectedTemplate.name} icon`}
                 className={styles["breadcrumb-icon"]}
                 crossOrigin="anonymous"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = 'none';
+                  (e.target as HTMLImageElement).style.display = "none";
                 }}
               />
             )}
@@ -125,12 +140,16 @@ const Activities = () => {
                     <div className={styles["icon-and-title"]}>
                       {template.icon && (
                         <img
-                          src={template.icon.replace('http://api.todlit.com', '')}
+                          src={template.icon.replace(
+                            "http://api.todlit.com",
+                            "https://api.todlit.com"
+                          )}
                           alt={`${template.name} icon`}
                           className={styles["template-icon"]}
                           crossOrigin="anonymous"
                           onError={(e) => {
-                            (e.target as HTMLImageElement).style.display = 'none';
+                            (e.target as HTMLImageElement).style.display =
+                              "none";
                           }}
                         />
                       )}

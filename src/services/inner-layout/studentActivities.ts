@@ -29,3 +29,13 @@ export const submitStudentActivity = async (payload: StudentActivityPayload) => 
   const response = await Axios.post("/settings/student_activities/", payload);
   return response.data;
 };
+
+export const getStudentActivities = async (filters: { student_id?: number; classroom_id?: number } = {}) => {
+  const params = new URLSearchParams();
+  if (filters.student_id) params.append('student_id', filters.student_id.toString());
+  if (filters.classroom_id) params.append('classroom_id', filters.classroom_id.toString());
+
+  const url = `/settings/student_activities/${params.toString() ? `?${params.toString()}` : ''}`;
+  const response = await Axios.get(url);
+  return response.data;
+};

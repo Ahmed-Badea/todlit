@@ -33,7 +33,7 @@ const EditStudent = ({ formData }: { formData: FormData }) => {
       const newFormConfig: IFieldConfig[] = studentConfig.map((field) => {
         const fieldValue = formData[field.name] || '';
         
-        if (field.name === 'classroom') {
+        if (field.name === 'classroom_id') {
           return {
             ...field,
             type: field.type,

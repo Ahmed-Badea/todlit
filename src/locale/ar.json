@@ -94,8 +94,7 @@
     "save": "حفظ"
   },
   "innerLayout": {
-    "language": "العربية",
-    "create": "إنشاء",
+    "language": "العربية",    "overview": "نظرة عامة",    "recentActivities": "الأنشطة الأخيرة",    "create": "إنشاء",
     "quickLink": "رابط سريع",
     "invoice": "الفاتورة",
     "productLink": "رابط المنتج",
@@ -159,6 +158,11 @@
     },
     "plans": {
       "title": "الخطط",
+      "fees": "الرسوم",
+      "shift": "الفترة الزمنية",
+      "lateCheckout": "الخروج المتأخر",
+      "updatePlan": "تحديث الخطة",
+      "planUpdated": "تم تحديث الخطة بنجاح",
       "form": {
         "titles": {
           "createPlan": "إنشاء خطة"

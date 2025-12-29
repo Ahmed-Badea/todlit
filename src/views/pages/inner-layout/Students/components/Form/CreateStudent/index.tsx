@@ -21,7 +21,7 @@ const CreateStudent = () => {
 
   // Update the form configuration with classroom and billing plan options
   const updatedFormConfig = formConfig.map((field) => {
-    if (field.name === 'classroom') {
+    if (field.name === 'classroom_id') {
       return {
         ...field,
         options: classes?.map((classroom: any) => ({
