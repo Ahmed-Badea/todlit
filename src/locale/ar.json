@@ -191,7 +191,33 @@
       "fees": "الرسوم",
       "removePlan": "إزالة الخطة",
       "planUpdated": "تم تحديث خطة الدفع بنجاح",
-      "planRemoved": "تم إزالة خطة الدفع بنجاح"
+      "planRemoved": "تم إزالة خطة الدفع بنجاح",
+      "invoiceHistory": "تاريخ الفواتير",
+      "currentInvoice": "الفاتورة الحالية",
+      "noInvoiceHistory": "لا توجد فواتير في التاريخ",
+      "noCurrentInvoice": "لا توجد فاتورة حالية",
+      "paid": "مدفوع",
+      "unpaid": "غير مدفوع",
+      "plan": "الخطة:",
+      "startDate": "تاريخ البداية:",
+      "endDate": "تاريخ النهاية:",
+      "invoiceCreated": "تم إنشاء الفاتورة:",
+      "amount": "المبلغ:",
+      "payInvoice": "دفع الفاتورة",
+      "invoicePaidSuccess": "تم دفع الفاتورة بنجاح!",
+      "payInvoiceError": "فشل في دفع الفاتورة. يرجى المحاولة مرة أخرى.",
+      "tabs": {
+        "currentInvoice": "الفاتورة الحالية",
+        "history": "السجل"
+      },
+      "table": {
+        "plan": "الخطة",
+        "startDate": "تاريخ البداية",
+        "endDate": "تاريخ النهاية",
+        "created": "تم الإنشاء",
+        "amount": "المبلغ",
+        "status": "الحالة"
+      }
     },
     "activities": {
       "title": "الأنشطة",

@@ -1,8 +1,123 @@
-.plan-container {
-  margin-bottom: 16px;
+.billing {
+  .tabContent {
+    margin-top: 24px;
+  }
+
+  .loading {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+  }
+
+  .noData {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+
+    p {
+      margin: 0;
+      font-size: 16px;
+    }
+  }
 }
 
-.no-plan-message {
-  margin-bottom: 16px;
-  color: #666;
+// Current Invoice styles
+.currentInvoice {
+  display: flex;
+  justify-content: center;
+
+  .invoiceCard {
+    background: #fff;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: fit-content;
+    min-width: 400px;
+  }
+
+  .invoiceHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .status {
+      padding: 4px 12px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+
+      &.paid {
+        background-color: #d1fadf;
+        color: #166534;
+      }
+
+      &.unpaid {
+        background-color: #fef3c7;
+        color: #92400e;
+      }
+    }
+  }
+
+  .invoiceDetails {
+    .detailRow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #f3f4f6;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .label {
+        font-weight: 500;
+        color: #6b7280;
+      }
+
+      .value {
+        font-weight: 500;
+        color: #111827;
+      }
+
+      .amount {
+        font-size: 18px;
+        font-weight: 600;
+        color: #059669;
+      }
+    }
+  }
+
+  .payButton {
+    margin-top: 24px;
+    text-align: right;
+  }
+}
+
+// History styles
+.history {
+  .historyHeader {
+    margin-bottom: 20px;
+
+    h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+
+  .tableContainer {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 }

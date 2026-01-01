@@ -1,5 +1,5 @@
 // studentConfig.ts
-import { required, requiredDropdown } from "../../../../../../utils/formValidations";
+import { required } from "../../../../../../utils/formValidations";
 
 export const formConfig = [
   {
@@ -62,7 +62,8 @@ export const formConfig = [
     value: "",
     isValid: undefined,
     errorMsg: "",
-    validations: [requiredDropdown],
+    validations: [],
+    optional: true,
     options: [], // Populated dynamically
   },
   {
@@ -72,7 +73,8 @@ export const formConfig = [
     value: "",
     isValid: undefined,
     errorMsg: "",
-    validations: [requiredDropdown],
+    validations: [],
+    optional: true,
     options: [], // Populated dynamically from API
   },
 ];

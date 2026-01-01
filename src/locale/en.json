@@ -191,7 +191,33 @@
       "fees": "Fees",
       "removePlan": "Remove Plan",
       "planUpdated": "Payment plan updated successfully",
-      "planRemoved": "Payment plan removed successfully"
+      "planRemoved": "Payment plan removed successfully",
+      "invoiceHistory": "Invoice History",
+      "currentInvoice": "Current Invoice",
+      "noInvoiceHistory": "No invoice history found",
+      "noCurrentInvoice": "No current invoice found",
+      "paid": "Paid",
+      "unpaid": "Unpaid",
+      "plan": "Plan:",
+      "startDate": "Start Date:",
+      "endDate": "End Date:",
+      "invoiceCreated": "Invoice Created:",
+      "amount": "Amount:",
+      "payInvoice": "Pay Invoice",
+      "invoicePaidSuccess": "Invoice paid successfully!",
+      "payInvoiceError": "Failed to pay invoice. Please try again.",
+      "tabs": {
+        "currentInvoice": "Current Invoice",
+        "history": "History"
+      },
+      "table": {
+        "plan": "Plan",
+        "startDate": "Start Date",
+        "endDate": "End Date",
+        "created": "Created",
+        "amount": "Amount",
+        "status": "Status"
+      }
     },
     "activities": {
       "title": "Activities",

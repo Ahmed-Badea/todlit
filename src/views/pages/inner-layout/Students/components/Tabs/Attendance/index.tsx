@@ -52,8 +52,7 @@ const Attendance = () => {
         const year = selectedMonth.getFullYear();
         const month = String(selectedMonth.getMonth() + 1).padStart(2, '0');
         const monthValue = `${year}-${month}`;
-        payload.start_date = monthValue;
-        payload.end_date = monthValue;
+        payload.month = monthValue;
       }
       return getAttendance(payload);
     },
@@ -66,7 +65,7 @@ const Attendance = () => {
 
   return (
     <div>
-      <div style={{ marginBottom: '20px' }}>
+      <div style={{ marginBottom: '20px', maxWidth: '300px' }}>
         <DatePicker
           selectedDate={selectedMonth}
           onDateChange={handleMonthChange}
