@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useMutation, useQuery } from 'react-query';
+import { useMutation } from 'react-query';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { Loading } from '../../../../../../../design-system';

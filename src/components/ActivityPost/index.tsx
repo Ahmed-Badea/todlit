@@ -19,11 +19,8 @@ interface MediaItem {
 }
 
 interface ActivityPostProps {
-  id: number;
-  activity_name: string | null;
   performed_at: string;
   notes: string;
-  notify_parent: boolean;
   field_responses: FieldResponse[];
   media: MediaItem[];
   teacher_name?: string;
