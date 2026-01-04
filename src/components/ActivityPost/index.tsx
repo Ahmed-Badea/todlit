@@ -1,47 +1,48 @@
 import React from "react";
 import { format } from "date-fns";
 import { Avatar } from "../../design-system";
+import { getServerUrl } from "../../utils/serverUrls";
 import styles from "./activityPost.module.scss";
 
-interface ActivityField {
-  field_name: string;
-  field_type: string;
+interface FieldResponse {
+  id: number;
+  field: number;
   value: string;
+  field_name: string;
+}
+
+interface MediaItem {
+  id: number;
+  file: string;
+  is_video: boolean;
+  uploaded_at: string;
 }
 
 interface ActivityPostProps {
   id: number;
-  student_name: string;
-  teacher_name: string;
-  activity_name: string;
-  created_at: string;
-  fields: ActivityField[];
+  activity_name: string | null;
+  performed_at: string;
+  notes: string;
+  notify_parent: boolean;
+  field_responses: FieldResponse[];
+  media: MediaItem[];
+  teacher_name?: string;
   teacher_avatar?: string;
 }
 
 const ActivityPost: React.FC<ActivityPostProps> = ({
-  student_name,
-  teacher_name,
-  activity_name,
-  created_at,
-  fields,
+  performed_at,
+  notes,
+  field_responses = [],
+  media = [],
+  teacher_name = "Teacher",
   teacher_avatar,
 }) => {
-  // Extract meal-related fields
-  const getFieldValue = (fieldName: string) => {
-    const field = fields.find(f =>
-      f.field_name.toLowerCase().includes(fieldName.toLowerCase())
-    );
-    return field?.value || "-";
+  const formattedDate = format(new Date(performed_at), "MMM dd, yyyy 'at' HH:mm");
+
+  const getMediaUrl = (file: string) => {
+    return file.startsWith('http') ? file : `${getServerUrl()}${file}`;
   };
-
-  const mealType = getFieldValue("meal type");
-  const mealTime = getFieldValue("meal time");
-  const quantityEaten = getFieldValue("quantity eaten");
-  const count = getFieldValue("count");
-
-  // Format the date
-  const formattedDate = format(new Date(created_at), "MMM dd, yyyy 'at' HH:mm");
 
   return (
     <div className={styles.activityPost}>
@@ -65,40 +66,52 @@ const ActivityPost: React.FC<ActivityPostProps> = ({
         <div className={styles.userInfo}>
           <div className={styles.names}>
             <span className={styles.teacherName}>{teacher_name}</span>
-            <span className={styles.activityType}>logged {activity_name} for</span>
-            <span className={styles.studentName}>{student_name}</span>
           </div>
           <div className={styles.date}>{formattedDate}</div>
         </div>
       </div>
 
       <div className={styles.content}>
-        <div className={styles.activityDetails}>
-          {mealType !== "-" && (
-            <div className={styles.detailItem}>
-              <span className={styles.label}>Meal Type:</span>
-              <span className={styles.value}>{mealType}</span>
+        {notes && (
+          <div className={styles.notes}>
+            <p>{notes}</p>
+          </div>
+        )}
+
+        {field_responses && field_responses.length > 0 && (
+          <div className={styles.activityDetails}>
+            {field_responses.map((field) => (
+              <div key={field.id} className={styles.detailItem}>
+                <span className={styles.label}>{field.field_name}</span>
+                <span className={styles.value}>{field.value}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {media && media.length > 0 && (
+          <div className={styles.mediaSection}>
+            <div className={styles.mediaGrid}>
+              {media.map((item) => (
+                <div key={item.id} className={styles.mediaItem}>
+                  {item.is_video ? (
+                    <video
+                      src={getMediaUrl(item.file)}
+                      controls
+                      className={styles.mediaContent}
+                    />
+                  ) : (
+                    <img
+                      src={getMediaUrl(item.file)}
+                      alt="Activity media"
+                      className={styles.mediaContent}
+                    />
+                  )}
+                </div>
+              ))}
             </div>
-          )}
-          {mealTime !== "-" && (
-            <div className={styles.detailItem}>
-              <span className={styles.label}>Meal Time:</span>
-              <span className={styles.value}>{mealTime}</span>
-            </div>
-          )}
-          {quantityEaten !== "-" && (
-            <div className={styles.detailItem}>
-              <span className={styles.label}>Quantity Eaten:</span>
-              <span className={styles.value}>{quantityEaten}</span>
-            </div>
-          )}
-          {count !== "-" && (
-            <div className={styles.detailItem}>
-              <span className={styles.label}>Count:</span>
-              <span className={styles.value}>{count}</span>
-            </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

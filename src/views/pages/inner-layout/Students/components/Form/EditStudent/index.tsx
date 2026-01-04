@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 import { Loading } from '../../../../../../../design-system';
 import FormWrapper from '../../../../../../../components/FormWrapper';
 import { updateStudent } from '../../../../../../../services/inner-layout/students';
-import { getPlans } from '../../../../../../../services/inner-layout/plans';
 import { IClass } from '../../../../../../../types/inner-layout/classes/classes';
 import { IFieldConfig } from '../../../../../../../types/inner-layout/form';
 import { useClassesStore } from '../../../../../../../store/classes';
@@ -23,7 +22,6 @@ interface FormData {
 const EditStudent = ({ formData }: { formData: FormData }) => {
   const { t } = useTranslation();
   const { classes } = useClassesStore() as unknown as { classes: IClass[] };
-  const { data: plans = [] } = useQuery('fetchPlans', getPlans);
 
   const [isLoading, setIsLoading] = useState(true);
   const [updatedFormConfig, setUpdatedFormConfig] = useState<IFieldConfig[]>(studentConfig);
@@ -46,21 +44,6 @@ const EditStudent = ({ formData }: { formData: FormData }) => {
           };
         }
 
-        if (field.name === 'plan_id') {
-          const planId = formData.plan?.id || formData.plan_id || '';
-          return {
-            ...field,
-            type: field.type,
-            options: plans.map((plan: any) => ({
-              label: { en: plan.name, ar: plan.name },
-              value: plan.id,
-            })),
-            value: planId,
-            isValid: planId ? true : undefined,
-            validations: field.validations,
-          };
-        }
-
         return {
           ...field,
           type: field.type,
@@ -72,7 +55,7 @@ const EditStudent = ({ formData }: { formData: FormData }) => {
       setUpdatedFormConfig(newFormConfig);
       setIsLoading(false);
     }
-  }, [classes, formData, plans]);
+  }, [classes, formData]);
 
   const updateMutation = useMutation(
     (data: Partial<IStudent>) => {
@@ -86,7 +69,6 @@ const EditStudent = ({ formData }: { formData: FormData }) => {
         gender: data.gender ?? formData.gender,
         status: data.status ?? formData.status,
         classroom_id: data.classroom_id ?? (typeof formData.classroom === 'object' ? formData.classroom?.id : formData.classroom),
-        plan_id: data.plan_id ?? formData.plan?.id ?? formData.plan_id ?? null,
       };
       return updateStudent(formData.id, studentData);
     },

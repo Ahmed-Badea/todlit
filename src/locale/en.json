@@ -8,7 +8,7 @@
       "next": "Next",
       "submit": "Submit",
       "textMsgSent": "A text message with a 6-digit verification code was just sent to {{phoneNum}}",
-      "enterTheCode": "Please enter the code we’ve sent to {{phoneNum}}",
+      "enterTheCode": "Please enter the code we've sent to {{phoneNum}}",
       "resendCodeIn": "Resend code in",
       "resend": "Re-send",
       "otpResent": "OTP re-sent successfully",
@@ -142,7 +142,7 @@
       "editStudent": "Edit Student",
       "cancelEdit": "Cancel Edit"
     },
-    "classes":{
+    "classes": {
       "title": "Classes",
       "createClass": "Create Class",
       "students": "Students",
@@ -152,19 +152,19 @@
       "maxAge": "Max Age",
       "status": "Status"
     },
-    "staff":{
+    "staff": {
       "title": "Staff",
       "allClasses": "All Classes"
     },
-    "plans":{
+    "plans": {
       "title": "Plans",
       "fees": "Fees",
       "shift": "Shift",
       "lateCheckout": "Late Checkout",
       "updatePlan": "Update Plan",
       "planUpdated": "Plan updated successfully",
-      "form":{
-        "titles":{
+      "form": {
+        "titles": {
           "createPlan": "Create Plan"
         }
       }
@@ -175,6 +175,8 @@
       "checkOut": "Check Out",
       "total": "Total",
       "absent": "Absent",
+      "present": "Present",
+      "totalDays": "Total Days",
       "pending": "Pending",
       "checkInSuccess": "{{count}} student(s) checked in successfully",
       "checkOutSuccess": "{{count}} student(s) checked out successfully",
@@ -196,19 +198,21 @@
       "currentInvoice": "Current Invoice",
       "noInvoiceHistory": "No invoice history found",
       "noCurrentInvoice": "No current invoice found",
+      "noPlanAssigned": "No plan assigned",
+      "plan": "Plan",
+      "createdAt": "Created At",
       "paid": "Paid",
       "unpaid": "Unpaid",
-      "plan": "Plan:",
       "startDate": "Start Date:",
       "endDate": "End Date:",
       "invoiceCreated": "Invoice Created:",
       "amount": "Amount:",
-      "payInvoice": "Pay Invoice",
       "invoicePaidSuccess": "Invoice paid successfully!",
       "payInvoiceError": "Failed to pay invoice. Please try again.",
       "tabs": {
+        "plan": "Plan",
         "currentInvoice": "Current Invoice",
-        "history": "History"
+        "invoicesHistory": "Invoices History"
       },
       "table": {
         "plan": "Plan",
@@ -241,16 +245,9 @@
       "mealValue": "Meal Value",
       "enterMealType": "Enter meal type",
       "enterMealValue": "Enter meal value",
-      "mealSettings": "Meal Settings",
-      "mealType": "Meal Type",
-      "mealValue": "Meal Value",
-      "enterMealType": "Enter meal type",
-      "enterMealValue": "Enter meal value",
-      "addMeal": "Add Meal",
       "formFields": "Form Fields",
       "defaultFieldsMessage": "Each activity will contain description and file upload fields as default",
       "addCustomField": "Add Custom Field",
-      "customFields": "Custom Fields",
       "fieldName": "Field Name",
       "fieldType": "Field Type",
       "fieldValue": "Field Value",
@@ -303,7 +300,7 @@
       "submit": "Submit",
       "update": "Update",
       "cancel": "Cancel",
-      "successMessage":{
+      "successMessage": {
         "created": "Created successfully",
         "updated": "Updated successfully"
       },

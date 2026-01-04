@@ -94,7 +94,10 @@
     "save": "حفظ"
   },
   "innerLayout": {
-    "language": "العربية",    "overview": "نظرة عامة",    "recentActivities": "الأنشطة الأخيرة",    "create": "إنشاء",
+    "language": "العربية",
+    "overview": "نظرة عامة",
+    "recentActivities": "الأنشطة الأخيرة",
+    "create": "إنشاء",
     "quickLink": "رابط سريع",
     "invoice": "الفاتورة",
     "productLink": "رابط المنتج",
@@ -175,6 +178,8 @@
       "checkOut": "تسجيل الخروج",
       "total": "المجموع",
       "absent": "غائب",
+      "present": "حاضر",
+      "totalDays": "إجمالي الأيام",
       "pending": "انتظار",
       "checkInSuccess": "تم تسجيل دخول {{count}} طالب بنجاح",
       "checkOutSuccess": "تم تسجيل خروج {{count}} طالب بنجاح",
@@ -196,9 +201,11 @@
       "currentInvoice": "الفاتورة الحالية",
       "noInvoiceHistory": "لا توجد فواتير في التاريخ",
       "noCurrentInvoice": "لا توجد فاتورة حالية",
+      "noPlanAssigned": "لا توجد خطة مخصصة",
+      "plan": "الخطة",
+      "createdAt": "تم الإنشاء في",
       "paid": "مدفوع",
       "unpaid": "غير مدفوع",
-      "plan": "الخطة:",
       "startDate": "تاريخ البداية:",
       "endDate": "تاريخ النهاية:",
       "invoiceCreated": "تم إنشاء الفاتورة:",
@@ -207,8 +214,9 @@
       "invoicePaidSuccess": "تم دفع الفاتورة بنجاح!",
       "payInvoiceError": "فشل في دفع الفاتورة. يرجى المحاولة مرة أخرى.",
       "tabs": {
+        "plan": "الخطة",
         "currentInvoice": "الفاتورة الحالية",
-        "history": "السجل"
+        "invoicesHistory": "سجل الفواتير"
       },
       "table": {
         "plan": "الخطة",

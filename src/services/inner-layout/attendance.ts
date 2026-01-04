@@ -25,10 +25,32 @@ interface BulkCheckOutItem {
   checkout_time: string;
 }
 
+interface CheckInDetails {
+  time: string | null;
+  name: string | null;
+  id: number | null;
+  user_type: string | null;
+}
+
+interface AttendanceRecord {
+  date: string;
+  check_in_details: CheckInDetails;
+  check_out_details: CheckInDetails;
+}
+
+export interface MonthlyAttendance {
+  student_id: number;
+  first_name: string;
+  last_name: string;
+  class_name: string;
+  class_id: number;
+  month: string;
+  attendance: AttendanceRecord[];
+}
+
 type CheckInPayload = AttendanceActionPayload | BulkCheckInItem[];
 type CheckOutPayload = AttendanceActionPayload | BulkCheckOutItem[];
 
-// Fetch attendance
 export const getAttendance = async (filters: FilterParams = {}) => {
   const params = new URLSearchParams(filters as any);
   const url = `/dashboard/attendance${params.toString() ? `?${params.toString()}` : ''}`;
@@ -36,13 +58,21 @@ export const getAttendance = async (filters: FilterParams = {}) => {
   return response.data;
 };
 
-// Check In students (single or bulk)
+export const getMonthlyAttendance = async (
+  studentId: number,
+  month: string
+): Promise<MonthlyAttendance> => {
+  const response = await Axios.get(
+    `/dashboard/monthly_attendance?student_id=${studentId}&month=${month}`
+  );
+  return response.data;
+};
+
 export const checkInAttendance = async (payload: CheckInPayload) => {
   const response = await Axios.post("/dashboard/checkin/", payload);
   return response.data;
 };
 
-// Check Out students (single or bulk)
 export const checkOutAttendance = async (payload: CheckOutPayload) => {
   const response = await Axios.post("/dashboard/checkout/", payload);
   return response.data;
