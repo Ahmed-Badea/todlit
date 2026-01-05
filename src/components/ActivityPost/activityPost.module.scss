@@ -3,9 +3,18 @@
   border: 1px solid #e1e5e9;
   border-radius: 12px;
   padding: 16px;
-  margin-bottom: 16px;
+  margin: 0 auto 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  max-width: 500px;
+  width: 50%;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 12px;
+  }
 
   .header {
     display: flex;
@@ -14,6 +23,13 @@
 
     .avatarSection {
       margin-right: 12px;
+    }
+
+    :global(html[dir="rtl"]) & {
+      .avatarSection {
+        margin-right: 0;
+        margin-left: 12px;
+      }
     }
 
     .userInfo {
@@ -52,7 +68,7 @@
   .content {
     .activityDetails {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 12px;
 
       .detailItem {
@@ -90,13 +106,26 @@
   }
 
   .mediaSection {
-    margin-top: 12px;
+    margin: 12px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .firstMediaItem {
+    overflow: hidden;
+    border-radius: 8px;
+    background: #f0f0f0;
+    width: 100%;
+    height: 300px;
   }
 
   .mediaGrid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 8px;
+    margin-top: 12px;
+    width: 100%;
   }
 
   .mediaItem {

@@ -207,6 +207,7 @@
       "endDate": "End Date:",
       "invoiceCreated": "Invoice Created:",
       "amount": "Amount:",
+      "payInvoice": "Pay Invoice",
       "invoicePaidSuccess": "Invoice paid successfully!",
       "payInvoiceError": "Failed to pay invoice. Please try again.",
       "tabs": {

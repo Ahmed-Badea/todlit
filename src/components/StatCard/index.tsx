@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import styles from "./statCard.module.scss";
 
 interface StatCardProps {
@@ -12,10 +13,15 @@ const StatCard: React.FC<StatCardProps> = ({
   label,
   color,
 }) => {
+  const { i18n } = useTranslation();
+  const isRTL = i18n.language === "ar";
+
   return (
     <div
       className={styles["stat-card"]}
-      style={{ borderLeftColor: color }} // Apply dynamic border color
+      style={{
+        [isRTL ? "borderRightColor" : "borderLeftColor"]: color,
+      }}
     >
       <span className={styles["count"]}>{count}</span>
       <span className={styles["label"]}>{label}</span>

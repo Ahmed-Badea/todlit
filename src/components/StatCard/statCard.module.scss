@@ -10,6 +10,11 @@
   align-items: center;
   gap: $space-12;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+
+  :global(html[dir="rtl"]) & {
+    border-left: none;
+    border-right: 6px solid $primary-500;
+  }
 }
 
 .count {

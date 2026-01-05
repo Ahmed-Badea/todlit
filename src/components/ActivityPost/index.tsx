@@ -69,6 +69,48 @@ const ActivityPost: React.FC<ActivityPostProps> = ({
       </div>
 
       <div className={styles.content}>
+        {media && media.length > 0 && (
+          <div className={styles.mediaSection}>
+            {media.length === 1 ? (
+              <div className={styles.firstMediaItem}>
+                {media[0].is_video ? (
+                  <video
+                    src={getMediaUrl(media[0].file)}
+                    controls
+                    className={styles.mediaContent}
+                  />
+                ) : (
+                  <img
+                    src={getMediaUrl(media[0].file)}
+                    alt="Activity media"
+                    className={styles.mediaContent}
+                  />
+                )}
+              </div>
+            ) : (
+              <div className={styles.mediaGrid}>
+                {media.map((item) => (
+                  <div key={item.id} className={styles.mediaItem}>
+                    {item.is_video ? (
+                      <video
+                        src={getMediaUrl(item.file)}
+                        controls
+                        className={styles.mediaContent}
+                      />
+                    ) : (
+                      <img
+                        src={getMediaUrl(item.file)}
+                        alt="Activity media"
+                        className={styles.mediaContent}
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
         {notes && (
           <div className={styles.notes}>
             <p>{notes}</p>
@@ -83,30 +125,6 @@ const ActivityPost: React.FC<ActivityPostProps> = ({
                 <span className={styles.value}>{field.value}</span>
               </div>
             ))}
-          </div>
-        )}
-
-        {media && media.length > 0 && (
-          <div className={styles.mediaSection}>
-            <div className={styles.mediaGrid}>
-              {media.map((item) => (
-                <div key={item.id} className={styles.mediaItem}>
-                  {item.is_video ? (
-                    <video
-                      src={getMediaUrl(item.file)}
-                      controls
-                      className={styles.mediaContent}
-                    />
-                  ) : (
-                    <img
-                      src={getMediaUrl(item.file)}
-                      alt="Activity media"
-                      className={styles.mediaContent}
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
           </div>
         )}
       </div>
