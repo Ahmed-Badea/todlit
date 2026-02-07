@@ -157,6 +157,16 @@ const LoginForm = (
           />
         </div>
       </div>
+
+      <div className={styles["login-form__privacy"]}>
+        <Button
+          size='sm'
+          color='primary'
+          variant='link'
+          text={t('outerLayout.form.privacyPolicy')}
+          onClickHandler={() => navigate(OUTER_ROUTES.PRIVACY_POLICY)}
+        />
+      </div>
     </>
   )
 }

@@ -1,5 +1,15 @@
 @import "@styles/mixins";
 
 .login-form {
-  @include outer-layout-form-footer(__dont-have-account); 
+  @include outer-layout-form-footer(__dont-have-account);
+
+  &__privacy {
+    width: 100%;
+    text-align: center;
+
+    button {
+      text-decoration: underline;
+      margin: 0 auto;
+    }
+  }
 }
