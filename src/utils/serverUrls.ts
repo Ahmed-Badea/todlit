@@ -2,7 +2,7 @@
 
 export const getServerUrl = () => {
   // if(hostName === "localhost"){
-    return "https://api.todlit.com";
+    return "https://todlit.com";
   // }else{
     // return hostName;
   // }

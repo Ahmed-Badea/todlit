@@ -96,8 +96,8 @@ const Activities = () => {
             {selectedTemplate.icon && (
               <img
                 src={selectedTemplate.icon.replace(
-                  "http://api.todlit.com",
-                  "https://api.todlit.com"
+                  "http://todlit.com",
+                  "https://todlit.com"
                 )}
                 alt={`${selectedTemplate.name} icon`}
                 className={styles["breadcrumb-icon"]}
