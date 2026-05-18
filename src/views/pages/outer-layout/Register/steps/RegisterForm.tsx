@@ -196,7 +196,10 @@ const RegisterForm = ({
         }, LOGIN_REDIRECT_TIMEOUT);
       })
       .catch((error: any) => {
-        const message = error.response?.data?.error;
+        const errorData = error.response?.data?.error;
+        const message = typeof errorData === 'object'
+          ? Object.values(errorData).flat().join(' ')
+          : errorData;
 
         setServerErrMsg(message || t('outerLayout.form.errors.somethingWentWrong'));
       })
