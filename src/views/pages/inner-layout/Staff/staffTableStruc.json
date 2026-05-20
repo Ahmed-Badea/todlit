@@ -18,6 +18,12 @@
     "dataType": "string"
   },
   {
+    "title_en": "Role",
+    "title_ar": "الدور",
+    "value": "role",
+    "dataType": "string"
+  },
+  {
     "title_en": "Phone",
     "title_ar": "الموبايل",
     "value": "phone",

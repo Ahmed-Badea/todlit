@@ -52,6 +52,19 @@ export const formConfig = [
     ],
   },
   {
+    name: "role",
+    label: { en: "Role", ar: "الدور" },
+    type: "dropdown",
+    value: "",
+    isValid: undefined,
+    validations: [required],
+    errorMsg: "",
+    options: [
+      { label: { en: "Admin", ar: "مدير" }, value: "admin" },
+      { label: { en: "Normal", ar: "عادي" }, value: "normal" },
+    ],
+  },
+  {
     name: "classroom",
     label: { en: "Classroom", ar: "الفصل" },
     type: "multi-dropdown",
