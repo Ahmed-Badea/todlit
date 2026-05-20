@@ -25,7 +25,7 @@ import {
   // faFilePdf,
   faUserCheck,
   faListOl,
-  faUserEdit,
+  // faUserEdit,
   faSignOutAlt
 } from "@fortawesome/free-solid-svg-icons";
 import { EGYFlag, ENGFlag } from "../../design-system/assets/Icons/countries";
