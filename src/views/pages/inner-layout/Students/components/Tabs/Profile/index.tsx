@@ -41,7 +41,7 @@ const Profile = ({ formData, id }: ProfileProps) => {
   }
 
   return (
-    <div>
+    <div className="profile-tab">
       <EditStudent formData={formData} />
       <div className="parents-container">
         {parents.father ? (

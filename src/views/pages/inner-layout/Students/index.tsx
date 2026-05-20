@@ -143,7 +143,7 @@ const Students = () => {
             </DropdownMenu>
           </Dropdown>
         </div>
-        <CreateStudent />
+        <CreateStudent onSuccess={() => queryClient.invalidateQueries('fetchStudents')} />
       </div>
       <Table
         language={lang}

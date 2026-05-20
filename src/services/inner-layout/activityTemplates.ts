@@ -22,5 +22,5 @@ export interface ActivityTemplate {
 
 export const getActivityTemplates = async (): Promise<ActivityTemplate[]> => {
   const response = await Axios.get("/settings/activity_templates/");
-  return response.data;
+  return response.data?.results ?? response.data;
 };

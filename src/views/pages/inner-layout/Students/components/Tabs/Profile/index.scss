@@ -1,11 +1,18 @@
 @import "@/styles/common.scss";
 
-.parents-container{
+.profile-tab {
+  > div {
+    width: 50%;
+    margin: $space-20 auto;
+  }
+}
+.parents-container {
+  width: 100% !important;
   margin: $space-20 auto;
   display: flex;
   flex-direction: row;
   gap: $space-20;
-  > div{
+  > div {
     width: 50%;
   }
 }

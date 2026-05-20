@@ -31,3 +31,4 @@ export * from './components/Loading';
 export * from './components/ErrorPage';
 export * from './components/ColorInput';
 export * from './components/TextArea';
+export * from './components/Breadcrumbs';

@@ -1,23 +1,24 @@
-import React from "react";
-import ReactDatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { Label } from "../../design-system"; // Adjust if needed
+import React, { useRef } from "react";
+import { DatePicker as RsuiteDP, DateRangePicker } from "rsuite";
+import "rsuite/DatePicker/styles/index.css";
+import "rsuite/DateRangePicker/styles/index.css";
+import { Label } from "../../design-system";
 import styles from "./datePicker.module.scss";
 
+type Value = Date | null;
+
 interface DatePickerProps {
-  selectedDate?: Date | null;
-  onDateChange?: (date: Date | null) => void;
-
-  // For range mode
+  selectedDate?: Value;
+  onDateChange?: (date: Value) => void;
   range?: boolean;
-  startDate?: Date | null;
-  endDate?: Date | null;
-  onRangeChange?: (start: Date | null, end: Date | null) => void;
-
+  startDate?: Value;
+  endDate?: Value;
+  onRangeChange?: (start: Value, end: Value) => void;
   label?: string;
   disabled: boolean;
   isEditable?: boolean;
   type?: "date" | "time" | "month";
+  placement?: 'bottomStart' | 'bottomEnd' | 'topStart' | 'topEnd' | 'leftStart' | 'rightStart' | 'leftEnd' | 'rightEnd' | 'auto' | 'autoVerticalStart' | 'autoVerticalEnd' | 'autoHorizontalStart' | 'autoHorizontalEnd';
 }
 
 const DatePicker: React.FC<DatePickerProps> = ({
@@ -31,78 +32,57 @@ const DatePicker: React.FC<DatePickerProps> = ({
   disabled,
   isEditable = true,
   type = "date",
+  placement = "autoVerticalStart",
 }) => {
-  const handleStartChange = (date: Date | null) => {
-    onRangeChange?.(date, endDate);
-  };
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
-  const handleEndChange = (date: Date | null) => {
-    onRangeChange?.(startDate, date);
-  };
+  const format =
+    type === "month" ? "yyyy-MM" :
+    type === "time"  ? "HH:mm" :
+                       "yyyy-MM-dd";
 
-  const maxDate = new Date();
+  const wrapperClass = `${styles["date-picker-container"]}${!isEditable ? ` ${styles["no-border"]}` : ""}`;
+
+  const handlePickerClick = () => {
+    // Scroll the modal body to make space for the picker dropdown
+    setTimeout(() => {
+      const modalBody = wrapperRef.current?.closest('[class*="popup-body"]');
+      if (modalBody && modalBody instanceof HTMLElement) {
+        // Scroll to show this field at the top of the visible area
+        const elementRect = wrapperRef.current?.getBoundingClientRect();
+        if (elementRect && elementRect.bottom > window.innerHeight - 300) {
+          modalBody.scrollTop += elementRect.bottom - (window.innerHeight - 400);
+        }
+      }
+    }, 0);
+  };
 
   return (
-    <div className={styles["date-picker-container"]}>
+    <div className={wrapperClass} ref={wrapperRef} onClick={handlePickerClick}>
       {label && <Label text={label} inputName="date-picker" />}
 
       {range ? (
-        <div className={styles["range-wrapper"]}>
-          <ReactDatePicker
-            selected={startDate}
-            onChange={handleStartChange}
-            selectsStart
-            startDate={startDate}
-            endDate={endDate}
-            maxDate={maxDate} // Prevent selecting future dates
-            dateFormat={type === "time" ? "HH:mm" : type === "month" ? "yyyy-MM" : "yyyy-MM-dd"}
-            timeFormat="HH:mm"
-            timeIntervals={15}
-            showTimeSelect={type === "time"}
-            showTimeSelectOnly={type === "time"}
-            showMonthYearPicker={type === "month"}
-            className={`${styles["date-picker"]} ${
-              !isEditable ? styles["no-border"] : ""
-            }`}
-            placeholderText="Start"
-            disabled={disabled}
-          />
-          <ReactDatePicker
-            selected={endDate}
-            onChange={handleEndChange}
-            selectsEnd
-            startDate={startDate}
-            endDate={endDate}
-            minDate={startDate ?? undefined}
-            maxDate={maxDate} // Prevent selecting future dates
-            dateFormat={type === "time" ? "HH:mm" : type === "month" ? "yyyy-MM" : "yyyy-MM-dd"}
-            timeFormat="HH:mm"
-            timeIntervals={15}
-            showTimeSelect={type === "time"}
-            showTimeSelectOnly={type === "time"}
-            showMonthYearPicker={type === "month"}
-            className={`${styles["date-picker"]} ${
-              !isEditable ? styles["no-border"] : ""
-            }`}
-            placeholderText="End"
-            disabled={disabled}
-          />
-        </div>
-      ) : (
-        <ReactDatePicker
-          selected={selectedDate}
-          onChange={onDateChange}
-          maxDate={maxDate} // Prevent selecting future dates
-          showTimeSelect={type === "time"}
-          showTimeSelectOnly={type === "time"}
-          showMonthYearPicker={type === "month"}
-          dateFormat={type === "time" ? "HH:mm" : type === "month" ? "yyyy-MM" : "yyyy-MM-dd"}
-          timeIntervals={15}
-          timeFormat="HH:mm"
-          className={`${styles["date-picker"]} ${
-            !isEditable ? styles["no-border"] : ""
-          }`}
+        <DateRangePicker
+          value={startDate && endDate ? [startDate, endDate] : null}
+          onChange={(val) => {
+            onRangeChange?.(val?.[0] ?? null, val?.[1] ?? null);
+          }}
           disabled={disabled}
+          format="yyyy-MM-dd"
+          className={styles["picker"]}
+          cleanable={false}
+          placement={placement}
+        />
+      ) : (
+        <RsuiteDP
+          value={selectedDate}
+          onChange={(val) => onDateChange?.(val)}
+          disabled={disabled}
+          format={format}
+          className={styles["picker"]}
+          cleanable={false}
+          caretAs={() => null}
+          placement={placement}
         />
       )}
     </div>

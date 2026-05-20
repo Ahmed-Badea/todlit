@@ -43,17 +43,16 @@ const ProfileMenu = ({ mobView = false }: { mobView?: boolean }) => {
   const closeDropdown = () => setIsOpen(false);
   const toggleDropdown = () => setIsOpen(!isOpen);
 
-  const editProfileHandler = () => {
-    console.log("Edit profile");
-  };
+  // const editProfileHandler = () => {
+  //   console.log("Edit profile");
+  // };
 
   const logoutHandler = () => {
-    console.log("Log out");
     logout();
   };
 
   const profileHandler: { [key in ProfileActions]: () => void } = {
-    "edit-profile": editProfileHandler,
+    // "edit-profile": editProfileHandler,
     logout: logoutHandler,
   };
 

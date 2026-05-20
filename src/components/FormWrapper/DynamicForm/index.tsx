@@ -84,7 +84,11 @@ const DynamicForm = forwardRef(
     useImperativeHandle(ref, () => ({
       submitForm: () => {
         const formData = Object.fromEntries(
-          Object.entries(fields).map(([key, field]) => [key, field.value])
+          Object.entries(fields).map(([key, field]) => {
+            const config = fieldsConfig.find(f => f.name === key);
+            const value = (config?.type === 'time' && field.value === '') ? null : field.value;
+            return [key, value];
+          })
         );
         
         return { ...formData, ...params };
@@ -111,20 +115,42 @@ const DynamicForm = forwardRef(
       />
     );
 
-    const renderDatePicker = (field: IFieldConfig) => (
+    const renderTimePicker = (field: IFieldConfig) => (
       <DatePicker
-        selectedDate={
-          fields[field.name]?.value
-            ? new Date(fields[field.name]?.value as string)
-            : null
-        }
-        onDateChange={(date) => date && handleInputChange(field.name, date.toISOString())}
+        selectedDate={fields[field.name]?.value ? new Date(`1970-01-01T${fields[field.name]?.value}`) : null}
+        onDateChange={(date) => {
+          if (!date) return handleInputChange(field.name, "");
+          const hh = String(date.getHours()).padStart(2, "0");
+          const mm = String(date.getMinutes()).padStart(2, "0");
+          handleInputChange(field.name, `${hh}:${mm}`);
+        }}
         label={getFieldLabel(field)}
         disabled={isLoading || !isEditable}
         isEditable={isEditable}
-        type={["date", "time"].includes(field.type as string) ? (field.type as "date" | "time") : undefined} // Pass 'date' or 'time' dynamically
+        type="time"
       />
     );
+
+    const renderDatePicker = (field: IFieldConfig) => {
+      const rawValue = fields[field.name]?.value;
+      const dateValue = rawValue ? new Date(rawValue as string) : null;
+
+      if (!isEditable) {
+        const displayValue = dateValue ? dateValue.toLocaleDateString() : "—";
+        return <span>{displayValue}</span>;
+      }
+
+      return (
+        <DatePicker
+          selectedDate={dateValue}
+          onDateChange={(date) => handleInputChange(field.name, date ? date.toISOString() : null)}
+          label={getFieldLabel(field)}
+          disabled={isLoading}
+          isEditable={true}
+          type={["date", "time"].includes(field.type as string) ? (field.type as "date" | "time") : undefined}
+        />
+      );
+    };
     
     const renderDropdown = (field: IFieldConfig) => (
       <Dropdown label={getFieldLabel(field)}>
@@ -263,8 +289,8 @@ const DynamicForm = forwardRef(
       <ColorInput
         label={getFieldLabel(field)}
         name={field.name}
-        // selectedColor={fields[field.name]?.value || "#ffffff"}
-        onChange={handleInputChange}
+        initialColor={fields[field.name]?.value?.toString() || "#4E45C4"}
+        onChange={(name, color) => handleInputChange(name, color)}
         disabled={isLoading || !isEditable}
       />
     );
@@ -304,8 +330,9 @@ const DynamicForm = forwardRef(
         case "file":
           return renderFileInput(field);
         case "date":
-        case "time":
           return renderDatePicker(field);
+        case "time":
+          return renderTimePicker(field);
         case "dropdown":
           return renderDropdown(field);
         case "multi-dropdown":

@@ -22,6 +22,12 @@
   box-sizing: border-box;
 }
 
+.table-cell .react-date-picker__inputGroup input,
+.table-cell .react-date-picker__inputGroup select {
+  width: auto !important;
+  padding: 0;
+}
+
 .form-wrapper {
   display: flex;
   flex-direction: column;

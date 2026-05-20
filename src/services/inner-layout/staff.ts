@@ -31,7 +31,9 @@ export const createStaff = async (staff: StaffData) => {
     email: staff.email,
     phone: staff.phone,
     gender: staff.gender,
-    classroom: staff.classroom,
+    classroom: typeof staff.classroom === 'string'
+      ? staff.classroom.split(',').filter(Boolean)
+      : staff.classroom,
   };
 
   return Axios.post("/dashboard/teacher/", reqBody);

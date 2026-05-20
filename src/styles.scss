@@ -46,6 +46,17 @@ p {
   color: var(--text-secondary);
 }
 
+/* Force rsuite pickers above modals and prevent clipping inside scrollable popups */
+.rs-picker-popup {
+  z-index: 99999 !important;
+  position: fixed !important;
+}
+
+.rs-modal-open .rs-picker-popup,
+.rs-drawer-open .rs-picker-popup {
+  z-index: 100000 !important;
+}
+
 small, .text-small {
   color: var(--text-tertiary);
 }

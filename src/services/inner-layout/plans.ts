@@ -8,6 +8,7 @@ const formatTimeField = (timeValue: any) => {
     return format(timeValue, "HH:mm");
   }
   if (typeof timeValue === 'string') {
+    if (/^\d{2}:\d{2}/.test(timeValue)) return timeValue.slice(0, 5);
     const date = new Date(timeValue);
     return format(date, "HH:mm");
   }

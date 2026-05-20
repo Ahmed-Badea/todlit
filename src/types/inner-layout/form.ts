@@ -48,6 +48,7 @@ export interface FormWrapperProps {
   canDelete?: boolean;
   isFormValid?: boolean;
   params?: Record<string, any>;
+  onSuccess?: () => void;
 }
 
 export interface CustomFormRef {

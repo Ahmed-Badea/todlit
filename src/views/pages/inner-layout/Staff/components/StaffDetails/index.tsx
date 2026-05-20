@@ -5,8 +5,7 @@ import { TabsGroup } from '../../../../../../design-system/components/Tabs/TabsG
 import InnerLayout from '../../../../../../views/layout/InnerLayout';
 import Profile from '../Tabs/Profile';
 import { getStaff } from '../../../../../../services/inner-layout/staff';
-import { Button } from '../../../../../../design-system';
-import styles from './staff-details.module.scss';
+import { Breadcrumbs } from '../../../../../../design-system';
 
 const StaffDetails = () => {
   const { t } = useTranslation();
@@ -29,15 +28,10 @@ const StaffDetails = () => {
   
   return (
     <InnerLayout isLoading={isLoading || isFetching} error={!!error} errorMessage={(error as Error)?.message}>
-      <div className={styles["header"]}>
-        <Button
-          variant="link"
-          text={t("innerLayout.staff.title")}
-          onClickHandler={() => (window.location.href = "/staff")}
-        />
-        <span>/</span>
-        <h4>{fullName}</h4>
-      </div>
+      <Breadcrumbs items={[
+        { label: t("innerLayout.staff.title"), path: '/staff' },
+        { label: fullName },
+      ]} />
       
       <TabsGroup 
         type="line"

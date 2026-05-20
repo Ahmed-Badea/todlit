@@ -20,7 +20,8 @@ const FormWrapper: React.FC<FormWrapperProps> = ({
   canEdit = false,
   canDelete = false,
   isFormValid,
-  params
+  params,
+  onSuccess
 }) => {
   const { t } = useTranslation();
   const formRef = useRef<CustomFormRef>(null);
@@ -38,18 +39,21 @@ const FormWrapper: React.FC<FormWrapperProps> = ({
   // Use React Query's useMutation to handle form submission
   const mutation = useMutation(submitFn, {
     onSuccess: () => {
-      console.log("success")
       setShowSuccess(true);
+      if (mode === "table") {
+        setIsEditable(false);
+      }
       setTimeout(() => {
         if (mode === "popup") {
-          onClose?.(); // Close the popup after success
+          onClose?.();
+          onSuccess?.();
+        } else if (mode === "table") {
+          setShowSuccess(false);
         }
-        window.location.reload();
       }, 3000);
     },
     onError: (error: any) => {
-      console.log("error")
-      const errorMsg = error.response?.data?.error || "Something went wrong. Please try again.";
+      const errorMsg = error.response?.data?.error || t('innerLayout.form.errors.somethingWentWrong');
       setServerErrMsg(errorMsg);
     },
   });

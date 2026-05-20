@@ -28,7 +28,9 @@ const EditStudent = ({ formData }: { formData: FormData }) => {
 
   useEffect(() => {
     if (classes && formData) {
-      const newFormConfig: IFieldConfig[] = studentConfig.map((field) => {
+      const newFormConfig: IFieldConfig[] = studentConfig
+        .filter((field) => !(field.name === 'classroom_id' && !classes?.length))
+        .map((field) => {
         const fieldValue = formData[field.name] || '';
         
         if (field.name === 'classroom_id') {

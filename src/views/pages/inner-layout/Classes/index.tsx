@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import { useTranslation } from 'react-i18next';
 import { getClasses } from "../../../../services/inner-layout/classes";
 import Card from "./components/Card";
@@ -11,6 +11,8 @@ import styles from "./classes.module.scss";
 
 const Classes: React.FC = () => {
   const { t } = useTranslation();
+
+  const queryClient = useQueryClient();
 
   const {
     data: classesData,
@@ -28,7 +30,7 @@ const Classes: React.FC = () => {
     <InnerLayout isLoading={isLoading || isFetching} error={!!error} errorMessage={error?.message}>
       <div className={styles.header}>
         <h3>{t("innerLayout.classes.title")}</h3>
-        <CreateClass />
+        <CreateClass onSuccess={() => queryClient.invalidateQueries('fetchClasses')} />
       </div>
       <div className={styles['classroom-list']}>
         {classesData && classesData.length > 0 ? (

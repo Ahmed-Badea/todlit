@@ -6,7 +6,7 @@ import { createStaff } from '../../../../../../../services/inner-layout/staff';
 import { useClassesStore } from '../../../../../../../store/classes';
 import { formConfig } from '../staffConfig';
 
-const CreateStaffPopup = () => {
+const CreateStaffPopup = ({ onSuccess }: { onSuccess?: () => void }) => {
   const { t } = useTranslation();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -22,7 +22,7 @@ const CreateStaffPopup = () => {
         ...field,
         options: classes?.map((classroom: any) => ({
           label: { en: classroom.name, ar: classroom.name },
-          value: classroom.id,
+          value: String(classroom.id),
         })),
       };
     }
@@ -46,6 +46,7 @@ const CreateStaffPopup = () => {
         successMessage={t("innerLayout.form.successMessage.created")}
         onClose={handlePopupClose}
         isOpen={isPopupOpen}
+        onSuccess={onSuccess}
       />
     </div>
   );

@@ -9,7 +9,7 @@ import { formatTime } from "../../../../../../utils/dateFormats";
 import { Plan } from "../../../../../../types/inner-layout/plans";
 import styles from "./plan.module.scss";
 
-const PlanCard: React.FC<Plan> = ({
+const PlanCard: React.FC<Plan & { onSuccess?: () => void }> = ({
   id,
   name,
   monthly_fee,
@@ -18,6 +18,7 @@ const PlanCard: React.FC<Plan> = ({
   program_color,
   late_checkout_time,
   late_checkout_fees,
+  onSuccess,
 }) => {
   const { t } = useTranslation();
   const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
@@ -89,6 +90,7 @@ const PlanCard: React.FC<Plan> = ({
         successMessage={t('innerLayout.plans.planUpdated')}
         onClose={handleEditPopupClose}
         isOpen={isEditPopupOpen}
+        onSuccess={onSuccess}
       />
     </>
   );

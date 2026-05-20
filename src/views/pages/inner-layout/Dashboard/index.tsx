@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import InnerLayout from "../../../../views/layout/InnerLayout";
 import StatCard from "../../../../components/StatCard";
 import ActivityPost from "../../../../components/ActivityPost";
+import NoData from "../../../../design-system/components/NoData";
 import { getDashboardView } from "../../../../services/inner-layout/dashboard";
 import { getTeacherActivityPosts } from "../../../../services/inner-layout/activityPosts";
 import styles from "./dashboard.module.scss";
@@ -79,9 +80,7 @@ const Dashboard = () => {
                 />
               ))
             ) : (
-              <div className={styles.no_activities}>
-                <p>{t("innerLayout.noData")}</p>
-              </div>
+              <NoData />
             )}
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { PopupProps } from "../../types/Popup/popup";
 import { Button } from"../Button";
 import styles from "./popup.module.scss";
+import { useEffect } from "react";
 
 export const Popup: React.FC<PopupProps> = ({
   isOpen,
@@ -8,6 +9,21 @@ export const Popup: React.FC<PopupProps> = ({
   title,
   children,
 }) => {
+  useEffect(() => {
+    if (isOpen) {
+      // Prevent scroll on body when modal is open
+      document.body.style.overflow = "hidden";
+    } else {
+      // Restore scroll when modal closes
+      document.body.style.overflow = "";
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
@@ -27,7 +43,9 @@ export const Popup: React.FC<PopupProps> = ({
             onClickHandler={onClose}
           />
         </div>
-        <div className={styles["popup-body"]}>{children}</div>
+        <div className={styles["popup-body-wrapper"]}>
+          <div className={styles["popup-body"]}>{children}</div>
+        </div>
       </div>
     </div>
   );

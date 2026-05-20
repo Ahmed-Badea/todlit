@@ -155,11 +155,11 @@ export const navLinks: (t: any) => INavLinks[] = (t) => [
 ];
 
 export const accountBarLinks: (t: any) => IAccountBarLinks[] = (t) => [
-  {
-    label: t("innerLayout.navbar.editProfile"),
-    icon: <FontAwesomeIcon icon={faUserEdit} />,
-    action: "edit-profile",
-  },
+  // {
+  //   label: t("innerLayout.navbar.editProfile"),
+  //   icon: <FontAwesomeIcon icon={faUserEdit} />,
+  //   action: "edit-profile",
+  // },
   {
     label: t("innerLayout.navbar.logout"),
     icon: <FontAwesomeIcon icon={faSignOutAlt} />,

@@ -5,7 +5,7 @@ import FormWrapper from '../../../../../../../components/FormWrapper';
 import { createPlan } from '../../../../../../../services/inner-layout/plans';
 import { formConfig } from '../planConfig';
 
-const CreatePlan = () => {
+const CreatePlan = ({ onSuccess }: { onSuccess?: () => void }) => {
   const { t } = useTranslation();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -29,6 +29,7 @@ const CreatePlan = () => {
         successMessage={t("innerLayout.form.successMessage.created")}
         onClose={handlePopupClose}
         isOpen={isPopupOpen}
+        onSuccess={onSuccess}
       />
     </div>
   );

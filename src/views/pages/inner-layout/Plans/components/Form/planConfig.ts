@@ -2,7 +2,7 @@ import { required } from "../../../../../../utils/formValidations";
 
 export const formConfig = [
   {
-    name: "name", // Match API response key
+    name: "name",
     label: { en: "Name", ar: "الاسم" },
     type: "text",
     value: "",
@@ -41,7 +41,7 @@ export const formConfig = [
     name: "program_color",
     label: { en: "Program Color", ar: "لون البرنامج" },
     type: "color",
-    value: "#ffffff",
+    value: "#4E45C4",
     isValid: true,
     errorMsg: "",
     validations: [required],

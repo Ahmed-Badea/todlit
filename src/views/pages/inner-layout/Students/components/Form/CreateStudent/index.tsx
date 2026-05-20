@@ -8,7 +8,7 @@ import { getPlans } from '../../../../../../../services/inner-layout/plans';
 import { useClassesStore } from '../../../../../../../store/classes';
 import { formConfig } from '../studentConfig';
 
-const CreateStudent = () => {
+const CreateStudent = ({ onSuccess }: { onSuccess?: () => void }) => {
   const { t } = useTranslation();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -20,7 +20,9 @@ const CreateStudent = () => {
   const { data: plans = [] } = useQuery('fetchPlans', getPlans);
 
   // Update the form configuration with classroom and billing plan options
-  const updatedFormConfig = formConfig.map((field) => {
+  const updatedFormConfig = formConfig
+    .filter((field) => !(field.name === 'classroom_id' && !classes?.length))
+    .map((field) => {
     if (field.name === 'classroom_id') {
       return {
         ...field,
@@ -59,6 +61,7 @@ const CreateStudent = () => {
         successMessage={t("innerLayout.form.successMessage.created")}
         onClose={handlePopupClose}
         isOpen={isPopupOpen}
+        onSuccess={onSuccess}
       />
     </div>
   );

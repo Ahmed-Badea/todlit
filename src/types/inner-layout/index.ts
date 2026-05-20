@@ -7,7 +7,8 @@ export interface IInnerLayout {
 
 export type LangActions = "ar" | "en";
 
-export type ProfileActions = "edit-profile" | "logout";
+// export type ProfileActions = "edit-profile" | "logout";
+export type ProfileActions = "logout";
 
 export interface UserInfo {
   userName: string;

@@ -8,8 +8,8 @@ import Profile from "../Tabs/Profile";
 import Attendance from "../Tabs/Attendance";
 import Billing from "../Tabs/Billing";
 import { getStudents } from "../../../../../../services/inner-layout/students";
+import { Breadcrumbs } from "../../../../../../design-system";
 import styles from "./student-details.module.scss";
-import { Button } from "../../../../../../design-system";
 
 const StudentsDetails = () => {
   const { t } = useTranslation();
@@ -55,15 +55,10 @@ const StudentsDetails = () => {
       error={!!error}
       errorMessage={(error as Error)?.message}
     >
-      <div className={styles["header"]}>
-        <Button
-          variant="link"
-          text={t("innerLayout.students.title")}
-          onClickHandler={() => window.location.assign('/students')}
-        />
-        <span>/</span>
-        <h4>{fullName}</h4>
-      </div>
+      <Breadcrumbs items={[
+        { label: t("innerLayout.students.title"), path: '/students' },
+        { label: fullName },
+      ]} />
 
       <TabsGroup type="line" orientation="horizontal" tabsProps={tabsProps} />
 

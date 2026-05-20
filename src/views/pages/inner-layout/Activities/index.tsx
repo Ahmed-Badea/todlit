@@ -13,7 +13,7 @@ import {
   DropdownButton,
   DropdownMenu,
   DropdownMenuItem,
-  Button,
+  Breadcrumbs,
 } from "../../../../design-system";
 import { Checkbox } from "../../../../design-system/components/Checkbox";
 import { Loading } from "../../../../design-system";
@@ -84,35 +84,13 @@ const Activities = () => {
 
   return (
     <InnerLayout isLoading={isLoading}>
-      <div className={styles["header"]}>
-        {" "}
-        {selectedTemplate ? (
-          <>
-            <Button
-              variant="link"
-              text={t("innerLayout.navbar.activities")}
-              onClickHandler={handleBackToTemplates}
-            />
-            {selectedTemplate.icon && (
-              <img
-                src={selectedTemplate.icon.replace(
-                  "http://todlit.com",
-                  "https://todlit.com"
-                )}
-                alt={`${selectedTemplate.name} icon`}
-                className={styles["breadcrumb-icon"]}
-                crossOrigin="anonymous"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = "none";
-                }}
-              />
-            )}
-            <h4>{` / ${selectedTemplate.name}`}</h4>
-          </>
-        ) : (
-          <h4>{t("innerLayout.navbar.activities")}</h4>
-        )}
-      </div>
+      <Breadcrumbs items={[
+        {
+          label: t("innerLayout.navbar.activities"),
+          ...(selectedTemplate && { onClick: handleBackToTemplates }),
+        },
+        ...(selectedTemplate ? [{ label: selectedTemplate.name }] : []),
+      ]} />
 
       <div className={styles.container}>
         <div className={styles.sidebar}>

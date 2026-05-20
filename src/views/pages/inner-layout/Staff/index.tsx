@@ -112,7 +112,7 @@ const Staff = () => {
             </DropdownMenu>
           </Dropdown>
         </div>
-        <CreateStaff />
+        <CreateStaff onSuccess={() => queryClient.invalidateQueries('fetchStaff')} />
       </div>
       <Table
         language={lang}
