@@ -171,7 +171,7 @@
       "dailyReports": "Daily Reports",
       "billing": "Billing",
       "studentPayment": "Student Payment",
-      "invoice": "Invoice",
+      "invoices": "Invoices",
       "paymentPlan": "Payment Plan",
       "plans": "Plans",
       "discount": "Discount",
@@ -320,6 +320,22 @@
         "checkbox": "Checkbox",
         "toggle": "Toggle",
         "dropdown": "Dropdown"
+      }
+    },
+    "invoices": {
+      "title": "Invoices",
+      "createdAt": "Created At",
+      "studentName": "Student Name",
+      "planName": "Plan Name",
+      "amount": "Amount",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "isPaid": "Is Paid",
+      "paidAt": "Paid At",
+      "filters": {
+        "date": "Date",
+        "classroom": "Classroom",
+        "allClasses": "All Classes"
       }
     },
     "form": {

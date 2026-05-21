@@ -146,9 +146,6 @@
       }
     }
   },
-  "common": {
-    "save": "حفظ"
-  },
   "innerLayout": {
     "language": "العربية",
     "overview": "نظرة عامة",
@@ -174,7 +171,7 @@
       "dailyReports": "التقارير اليومية",
       "billing": "الفواتير",
       "studentPayment": "مدفوعات الطلاب",
-      "invoice": "الفاتورة",
+      "invoices": "الفواتير",
       "paymentPlan": "خطة الدفع",
       "plans": "الخطط",
       "discount": "الخصم",
@@ -308,7 +305,6 @@
       "formFields": "حقول النموذج",
       "defaultFieldsMessage": "كل نشاط سيحتوي على حقول الوصف ورفع الملفات كإعداد افتراضي",
       "addCustomField": "إضافة حقل مخصص",
-      "customFields": "الحقول المخصصة",
       "fieldName": "اسم الحقل",
       "fieldType": "نوع الحقل",
       "fieldValue": "قيمة الحقل",
@@ -324,6 +320,22 @@
         "checkbox": "مربع اختيار",
         "toggle": "مفتاح",
         "dropdown": "قائمة منسدلة"
+      }
+    },
+    "invoices": {
+      "title": "الفواتير",
+      "createdAt": "تاريخ الإنشاء",
+      "studentName": "اسم الطالب",
+      "planName": "اسم الخطة",
+      "amount": "المبلغ",
+      "startDate": "تاريخ البدء",
+      "endDate": "تاريخ الانتهاء",
+      "isPaid": "تم الدفع",
+      "paidAt": "تاريخ الدفع",
+      "filters": {
+        "date": "التاريخ",
+        "classroom": "الفصل",
+        "allClasses": "جميع الفصول"
       }
     },
     "form": {

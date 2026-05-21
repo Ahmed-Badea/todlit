@@ -6,6 +6,7 @@ interface StaffData {
   email: string;
   phone: string;
   gender: string | null;
+  role: string;
   classroom?: string | string[];
 }
 
@@ -31,6 +32,7 @@ export const createStaff = async (staff: StaffData) => {
     email: staff.email,
     phone: staff.phone,
     gender: staff.gender,
+    role: staff.role,
     classroom: typeof staff.classroom === 'string'
       ? staff.classroom.split(',').filter(Boolean)
       : staff.classroom,
@@ -47,6 +49,7 @@ export const updateStaff = async (id: string, staff: StaffData) => {
     email: staff.email,
     phone: staff.phone,
     gender: staff.gender,
+    role: staff.role,
     classroom: staff.classroom,
   };
 
