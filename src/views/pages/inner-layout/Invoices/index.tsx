@@ -51,10 +51,9 @@ const Invoices = () => {
         <div className={styles.filters_container}>
           <DatePicker
             type="month"
-            value={selectedDate}
-            onChange={setSelectedDate}
+            selectedDate={selectedDate}
+            onDateChange={setSelectedDate}
             placeholder={t("innerLayout.invoices.filters.date")}
-            style={{ width: 220 }}
           />
 
           <Dropdown>

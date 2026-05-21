@@ -15,9 +15,11 @@ interface DatePickerProps {
   endDate?: Value;
   onRangeChange?: (start: Value, end: Value) => void;
   label?: string;
-  disabled: boolean;
+  disabled?: boolean;
   isEditable?: boolean;
   type?: "date" | "time" | "month";
+  placeholder?: string;
+  style?: React.CSSProperties;
   placement?: 'bottomStart' | 'bottomEnd' | 'topStart' | 'topEnd' | 'leftStart' | 'rightStart' | 'leftEnd' | 'rightEnd' | 'auto' | 'autoVerticalStart' | 'autoVerticalEnd' | 'autoHorizontalStart' | 'autoHorizontalEnd';
 }
 
@@ -29,9 +31,11 @@ const DatePicker: React.FC<DatePickerProps> = ({
   endDate = null,
   onRangeChange,
   label,
-  disabled,
+  disabled = false,
   isEditable = true,
   type = "date",
+  placeholder,
+  style,
   placement = "autoVerticalStart",
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -58,7 +62,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
   };
 
   return (
-    <div className={wrapperClass} ref={wrapperRef} onClick={handlePickerClick}>
+    <div className={wrapperClass} ref={wrapperRef} onClick={handlePickerClick} style={style}>
       {label && <Label text={label} inputName="date-picker" />}
 
       {range ? (
@@ -71,6 +75,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
           format="yyyy-MM-dd"
           className={styles["picker"]}
           cleanable={false}
+          placeholder={placeholder}
           placement={placement}
         />
       ) : (
@@ -82,6 +87,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
           className={styles["picker"]}
           cleanable={false}
           caretAs={() => null}
+          placeholder={placeholder}
           placement={placement}
         />
       )}
