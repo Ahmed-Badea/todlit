@@ -6,7 +6,7 @@ import StudentAttendance from "../views/pages/inner-layout/StudentAttendance";
 import Activities from "../views/pages/inner-layout/Activities";
 import DailyReports from "../views/pages/inner-layout/DailyReports";
 import StudentPayment from "../views/pages/inner-layout/StudentPayment";
-import Invoice from "../views/pages/inner-layout/Invoice";
+import Invoices from "../views/pages/inner-layout/Invoices";
 import Plans from "../views/pages/inner-layout/Plans";
 import Discount from "../views/pages/inner-layout/Discount";
 import TaxRate from "../views/pages/inner-layout/TaxRate";
@@ -24,7 +24,7 @@ export const INNER_ROUTES = {
   ACTIVITIES: "/activities",
   DAILY_REPORTS: "/daily-reports",
   STUDENT_PAYMENT: "/student-payment",
-  INVOICE: "/invoice",
+  INVOICES: "/invoices",
   PLANS: "/plans",
   DISCOUNT: "/discount",
   TAX_RATE: "/tax-rate",
@@ -43,7 +43,7 @@ export const innerLayoutRoutes = [
   { name: "activities", path: INNER_ROUTES.ACTIVITIES, element: <Activities /> },
   { name: "daily-reports", path: INNER_ROUTES.DAILY_REPORTS, element: <DailyReports /> },
   { name: "student-payment", path: INNER_ROUTES.STUDENT_PAYMENT, element: <StudentPayment /> },
-  { name: "invoice", path: INNER_ROUTES.INVOICE, element: <Invoice /> },
+  { name: "invoices", path: INNER_ROUTES.INVOICES, element: <Invoices /> },
   { name: "plans", path: INNER_ROUTES.PLANS, element: <Plans /> },
   { name: "discount", path: INNER_ROUTES.DISCOUNT, element: <Discount /> },
   { name: "tax-rate", path: INNER_ROUTES.TAX_RATE, element: <TaxRate /> },

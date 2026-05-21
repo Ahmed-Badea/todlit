@@ -8,7 +8,7 @@ import {
   faUsers,
   faCalendarCheck,
   faFileAlt,
-  // faMoneyBill,
+  faMoneyBill,
   faCreditCard,
   // faCog,
   faUserGraduate,
@@ -19,7 +19,7 @@ import {
   // faLock,
   // faNewspaper,
   // faSchool,
-  // faFileInvoiceDollar,
+  faFileInvoiceDollar,
   // faPercentage,
   // faCalculator,
   // faFilePdf,
@@ -89,22 +89,22 @@ export const navLinks: (t: any) => INavLinks[] = (t) => [
       // },
     ],
   },
-  // {
-  //   label: t("innerLayout.navbar.billing"),
-  //   icon: <FontAwesomeIcon icon={faMoneyBill} />,
-  //   subLinks: [
-  //     {
-  //       label: t("innerLayout.navbar.studentPayment"),
-  //       route: "/student-payment",
-  //       icon: <FontAwesomeIcon icon={faMoneyBill} />,
-  //     },
-  //     {
-  //       label: t("innerLayout.navbar.invoice"),
-  //       route: "/invoice",
-  //       icon: <FontAwesomeIcon icon={faFileInvoiceDollar} />,
-  //     },
-  //   ],
-  // },
+  {
+    label: t("innerLayout.navbar.billing"),
+    icon: <FontAwesomeIcon icon={faMoneyBill} />,
+    subLinks: [
+      // {
+      //   label: t("innerLayout.navbar.studentPayment"),
+      //   route: "/student-payment",
+      //   icon: <FontAwesomeIcon icon={faMoneyBill} />,
+      // },
+      {
+        label: t("innerLayout.navbar.invoices"),
+        route: "/invoices",
+        icon: <FontAwesomeIcon icon={faFileInvoiceDollar} />,
+      },
+    ],
+  },
   {
     label: t("innerLayout.navbar.paymentPlan"),
     icon: <FontAwesomeIcon icon={faCreditCard} />,
