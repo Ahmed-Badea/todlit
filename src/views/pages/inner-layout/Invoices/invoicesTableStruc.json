@@ -1,0 +1,50 @@
+[
+  {
+    "title_en": "Student Name",
+    "title_ar": "اسم الطالب",
+    "value": "student_name",
+    "dataType": "string"
+  },
+  {
+    "title_en": "Plan Name",
+    "title_ar": "اسم الخطة",
+    "value": "plan_name",
+    "dataType": "string"
+  },
+   {
+    "title_en": "Amount",
+    "title_ar": "المبلغ",
+    "value": "amount",
+    "dataType": "number"
+  },
+  {
+    "title_en": "Start Date",
+    "title_ar": "تاريخ البدء",
+    "value": "start_date",
+    "dataType": "date"
+  },
+  {
+    "title_en": "End Date",
+    "title_ar": "تاريخ الانتهاء",
+    "value": "end_date",
+    "dataType": "date"
+  },
+  {
+    "title_en": "Created At",
+    "title_ar": "تاريخ الإنشاء",
+    "value": "created_at",
+    "dataType": "date"
+  },
+  {
+    "title_en": "Is Paid",
+    "title_ar": "تم الدفع",
+    "value": "is_paid",
+    "dataType": "boolean"
+  },
+  {
+    "title_en": "Paid At",
+    "title_ar": "تاريخ الدفع",
+    "value": "paid_at",
+    "dataType": "date"
+  }
+]
